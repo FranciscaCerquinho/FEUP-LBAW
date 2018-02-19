@@ -35,3 +35,12 @@ body {
     text-decoration: none;
     font-size: 18px;
     letter-spacing: 0.3px; }
+
+/*footer*/
+footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 5.2vh;
+    color: white;
+    background-color: #597ca0ff}
