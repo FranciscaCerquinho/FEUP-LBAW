@@ -4,7 +4,9 @@ body {
     font-family: "Open Sans", sans-serif;
     color: #ffffff !important; 
     background-color:#cfd7e1}
-
+header{
+    padding-bottom: 40px;
+}
 /*icon*/
 .link_logo{
     float: left;
@@ -157,6 +159,79 @@ li.dropdown {
     width: 150px;
     color: #597ca0ff;
     border-radius: 5px;
+}
+
+/*header Username*/
+.btn-group button{
+    display: inline-block;
+    text-transform: uppercase;
+    color: #f2f2f2;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 0.3px; 
+    background-color: #597ca0ff;
+}
+
+.btn-group .dropdown-menu li a{
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    background-color: #8b9fb7;
+    z-index: 1;
+    color: black;
+    text-transform: unset;
+}
+
+/*Profile*/
+.perfil_img{
+    height: 180px;
+    width: 220;
+    padding-left: 40%;
+}
+#profile {
+    color: #444444;
+    padding-top:100px; 
+    margin-left: 200px;
+}
+.col-md-6 p{
+    padding-top: 10px; 
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+}
+
+hr.style17 {
+	border-top: 2px solid #d6d6d6;
+	text-align: center;
+}
+
+.user_auctions {
+    padding: 50px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+}
+
+.user_auctions h1{
+    color: #444444;
+    font-size: 25px;
+    font-weight:bold;
+}
+
+.contact_user{
+    margin-left: 150px;
+}
+.contact_user button:first-child{
+    font-size: 20px;
+    background-color:#e6e6e6;
+    height: 35px;
+    width: 100px;
+    color: #597ca0ff;
+    border-radius: 5px;
+}
+
+.contact_user a{
+    border:none;
+    margin-left:20px; 
 }
 /*footer*/
 footer {
