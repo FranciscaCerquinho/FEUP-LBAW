@@ -1,8 +1,9 @@
+@charset "utf-8";
 body {
     margin: 0px;
     font-family: "Open Sans", sans-serif;
     color: #ffffff !important; 
-    background-color: #afbdce;}
+    background-color:#cfd7e1}
 
 /*icon*/
 .link_logo{
@@ -129,11 +130,34 @@ li.dropdown {
 }
 
 /*form Sign in*/
-.form_signIn{
-    position: absolute; 
-    padding-top: 500px;
+#form_signIn  {
+    left: 32%; 
+    margin-top: 250px;
+    background-color: #597ca0ff;
+    padding: 60px;
+    position: relative;
+    width: 35%;
+    height: 60%;
 }
-
+.buttons_signIn {
+    padding-top:20px; 
+}
+.buttons_signIn button:first-child{
+    margin-left: 2px;
+    margin-right: 75px; 
+}
+.buttons_signIn a{
+    margin-left: 75px;
+    float:center; 
+}
+.buttons_signIn button{
+    font-size: 16px;
+    background-color:#fefce0;
+    height: 35px;
+    width: 150px;
+    color: #597ca0ff;
+    border-radius: 5px;
+}
 /*footer*/
 footer {
     clear: both;
@@ -141,4 +165,5 @@ footer {
     z-index: 10;
     height: 5.2vh;
     color: white;
+    margin-top: 240px;
     background-color: #597ca0ff}
