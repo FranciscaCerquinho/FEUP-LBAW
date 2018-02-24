@@ -2,7 +2,7 @@
 body {
     margin: 0px;
     font-family: "Open Sans", sans-serif;
-    color: #ffffff !important; 
+    color: #ffffff !important;
     background-color:#cfd7e1}
 header{
     padding-bottom: 40px;
@@ -13,7 +13,7 @@ header{
     margin-left: 20px;
     width: 150px;
     height: 95px; }
-        
+
 /*navbar*/
 .topnav {
     top: 0px;
@@ -44,7 +44,7 @@ header{
     border-top: 1px solid #e4ece000;
     text-decoration: none;
     font-size: 18px;
-    letter-spacing: 0.3px; 
+    letter-spacing: 0.3px;
 }
 
 /*Shop by category -dropdown*/
@@ -110,7 +110,7 @@ li.dropdown {
 
 .row .col-md-2{
     padding: 20px 20px 20px 20px;
-    
+
 }
 
 /*searchbar*/
@@ -119,11 +119,11 @@ li.dropdown {
     font-family: "Open Sans", sans-serif;
 }
 .stylish-input-group .input-group-addon{
-    background: white !important; 
+    background: white !important;
 }
 .stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
+	border-right:0;
+	box-shadow:0 0 0;
 	border-color:#ccc;
 }
 .stylish-input-group button{
@@ -133,7 +133,7 @@ li.dropdown {
 
 /*form Sign in*/
 #form_signIn  {
-    left: 32%; 
+    left: 32%;
     margin-top: 250px;
     background-color: #597ca0ff;
     padding: 60px;
@@ -142,15 +142,15 @@ li.dropdown {
     height: 60%;
 }
 .buttons_signIn {
-    padding-top:20px; 
+    padding-top:20px;
 }
 .buttons_signIn button:first-child{
     margin-left: 2px;
-    margin-right: 75px; 
+    margin-right: 75px;
 }
 .buttons_signIn a{
     margin-left: 75px;
-    float:center; 
+    float:center;
 }
 .buttons_signIn button{
     font-size: 16px;
@@ -170,7 +170,7 @@ li.dropdown {
     padding-top: 10px;
     text-decoration: none;
     font-size: 18px;
-    letter-spacing: 0.3px; 
+    letter-spacing: 0.3px;
     background-color: #597ca0ff;
 }
 
@@ -191,11 +191,11 @@ li.dropdown {
 }
 #profile {
     color: #444444;
-    padding-top:100px; 
+    padding-top:100px;
     margin-left: 200px;
 }
 .col-md-6 p{
-    padding-top: 10px; 
+    padding-top: 10px;
     font-family: "Open Sans", sans-serif;
     font-size: 20px;
 }
@@ -231,7 +231,49 @@ hr.style17 {
 
 .contact_user a{
     border:none;
-    margin-left:20px; 
+    margin-left:20px;
+}
+
+#error{
+  padding-top:150px;
+  margin-left: 200px;
+}
+#error .style17{
+  margin-right: 200px;
+}
+
+#error_home button{
+  height: 50px;
+  width: 300px;
+  font-size: 20px;
+  background-color: #597ca0ff;
+  margin-left: 380px;
+
+}
+
+#error_msg.grid{
+  display: grid;
+  grid-template-columns:1fr 1fr;
+}
+
+#error_msg h1{
+font-size: 40px;
+color: #000000;
+grid-column: 1/2;
+
+}
+
+#error_msg h2{
+font-size: 40px;
+color: #606060;
+grid-column: 2/3;
+
+}
+
+#error_msg p{
+  color: #000000;
+  font-size: 17px;
+  margin-left: 340px;
 }
 /*footer*/
 footer {
@@ -246,11 +288,9 @@ footer {
 
 footer li:first-child{
     float: left;
-    padding-top: 10px; 
+    padding-top: 10px;
 }
 footer li{
     float: right;
-    list-style-type: none; 
+    list-style-type: none;
 }
-
-
