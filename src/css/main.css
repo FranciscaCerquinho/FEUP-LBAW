@@ -5,7 +5,7 @@ body {
     color: #ffffff !important; 
     background-color:#cfd7e1}
 header{
-    padding-bottom: 40px;
+    padding-bottom: 60px;
 }
 /*icon*/
 .link_logo{
@@ -233,6 +233,28 @@ hr.style17 {
     border:none;
     margin-left:20px; 
 }
+
+/* New Auctions*/
+.new_auctions{
+    padding: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    color: #444444;
+}
+
+.new_auctions img{
+    width: 150px;
+    height: 150px;
+}
+
+.new_auctions .row{
+    padding: 10px;
+}
+
+.new_auctions h4{
+    color: #0c59cf;
+}
+
 /*footer*/
 footer {
     clear: both;
