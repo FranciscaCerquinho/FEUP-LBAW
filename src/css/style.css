@@ -39,6 +39,24 @@ p {font-size: 16px;}
     color: #597ca0ff!important;
 }
 
+/*searchbar*/
+.container{
+    padding-top: 5px;
+    font-family: "Open Sans", sans-serif;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
 /*Shop by category -dropdown*/
 .shop_by_category ul {
     list-style-type: none;
