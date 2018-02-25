@@ -2,7 +2,7 @@
 body {
     margin: 0px;
     font-family: "Open Sans", sans-serif;
-    color: #ffffff !important; 
+    color: #ffffff !important;
     background-color:#cfd7e1;
 }
 header{
@@ -237,11 +237,12 @@ hr.style17 {
 
 /*Error Page*/
 #error{
-  padding-top:150px;
+  padding-top:100px;
   margin-left: 200px;
 }
 #error .style17{
   margin-right: 200px;
+  padding-bottom: 30px;
 }
 
 #error_home button{
@@ -253,22 +254,17 @@ hr.style17 {
 
 }
 
-#error_msg.grid{
-  display: grid;
-  grid-template-columns:1fr 1fr;
-}
 
-#error_msg h1{
+#error_msg h2.qOq{
+width: 50px;
 font-size: 40px;
 color: #000000;
-grid-column: 1/2;
 
 }
 
-#error_msg h2{
+#error_msg h2.pnf{
 font-size: 40px;
 color: #606060;
-grid-column: 2/3;
 
 }
 
@@ -276,6 +272,7 @@ grid-column: 2/3;
   color: #000000;
   font-size: 17px;
   margin-left: 340px;
+  padding-top:50px;
 }
 
 /**Add auction page*/
