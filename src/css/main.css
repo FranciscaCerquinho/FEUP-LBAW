@@ -235,6 +235,7 @@ hr.style17 {
     margin-left:20px;
 }
 
+/*Error Page*/
 #error{
   padding-top:150px;
   margin-left: 200px;
@@ -277,6 +278,28 @@ grid-column: 2/3;
   margin-left: 340px;
 }
 
+/**Add auction page*/
+
+.add_auction{
+    padding: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+}
+.add_auction h1{
+    color: #444444;
+    font-size: 25px;
+    font-weight:bold;
+}
+
+.add_auction h1 button{
+    padding: 10px 50px 10px 50px;
+    font-size: 18px;
+    font-weight:normal;
+    border-radius: 5px;
+    background-color:#fefce0;
+    color:#597ca0ff;
+    float: right;
+}
 /* New Auctions*/
 .new_auctions{
     padding: 150px 70px 10px 70px;
