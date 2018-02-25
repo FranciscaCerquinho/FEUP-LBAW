@@ -318,6 +318,24 @@ color: #606060;
     color: #0c59cf;
 }
 
+/*administration*/
+
+section#middle{
+  color: #000000;
+  padding-top: 50px;
+  margin-left: 100px;
+}
+
+#middle .style17{
+  margin-right: 200px;
+}
+
+#middle nav {
+
+  padding-top: 50px;
+}
+
+
 /*footer*/
 footer {
 	clear: both;
@@ -325,7 +343,7 @@ footer {
     z-index: 10;
     height: 5.2vh;
     color: white;
-    margin-top: 220px;
+    margin-top: 120px;
     background-color: #597ca0ff;
     font-size:16px;
 	padding-top : 10px;
