@@ -322,7 +322,6 @@ footer li:first-child{
 footer li{
     float: right;
     list-style-type: none;
-<<<<<<< HEAD
 }
 */
 footer {
@@ -343,16 +342,14 @@ footer #org{
 
 footer #orgInfo{
 	float : right;
-	list-style-type: none;
 }
 
 footer li{
-	float : left;
+    float : left;
+    list-style-type: none;
 }
 
 footer a, footer a:hover{
 	text-decoration: none;
 	padding: 0px 10px;
-=======
->>>>>>> 68cfcc346369c8a25e38ea12e4a9d4bbef2e4aac
 }
