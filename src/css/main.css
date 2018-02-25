@@ -2,14 +2,9 @@
 body {
     margin: 0px;
     font-family: "Open Sans", sans-serif;
-<<<<<<< HEAD
     color: #ffffff !important; 
     background-color:#cfd7e1;
 }
-=======
-    color: #ffffff !important;
-    background-color:#cfd7e1}
->>>>>>> 68cfcc346369c8a25e38ea12e4a9d4bbef2e4aac
 header{
     padding-bottom: 60px;
 }
@@ -284,7 +279,7 @@ grid-column: 2/3;
 
 /* New Auctions*/
 .new_auctions{
-    padding: 100px;
+    padding: 150px 70px 10px 70px;
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
     color: #444444;
@@ -304,26 +299,6 @@ grid-column: 2/3;
 }
 
 /*footer*/
-/*footer {
-    clear: both;
-    position: relative;
-    z-index: 10;
-    height: 5.2vh;
-    color: white;
-    margin-top: 220px;
-    background-color: #597ca0ff;
-    font-size:16px;
-}
-
-footer li:first-child{
-    float: left;
-    padding-top: 10px;
-}
-footer li{
-    float: right;
-    list-style-type: none;
-}
-*/
 footer {
 	clear: both;
 	position:relative;
@@ -341,7 +316,8 @@ footer #org{
 }
 
 footer #orgInfo{
-	float : right;
+    float : right;
+    padding-right: 50px;
 }
 
 footer li{
