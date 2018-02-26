@@ -279,7 +279,7 @@ li.dropdown {
 }
 #profile {
     color: #444444;
-    padding-top:160px;
+    padding-top:180px;
     margin-left: 200px;
 }
 .col-md-6 p{
@@ -380,6 +380,8 @@ color: #606060;
 .add_auction{
     padding: 100px;
     font-size: 18px;
+    margin-top:100px; 
+    margin-bottom: 200px;
 }
 .add_auction h1{
     color: #444444;
@@ -395,6 +397,29 @@ color: #606060;
     background-color:#fefce0;
     color:#597ca0ff;
     float: right;
+}
+
+.image-preview-input {
+    position: relative;
+	overflow: hidden;
+	margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
 }
 
 /**Footer*/
