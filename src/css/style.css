@@ -6,19 +6,19 @@ body {
 }
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
-.bg-1 { 
+.bg-1 {
     background-color: #dfe5eb;
     color: #597ca0ff;
 }
-.bg-2 { 
+.bg-2 {
     background-color: #474e5d; /* Dark Blue */
     color: #ffffff;
 }
-.bg-3 { 
+.bg-3 {
     background-color: #ffffff; /* White */
     color: #555555;
 }
-.bg-4 { 
+.bg-4 {
     background-color: #2f2f2f; /* Black Gray */
     color: #fff;
 }
@@ -58,7 +58,7 @@ p {font-size: 16px;}
 .topnav .links li:first-child{
     padding-top: 40px;
     float: right;
-    margin-right: 20px; 
+    margin-right: 20px;
 }
 .topnav .links li{
     padding-top: 40px;
@@ -337,8 +337,9 @@ hr.style17 {
 
 /*Error Page*/
 #error{
-  padding-top:100px;
+  padding-top:200px;
   margin-left: 200px;
+  padding-bottom: 150px;
 }
 #error .style17{
   margin-right: 200px;
@@ -375,12 +376,17 @@ color: #606060;
   padding-top:50px;
 }
 
+#error_search{
+  margin-right: 350px;
+
+}
+
 /**Add auction page*/
 
 .add_auction{
     padding: 100px;
     font-size: 18px;
-    margin-top:100px; 
+    margin-top:100px;
     margin-bottom: 200px;
 }
 .add_auction h1{
@@ -402,10 +408,10 @@ color: #606060;
 .image-preview-input {
     position: relative;
 	overflow: hidden;
-	margin: 0px;    
+	margin: 0px;
     color: #333;
     background-color: #fff;
-    border-color: #ccc;    
+    border-color: #ccc;
 }
 .image-preview-input input[type=file] {
 	position: absolute;
@@ -420,6 +426,25 @@ color: #606060;
 }
 .image-preview-input-title {
     margin-left:2px;
+}
+
+
+/*administration*/
+
+section#middle{
+  color: #000000;
+  padding-top: 150px;
+  margin-left: 100px;
+  padding-bottom: 100px;
+}
+
+#middle .style17{
+  margin-right: 200px;
+}
+
+#middle nav {
+
+  padding-top: 50px;
 }
 
 /**Footer*/
