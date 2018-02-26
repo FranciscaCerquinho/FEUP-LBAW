@@ -217,12 +217,12 @@ li.dropdown {
 }
 
 .new_auctions img{
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
 }
 
 .new_auctions .row{
-    padding: 10px;
+    padding-bottom: 40px;
 }
 
 .new_auctions h4{
@@ -238,6 +238,7 @@ li.dropdown {
     position: relative;
     width: 35%;
     height: 60%;
+    margin-bottom: 150px;
 }
 .buttons_signIn {
     padding-top:20px;
@@ -385,10 +386,8 @@ footer {
     z-index: 10;
     height: 5.2vh;
     color: white;
-    margin-top: 220px;
     background-color: #2f2f2f;
     font-size:16px;
-	padding-top : 10px;
 }
 
 footer #org{
