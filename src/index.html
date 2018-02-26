@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Top Bid</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,24 +19,16 @@
 </head>
 <body>
 
-<header>
-<!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a href="#icon" class="link_logo">
-          <img class="topnav__logo" src="images/icon.png" style='max-width: 90px; max-height: 90px'></img>
-      </a>
-    <div class="collapse navbar-collapse" id="myNavbar" style="padding-top:13px">
-        <div class="shop_by_category">
+  <header>
+    <nav class="topnav" id="myTopnav">
+        <a href="#icon" class="link_logo">
+            <img class="topnav__logo" src="images/icon.png" style='max-width: 120px; max-height: 120px; margin-top:10px;'></img>
+        </a>      
+        <ul>
+            <div class="shop_by_category">
             <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" style="color:#597ca0ff;">Shop By <p></p> Category</a>
-                <span class="caret" style="color:#597ca0ff;"></span>
+                <a href="javascript:void(0)" class="dropbtn" style="color: #597ca0ff">Shop By <p></p> Category</a>
+                <span class="caret"></span>
                 <div class="dropdown-content">
                     <div class="row">
                         <div class="col-md-2">
@@ -56,36 +47,33 @@
                     </div>
                 </div>
             </li>
-            </div>     
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-          <li>
-              <div class="container" style="max-width:420px; padding-right:120px; padding-top:5px;">
-                  <div class="input-group stylish-input-group">
-                      <input type="text" class="form-control"  placeholder="Search" >
-                          <span class="input-group-addon">
-                              <button type="submit">
-                              <span class="glyphicon glyphicon-search"></span>
-                              </button>  
-                          </span>
-                  </div>
-              </div>
-          </li>
-        <li><a href="add_auction.html">Add Auction</a></li>
-        <li><a href="sign_in.html">Sign In</a></li>
-        <li><a target="_blank" title="Wish List" href="#wish_list" style="text-decoration:none; color:#474e5d;">
-            <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
+            </div>
+            <div class="links">
+            <li><a target="_blank" title="Wish List" href="#wish_list" style="text-decoration:none; color:#597ca0ff;">
+                    <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
+                </a>
+            </li>
+            <li><a href="#add_auction">Add Auction</a></li>
+            <li><a href="sign_in.html">Sign in</a></li>
+            <li>
+                <div class="container" style="max-width:420px; padding-right:120px;">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control"  placeholder="Search" >
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                                </button>  
+                            </span>
+                    </div>
+                </div>
+            </li>
+            </div>
+        </ul>
+    </nav>
 </header>
 
 <!-- First Container -->
-
+<div class="container-fluid bg-1 text-center">
 <div class="new_auctions">
     <div class="row">
       <div class="col-md-4">
@@ -169,7 +157,7 @@
     </div>
     
     <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center" style="padding-left:520px;">
+        <ul class="pagination justify-content-center">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
@@ -187,7 +175,7 @@
           </li>
         </ul>
     </nav>
-    
+</div>
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
