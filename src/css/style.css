@@ -443,8 +443,12 @@ section#middle{
 }
 
 #middle nav {
-
   padding-top: 50px;
+}
+
+#middle a{
+  color: #0c59cf;
+  font-size: 16px;
 }
 
 /**Footer*/
