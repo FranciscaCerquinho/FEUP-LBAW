@@ -216,17 +216,34 @@ li.dropdown {
     color: #444444;
 }
 
+.new_auctions .col-md-3 .content{
+    background-color: white;
+    padding: 12px;
+}
+
 .new_auctions img{
-    width: 180px;
-    height: 180px;
+    width: 250px;
+    height: 250px;
+}
+.new_auctions img:hover{
+    opacity: 0.5;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
 .new_auctions .row{
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 .new_auctions h4{
+    padding-top: 10px;
     color: #0c59cf;
+    font-weight:bold;
+}
+
+.new_auctions p:last-child{
+    font-weight:bold;
+    color:black;
+    font-size: 18px;
 }
 
 /*form Sign in*/
@@ -380,6 +397,7 @@ color: #606060;
     float: right;
 }
 
+/**Footer*/
 footer {
 	clear: both;
 	position:relative;
