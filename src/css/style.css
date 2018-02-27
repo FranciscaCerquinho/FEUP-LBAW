@@ -150,7 +150,7 @@ li a, .dropbtn {
 }
 /*searchbar*/
 .container{
-    min-height: 85vh;
+    /*min-height: 85vh;*/
     padding-top: 5px;
 }
 .stylish-input-group .input-group-addon{
@@ -494,6 +494,55 @@ section#item h3.auction_status{
   background-color:#ffffff;
   border-color: #ffffff;
 }
+
+
+/*comment*/
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+
+
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+  color:#000000;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+
+#item div#comments div.container{
+  width: 1000px;
+  height: 200px;
+}
+
+#item div#comments{
+  padding-left: 20px;
+  padding-top: 40px;
+}
+
+#item div#comments div.leave_comment{
+
+  padding-top: 40px;
+  padding-left: 250px;
+}
+
+/*  */
 
 .faq{
     padding: 50px;
