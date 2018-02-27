@@ -499,6 +499,14 @@ section#item h3.auction_status{
     padding: 50px;
 }
 
+.faq h4 a{
+    font-size:18px;
+    font-weight: bold;
+}
+
+.faq .panel-body{
+    font-size:18px;
+}
 /**Footer*/
 footer {
 	clear: both;
