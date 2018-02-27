@@ -456,7 +456,9 @@ section#middle{
   color: #0c59cf;
   font-size: 16px;
 }
-
+.faq{
+    padding: 50px;
+}
 /**Footer*/
 footer {
 	clear: both;
