@@ -431,12 +431,9 @@ color: #606060;
 }
 
 .add_auction h1 button{
-    padding: 10px 50px 10px 50px;
+    padding: 2px 50px 2px 50px;
     font-size: 18px;
     font-weight:normal;
-    border-radius: 5px;
-    background-color:#fefce0;
-    color:#597ca0ff;
     float: right;
 }
 
