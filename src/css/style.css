@@ -271,7 +271,9 @@ li.dropdown {
     border-radius: 5px;
 }
 
-
+.form-group label{
+font-size:16px;
+}
 /*Profile*/
 .perfil_img{
     height: 180px;
@@ -321,6 +323,38 @@ hr.style17 {
     margin-left:20px;
 }
 
+/*Edit Profile*/
+#edit_profile h1{
+    color: #444444;
+}
+
+#edit_profile h6{
+    color: #444444;
+}
+
+#edit_profile label{
+    color: #597ca0ff;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
 /*Username Navbar*/
 .dropdown button{
     display: inline-block;
