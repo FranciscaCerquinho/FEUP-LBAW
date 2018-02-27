@@ -536,10 +536,19 @@ section#item h3.auction_status{
   padding-top: 40px;
 }
 
-#item div#comments div.leave_comment{
-
-  padding-top: 40px;
-  padding-left: 250px;
+#item div.leave_comment{
+  padding-top: 30px;
+  padding-left: 15px;
+}
+#item div.leave_comment button{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+#item div.leave_comment textarea{
+  margin-left: 5px;
+  margin-top: 5px;
+  color: #000000;
+  font-size: 19px;
 }
 
 /*  */
