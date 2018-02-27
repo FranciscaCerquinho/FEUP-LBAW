@@ -249,17 +249,18 @@ hr.style17 {
     font-size: 25px;
     font-weight:bold;
 }
-
+.user_auctions a{
+    color:#0c59cf;
+}
 .contact_user{
     margin-left: 120px;
 }
 .contact_user button:first-child{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .contact_user a{
     border:none;
-    margin-left:20px;
 }
 
 .username .dropdown button{
@@ -473,12 +474,18 @@ section#item h3.auction_status{
 
 }
 
-#item div#bid_buttons{
+#item div#user_information a{
+    color: #444444;
+    font-weight: normal;
+    font-size: 16px;
+  }
+
+#item div #bid_buttons{
+    left: 0;
 }
 
 #item div#buy_now_button{
-  padding-top: 20px;
-  padding-left: 70px;
+  padding-top: 50px;
 }
 #item div#like_button{
   background-color:#dfe5eb;
