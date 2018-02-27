@@ -206,33 +206,6 @@ li a, .dropbtn {
     font-size: 18px;
 }
 
-/*form Sign in*/
-#form_signIn  {
-    left: 32%;
-    margin-top: 250px;
-    background-color: #597ca0ff;
-    padding: 60px;
-    position: relative;
-    width: 35%;
-    height: 60%;
-    margin-bottom: 150px;
-}
-.buttons_signIn {
-    padding-top:20px;
-}
-
-.buttons_signIn button{
-    font-size: 16px;
-    background-color:#fefce0;
-    height: 35px;
-    width: 150px;
-    color: #597ca0ff;
-    border-radius: 5px;
-}
-
-.form-group label{
-font-size:16px;
-}
 /*Profile*/
 .perfil_img{
     height: 180px;
