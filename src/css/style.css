@@ -113,11 +113,11 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
-li.dropdown {
+.shop_by_category  li.dropdown {
     display: inline-block;
 }
 
-.dropdown-content {
+.shop_by_category  .dropdown-content {
     font-size: 15px;
     display: none;
     position: absolute;
@@ -127,7 +127,7 @@ li.dropdown {
     z-index: 1;
 }
 
-.col-md-2 a {
+.shop_by_category .col-md-2 a {
     color: black;
     padding: 12px 20px;
     text-decoration: none;
@@ -136,14 +136,14 @@ li.dropdown {
     min-width: 300px;
 }
 
-.dropdown-item:hover{
+.shop_by_category .dropdown-item:hover{
     color: white;
 }
-.dropdown:hover .dropdown-content {
+.shop_by_category  .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.row .col-md-2{
+.shop_by_category  .row .col-md-2{
     padding: 20px 20px 20px 20px;
 
 }
@@ -164,48 +164,7 @@ li.dropdown {
     background:transparent;
 }
 
-/*Shop by category -dropdown*/
-.shop_by_category ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #597ca0ff;
-}
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-}
 
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    font-size: 15px;
-    display: none;
-    position: absolute;
-    background-color: #8b9fb7;
-    min-width: 400px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.col-md-2 a {
-    color: black;
-    padding: 12px 20px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    min-width: 300px;
-}
-
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 
 .row .col-md-2{
     padding: 20px 20px 20px 20px;
@@ -323,6 +282,35 @@ hr.style17 {
     margin-left:20px;
 }
 
+.username .dropdown button{
+    display: inline-block;
+    text-transform: uppercase;
+    color: #597ca0ff;
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid #e4ece000;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 0.3px;
+}
+
+.username .dropdown-menu{
+    background-color: #8b9fb7;
+    margin-top: 40px;
+    
+}
+.username .dropdown-menu a{
+    text-transform: none;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    text-align: left;
+}
+.username .dropdown-menu a:hover{
+    color:white;
+    background-color: #8b9fb7;
+}
+
 /*Edit Profile*/
 #edit_profile h1{
     color: #444444;
@@ -354,20 +342,6 @@ hr.style17 {
     background: white;
     cursor: inherit;
     display: block;
-}
-/*Username Navbar*/
-.dropdown button{
-    display: inline-block;
-    text-transform: uppercase;
-    padding-top: 10px;
-    text-decoration: none;
-    font-size: 18px;
-}
-.dropdown-menu{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #8b9fb7;
 }
 
 /*Error Page*/
