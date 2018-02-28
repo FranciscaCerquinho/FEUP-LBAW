@@ -572,6 +572,11 @@ section#item h3.auction_status{
 .faq .panel-body{
     font-size:18px;
 }
+
+/*ABOUT*/
+#about a:hover{
+    color: black;
+}
 /**Footer*/
 footer {
 	clear: both;
