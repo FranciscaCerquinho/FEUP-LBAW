@@ -424,7 +424,7 @@ color: #606060;
 
 section#middle{
   color: #000000;
-  padding-top: 160px;
+  padding-top: 180px;
   margin-left: 100px;
   padding-bottom: 100px;
 }
@@ -488,6 +488,10 @@ section#item h3.auction_status{
     font-size: 16px;
   }
 
+#item div#user_information div#category_name{
+    margin-top: 10px;
+}
+
 #item div #bid_buttons{
     left: 0;
 }
@@ -495,17 +499,17 @@ section#item h3.auction_status{
 #item div#buy_now_button{
   padding-top: 50px;
 }
-#item div#like_button{
+#item div#buttons{
   background-color:#dfe5eb;
   padding-top: 5px;
   padding-left: 15px;
 }
-#item div#like_button button{
+#item div#buttons button{
   background-color:#dfe5eb;
   border-color: #dfe5eb;
 }
 
-#item div#like_button button:hover{
+#item div#buttons button:hover{
   background-color:#ffffff;
   border-color: #ffffff;
 }
@@ -580,6 +584,80 @@ section#item h3.auction_status{
 .faq .panel-body{
     font-size:18px;
 }
+
+/*Wish List*/
+#wish_list{
+  padding-top: 180px;
+  margin-left: 10px;
+  padding-bottom: 100px;
+}
+
+#wish_list h2{
+  color: #000000
+}
+
+#wish_list .style17{
+  margin-right: 200px;
+}
+
+#wish_list div#item_wish_list1{
+  margin-left: 60px;
+  margin-bottom: 100px;
+}
+
+#wish_list div#item_wish_list2{
+  margin-left: 60px;
+  margin-bottom: 100px;
+}
+
+#wish_list div#information{
+  color: #000000;
+}
+#wish_list div#information .owner_name{
+  color: #000000;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+#wish_list div#information .status_winning{
+  color: #629c44;
+  font-size: 18px;
+}
+
+#wish_list div#information .product_name{
+  font-weight: bold;
+}
+
+#wish_list div#buy_now_button{
+  margin-left: 25px;
+}
+
+#wish_list div#auction_buttons{
+  margin-top: 25px;
+}
+
+#wish_list div#information .status_losing{
+  color: #dc4c18;
+  font-size: 18px;
+}
+
+#wish_list div#information button{
+  background-color:#dfe5eb;
+  padding-top: 5px;
+  padding-left: 15px;
+}
+#wish_list div#information button{
+  background-color:#dfe5eb;
+  border-color: #dfe5eb;
+}
+
+#wish_list div#information button:hover{
+  background-color:#ffffff;
+  border-color: #ffffff;
+}
+
+
+
 
 /*ABOUT*/
 #about a:hover{
