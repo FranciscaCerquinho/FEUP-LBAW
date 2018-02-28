@@ -172,23 +172,47 @@ li a, .dropbtn {
     padding: 20px 20px 20px 20px;
 
 }
+
+.card-title a{
+    font-size: 22px;
+    color:#0c59cf;
+
+}
+.card-body{
+    position: absolute;
+    bottom:0;
+}
+.card-body h5{
+    font-size: 22px;
+    color:black;
+    font-weight: bold;
+}
+
+.card-text{
+    font-weight:normal;
+    color:black;
+    font-size: 18px;
+}
+
+.card-body h1{
+    font-weight: normal;
+    color:black;
+    font-size: 18px;
+}
+
+.card{
+    padding: 15px;
+    height: 470px;
+    background-color: white;
+}
+
+.card-img-top{
+    width: 100%;
+}
 .new_auctions{
     padding: 150px 70px 10px 70px;
     font-size: 15px;
     color: #444444;
-}
-
-.new_auctions .col-md-3 .content{
-    background-color: white;
-    padding: 12px;
-    height: 420px;
-}
-
-.new_auctions .col-md-3 .content .auction{
-    position: absolute;
-    bottom:0;
-
-
 }
 
 .new_auctions img{
@@ -202,20 +226,6 @@ li a, .dropbtn {
 .new_auctions .row{
     padding-bottom: 20px;
 }
-
-.new_auctions h4{
-    padding-top: 10px;
-    color: #0c59cf;
-    font-weight:bold;
-}
-
-.new_auctions p:last-child{
-    font-weight:bold;
-    color:black;
-    font-size: 18px;
-}
-
-
 
 
 /*Profile*/
