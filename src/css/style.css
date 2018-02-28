@@ -502,7 +502,6 @@ section#item h3.auction_status{
 #item div#buttons{
   background-color:#dfe5eb;
   padding-top: 5px;
-  padding-left: 15px;
 }
 #item div#buttons button{
   background-color:#dfe5eb;
@@ -664,6 +663,9 @@ section#item h3.auction_status{
     background-color: white;
 }
 
+#auction_buttons .row {
+    padding-bottom: 20px;
+}
 
 /*ABOUT*/
 #about a:hover{
