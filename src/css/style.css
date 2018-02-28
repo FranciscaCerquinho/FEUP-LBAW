@@ -587,9 +587,7 @@ section#item h3.auction_status{
 
 /*Wish List*/
 #wish_list{
-  padding-top: 180px;
-  margin-left: 10px;
-  padding-bottom: 100px;
+    padding: 150px 70px 10px 70px;
 }
 
 #wish_list h2{
@@ -602,12 +600,12 @@ section#item h3.auction_status{
 
 #wish_list div#item_wish_list1{
   margin-left: 60px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 #wish_list div#item_wish_list2{
   margin-left: 60px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 #wish_list div#information{
@@ -656,7 +654,15 @@ section#item h3.auction_status{
   border-color: #ffffff;
 }
 
+#item_wish_list1{
+    padding: 15px;
+    background-color: white;
+}
 
+#item_wish_list2{
+    padding: 15px;
+    background-color: white;
+}
 
 
 /*ABOUT*/
