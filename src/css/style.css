@@ -572,16 +572,18 @@ section#item h3.auction_status{
 /*  */
 
 .faq{
-    padding: 50px;
+    padding: 5px 50px 15px 50px;
 }
 
 .faq h4 a{
     font-size:18px;
+    color: #437ab2;
     font-weight: bold;
 }
 
 .faq .panel-body{
     font-size:18px;
+    color: #444444;
 }
 
 /*Wish List*/
