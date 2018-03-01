@@ -811,7 +811,7 @@ footer a, footer a:hover{
   
   .container-contact1 {
     width: 1163px;
-    background: #fff;
+    background: #dfe5eb;
     border-radius: 10px;
     overflow: hidden;
   
@@ -882,7 +882,7 @@ footer a, footer a:hover{
   .input1 {
     display: block;
     width: 100%;
-    background: #e6e6e6;
+    background: white;
     font-size: 15px;
     line-height: 1.5;
     color: #666666;
