@@ -85,13 +85,20 @@
 </header>
 
 <div id="wish_list" class="container-fluid bg-1">
-<h2 class="users">Wish List</h2>
+    <div class="row">
+        <div class="col-4">
+            <h2 class="users">Wish List</h2>
+        </div>
+        <div class="col-4 container text-right">
+        <span class="total_wishList">Total: </span> <span class="price_wishlist">EUR 100,00</span>
+        </div>  
+    </div>
 <hr class="style17" style="color:grey;">
 <div class="row" id="item_wish_list1">
-    <div class="col-lg-3 col-md-4 mb-4">
+    <div class="col-lg-4 col-md-4 mb-4">
         <img src="images/play.jpg" alt="Play" width="230px" height="230px">
     </div>
-    <div class="col-lg-3 col-md-4 mb-4" id="information">
+    <div class="col-lg-4 col-md-4 mb-4" id="information">
         <div class ="row">
           <a class="product_name" href="item.html">PS4 Controllers</a>
         </div>
@@ -105,12 +112,12 @@
           <p class="status_winning">Winning</p>
         </div>
         <div class ="row">
-          <button type="button" class="btn btn-default btn-sm" style="font-size:18px" >
+          <button type="button" class="btn btn-danger" style="font-size:18px" >
             <span class="fas fa-trash-alt"></span> Wish List
           </button>
         </div>
     </div>
-    <div class="col-md-2" id="auction_buttons">
+    <div class="col-md-3" id="auction_buttons">
       <div class="row" id="bid_buttons">
           <div class="col-lg-8" id="price">
             <input class="form-control" type="number" value="50.99" id="price_button" step="0.01">
@@ -129,10 +136,10 @@
     </div>
 </div>
 <div class="row" id="item_wish_list2">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <img src="images/iphone.jpg" alt="iphone" width="230px" height="230px">
     </div>
-    <div class="col-lg-3 col-md-4 mb-4" id="information">
+    <div class="col-lg-4 col-md-4 mb-4" id="information">
         <div class ="row">
           <a class="product_name" href="item.html">Iphone 7</a>
         </div>
@@ -146,12 +153,12 @@
           <p class="status_losing">Losing</p>
         </div>
         <div class ="row">
-          <button type="button" class="btn btn-default btn-sm" style="font-size:18px" >
+          <button type="button" class="btn btn-danger" style="font-size:18px" >
             <span class="fas fa-trash-alt"></span> Wish List
           </button>
         </div>
     </div>
-    <div class="col-md-2" id="auction_buttons">
+    <div class="col-md-3" id="auction_buttons">
             <div class="row" id="bid_buttons">
                 <div class="col-lg-8" id="price">
                   <input class="form-control" type="number" value="50.99" id="price_button" step="0.01">
@@ -180,7 +187,7 @@
     <div id="orgInfo">
         <li><a href="#FAQ">FAQ</a></li>
         <li><a href="#About">About</a></li>
-        <li><a href="#Contact">Contact Us</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
     </div>
 </footer>
 </body>

@@ -48,7 +48,7 @@
                 </li>
                 </div>
                 <div class="links">
-                <li><a target="_blank" title="Wish List" href="#wish_list" style="text-decoration:none; color:#597ca0ff;">
+                <li><a title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
                         <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
                     </a>
                 </li>
@@ -71,30 +71,64 @@
         </nav>
     </header>
 
-    <section id="contact" style="padding-top: 150px">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7" style="padding-bottom: 10px;">
+    <section class="bg-primary" id="about" style="padding-top:100px;">
+        <div class="container contact">
+          <div class="row">
+            <div class="col-lg-8 mx-auto container-fluid  text-center">
+              <h2 class="section-heading text-white text-center">Contact Us</h2>
+              <hr class="light my-4">
+              <span class="text-muted mb-0">Rua Dr.Roberto Frias</span>
+              <br>
+              <span class="text-muted mb-0">4200-465</span>
+              <br>
+              <a class="text-muted mb-0" href="mailto:your-email@your-domain.com">topbid@geral.com</a>
+              <br>
+              <span class="text-muted mb-0">123-456-6789</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="contact1">
+            <div class="container-contact1">
+                <div class="contact1-pic js-tilt" data-tilt>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12012.041648923578!2d-8.5976876!3d41.1779401!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x405225b4b451f7d7!2sFEUP+-+Faculdade+de+Engenharia+da+Universidade+do+Porto!5e0!3m2!1spt-PT!2spt!4v1519829997327" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
-        
-                <div class="col-md-5" style="margin-top:100px">
-                    <h2 style="color: #444444; margin-top:0px"><strong>Contact Us</strong></h2>
-                    <span class="contact_name">Adress:</span>
-                    <span class="text-muted mb-0">Rua Dr.Roberto Frias</span>
-                    <br>
-                    <span class="contact_name">Postal Code:</span>
-                    <span class="text-muted mb-0">4200-465</span>
-                    <br>
-                    <span class="contact_name">Email:</span>
-                    <a class="text-muted mb-0" href="mailto:your-email@your-domain.com">topbid@geral.com</a>
-                    <br>
-                    <span class="contact_name">Phone Number:</span>
-                    <span class="text-muted mb-0">123-456-6789</span>
-                </div>
+                <form class="contact1-form validate-form">
+                    <span class="contact1-form-title">
+                        Get in touch
+                    </span>
+                    <div class="wrap-input1 validate-input" data-validate = "Name is required">
+                        <input class="input1" type="text" name="name" placeholder="Name">
+                        <span class="shadow-input1"></span>
+                    </div>
+    
+                    <div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input class="input1" type="text" name="email" placeholder="Email">
+                        <span class="shadow-input1"></span>
+                    </div>
+    
+                    <div class="wrap-input1 validate-input" data-validate = "Subject is required">
+                        <input class="input1" type="text" name="subject" placeholder="Subject">
+                        <span class="shadow-input1"></span>
+                    </div>
+    
+                    <div class="wrap-input1 validate-input" data-validate = "Message is required">
+                        <textarea class="input1" name="message" placeholder="Message"></textarea>
+                        <span class="shadow-input1"></span>
+                    </div>
+    
+                    <div class="container-contact1-form-btn">
+                        <button class="contact1-form-btn">
+                            <span>Send Email
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+
 
     <footer class="container-fluid bg-4 text-center">
         <div id="org">
@@ -103,7 +137,7 @@
         <div id="orgInfo">
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="#Contact">Contact Us</a></li>
+            <li><a href="contact_us.html">Contact Us</a></li>
         </div>	
     </footer>
 
