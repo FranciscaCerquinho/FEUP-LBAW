@@ -235,10 +235,15 @@ li a, .dropbtn {
     padding-left: 40%;
 }
 #profile {
-    color: #444444;
+    color: black;
     padding-top:180px;
     margin-left: 200px;
 }
+
+.contact1 .row .col-8{
+    color:black;
+}
+
 .col-md-6 p{
     padding-top: 10px;
     font-size: 20px;
@@ -269,6 +274,15 @@ hr.style17 {
 
 .contact_user a{
     border:none;
+}
+
+.user_auctions .table_heading{
+    color:black;
+    font-weight: bold;
+}
+
+.user_auctions .table_information{
+    color:black;
 }
 
 .username .dropdown button{
