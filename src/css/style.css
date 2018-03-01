@@ -654,3 +654,9 @@ footer a, footer a:hover{
     background-color: white;
     padding: 12px;
 }
+
+/**Contact Us*/
+
+.contact_name{
+    color : #444444;
+}
