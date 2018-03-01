@@ -23,11 +23,11 @@
     <nav class="topnav" id="myTopnav">
         <a  href="index.html" class="link_logo">
             <img class="topnav__logo" src="images/icon.png" style='max-width: 120px; max-height: 120px; margin-top:10px;'></img>
-        </a>      
+        </a>
         <ul>
             <div class="shop_by_category">
             <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" style="color: #597ca0ff">Category</a>
+                <a href="javascript:void(0)" class="dropbtn" style="color: #597ca0ff">Shop By <p></p> Category</a>
                 <span class="caret"></span>
                 <div class="dropdown-content">
                     <div class="row">
@@ -54,7 +54,19 @@
                 </a>
             </li>
             <li><a href="#add_auction">Add Auction</a></li>
-            <li><a href="sign_in.html">Sign in</a></li>
+            <li>
+                <div class="username">
+                    <div class="dropdown ">
+                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                                <img class="img-circle" src="images/perfil_blue.png" style="max-width: 30px; max-height:30px; margin-right:15px; "></img>Username
+                           </button>
+                            <ul class="dropdown-menu">
+                             <a href="edit_profile.html">Edit Profile</a>
+                            <a href="#">Logout</a>
+                            </ul>
+                          </div>
+                </div>
+            </li>
             <li>
                 <div class="container" style="max-width:420px; padding-right:120px;">
                     <div class="input-group stylish-input-group">
@@ -62,7 +74,7 @@
                             <span class="input-group-addon">
                                 <button type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
-                                </button>  
+                                </button>
                             </span>
                     </div>
                 </div>
@@ -71,87 +83,94 @@
         </ul>
     </nav>
 </header>
-		
-<section class="bg-primary" id="about" style="padding-top:100px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto container-fluid  text-center">
-          <h2 class="section-heading text-white text-center">We've got what you need!</h2>
-          <hr class="light my-4">
-          <p class="text-faded mb-4" style="font-size:18px">Top Bid is a site designed for online auctions. We connect millions of buyers and sellers around the world, empowering people and creating economic opportunity for all.</p>
-          <a  style="color:white; font-size:20px;" href="index.html">
-              <i class="far fa-hand-point-right"></i> Get Started!</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading" style="color: #444444;">Services</h2>
-          <hr class="style17" style="color:grey;">
+<div id="wish_list" class="container-fluid bg-1">
+<h2 class="users">Wish List</h2>
+<hr class="style17" style="color:grey;">
+<div class="row" id="item_wish_list1">
+    <div class="col-lg-3 col-md-4 mb-4">
+        <img src="images/play.jpg" alt="Play" width="230px" height="230px">
+    </div>
+    <div class="col-lg-3 col-md-4 mb-4" id="information">
+        <div class ="row">
+          <a class="product_name" href="item.html">PS4 Controllers</a>
+        </div>
+        <div class ="row">
+          <a class="owner_name" href="profile.html">Mariana Gomes</a>
+        </div>
+        <div class ="row">
+          <p class="time">20min</p>
+        </div>
+        <div class ="row">
+          <p class="status_winning">Winning</p>
+        </div>
+        <div class ="row">
+          <button type="button" class="btn btn-default btn-sm" style="font-size:18px" >
+            <span class="fas fa-trash-alt"></span> Wish List
+          </button>
+        </div>
+    </div>
+    <div class="col-md-2" id="auction_buttons">
+      <div class="row" id="bid_buttons">
+          <div class="col-lg-8" id="price">
+            <input class="form-control" type="number" value="50.99" id="price_button" step="0.01">
+          </div>
+        <div class="col-lg-2" id="bid">
+           <button class="btn btn-primary" type="submit">Make Bid</button>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="far fa-hand-point-up text-primary mb-3 sr-icons" style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Make Bid</h3>
-            <p class="text-muted mb-0">You can make a bid for the product you want to buy</p>
+      <div class="row" >
+          <div class="col-4">
+          <button class="btn btn-success" type="submit" style="font-size:17px;">
+                <i class="fas fa-shopping-cart"></i>
+              Buy Now (110€)</button>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="fas fa-gavel text-primary mb-3 sr-icons"  style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Add an auction</h3>
-            <p class="text-muted mb-0">You can can add an auction and control that!</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="fas fa-comments text-primary mb-3 sr-icons" style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Text the sellers</h3>
-            <p class="text-muted mb-0">You can talk to the sellers.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="fas fa-bullhorn text-primary mb-3 sr-icons" style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Report an auction</h3>
-            <p class="text-muted mb-0">You can report an auction that you think that use offensive messages or comments.</p>
-          </div>
-        </div>
       </div>
     </div>
-  </section>
+</div>
+<div class="row" id="item_wish_list2">
+    <div class="col-md-3">
+        <img src="images/iphone.jpg" alt="iphone" width="230px" height="230px">
+    </div>
+    <div class="col-lg-3 col-md-4 mb-4" id="information">
+        <div class ="row">
+          <a class="product_name" href="item.html">Iphone 7</a>
+        </div>
+        <div class ="row">
+          <a class="owner_name" href="profile.html">Henrique Trigueiros</a>
+        </div>
+        <div class ="row">
+          <p class="time">10seg</p>
+        </div>
+        <div class ="row">
+          <p class="status_losing">Losing</p>
+        </div>
+        <div class ="row">
+          <button type="button" class="btn btn-default btn-sm" style="font-size:18px" >
+            <span class="fas fa-trash-alt"></span> Wish List
+          </button>
+        </div>
+    </div>
+    <div class="col-md-2" id="auction_buttons">
+            <div class="row" id="bid_buttons">
+                <div class="col-lg-8" id="price">
+                  <input class="form-control" type="number" value="50.99" id="price_button" step="0.01">
+                </div>
+              <div class="col-lg-2" id="bid">
+                 <button class="btn btn-primary" type="submit">Make Bid</button>
+              </div>
+            </div>
+            <div class="row" >
+                <div class="col-4">
+                <button class="btn btn-success" type="submit" style="font-size:17px;">
+                    <i class="fas fa-shopping-cart"></i>
+                    Buy Now (110€)</button>
+                </div>
+            </div>
+          </div>
+</div>
 
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto container-fluid text-center">
-          <h2 class="section-heading" style="color: #444444;" >Let's Get In Touch!</h2>
-          <hr class="style17" style="color:grey;">
-          <p class="mb-5" style=" color: #437ab2; font-size:18px">Ready to start? That's great! Give us a call or send us an email if you have any question!</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 ml-auto container-fluid text-center">
-          <i class="fa fa-phone fa-3x mb-3 sr-contact text-primary mb-3 sr-icons"></i>
-          <p style="color: #437ab2;">123-456-6789</p>
-        </div>
-        <div class="col-lg-4 mr-auto container-fluid  text-center">
-          <i class="fas fa-at fa-3x mb-3 sr-contact text-primary mb-3 sr-icons"></i>
-          <p>
-            <a href="mailto:your-email@your-domain.com">topbid@geral.com</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+</div>
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
@@ -159,10 +178,10 @@
         &nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
     </div>
     <div id="orgInfo">
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="#FAQ">FAQ</a></li>
+        <li><a href="#About">About</a></li>
         <li><a href="#Contact">Contact Us</a></li>
-    </div>	
+    </div>
 </footer>
 </body>
 </html>

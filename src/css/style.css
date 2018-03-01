@@ -172,23 +172,47 @@ li a, .dropbtn {
     padding: 20px 20px 20px 20px;
 
 }
+
+.card-title a{
+    font-size: 22px;
+    color:#0c59cf;
+
+}
+.card-body{
+    position: absolute;
+    bottom:0;
+}
+.card-body h5{
+    font-size: 22px;
+    color:black;
+    font-weight: bold;
+}
+
+.card-text{
+    font-weight:normal;
+    color:black;
+    font-size: 18px;
+}
+
+.card-body h1{
+    font-weight: normal;
+    color:black;
+    font-size: 18px;
+}
+
+.card{
+    padding: 15px;
+    height: 470px;
+    background-color: white;
+}
+
+.card-img-top{
+    width: 100%;
+}
 .new_auctions{
     padding: 150px 70px 10px 70px;
     font-size: 15px;
     color: #444444;
-}
-
-.new_auctions .col-md-3 .content{
-    background-color: white;
-    padding: 12px;
-    height: 420px;
-}
-
-.new_auctions .col-md-3 .content .auction{
-    position: absolute;
-    bottom:0;
-
-
 }
 
 .new_auctions img{
@@ -202,20 +226,6 @@ li a, .dropbtn {
 .new_auctions .row{
     padding-bottom: 20px;
 }
-
-.new_auctions h4{
-    padding-top: 10px;
-    color: #0c59cf;
-    font-weight:bold;
-}
-
-.new_auctions p:last-child{
-    font-weight:bold;
-    color:black;
-    font-size: 18px;
-}
-
-
 
 
 /*Profile*/
@@ -414,7 +424,7 @@ color: #606060;
 
 section#middle{
   color: #000000;
-  padding-top: 160px;
+  padding-top: 180px;
   margin-left: 100px;
   padding-bottom: 100px;
 }
@@ -478,6 +488,10 @@ section#item h3.auction_status{
     font-size: 16px;
   }
 
+#item div#user_information div#category_name{
+    margin-top: 10px;
+}
+
 #item div #bid_buttons{
     left: 0;
 }
@@ -485,17 +499,16 @@ section#item h3.auction_status{
 #item div#buy_now_button{
   padding-top: 50px;
 }
-#item div#like_button{
+#item div#buttons{
   background-color:#dfe5eb;
   padding-top: 5px;
-  padding-left: 15px;
 }
-#item div#like_button button{
+#item div#buttons button{
   background-color:#dfe5eb;
   border-color: #dfe5eb;
 }
 
-#item div#like_button button:hover{
+#item div#buttons button:hover{
   background-color:#ffffff;
   border-color: #ffffff;
 }
@@ -569,6 +582,89 @@ section#item h3.auction_status{
 
 .faq .panel-body{
     font-size:18px;
+}
+
+/*Wish List*/
+#wish_list{
+    padding: 150px 70px 10px 70px;
+}
+
+#wish_list h2{
+  color: #000000
+}
+
+#wish_list .style17{
+  margin-right: 200px;
+}
+
+#wish_list div#item_wish_list1{
+  margin-left: 60px;
+  margin-bottom: 50px;
+}
+
+#wish_list div#item_wish_list2{
+  margin-left: 60px;
+  margin-bottom: 50px;
+}
+
+#wish_list div#information{
+  color: #000000;
+}
+#wish_list div#information .owner_name{
+  color: #000000;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+#wish_list div#information .status_winning{
+  color: #629c44;
+  font-size: 18px;
+}
+
+#wish_list div#information .product_name{
+  font-weight: bold;
+}
+
+#wish_list div#buy_now_button{
+  margin-left: 25px;
+}
+
+#wish_list div#auction_buttons{
+  margin-top: 25px;
+}
+
+#wish_list div#information .status_losing{
+  color: #dc4c18;
+  font-size: 18px;
+}
+
+#wish_list div#information button{
+  background-color:#dfe5eb;
+  padding-top: 5px;
+  padding-left: 15px;
+}
+#wish_list div#information button{
+  background-color:#dfe5eb;
+  border-color: #dfe5eb;
+}
+
+#wish_list div#information button:hover{
+  background-color:#ffffff;
+  border-color: #ffffff;
+}
+
+#item_wish_list1{
+    padding: 15px;
+    background-color: white;
+}
+
+#item_wish_list2{
+    padding: 15px;
+    background-color: white;
+}
+
+#auction_buttons .row {
+    padding-bottom: 20px;
 }
 
 /*ABOUT*/
