@@ -78,50 +78,131 @@
         </div>
         <div class="col-lg-3" id="category_filter">
             <label for="select_category">Category</label>
-            <select id="select_category" placeholder="Category">
-                <option>Electronics</option>
-                <option>Fashion</option>
-                <option>Home & Garden</option>
-                <option>Motors</option>
-                <option>Music</option>
-                <option>Toys</option>
-                <option>Daily Deals</option>
-                <option>Sporting</option>
-                <option>Others</option>
-            </select>
+            <form action="" mathod="GET">
+                              
+                    <div id="coll-1" class="collapse in">
+                        <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                   value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Electronics</span>
+                        </div>
+                        <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                   value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Fashion</span>
+                        </div>
+                        <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                   value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Home & Garden</span>
+                        </div>
+                        <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                   value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Motors</span>
+                        </div>
+                        <div class="padding-v-xs" data-toggle="buttons">
+                                <label class="btn btn-default btn-xs ico">
+                                    <input type="checkbox" name=""
+                                       value="" autocomplete="off"/>
+                                    <span class="icon glyphicon glyphicon-ok"></span>
+                                </label>
+                                <span>Music</span>
+                        </div>
+                        <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                    value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Toys</span>
+                        </div>
+                    </div>
+                    <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                   value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Daily Deals</span>
+                        </div>
+                      <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                   value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Sporting</span>
+                        </div>
+                      <div class="padding-v-xs" data-toggle="buttons">
+                            <label class="btn btn-default btn-xs ico">
+                                <input type="checkbox" name=""
+                                   value="" autocomplete="off"/>
+                                <span class="icon glyphicon glyphicon-ok"></span>
+                            </label>
+                            <span>Others</span>
+                        </div>
+                    </form>
             <br>
             <label for="owner_filter">Owner</label>
             <input type="text" placeholder="User name">
         </div>
 
-        <div class="col-lg-9 text-center" id="results">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="content">
-                        <img src="http://via.placeholder.com/240x240" alt="Item 1">
-                        <h4>Item 1</h4>
-                        <p>User Name</p>
-                        <p>Time Left - Current Price</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="content">
-                        <img src="http://via.placeholder.com/240x240" alt="Item 2">
-                        <h4>Item 2</h4>
-                        <p>User Name</p>
-                        <p>Time Left - Current Price</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="content">
-                        <img src="http://via.placeholder.com/240x240" alt="Item 3">
-                        <h4>Item 3</h4>
-                        <p>User Name</p>
-                        <p>Time Left - Current Price</p>
-                    </div>
-                </div>
-            </div>
-            <div id="searchNav">
+        <div class="col-lg-9" class="new_auctions">
+                <div class="row">
+                        <div class="col-lg-4 col-md-4 mb-4">
+                            <div class="card h-100">
+                              <a href="#"><img class="card-img-top" src="images/music.jpg" alt=""></a>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="#">New Album David Bowie</a>
+                                </h4>
+                                <h5>EUR 20.90</h5>
+                                <h1>1 day left</h1>
+                                <p class="card-text">Dinis Lopes</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-4 mb-4">
+                              <div class="card h-100">
+                                <a href="#"><img class="card-img-top" src="images/music2.jpg" alt=""></a>
+                                <div class="card-body">
+                                  <h4 class="card-title">
+                                    <a href="#">Vinyl Mike Evans</a>
+                                  </h4>
+                                  <h5>EUR 25.90</h5>
+                                  <h1>5 min left</h1>
+                                  <p class="card-text">Teresa Ramos</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 mb-4">
+                                <div class="card h-100">
+                                  <a href="#"><img class="card-img-top" src="images/music3.jpg" alt=""></a>
+                                  <div class="card-body">
+                                    <h4 class="card-title">
+                                      <a href="#">Vinyl</a>
+                                    </h4>
+                                    <h5>EUR 30.90</h5>
+                                    <h1>1 hour left</h1>
+                                    <p class="card-text">Eduardo Azevedo</p>
+                                  </div>
+                                </div>
+                              </div>
+                      </div>
+            <div id="searchNav" class="text-center">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
