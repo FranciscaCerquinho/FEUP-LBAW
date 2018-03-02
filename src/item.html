@@ -23,7 +23,7 @@
     <nav class="topnav" id="myTopnav">
         <a  href="index.html" class="link_logo">
             <img class="topnav__logo" src="images/icon.png" style='max-width: 120px; max-height: 120px; margin-top:10px;'></img>
-        </a>
+        </a>      
         <ul>
             <div class="shop_by_category">
             <li class="dropdown">
@@ -53,8 +53,20 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
                 </a>
             </li>
-            <li><a href="add_auction.html">Add Auction</a></li>
-            <li><a href="login.html">Sign in</a></li>
+            <li><a href="#add_auction">Add Auction</a></li>
+            <li>
+                <div class="username">
+                    <div class="dropdown ">
+                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                                <img class="img-circle" src="images/perfil_blue.png" style="max-width: 30px; max-height:30px; margin-right:15px; "></img>Username
+                           </button>
+                            <ul class="dropdown-menu">
+                             <a href="edit_profile.html">Edit Profile</a>
+                            <a href="#">Logout</a>
+                            </ul>
+                          </div>
+                </div>
+            </li>
             <li>
                 <div class="container" style="max-width:420px; padding-right:120px;">
                     <div class="input-group stylish-input-group">
@@ -62,7 +74,7 @@
                             <span class="input-group-addon">
                                 <button type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
-                                </button>
+                                </button>  
                             </span>
                     </div>
                 </div>
@@ -107,6 +119,9 @@
             <div class="row" id="object_description">
               <p class="object_description">Description:</p>
             </div>
+            <div class="row" id="object_actualprice">
+              <p class="object_actualprice">Actual Price:</p>
+            </div>
           </div>
           <div class="col" id="user_information">
             <div class="row" id="owner_name">
@@ -121,11 +136,14 @@
             <div class="row" id="object_description_inf">
               <p class="object_description_inf">Two Sony PS4 controllers that were only used once.</p>
             </div>
+            <div class="row" id="object_actualprice">
+              <p class="object_actualprice">EUR 50.99</p>
+            </div>
           </div>
         </div>
         <div class="row justify-content-start" id="bid_buttons">
             <div class="col-lg-3" id="price">
-              <input class="form-control" type="number" value="50.99" id="price_button" step="0.01">
+              <input class="form-control" type="number" value="51.00" id="price_button" step="0.01">
             </div>
           <div class="col-12 col-md-auto" id="bid">
              <button class="btn btn-primary" type="submit">Make Bid</button>
