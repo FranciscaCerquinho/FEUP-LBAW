@@ -1,0 +1,83 @@
+body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+    background-color:#dfe5eb
+}
+
+/* Navigation */
+#myTopNav {
+    color: #597ca0ff;
+    background-color: white;
+    height:130px;
+}
+
+.topnavLogo {
+    max-width: 120px;
+    max-height: 120px;
+    margin-top:10px;
+}
+
+#dropdownCategories {
+    width: 400px;
+}
+
+#shopByCategory {
+    color: #597ca0ff;
+}
+
+/* Pages */
+
+.container {
+    padding-top: 150px;
+}
+
+#newAuctions {
+    padding: 150px 70px 10px 70px;
+    font-size: 15px;
+    color: #444444;
+}
+
+#auctionCardImage {
+    width: 100%;
+}
+
+#auctionCardImage:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+/* Footer */
+footer {
+	clear: both;
+	position:relative;
+    z-index: 10;
+    height: 10vh;
+    color: white;
+    background-color: #2f2f2f;
+    font-size:16px;
+}
+
+footer #org{
+	float : left;
+}
+
+footer #orgInfo{
+    float : right;
+    padding-right: 50px;
+}
+
+footer li{
+    float : left;
+    list-style-type: none;
+}
+
+#orgInfo a {
+    color: white;
+	text-decoration: none;
+	padding: 0px 10px;
+}
+
+#orgInfo a:hover {
+    color: #597ca0ff;
+}
