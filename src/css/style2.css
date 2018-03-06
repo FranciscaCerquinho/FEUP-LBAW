@@ -419,6 +419,106 @@ body {
       background-color:#437ab2;
       color:white;
   }
+
+/*Wish List*/
+
+#wish_list{
+    padding: 150px 70px 10px 70px;
+}
+
+#wish_list h2{
+  color: #444444;
+}
+
+.total_wishList{
+    font-size:28px;
+    color: #444444;
+}
+
+.price_wishlist{
+    font-size:28px;
+    color: #437ab2;
+    font-weight: bold;
+}
+
+#wish_list .style17{
+  margin-right: 200px;
+}
+
+#wish_list div#item_wish_list1{
+  margin-left: 60px;
+  margin-bottom: 50px;
+}
+
+#wish_list div#item_wish_list2{
+  margin-left: 60px;
+  margin-bottom: 50px;
+}
+
+#wish_list div#information{
+  color: #000000;
+}
+#wish_list div#information .owner_name{
+  color: #000000;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+#wish_list div#information .status_winning{
+  color: #629c44;
+  font-size: 18px;
+}
+
+#wish_list div#information .product_name{
+  font-weight: bold;
+}
+
+#wish_list div#buy_now_button{
+  margin-left: 25px;
+}
+
+#wish_list div#auction_buttons{
+  margin-top: 25px;
+}
+
+#wish_list div#information .status_losing{
+  color: #dc4c18;
+  font-size: 18px;
+}
+
+.product_name{
+    color:#437ab2;
+}
+
+#item_wish_list1{
+    width: 900px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  
+    padding: 15px 15px 15px 15px;
+  
+}
+
+#item_wish_list2{
+    width: 900px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  
+    padding: 15px 15px 15px 15px;
+  
+}
+
+#auction_buttons .row {
+    padding-bottom: 20px;
+}
+
+#actual_price p{
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
 /*ABOUT*/
 #about{
     padding-top: 200px;
