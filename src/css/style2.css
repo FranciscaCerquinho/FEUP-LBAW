@@ -82,32 +82,69 @@ body {
 /* Pages */
 
 #newAuctions {
-    padding: 150px 70px 10px 70px;
+    padding: 200px 70px 10px 70px;
     font-size: 15px;
     color: #444444;
 }
+@media only screen and (max-width: 576px) {
+    #newAuctions{
+      padding: 100px 60px 10px 60px;
+    }
+    #auctionCard {
+        padding: 15px;
+        align-content: center;
+    }
+    #auctionCardImage {
+        width: 200px;
+    }
+      .card{
+        padding: 20px;
+        height: 400px;
+        width: 250px;
+        background-color: white;
+    }
 
-#auctionCard {
-    padding: 10px;
-}
+    .card-title a{
+        font-size: 18px;
+        color:#0c59cf;
+    
+    }
+    .card-body h5{
+        font-size: 18px;
+        color:black;
+        font-weight: bold;
+    }
+    
+    .card-text{
+        font-weight:normal;
+        color:black;
+        font-size: 15px;
+    }
+    
+    .card-body h1{
+        font-weight: normal;
+        color:black;
+        font-size: 15px;
+    }
 
+    .pagination .pagination-centered{
+        float: left;
+    }
+    
+  }
+
+
+@media only screen and (min-width: 576px) {
 #auctionCardImage {
     width: 100%;
 }
-
-#auctionCardImage:hover {
-    opacity: 0.5;
-    filter: alpha(opacity=100); /* For IE8 and earlier */
+#auctionCard {
+    padding: 10px;
 }
 .card{
     padding: 15px;
-    height: 470px;
+    height: 485px;
     background-color: white;
-}
-
-.card-body{
-    position: absolute;
-    bottom:0;
 }
 
 .card-title a{
@@ -133,6 +170,53 @@ body {
     font-size: 18px;
 }
 
+.pagination .pagination-centered{
+    margin-left: 45%;
+}
+
+}
+#auctionCardImage:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.card-body{
+    position: absolute;
+    bottom:0;
+}
+@media only screen and (max-width: 622px) {
+    .card{
+        padding: 15px;
+        height: 450px;
+        background-color: white;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .card{
+        padding: 15px;
+        height: 400px;
+        background-color: white;
+    }
+}
+
+@media only screen and (max-width: 412px) {
+    .card{
+        padding: 15px;
+        height: 395px;
+        background-color: white;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .card{
+        padding: 15px;
+        height: 395px;
+        background-color: white;
+    }
+}
+
+
 /*Shop by category -dropdown*/
 
 #dropdownCategories {
@@ -144,7 +228,262 @@ body {
     background-color: #8b9fb7;
 }
 
-/* navbarResponsive */
+/*item*/
+
+#item{
+    padding-top: 180px;
+    padding-bottom: 100px;
+    margin-left: 100px;
+  }
+  
+  section#item h2.item_name{
+    color: #444444;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  
+  section#item h3.auction_status{
+    color: #629c44;
+    font-size: 20px;
+  }
+  
+  #item .style17{
+    margin-right: 200px;
+  }
+  
+  #item h2.information{
+    color: #000000;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  
+  #item div#description{
+    color:#000000;
+    font-weight: bold;
+    padding-bottom: 30px;
+  }
+  #item div#user_information{
+    color: #444444;
+    font-weight: normal;
+  
+  }
+  
+  #item div#user_information a{
+      color: #444444;
+      font-weight: normal;
+      font-size: 16px;
+    }
+  
+  #item div#user_information div#category_name{
+      margin-top: 10px;
+  }
+  
+  #item div #bid_buttons{
+      left: 0;
+  }
+  
+  #item div#buy_now_button{
+    padding-top: 50px;
+  }
+  #item div#buttons{
+    background-color:#dfe5eb;
+    padding-top: 5px;
+  }
+  #item div#buttons button{
+    background-color:#dfe5eb;
+    border-color: #dfe5eb;
+  }
+  
+  #item div#buttons button:hover{
+    background-color:#ffffff;
+    border-color: #ffffff;
+  }
+  
+  .object_actualprice{
+    font-weight: bold;
+    color: black;
+  }
+  
+  /*comment*/
+  .panel-shadow {
+      box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+      background-color: white;
+  }
+  .post .post-heading {
+    height: 95px;
+    padding: 20px 15px;
+  }
+  .post .post-heading .avatar {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-right: 15px;
+  }
+  
+  
+  .post .post-heading .meta .title a:hover {
+    color: #aaaaaa;
+  }
+  .post .post-description {
+    padding: 15px;
+  }
+  .post .post-description p {
+    font-size: 14px;
+    color: #444444;
+  }
+  .post .post-description .stats {
+    margin-top: 20px;
+  }
+  
+
+  #item div#comments div.container{
+    width: 1000px;
+    height: 200px;
+  }
+  
+  #item div#comments{
+    padding-left: 20px;
+    padding-top: 40px;
+  }
+  
+  #item div.leave_comment{
+    padding-top: 30px;
+    padding-left: 15px;
+  }
+  #item div.leave_comment button{
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  #item div.leave_comment textarea{
+    margin-left: 5px;
+    margin-top: 5px;
+    color: #000000;
+    font-size: 19px;
+  }
+
+  .stats a{
+    color:#444444;
+  }
+
+  .comment_owner a{
+      color:#437ab2;
+  }
+
+  .stat-item {
+    border-color:#888888;
+  }
+
+  .stat-item {
+    border-color:#888888;
+  }
+  .stats a:hover{
+    border-color:#888888;
+  }
+
+  .status-upload textarea{
+      border-color:transparent;
+  }
+
+  .status-upload button{
+      background-color:#437ab2;
+      color:white;
+  }
+/*ABOUT*/
+#about{
+    padding-top: 200px;
+    padding-bottom: 30px;
+    background-color:#437ab2;
+}
+
+@media only screen and (max-width: 576px) {
+    #about{
+        padding-top: 120px;
+    }
+    #about h2{
+        font-size:22px;
+    }
+    #about p{
+        font-size:18px;
+    }
+    
+}
+/*FAQ*/
+#services{
+    padding-top: 50px;
+    padding-bottom:100px;
+}
+
+#contact{
+    padding-bottom:60px;
+}
+
+@media only screen and (min-width: 576px) {
+    #faq_heading{
+        padding-top: 200px;
+        padding-bottom: 30px;
+        background-color:#437ab2;
+    }
+    
+
+    .faq{
+        padding: 5px 60px 110px 60px;
+    }
+    .faq h4 a{
+        font-size:18px;
+    }
+    .faq .panel-body{
+        font-size:18px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    #faq_heading{
+        padding-top:110px;
+        background-color:#437ab2;
+    }
+    #faq_heading h2{
+        font-size:25px;
+    }
+    
+
+    .faq{
+    padding: 5px 5px 110px 5px;
+    }
+    .faq h4 a{
+        font-size:10px;
+    }
+    .faq .panel-body{
+        font-size:9px;
+    }
+}
+.faq .panel{
+    margin-bottom: 8px;
+    border-color:black;
+}
+.faq .panel-heading{
+    background-color: rgb(243,243,243);
+    border-radius: 2px;
+    border:10px;
+    border-color:black;
+    padding: 5px;
+    border-color: #999999;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.faq .panel-title{
+    margin-left: 15px;
+}
+.faq h4 a{
+    color: #444444;
+    font-weight: bold;
+}
+
+.faq .panel-body{
+    padding: 15px;
+    background-color: white;
+    text-align: center;
+    color: #444444;
+}
 
 
 /* Footer */
