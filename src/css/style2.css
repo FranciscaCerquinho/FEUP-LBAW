@@ -1,10 +1,11 @@
 body {
     font: 20px Montserrat, sans-serif;
     line-height: 1.8;
-    color: #f5f6f7;
-    background-color:#dfe5eb;
     position: relative;
     padding-bottom: 6rem;
+    color: #f5f6f7;
+    background-color:#dfe5eb;
+    min-height: 100%;
 }
 
 /* Navigation */
@@ -217,48 +218,16 @@ body {
 
 
 /*Shop by category -dropdown*/
-.topnav .categoryMenu {
-    padding-top: 45px;
-    float: left; }
-    @media only screen and (max-width: 576px){ 
-      .categoryMenu .dropbtn {
-      float: left;
-      }
-    }
-.categoryMenu  li.dropdown {
-    display: inline-block;
-}
 
-.categoryMenu  .dropdown-content {
-    font-size: 15px;
-    display: none;
-    position: absolute;
+#dropdownCategories {
     background-color: #8b9fb7;
-    min-width: 400px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-
 }
 
-.categoryMenu .col-md-2 a {
-    color: black;
-    padding: 12px 20px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    min-width: 300px;
-}
-
-.shop_by_category .dropdown-item:hover{
+#dropdownCategories .dropdown-item:hover{
     color: white;
-}
-.shop_by_category  .dropdown:hover .dropdown-content {
-    display: block;
+    background-color: #8b9fb7;
 }
 
-.shop_by_category  .row .col-md-2{
-    padding: 20px 20px 20px 20px;
-}
 /*item*/
 
 #item{
@@ -620,16 +589,21 @@ body {
 /* Footer */
 footer {
 	clear: both;
-    z-index: 10;
-    height: 10vh;
-    color: white;
-    background-color: #2f2f2f;
-    font-size:16px;
     position: absolute;
     right: 0;
     left: 0;
     width: 100%;
     bottom: 0;
+    z-index: 10;
+    height: 100px;
+    color: white;
+    background-color: #2f2f2f;
+    font-size:16px;
+}
+
+footer div {
+    margin-top: 35px;
+    margin-bottom: 30px;
 }
 
 footer #org{
