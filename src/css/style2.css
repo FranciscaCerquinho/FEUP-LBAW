@@ -9,14 +9,46 @@ body {
 #myTopNav {
     color: #597ca0ff;
     background-color: white;
-    height:130px;
 }
 
-.topnavLogo {
-    max-width: 120px;
-    max-height: 120px;
-    margin-top:10px;
+@media only screen and (min-width: 576px) {
+    #myTopNav {
+      height: 130px; } }
+  .topnavLogo {
+    float: left;
+    margin-left: 0px;
+    width: 60px;
+    height: 60px; }
+
+    @media only screen and (min-width: 576px) {
+      .topnavLogo {
+        width: 100px;
+        height: 100px; } }
+
+.topnav .links {
+  padding-top: 25px;
+  float: right; }
+
+@media only screen and (max-width: 576px) {
+  .topnav .links {
+    padding-top: 0px; } 
+    #myTopNav {
+        height: 80px; } }
+
+.nav-item a {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #597ca0ff;
+    text-align: center;
+    padding-top: 10px;
+    padding-right:30px;
+    border-top: 1px solid #e4ece000;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight:normal;
+    letter-spacing: 0.3px;
 }
+        
 
 #dropdownCategories {
     width: 400px;
