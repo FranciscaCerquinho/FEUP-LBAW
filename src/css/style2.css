@@ -78,7 +78,39 @@ body {
     opacity: 0.5;
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
+.card{
+    padding: 15px;
+    height: 470px;
+    background-color: white;
+}
 
+.card-body{
+    position: absolute;
+    bottom:0;
+}
+
+.card-title a{
+    font-size: 22px;
+    color:#0c59cf;
+
+}
+.card-body h5{
+    font-size: 22px;
+    color:black;
+    font-weight: bold;
+}
+
+.card-text{
+    font-weight:normal;
+    color:black;
+    font-size: 18px;
+}
+
+.card-body h1{
+    font-weight: normal;
+    color:black;
+    font-size: 18px;
+}
 /* Footer */
 footer {
 	clear: both;

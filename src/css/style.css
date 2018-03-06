@@ -212,6 +212,11 @@ p {font-size: 16px;}
     font-size: 15px;
     color: #444444;
 }
+@media only screen and (max-width: 576px) {
+  .new_auctions{
+    padding: 100px 10px 10px 10px;
+  }
+}
 
 .new_auctions img{
     width:100%;
