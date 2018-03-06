@@ -28,14 +28,14 @@ body {
 
 /* Pages */
 
-.container {
-    padding-top: 150px;
-}
-
 #newAuctions {
     padding: 150px 70px 10px 70px;
     font-size: 15px;
     color: #444444;
+}
+
+#auctionCard {
+    padding: 10px;
 }
 
 #auctionCardImage {
