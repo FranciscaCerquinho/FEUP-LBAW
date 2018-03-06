@@ -81,7 +81,7 @@ body {
 /* Pages */
 
 #newAuctions {
-    padding: 150px 70px 10px 70px;
+    padding: 200px 70px 10px 70px;
     font-size: 15px;
     color: #444444;
 }
@@ -338,6 +338,7 @@ body {
   /*comment*/
   .panel-shadow {
       box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+      background-color: white;
   }
   .post .post-heading {
     height: 95px;
@@ -365,6 +366,7 @@ body {
     margin-top: 20px;
   }
   
+
   #item div#comments div.container{
     width: 1000px;
     height: 200px;
@@ -390,6 +392,33 @@ body {
     font-size: 19px;
   }
 
+  .stats a{
+    color:#444444;
+  }
+
+  .comment_owner a{
+      color:#437ab2;
+  }
+
+  .stat-item {
+    border-color:#888888;
+  }
+
+  .stat-item {
+    border-color:#888888;
+  }
+  .stats a:hover{
+    border-color:#888888;
+  }
+
+  .status-upload textarea{
+      border-color:transparent;
+  }
+
+  .status-upload button{
+      background-color:#437ab2;
+      color:white;
+  }
 /*ABOUT*/
 #about{
     padding-top: 200px;
