@@ -24,82 +24,75 @@
 </head>
 <body>
     
-	<nav class="navbar fixed-top navbar-expand-lg" id="myTopNav">
-		<a href="index.html" class="link_logo">
-			<img class="topnavLogo" src="images/icon.png"></img>
-		</a>
-		<div id="categoryMenu">
-				<a class="nav-link dropdown-toggle" href="#" id="shopByCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Category
-				</a>
-				<div class="dropdown-menu" id="dropdownCategories" aria-labelledby="shopByCategory">
-					<ul class="dropdown-menu multi-column columns-2">
-						<div class="row">
-						<li>
-							<a class="dropdown-item" href="#electronics">Electronics</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#fashion">Fashion</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#motors">Motors</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#music">Music</a>
-						</li>
-						</div>
-					</ul>
-					<ul class="list-unstyled col-md-2">
-						<li>
-							<a class="dropdown-item" href="#toys">Toys</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#sporting">Sporting</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#others">Others</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-		 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<div style="max-width:420px; padding-right:120px;">
-                        <div class="input-group stylish-input-group" id="search_bar">
-							<input type="text" class="form-control" placeholder="Search">
-							<span class="search_icon">
-								<button class="" type="submit">
-									<span class="fa fa-search" style="color:#666666"></span>
-								</button>
-							</span>
-						</div>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a href="login.html">Sign in</a>
-				</li>
-				<li class="nav-item">
-					<a href="add_auction.html">Add Auction</a>
-				</li>
-				<li class="nav-item">
-					<a title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
-						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+        <nav class="navbar navbar-expand-lg" id="myTopNav">
+                <a href="index.html" class="link_logo">
+                    <img class="topnavLogo" src="images/icon.png"></img>
+                </a>
+                <div class="shop_by_category">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn nav-link dropdown-toggle" style="color: #597ca0ff">Category</a>
+                        <span class="caret"></span>
+                        <div class="dropdown-content">
+                            <div class="row">
+                                <div class="d-block d-sm-none">
+                                    <a class="dropdown-item" href="#electronics">Electronics</a>
+                                    <a class="dropdown-item" href="#fashion">Fashion</a>
+                                    <a class="dropdown-item" href="#home_garden">Home & Garden</a>
+                                    <a class="dropdown-item" href="#motors">Motors</a>
+                                    <a class="dropdown-item" href="#music">Music</a>
+                                    <a class="dropdown-item" href="#toys">Toys</a>
+                                    <a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+                                    <a class="dropdown-item" href="#sporting">Sporting</a>
+                                    <a class="dropdown-item" href="#others">Others</a>
+                                </div>
+                                <div class="col-md-2 d-none d-sm-block">
+                                    <a class="dropdown-item" href="#electronics">Electronics</a>
+                                    <a class="dropdown-item" href="#fashion">Fashion</a>
+                                    <a class="dropdown-item" href="#home_garden">Home & Garden</a>
+                                    <a class="dropdown-item" href="#motors">Motors</a>
+                                    <a class="dropdown-item" href="#music">Music</a>
+                                </div>
+                                <div class="col-md-2 d-none d-sm-block" style="padding-left:180px">
+                                    <a class="dropdown-item" href="#toys">Toys</a>
+                                    <a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+                                    <a class="dropdown-item" href="#sporting">Sporting</a>
+                                    <a class="dropdown-item" href="#others">Others</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <a class="navbar-brand"></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                                <div class="input-group stylish-input-group" id="search_bar">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="search_icon">
+                                        <button class="" type="submit">
+                                            <span class="fa fa-search" style="color:#666666"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Sign in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_auction.html">Add Auction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
+                                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
 <div class="container-fluid bg-1" style="margin-top:160px;">
     <div class="container">

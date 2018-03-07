@@ -17,7 +17,17 @@ body {
         padding: 20px;
         margin: 0 0 0 130px;
     }
+    #myTopNav {
+        padding: 0.5rem 0;
+    }
 
+    #myTopNav:first-child {
+        padding-left: 1rem;
+    }
+
+    #myTopNav:last-child {
+        padding-right: 1rem;
+    }
 }
 
 .navbar-toggler-icon{
@@ -483,7 +493,7 @@ li a, .dropbtn {
 /**Add auction page*/
 
 .add_auction{
-    padding: 100px;
+    padding: 0 100px 0 100px;
     font-size: 18px;
     margin-top:100px;
     margin-bottom: 200px;
@@ -574,6 +584,7 @@ hr.style17 {
     color:black;
 }
 
+
 .username .dropdown button{
     display: inline-block;
     text-transform: uppercase;
@@ -587,6 +598,28 @@ hr.style17 {
     letter-spacing: 0.3px;
 }
 
+
+@media only screen and (max-width: 576px) {
+    .username .dropdown button{
+        width: auto;
+        font-size: 15px;
+        margin:0;
+        padding-right: 0;
+    }
+
+    .username .dropdown .dropdown-menu{
+        padding: 0;
+        background-color: white;
+        border:0;
+        margin: 0;
+    }
+
+    .username .dropdown .dropdown-menu a {
+        float: right !important;
+        padding-right: 0;
+        color:#597ca0ff;
+    }
+}
 
 
 .username .dropdown-menu{
