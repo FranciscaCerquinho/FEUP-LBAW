@@ -16,7 +16,7 @@
 	 crossorigin="anonymous"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	 crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="./css/style2.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<script defer src="css/fontawesome-all.js"></script>
 	<link rel="icon" type="image/png" href="./images/icon.png">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -29,45 +29,51 @@
 			<img class="topnavLogo" src="images/icon.png"></img>
 		</a>
 		<div id="categoryMenu">
-				<a class="nav-link dropdown-toggle" href="#" id="shopByCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Category
-				</a>
-				<div class="dropdown-menu" id="dropdownCategories" aria-labelledby="shopByCategory">
-					<ul class="dropdown-menu multi-column columns-2">
-						<div class="row">
-						<li>
-							<a class="dropdown-item" href="#electronics">Electronics</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#fashion">Fashion</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#motors">Motors</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#music">Music</a>
-						</li>
+			<a href="javascript:void(0)" class="nav-link dropdown-toggle" id="shopByCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Category
+			</a>
+			<div class="dropdown-menu dropdown-menu-right" id="dropdownCategories" aria-labelledby="shopByCategory">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="list-unstyled">
+								<li>
+									<a class="dropdown-item" href="#electronics">Electronics</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#fashion">Fashion</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#home_garden">Home & Garden</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#motors">Motors</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#music">Music</a>
+								</li>
+							</ul>
 						</div>
-					</ul>
-					<ul class="list-unstyled col-md-2">
-						<li>
-							<a class="dropdown-item" href="#toys">Toys</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#sporting">Sporting</a>
-						</li>
-						<li>
-							<a class="dropdown-item" href="#others">Others</a>
-						</li>
-					</ul>
+						<div class="col-md-6">
+							<ul class="list-unstyled">
+								<li>
+									<a class="dropdown-item" href="#toys">Toys</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#sporting">Sporting</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="#others">Others</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
+		</div>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
 		 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -76,11 +82,11 @@
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
 					<div style="max-width:420px; padding-right:120px;">
-						<div class="input-group stylish-input-group">
+						<div class="input-group stylish-input-group" id="search_bar">
 							<input type="text" class="form-control" placeholder="Search">
-							<span class="input-group-addon">
-								<button type="submit">
-									<span class="fa fa-search"></span>
+							<span class="search_icon">
+								<button class="" type="submit">
+									<span class="fa fa-search" style="color:#666666"></span>
 								</button>
 							</span>
 						</div>
