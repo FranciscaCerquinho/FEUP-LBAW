@@ -41,7 +41,7 @@ body {
 
 @media only screen and (max-width: 576px) {
   .topnav .links {
-    padding-top: 0px; } 
+    padding-top: 0px; }
     #myTopNav {
         height: 80px; } }
 
@@ -58,11 +58,11 @@ body {
     font-weight:normal;
     letter-spacing: 0.3px;
 }
-  
+
 @media only screen and (max-width: 375px) {
     .nav-item a {
         font-size: 15px;
-    } 
+    }
 
     #search_bar{
     width: 150px;
@@ -83,7 +83,7 @@ body {
 /*searchbar*/
 @media only screen and (min-width: 576px) {
 #search_bar{
-    max-width:420px; 
+    max-width:420px;
     padding-right:120px;
 }}
 .container{
@@ -139,20 +139,20 @@ body {
     .card-title a{
         font-size: 18px;
         color:#0c59cf;
-    
+
     }
     .card-body h5{
         font-size: 18px;
         color:black;
         font-weight: bold;
     }
-    
+
     .card-text{
         font-weight:normal;
         color:black;
         font-size: 15px;
     }
-    
+
     .card-body h1{
         font-weight: normal;
         color:black;
@@ -162,7 +162,7 @@ body {
     .pagination .pagination-centered{
         float: left;
     }
-    
+
   }
 
 
@@ -231,7 +231,7 @@ body {
     }
 
     #search_bar{
-       width:150px; 
+       width:150px;
     }
 }
 
@@ -327,28 +327,28 @@ li a, .dropbtn {
     padding-bottom: 100px;
     margin-left: 100px;
   }
-  
+
   section#item h2.item_name{
     color: #444444;
     font-size: 26px;
     font-weight: bold;
   }
-  
+
   section#item h3.auction_status{
     color: #629c44;
     font-size: 20px;
   }
-  
+
   #item .style17{
     margin-right: 200px;
   }
-  
+
   #item h2.information{
     color: #000000;
     font-weight: bold;
     font-size: 25px;
   }
-  
+
   #item div#description{
     color:#000000;
     font-weight: bold;
@@ -357,23 +357,23 @@ li a, .dropbtn {
   #item div#user_information{
     color: #444444;
     font-weight: normal;
-  
+
   }
-  
+
   #item div#user_information a{
       color: #444444;
       font-weight: normal;
       font-size: 16px;
     }
-  
+
   #item div#user_information div#category_name{
       margin-top: 10px;
   }
-  
+
   #item div #bid_buttons{
       left: 0;
   }
-  
+
   #item div#buy_now_button{
     padding-top: 50px;
   }
@@ -385,17 +385,17 @@ li a, .dropbtn {
     background-color:#dfe5eb;
     border-color: #dfe5eb;
   }
-  
+
   #item div#buttons button:hover{
     background-color:#ffffff;
     border-color: #ffffff;
   }
-  
+
   .object_actualprice{
     font-weight: bold;
     color: black;
   }
-  
+
   /*comment*/
   .panel-shadow {
       box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
@@ -411,8 +411,8 @@ li a, .dropbtn {
     display: block;
     margin-right: 15px;
   }
-  
-  
+
+
   .post .post-heading .meta .title a:hover {
     color: #aaaaaa;
   }
@@ -426,18 +426,18 @@ li a, .dropbtn {
   .post .post-description .stats {
     margin-top: 20px;
   }
-  
+
 
   #item div#comments div.container{
     width: 1000px;
     height: 200px;
   }
-  
+
   #item div#comments{
     padding-left: 20px;
     padding-top: 40px;
   }
-  
+
   #item div.leave_comment{
     padding-top: 30px;
     padding-left: 15px;
@@ -679,7 +679,7 @@ hr.style17 {
 }
 
 #wish_list .style17{
-  margin-right: 200px;
+  margin-right:auto;
 }
 
 #wish_list div#item_wish_list1{
@@ -732,9 +732,9 @@ hr.style17 {
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-  
+
     padding: 15px 15px 15px 15px;
-  
+
 }
 
 #item_wish_list2{
@@ -742,9 +742,9 @@ hr.style17 {
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-  
+
     padding: 15px 15px 15px 15px;
-  
+
 }
 
 #auction_buttons .row {
@@ -755,6 +755,356 @@ hr.style17 {
   font-size: 20px;
   color: black;
   font-weight: bold;
+}
+
+
+@media only screen and (max-width: 450px) {
+ #auction_buttons .row{
+   padding-bottom: 5px;
+ }
+
+
+ #wish_list div#item_wish_list2{
+   margin-left: 0px;
+   margin-bottom: 50px;
+   width: 290px;
+   background: #fff;
+   border-radius: 5px;
+   overflow: hidden;
+
+   padding: 5px 5px 5px 5px;
+ }
+
+ #wish_list div#item_wish_list1{
+   margin-left: 0px;
+   margin-bottom: 50px;
+   width: 290px;
+   background: #fff;
+   border-radius: 5px;
+   overflow: hidden;
+
+   padding: 5px 5px 5px 5px;
+ }
+#wish_list div#bid_buttons{
+  margin-top: -40px;
+}
+#wish_list div#bid_buttons .form-control{
+  margin-bottom: 5px;
+}
+#wish_list div#information{
+  margin-left: 15px;
+}
+#wish_list div#information .status_winning{
+  margin-bottom: 5px;
+}
+#wish_list div#information .time{
+  margin-bottom: 5px;
+}
+#wish_list div#information .owner_name{
+  margin-bottom: 5px;
+}
+#wish_list div#information .status_losing{
+  margin-bottom: 5px;
+}
+
+
+}
+@media only screen and (min-width: 450px){
+  #auction_buttons .row{
+    padding-bottom: 5px;
+  }
+
+
+  #wish_list div#item_wish_list2{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 350px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+
+  #wish_list div#item_wish_list1{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 350px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+ #wish_list div#bid_buttons{
+   margin-top: -40px;
+ }
+ #wish_list div#bid_buttons .form-control{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information{
+   margin-left: 15px;
+ }
+ #wish_list div#information .status_winning{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .time{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .owner_name{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .status_losing{
+   margin-bottom: 5px;
+ }
+}
+
+@media only screen and (min-width: 570px){
+  #auction_buttons .row{
+    padding-bottom: 5px;
+  }
+
+
+  #wish_list div#item_wish_list2{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 400px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+
+  #wish_list div#item_wish_list1{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 400px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+ #wish_list div#bid_buttons{
+   margin-top: -40px;
+ }
+ #wish_list div#bid_buttons .form-control{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information{
+   margin-left: 15px;
+ }
+ #wish_list div#information .status_winning{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .time{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .owner_name{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .status_losing{
+   margin-bottom: 5px;
+ }
+}
+@media only screen and (min-width: 620px){
+  #auction_buttons .row{
+    padding-bottom: 5px;
+  }
+
+
+  #wish_list div#item_wish_list2{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 500px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+
+  #wish_list div#item_wish_list1{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 500px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+ #wish_list div#bid_buttons{
+   margin-top: -40px;
+ }
+ #wish_list div#bid_buttons .form-control{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information{
+   margin-left: 15px;
+ }
+ #wish_list div#information .status_winning{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .time{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .owner_name{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .status_losing{
+   margin-bottom: 5px;
+ }
+}
+@media only screen and (min-width: 768px){
+  #auction_buttons .row{
+    padding-bottom: 5px;
+  }
+
+
+  #wish_list div#item_wish_list2{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 700px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+
+  #wish_list div#item_wish_list1{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 700px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+ #wish_list div#bid_buttons{
+   margin-top: 10px;
+ }
+ #wish_list div#bid_buttons .form-control{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information{
+   margin-left: 15px;
+ }
+ #wish_list div#information .status_winning{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .time{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .owner_name{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .status_losing{
+   margin-bottom: 5px;
+ }
+}
+
+@media only screen and (min-width: 900px){
+  #auction_buttons .row{
+    padding-bottom: 5px;
+  }
+
+
+  #wish_list div#item_wish_list2{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 840px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+
+  #wish_list div#item_wish_list1{
+    margin-left: 0px;
+    margin-bottom: 50px;
+    width: 840px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+ #wish_list div#bid_buttons{
+   margin-top: 10px;
+ }
+ #wish_list div#bid_buttons .form-control{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information{
+   margin-left: 15px;
+ }
+ #wish_list div#information .status_winning{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .time{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .owner_name{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .status_losing{
+   margin-bottom: 5px;
+ }
+}
+
+@media only screen and (min-width: 991px){
+  #auction_buttons .row{
+    padding-bottom: 5px;
+  }
+
+
+  #wish_list div#item_wish_list2{
+    margin-left: 70px;
+    margin-bottom: 50px;
+    width: 900px;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+
+    padding: 5px 5px 5px 5px;
+  }
+
+  #wish_list div#item_wish_list1{
+    margin-left: 70px;
+    margin-bottom: 50px;
+    width: 900px;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+
+    padding: 15px 15px 15px 15px;
+  }
+ #wish_list div#bid_buttons{
+   margin-top: 10px;
+ }
+ #wish_list div#bid_buttons .form-control{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information{
+   margin-left: 15px;
+ }
+ #wish_list div#information .status_winning{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .time{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .owner_name{
+   margin-bottom: 5px;
+ }
+ #wish_list div#information .status_losing{
+   margin-bottom: 5px;
+ }
 }
 
 /*Edit Profile*/
@@ -846,21 +1196,21 @@ section#middle{
     margin-left: 100px;
     padding-bottom: 100px;
   }
-  
+
   #middle .style17{
     margin-right: 200px;
   }
-  
+
   #middle nav {
     padding-top: 50px;
   }
-  
+
   #middle a{
     color: #0c59cf;
     font-size: 16px;
   }
 
-  
+
 /*ABOUT*/
 #about{
     padding-top: 200px;
@@ -878,7 +1228,7 @@ section#middle{
     #about p{
         font-size:18px;
     }
-    
+
 }
 /*FAQ*/
 #services{
@@ -896,7 +1246,7 @@ section#middle{
         padding-bottom: 30px;
         background-color:#437ab2;
     }
-    
+
 
     .faq{
         padding: 5px 60px 110px 60px;
@@ -917,7 +1267,7 @@ section#middle{
     #faq_heading h2{
         font-size:25px;
     }
-    
+
 
     .faq{
     padding: 5px 5px 110px 5px;
@@ -983,7 +1333,7 @@ footer {
         font-size: 13px;
         margin-bottom: 10px;
     }
-    footer #orgInfo li a:first-child{ 
+    footer #orgInfo li a:first-child{
         margin-left: 50px;
         font-size: 13px;
     }
@@ -991,19 +1341,19 @@ footer {
 }
 
 @media only screen and (max-width: 412px) {
-    footer #orgInfo li a:first-child{ 
+    footer #orgInfo li a:first-child{
         margin-left: 60px;
     }
 
 }
 @media only screen and (max-width: 414px) {
-    footer #orgInfo li a:first-child{ 
+    footer #orgInfo li a:first-child{
         margin-left: 58px;
     }
 
 }
 @media only screen and (max-width: 375px) {
-    footer #orgInfo li a:first-child{ 
+    footer #orgInfo li a:first-child{
         margin-left: 50px;
     }
 
@@ -1072,13 +1422,13 @@ footer li{
     justify-content: center;
     align-items: center;
   }
-  
+
   .container-contact1 {
     width: 1163px;
     background: #dfe5eb;
     border-radius: 10px;
     overflow: hidden;
-  
+
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -1087,27 +1437,27 @@ footer li{
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-  
+
     padding: 50px 50px 50px 50px;
   }
-  
+
   /*------------------------------------------------------------------
   [  ]*/
   .contact1-pic {
     width: 296px;
   }
-  
+
   .contact1-pic img {
     max-width: 100%;
   }
-  
-  
+
+
   /*------------------------------------------------------------------
   [  ]*/
   .contact1-form {
     width: 390px;
   }
-  
+
   .contact1-form-title {
     display: block;
     font-size: 24px;
@@ -1116,7 +1466,7 @@ footer li{
     text-align: center;
     padding-bottom: 44px;
   }
-  
+
   input.input1 {
     height: 50px;
     border-radius: 25px;
@@ -1125,7 +1475,7 @@ footer li{
   input.input1 + .shadow-input1 {
     border-radius: 25px;
   }
-  
+
   textarea.input1 {
     min-height: 150px;
     border-radius: 25px;
@@ -1134,7 +1484,7 @@ footer li{
   textarea.input1 + .shadow-input1 {
     border-radius: 25px;
   }
-  
+
   /*---------------------------------------------*/
   .wrap-input1 {
     position: relative;
@@ -1142,7 +1492,7 @@ footer li{
     z-index: 1;
     margin-bottom: 20px;
   }
-  
+
   .input1 {
     display: block;
     width: 100%;
@@ -1151,7 +1501,7 @@ footer li{
     line-height: 1.5;
     color: #666666;
   }
-  
+
   .shadow-input1 {
     content: '';
     display: block;
@@ -1164,26 +1514,26 @@ footer li{
     box-shadow: 0px 0px 0px 0px;
     color: #597ca0ff;
   }
-  
+
   .input1:focus + .shadow-input1 {
     -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
     animation: anim-shadow 0.5s ease-in-out forwards;
   }
-  
+
   @-webkit-keyframes anim-shadow {
     to {
       box-shadow: 0px 0px 80px 30px;
       opacity: 0;
     }
   }
-  
+
   @keyframes anim-shadow {
     to {
       box-shadow: 0px 0px 80px 30px;
       opacity: 0;
     }
   }
-  
+
   /*---------------------------------------------*/
   .container-contact1-form-btn {
     display: -webkit-box;
@@ -1194,7 +1544,7 @@ footer li{
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .contact1-form-btn {
     min-width: 193px;
     height: 50px;
@@ -1211,26 +1561,26 @@ footer li{
     justify-content: center;
     align-items: center;
     padding: 0 25px;
-  
+
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
   }
-  
+
   .contact1-form-btn i {
     margin-left: 7px;
-  
+
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
   }
-  
+
   .contact1-form-btn:hover {
     background: #333333;
   }
-  
+
   .contact1-form-btn:hover i {
     -webkit-transform: translateX(10px);
     -moz-transform: translateX(10px);
@@ -1238,65 +1588,65 @@ footer li{
     -o-transform: translateX(10px);
     transform: translateX(10px);
   }
-  
-  
-  
-  
+
+
+
+
   /*------------------------------------------------------------------
   [ Responsive ]*/
-  
+
   @media (max-width: 1200px) {
     .contact1-pic {
       width: 33.5%;
     }
-  
+
     .contact1-form {
       width: 44%;
     }
   }
-  
+
   @media (max-width: 992px) {
     .container-contact1 {
       padding: 90px 80px 88px 90px;
     }
-  
+
     .contact1-pic {
       width: 35%;
     }
-  
+
     .contact1-form {
       width: 55%;
     }
   }
-  
+
   @media (max-width: 768px) {
     .container-contact1 {
       padding: 90px 80px 88px 80px;
     }
-  
+
     .contact1-pic {
       display: none;
     }
-  
+
     .contact1-form {
       width: 100%;
     }
   }
-  
+
   @media (max-width: 576px) {
     .container-contact1 {
       padding: 90px 15px 88px 15px;
     }
   }
-  
-  
+
+
   /*------------------------------------------------------------------
   [ Alert validate ]*/
-  
+
   .validate-input {
     position: relative;
   }
-  
+
   .alert-validate::before {
     content: attr(data-validate);
     position: absolute;
@@ -1317,16 +1667,16 @@ footer li{
     font-size: 13px;
     line-height: 1.4;
     text-align: left;
-  
+
     visibility: hidden;
     opacity: 0;
-  
+
     -webkit-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
     -moz-transition: opacity 0.4s;
     transition: opacity 0.4s;
   }
-  
+
   .alert-validate::after {
     content: "\f06a";
     font-family: FontAwesome;
@@ -1342,12 +1692,12 @@ footer li{
     transform: translateY(-50%);
     right: 13px;
   }
-  
+
   .alert-validate:hover:before {
     visibility: visible;
     opacity: 1;
   }
-  
+
   @media (max-width: 992px) {
     .alert-validate::before {
       visibility: visible;
@@ -1355,7 +1705,7 @@ footer li{
     }
   }
 
-  
+
 /*---------------------------------------------*/
 input {
 	outline: none;
@@ -1422,4 +1772,3 @@ iframe {
   .btn.ico.active span.icon {
     opacity: 1;
   }
-
