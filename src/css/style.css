@@ -1255,7 +1255,8 @@ section#middle{
   }
 
   #middle .style17{
-    margin-right: 200px;
+    margin-right: auto;
+
   }
 
   #middle nav {
@@ -1266,6 +1267,87 @@ section#middle{
     color: #0c59cf;
     font-size: 16px;
   }
+
+  @media only screen and (min-width: 400px) {
+    #middle a{
+      font-size: 11px;
+    }
+    #middle{
+      font-size: 11px;
+    }
+    #middle h2{
+      font-size: 17px;
+    }
+
+    #middle .col-md-3{
+      width: 90px;
+    }
+    section#middle{
+      margin-left: 50px;
+    }
+
+  }
+
+  @media only screen and (max-width: 400px) {
+    #middle a{
+      font-size: 10px;
+    }
+    #middle{
+      font-size: 10px;
+    }
+    #middle h2{
+      font-size: 16px;
+    }
+
+    #middle .col-md-3{
+      width: 85px;
+    }
+    section#middle{
+      margin-left: 50px;
+    }
+
+  }
+  @media only screen and (min-width: 500px) {
+    #middle a{
+      font-size: 12px;
+    }
+    #middle{
+      font-size: 12px;
+    }
+    #middle h2{
+      font-size: 18px;
+    }
+
+    #middle .col-md-3{
+      width: 110px;
+    }
+    section#middle{
+      margin-left: 60px;
+    }
+
+  }
+
+  @media only screen and (min-width: 576px) {
+    #middle a{
+      font-size: 16px;
+    }
+    #middle{
+      font-size: 16px;
+    }
+    #middle h2{
+      font-size: 23px;
+    }
+
+    #middle .col-md-3{
+      width: 200px;
+    }
+    section#middle{
+      margin-left: 100px;
+    }
+
+  }
+
+
 
 
 /*ABOUT*/
