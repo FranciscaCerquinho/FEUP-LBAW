@@ -118,12 +118,12 @@
     <h1>Add Auction</h1>
     <hr class="style17" style="color:grey;">
     <form id="taskForm" method="post" class="form-horizontal">
-        <div class="form-group">
-            <div class="col-xs-4">
-                <input type="text" class="form-control" name="task[]" placeholder="Auction name" />
+        <div class="form-group row">
+            <div class="col-lg-4">
+                <input for="example-text-input" type="text" class="form-control" name="task[]" placeholder="Auction name" />
             </div>
-            <div class="col-xs-2">
-            <select class="form-control" id="sel1">
+            <div class="col-lg-2">
+            <select for="example-text-input" class="form-control" id="sel1">
                     <option>Electronics</option>
                     <option>Fashion</option>
                     <option>Home & Garden</option>
@@ -135,21 +135,21 @@
                     <option>Others</option>
             </select>
             </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" name="task[]" placeholder="Initial price" />
+            <div class="col-lg-2">
+                <input for="example-text-input" type="text" class="form-control" name="task[]" placeholder="Initial price" />
             </div>
-            <div class="col-xs-2 dateContainer">
-                <div class="input-group input-append date" id="dueDatePicker">
-                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                    <input type="text" class="form-control" name="dueDate[]" placeholder="Due date" />
+            <div class="col-lg-2 dateContainer">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text add-on"><i class="fas fa-calendar-alt"></i></span>
+                    <input class="form-control" type="date" id="example-date-input" style="font-size:15px;">
                 </div>
             </div>
             </div>
-            <div class="form-group">
-                <div class="col-xs-4">
-                    <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Description"></textarea>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <textarea for="example-text-input" class="form-control" id="exampleTextarea" rows="3" placeholder="Description"></textarea>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-lg-4">
                                 <!-- image-preview-filename input [CUT FROM HERE]-->
                                 <div class="input-group image-preview">
                                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -160,136 +160,27 @@
                                         </button>
                                         <!-- image-preview-input -->
                                         <div class="btn btn-default image-preview-input">
-                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                                <div class="input-group-prepend">
+                                            <span><i class="fas fa-folder-open"></i></span>
                                             <span class="image-preview-input-title">Add an image</span>
                                             <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                                        </div>
                                         </div>
                                     </span>
                                 </div><!-- /input-group image-preview [TO HERE]--> 
                 </div>
             </div>
                 <div class="form-group"></div>
-                    <button type="button" style="font-size:16px;" class="btn btn-primary addButton">Add another auction  &nbsp; &nbsp;<i class="fa fa-plus"></i></button>
-                    <button class="btn btn-primary" style="font-size:16px;" type="submit">Start auction</button>
+                    <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn" >Add another auction  &nbsp; &nbsp;<i class="fa fa-plus"></i></button>
+                    <button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
                 </div>
             </div>
         </div>
 
-        <!-- The template for adding new field -->
-        <div class="form-group hide" id="taskTemplate">
-            <div class="col-xs-6 col-xs-offset-1">
-                <input type="text" class="form-control" name="task[]" placeholder="Task" />
-            </div>
-            <div class="col-xs-4 dateContainer">
-                <div class="input-group input-append date">
-                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                    <input type="text" class="form-control" name="dueDate[]" placeholder="Due date" />
-                </div>
-            </div>
-            <div class="col-xs-1">
-                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
-            </div>
-        </div>
     </form>
 </div>
 </div>
 
-
-<script>
-        $(document).ready(function() {
-            // Initialize the date picker for the original due date field
-            $('#dueDatePicker')
-                .datepicker({
-                    format: 'yyyy/mm/dd'
-                })
-                .on('changeDate', function(evt) {
-                    // Revalidate the date field
-                    $('#taskForm').formValidation('revalidateField', $('#dueDatePicker').find('[name="dueDate[]"]'));
-                });
-        
-            $('#taskForm')
-                .formValidation({
-                    framework: 'bootstrap',
-                    icon: {
-                        valid: 'glyphicon glyphicon-ok',
-                        invalid: 'glyphicon glyphicon-remove',
-                        validating: 'glyphicon glyphicon-refresh'
-                    },
-                    fields: {
-                        'task[]': {
-                            // The task is placed inside a .col-xs-6 element
-                            row: '.col-xs-6',
-                            validators: {
-                                notEmpty: {
-                                    message: 'The task is required'
-                                }
-                            }
-                        },
-                        'dueDate[]': {
-                            // The due date is placed inside a .col-xs-4 element
-                            row: '.col-xs-4',
-                            validators: {
-                                notEmpty: {
-                                    message: 'The due date is required'
-                                },
-                                date: {
-                                    format: 'YYYY/MM/DD',
-                                    min: new Date(),
-                                    message: 'The due date is not valid'
-                                }
-                            }
-                        }
-                    }
-                })
-        
-                .on('added.field.fv', function(e, data) {
-                    if (data.field === 'dueDate[]') {
-                        // The new due date field is just added
-                        // Create a new date picker
-                        data.element
-                            .parent()
-                            .datepicker({
-                                format: 'yyyy/mm/dd'
-                            })
-                            .on('changeDate', function(evt) {
-                                // Revalidate the date field
-                                $('#taskForm').formValidation('revalidateField', data.element);
-                            });
-                    }
-                })
-        
-                // Add button click handler
-                .on('click', '.addButton', function() {
-                    var $template = $('#taskTemplate'),
-                        $clone    = $template
-                                        .clone()
-                                        .removeClass('hide')
-                                        .removeAttr('id')
-                                        .insertBefore($template);
-        
-                    // Add new fields
-                    // Note that we DO NOT need to pass the set of validators
-                    // because the new field has the same name with the original one
-                    // which its validators are already set
-                    $('#taskForm')
-                        .formValidation('addField', $clone.find('[name="task[]"]'))
-                        .formValidation('addField', $clone.find('[name="dueDate[]"]'))
-                })
-        
-                // Remove button click handler
-                .on('click', '.removeButton', function() {
-                    var $row = $(this).closest('.form-group');
-        
-                    // Remove fields
-                    $('#taskForm')
-                        .formValidation('removeField', $row.find('[name="task[]"]'))
-                        .formValidation('removeField', $row.find('[name="dueDate[]"]'));
-        
-                    // Remove element containing the fields
-                    $row.remove();
-                });
-        });
-        </script>
 
 <!-- Footer -->
 <footer class="bg-4 text-center">
