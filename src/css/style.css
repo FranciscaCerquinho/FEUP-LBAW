@@ -796,6 +796,11 @@ hr.style17 {
    padding-bottom: 5px;
  }
 
+ #wish_list button{
+   font-size: 14px;
+ }
+
+
 
  #wish_list div#item_wish_list2{
    margin-left: 0px;
@@ -829,15 +834,19 @@ hr.style17 {
 }
 #wish_list div#information .status_winning{
   margin-bottom: 5px;
+  font-size: 16px;
 }
 #wish_list div#information .time{
   margin-bottom: 5px;
+  font-size: 16px;
 }
 #wish_list div#information .owner_name{
   margin-bottom: 5px;
+  font-size: 16px;
 }
 #wish_list div#information .status_losing{
   margin-bottom: 5px;
+  font-size: 16px;
 }
 
 
