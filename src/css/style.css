@@ -800,6 +800,11 @@ hr.style17 {
    font-size: 14px;
  }
 
+ #wish_list img{
+   width: 150px;
+   height: 150px;
+ }
+
 
 
  #wish_list div#item_wish_list2{
@@ -856,6 +861,11 @@ hr.style17 {
     padding-bottom: 5px;
   }
 
+  #wish_list img{
+    width: 190px;
+    height: 190px;
+  }
+
 
   #wish_list div#item_wish_list2{
     margin-left: 0px;
@@ -904,6 +914,11 @@ hr.style17 {
 @media only screen and (min-width: 570px){
   #auction_buttons .row{
     padding-bottom: 5px;
+  }
+
+  #wish_list img{
+    width: 230px;
+    height: 230px;
   }
 
 
