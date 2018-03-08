@@ -1748,7 +1748,17 @@ footer li{
       margin: auto;
     }
 
+    .user_infomation{
+      padding-top: 100px;
+    }
+
+    .container-contact1 .col-8{
+      margin: auto;
+      text-align: center;
+    }
+
     .contact1-form {
+      padding-top: 50px;
       margin: auto;
       width: 66.6%;
     }
@@ -1793,6 +1803,15 @@ footer li{
 
     .container-contact1 .col-10{
       margin: auto;
+    }
+
+    #profile_pic {
+      width: 130%;
+      height: auto;
+    }
+
+    .user_infomation{
+      font-size: 75%;
     }
 
     .container-contact1 {
