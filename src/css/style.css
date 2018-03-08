@@ -667,6 +667,29 @@ li a, .dropbtn {
     margin-left:2px;
 }
 
+@media (max-width: 768px){
+  .add_auction #sel1{
+    margin-top : 10px;
+    margin-bottom: 10px;
+  }
+
+  #add_auction_calendar{
+    margin-top : 10px;
+    margin-bottom: 10px;
+  }
+
+  #exampleTextarea{
+    margin-top : 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px){
+  #add_auction_buttons .btn{
+    margin-top: 10px;
+  }
+}
+
 /*Profile*/
 .perfil_img{
     height: 180px;
