@@ -953,8 +953,74 @@ hr.style17 {
   font-weight: bold;
 }
 
+@media only screen and (max-width: 350px) {
+ #auction_buttons .row{
+   padding-bottom: 5px;
+ }
 
-@media only screen and (max-width: 450px) {
+ #wish_list button{
+   font-size: 12px;
+ }
+
+ #wish_list img{
+   width: 120px;
+   height: 120px;
+ }
+
+
+
+ #wish_list div#item_wish_list2{
+   margin-left: 0px;
+   margin-bottom: 50px;
+   width: auto;
+   background: #fff;
+   border-radius: 5px;
+   overflow: hidden;
+
+   padding: 5px 5px 5px 5px;
+ }
+
+ #wish_list div#item_wish_list1{
+   margin-left: 0px;
+   margin-bottom: 50px;
+   width: auto;
+   background: #fff;
+   border-radius: 5px;
+   overflow: hidden;
+
+   padding: 5px 5px 5px 5px;
+ }
+#wish_list div#bid_buttons{
+  margin-top: -40px;
+}
+#wish_list div#bid_buttons .form-control{
+  width: 90px;
+  margin-bottom: 5px;
+}
+#wish_list div#information{
+  margin-left: 14px;
+}
+#wish_list div#information .status_winning{
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+#wish_list div#information .time{
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+#wish_list div#information .owner_name{
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+#wish_list div#information .status_losing{
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+
+}
+
+@media only screen and (min-width: 350px) {
  #auction_buttons .row{
    padding-bottom: 5px;
  }
@@ -973,7 +1039,7 @@ hr.style17 {
  #wish_list div#item_wish_list2{
    margin-left: 0px;
    margin-bottom: 50px;
-   width: 290px;
+   width: auto;
    background: #fff;
    border-radius: 5px;
    overflow: hidden;
@@ -984,7 +1050,7 @@ hr.style17 {
  #wish_list div#item_wish_list1{
    margin-left: 0px;
    margin-bottom: 50px;
-   width: 290px;
+   width: auto;
    background: #fff;
    border-radius: 5px;
    overflow: hidden;
@@ -996,25 +1062,26 @@ hr.style17 {
 }
 #wish_list div#bid_buttons .form-control{
   margin-bottom: 5px;
+  width: 100px;
 }
 #wish_list div#information{
   margin-left: 15px;
 }
 #wish_list div#information .status_winning{
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 13px;
 }
 #wish_list div#information .time{
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 13px;
 }
 #wish_list div#information .owner_name{
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 13px;
 }
 #wish_list div#information .status_losing{
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 
@@ -1033,7 +1100,7 @@ hr.style17 {
   #wish_list div#item_wish_list2{
     margin-left: 0px;
     margin-bottom: 50px;
-    width: 350px;
+    width: auto;
     background: #fff;
     border-radius: 5px;
     overflow: hidden;
@@ -1044,7 +1111,7 @@ hr.style17 {
   #wish_list div#item_wish_list1{
     margin-left: 0px;
     margin-bottom: 50px;
-    width: 350px;
+    width: auto;
     background: #fff;
     border-radius: 5px;
     overflow: hidden;
