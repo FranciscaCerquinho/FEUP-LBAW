@@ -1439,6 +1439,70 @@ color: #606060;
     
     }
 }
+
+@media only screen and (width: 1024px) {
+  #error{
+    padding-top:50px;
+    margin-left:300px;
+    padding-bottom: 0;
+  }
+
+  #error_msg h2.qOq{
+    width: 50px;
+    font-size: 30px}
+
+  #error_msg h2.pnf{
+    font-size: 25px;
+    margin-left: 20px;  }
+
+  #error_msg p{
+      color: #000000;
+      font-size: 17px;
+      margin-left: 20px;
+      padding-top:50px;
+    }
+    #error_home button{
+      height: 50px;
+      width: 300px;
+      font-size: 20px;
+      background-color: #597ca0ff;
+      margin-left:80px;
+      margin-bottom:150px;
+    
+    }
+}
+
+@media only screen and (width: 768px) {
+  #error{
+    padding-top:50px;
+    margin-left:200px;
+    padding-bottom: 0;
+  }
+
+  #error_msg h2.qOq{
+    width: 50px;
+    font-size: 30px}
+
+  #error_msg h2.pnf{
+    font-size: 25px;
+    margin-left: 0px;  }
+
+  #error_msg p{
+      color: #000000;
+      font-size: 17px;
+      margin-left: 0px;
+      padding-top:50px;
+    }
+    #error_home button{
+      height: 50px;
+      width: 300px;
+      font-size: 20px;
+      background-color: #597ca0ff;
+      margin-left:60px;
+      margin-bottom:150px;
+    
+    }
+}
 /*administration*/
 
 section#middle{
