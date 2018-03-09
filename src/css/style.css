@@ -139,34 +139,36 @@ body {
     #auctionCardImage {
         width: 150px;
     }
-      .card{
-        padding: 20px;
-        height: 300px;
-        width: 250px;
-        background-color: white;
+    
+    #auctionCard {
+      padding: 20px;
+      height: 300px;
+      width: 250px;
+      background-color: white;
     }
 
-    .card-title a{
-        font-size: 18px;
-        color:#0c59cf;
+    #auctionCardTitle a{
+      font-size: 18px;
+      color:#0c59cf;
 
     }
-    .card-body h5{
-        font-size: 18px;
-        color:black;
-        font-weight: bold;
+
+    #auctionCardBody h5{
+      font-size: 18px;
+      color:black;
+      font-weight: bold;
     }
 
-    .card-text{
-        font-weight:normal;
-        color:black;
-        font-size: 15px;
+    #auctionCardText{
+      font-weight:normal;
+      color:black;
+      font-size: 15px;
     }
 
-    .card-body h1{
-        font-weight: normal;
-        color:black;
-        font-size: 15px;
+    #auctionCardBody h1{
+      font-weight: normal;
+      color:black;
+      font-size: 15px;
     }
 
     .pagination .pagination-centered{
@@ -183,33 +185,34 @@ body {
 #auctionCard {
     padding: 10px;
 }
-.card{
-    padding: 15px;
-    height: 485px;
-    background-color: white;
+
+#auctionCard{
+  padding: 15px;
+  height: 600px;
+  background-color: white;
 }
 
-.card-title a{
-    font-size: 22px;
-    color:#0c59cf;
+#auctionCardTitle a{
+  font-size: 22px;
+  color:#0c59cf;
 
 }
-.card-body h5{
-    font-size: 22px;
-    color:black;
-    font-weight: bold;
+#auctionCardBody h5{
+  font-size: 22px;
+  color:black;
+  font-weight: bold;
 }
 
-.card-text{
-    font-weight:normal;
-    color:black;
-    font-size: 18px;
+#auctionCardText{
+  font-weight:normal;
+  color:black;
+  font-size: 18px;
 }
 
-.card-body h1{
-    font-weight: normal;
-    color:black;
-    font-size: 18px;
+#auctionCardBody h1{
+  font-weight: normal;
+  color:black;
+  font-size: 18px;
 }
 
 .pagination .pagination-centered{
@@ -222,27 +225,29 @@ body {
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
-.card-body{
-    position: absolute;
-    bottom:0;
+#auctionCardBody{
+  position: absolute;
+  bottom:0;
 }
-@media only screen and (max-width: 360px) {
-    .card{
-        padding: 5px;
-        height: 340px;
-        background-color: white;
-    }
-}
-@media only screen and (max-width: 414px) {
-    .card{
-        padding: 5px;
-        height: 345px;
-        background-color: white;
-    }
 
-    #search_bar{
-       width:150px;
-    }
+@media only screen and (max-width: 360px) {
+  #auctionCard {
+      padding: 5px;
+      height: 340px;
+      background-color: white;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  #auctionCard{
+    padding: 5px;
+    height: 345px;
+    background-color: white;
+  }  
+
+  #search_bar{
+    width:150px;
+  }
 }
 
 /*Shop by category -dropdown*/
@@ -1369,16 +1374,16 @@ section#middle{
 /* Footer */
 footer {
 	clear: both;
-    position: relative;
-    right: 0;
-    left: 0;
-    width: 100%;
-    bottom: 0;
-    z-index: 10;
-    height: 100px;
-    color: white;
-    background-color: #2f2f2f;
-    font-size:16px;
+  position: relative;
+  right: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  z-index: 10;
+  height: 100px;
+  color: white;
+  background-color: #2f2f2f;
+  font-size:16px;
 }
 
 @media only screen and (max-width: 575px) {
@@ -1829,3 +1834,9 @@ iframe {
   .btn.ico.active span.icon {
     opacity: 1;
   }
+
+/* Login */
+
+#rememberMe label{
+  color: #437ab2;
+}
