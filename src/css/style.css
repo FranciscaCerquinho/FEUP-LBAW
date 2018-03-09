@@ -338,9 +338,12 @@ li a, .dropbtn {
 /*item*/
 
 #item{
-    padding-top: 180px;
+    padding-top: 80px;
     padding-bottom: 100px;
-    margin-left: 100px;
+
+  }
+  #item hr{
+   margin-left: 100px;
   }
 
   section#item h2.item_name{
@@ -364,12 +367,11 @@ li a, .dropbtn {
     font-size: 25px;
   }
 
-  #item div#description{
+  #item #description{
     color:#000000;
     font-weight: bold;
-    padding-bottom: 30px;
   }
-  #item div#user_information{
+  #item #user_information{
     color: #444444;
     font-weight: normal;
 
@@ -378,7 +380,7 @@ li a, .dropbtn {
   #item div#user_information a{
       color: #444444;
       font-weight: normal;
-      font-size: 16px;
+
     }
 
   #item div#user_information div#category_name{
@@ -411,6 +413,122 @@ li a, .dropbtn {
     color: black;
   }
 
+  #buttons button{
+    font-size: 18px;
+  }
+  @media only screen and (min-width:576px) {
+  .product_image{
+    width:400px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width:576px) {
+  .product_image{
+    width:250px;
+    height: 250px;
+  }
+  #item{
+    padding-top: 0;
+    margin-top: 30px;
+  }
+
+  #item hr{
+    display: none;
+  }
+  section#item h2.item_name{
+    color: #444444;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
+
+  section#item h3.auction_status{
+    color: #629c44;
+    font-size: 16px;
+  }
+
+
+  #item h2.information{
+    color: #000000;
+    font-weight: bold;
+    padding-top: 20px;
+    font-size: 18px;
+    padding-left: 15px;
+  }
+
+
+  #item #title {
+    flex: 2;
+  }
+
+
+  #item #description{
+    color:#000000;
+    font-weight: bold;
+    font-size: 16px;
+
+  }
+  #item #user_information{
+    color: #444444;
+    font-weight: normal;
+    font-size: 16px;
+    flex: 2;
+  }
+
+  #item #user_information a{
+      color: #444444;
+      font-weight: normal;
+      font-size: 16px;
+    }
+
+  #item div#user_information div#category_name{
+      margin-top: 10px;
+  }
+
+  #item div #bid_buttons{
+      left: 0;
+  }
+
+  #item div#buy_now_button{
+    padding-top: 15px;
+  }
+  #item div#buttons{
+    background-color:#dfe5eb;
+    padding-top: 5px;
+  }
+  #item div#buttons button{
+    background-color:#dfe5eb;
+    border-color: #dfe5eb;
+  }
+
+  #item div#buttons button:hover{
+    background-color:#ffffff;
+    border-color: #ffffff;
+  }
+
+  #buttons button{
+    font-size: 12px;
+  }
+
+  .object_actualprice{
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+  }
+
+  #item #price {
+    flex: 2;
+  }
+
+  #item #price #price_button {
+    width: 100px !important;
+  }
+
+  #item #bid {
+    flex: 3;
+  }
+}
   /*comment*/
   .panel-shadow {
       box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
@@ -495,6 +613,28 @@ li a, .dropbtn {
       background-color:#437ab2;
       color:white;
   }
+
+  @media only screen and (max-width:576px) {
+
+    #item .container{
+      margin-right:0 !important;
+    }
+    #item div#comments div.container {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 50px;
+
+    }
+
+    #item div#comments div.row {
+      padding-right: 0.9em;
+    }
+
+    #item div#comments div.row .leave_comment .container .row .panel-white form textarea {
+      width: 95%;
+    }
+
+  }
 /**Add auction page*/
 
 .add_auction{
@@ -530,6 +670,29 @@ li a, .dropbtn {
 }
 .image-preview-input-title {
     margin-left:2px;
+}
+
+@media (max-width: 768px){
+  .add_auction #sel1{
+    margin-top : 10px;
+    margin-bottom: 10px;
+  }
+
+  #add_auction_calendar{
+    margin-top : 10px;
+    margin-bottom: 10px;
+  }
+
+  #exampleTextarea{
+    margin-top : 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px){
+  #add_auction_buttons .btn{
+    margin-top: 10px;
+  }
 }
 
 /*Profile*/
@@ -698,7 +861,7 @@ hr.style17 {
 /*Wish List*/
 
 #wish_list{
-    padding: 150px 70px 10px 70px;
+    padding: 70px 70px 10px 70px;
 }
 
 #wish_list h2{
@@ -1170,8 +1333,9 @@ hr.style17 {
 }
 
 /*Edit Profile*/
-#edit_profile{
+#edit_profile {
     margin-bottom: 100px;
+    margin-top: 40px;
 }
 #edit_profile h1{
     color: #444444;
@@ -1184,7 +1348,10 @@ hr.style17 {
 #edit_profile label{
     color: #597ca0ff;
 }
-
+#edit_profile img {
+  width:140px;
+  height:140px;
+}
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -1204,12 +1371,20 @@ hr.style17 {
     cursor: inherit;
     display: block;
 }
-
+@media only screen and (max-width: 576px) {
+  #edit_profile h1{
+   font-size:25px;
+}
+  #edit_profile img {
+    width:100px;
+    height:100px;
+  }
+}
 /*Error Page*/
 #error{
-  padding-top:200px;
+  padding-top:100px;
   margin-left: 200px;
-  padding-bottom: 160px;
+  padding-bottom: 200px;
 }
 #error .style17{
   margin-right: 200px;
@@ -1250,17 +1425,112 @@ color: #606060;
   margin-right: 350px;
 
 }
+
+@media only screen and (max-width: 576px) {
+  #error{
+    padding-top:50px;
+    margin-left:30px;
+    padding-bottom: 0;
+  }
+
+  #error_msg h2.qOq{
+    width: 50px;
+    font-size: 30px}
+
+  #error_msg h2.pnf{
+    font-size: 25px;  }
+
+  #error_msg p{
+      color: #000000;
+      font-size: 17px;
+      margin: 0;
+      padding-top:50px;
+    }
+    #error_home button{
+      height: 50px;
+      width: 300px;
+      font-size: 20px;
+      background-color: #597ca0ff;
+      margin-left:0;
+      margin-bottom:150px;
+
+    }
+}
+
+@media only screen and (width: 1024px) {
+  #error{
+    padding-top:50px;
+    margin-left:300px;
+    padding-bottom: 0;
+  }
+
+  #error_msg h2.qOq{
+    width: 50px;
+    font-size: 30px}
+
+  #error_msg h2.pnf{
+    font-size: 25px;
+    margin-left: 20px;  }
+
+  #error_msg p{
+      color: #000000;
+      font-size: 17px;
+      margin-left: 20px;
+      padding-top:50px;
+    }
+    #error_home button{
+      height: 50px;
+      width: 300px;
+      font-size: 20px;
+      background-color: #597ca0ff;
+      margin-left:80px;
+      margin-bottom:150px;
+
+    }
+}
+
+@media only screen and (width: 768px) {
+  #error{
+    padding-top:50px;
+    margin-left:200px;
+    padding-bottom: 0;
+  }
+
+  #error_msg h2.qOq{
+    width: 50px;
+    font-size: 30px}
+
+  #error_msg h2.pnf{
+    font-size: 25px;
+    margin-left: 0px;  }
+
+  #error_msg p{
+      color: #000000;
+      font-size: 17px;
+      margin-left: 0px;
+      padding-top:50px;
+    }
+    #error_home button{
+      height: 50px;
+      width: 300px;
+      font-size: 20px;
+      background-color: #597ca0ff;
+      margin-left:60px;
+      margin-bottom:150px;
+
+    }
+}
 /*administration*/
 
 section#middle{
     color: #000000;
-    padding-top: 180px;
     margin-left: 100px;
     padding-bottom: 100px;
   }
 
   #middle .style17{
-    margin-right: 200px;
+    margin-right: auto;
+
   }
 
   #middle nav {
@@ -1271,18 +1541,109 @@ section#middle{
     color: #0c59cf;
     font-size: 16px;
   }
+  @media only screen and (min-width: 576px) {
+    section#middle{
+    padding-top: 180px;
+    }
+  }
+
+  @media only screen and (max-width: 576px) {
+    section#middle{
+    padding-top: 110px;
+    }
+  }
+  @media only screen and (min-width: 400px) {
+    #middle a{
+      font-size: 11px;
+    }
+    #middle{
+      font-size: 11px;
+    }
+    #middle h2{
+      font-size: 17px;
+    }
+
+    #middle .col-md-3{
+      width: 90px;
+    }
+    section#middle{
+      margin-left: 50px;
+    }
+
+  }
+
+  @media only screen and (max-width: 400px) {
+    #middle a{
+      font-size: 10px;
+    }
+    #middle{
+      font-size: 10px;
+    }
+    #middle h2{
+      font-size: 16px;
+    }
+
+    #middle .col-md-3{
+      width: 85px;
+    }
+    section#middle{
+      margin-left: 50px;
+    }
+
+  }
+  @media only screen and (min-width: 500px) {
+    #middle a{
+      font-size: 12px;
+    }
+    #middle{
+      font-size: 12px;
+    }
+    #middle h2{
+      font-size: 18px;
+    }
+
+    #middle .col-md-3{
+      width: 110px;
+    }
+    section#middle{
+      margin-left: 60px;
+    }
+
+  }
+
+  @media only screen and (min-width: 576px) {
+    #middle a{
+      font-size: 16px;
+    }
+    #middle{
+      font-size: 16px;
+    }
+    #middle h2{
+      font-size: 23px;
+    }
+
+    #middle .col-md-3{
+      width: 200px;
+    }
+    section#middle{
+      margin-left: 100px;
+    }
+
+  }
+
+
 
 
 /*ABOUT*/
 #about{
-    padding-top: 200px;
+    padding-top: 50px;
     padding-bottom: 30px;
     background-color:#437ab2;
 }
 
 @media only screen and (max-width: 576px) {
     #about{
-        padding-top: 120px;
+        padding-top: 50px;
     }
     #about h2{
         font-size:22px;
@@ -1304,7 +1665,7 @@ section#middle{
 
 @media only screen and (min-width: 576px) {
     #faq_heading{
-        padding-top: 200px;
+        padding-top: 100px;
         padding-bottom: 30px;
         background-color:#437ab2;
     }
@@ -1323,7 +1684,7 @@ section#middle{
 
 @media only screen and (max-width: 576px) {
     #faq_heading{
-        padding-top:110px;
+        padding-top:50px;
         background-color:#437ab2;
     }
     #faq_heading h2{
@@ -1658,12 +2019,32 @@ footer li{
   [ Responsive ]*/
 
   @media (max-width: 1200px) {
+
+    .container-contact1 .row{
+      margin: auto;
+    }
+
     .contact1-pic {
       width: 33.5%;
     }
 
+    .container-contact1 .col-10{
+      margin: auto;
+    }
+
+    .user_infomation{
+      padding-top: 100px;
+    }
+
+    .container-contact1 .col-8{
+      margin: auto;
+      text-align: center;
+    }
+
     .contact1-form {
-      width: 44%;
+      padding-top: 50px;
+      margin: auto;
+      width: 66.6%;
     }
   }
 
@@ -1672,11 +2053,17 @@ footer li{
       padding: 90px 80px 88px 90px;
     }
 
+    .container-contact1 .col-10{
+      margin: auto;
+    }
+
+
     .contact1-pic {
-      width: 35%;
+      width: 100%;
     }
 
     .contact1-form {
+      margin: auto;
       width: 55%;
     }
   }
@@ -1686,6 +2073,7 @@ footer li{
       padding: 90px 80px 88px 80px;
     }
 
+
     .contact1-pic {
       display: none;
     }
@@ -1694,13 +2082,49 @@ footer li{
       width: 100%;
     }
   }
-
-  @media (max-width: 576px) {
-    .container-contact1 {
-      padding: 90px 15px 88px 15px;
-    }
+  .user_infomation{
+    color:#444444;
   }
 
+  .container-contact1{
+    margin-top: 40px;
+  }
+
+  @media (max-width: 576px) {
+
+    .container-contact1 .col-10{
+      margin: auto;
+    }
+
+    #profile_pic {
+      width: 130%;
+      height: auto;
+    }
+
+    .user_infomation{
+      font-size: 75%;
+      top: 0;
+    }
+
+    .container-contact1 .user_information p{
+      color: #444444;
+    }
+
+    .container-contact1 {
+      padding: 5px 15px 20px 15px;
+    }
+
+    .container-contact1 #profile_pic{
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .contact1 .container{
+      top:0;
+      padding: 0;
+    }
+
+  }
 
   /*------------------------------------------------------------------
   [ Alert validate ]*/
