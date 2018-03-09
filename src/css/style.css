@@ -335,7 +335,7 @@ li a, .dropbtn {
 #item{
     padding-top: 80px;
     padding-bottom: 100px;
- 
+
   }
   #item hr{
    margin-left: 100px;
@@ -375,7 +375,7 @@ li a, .dropbtn {
   #item div#user_information a{
       color: #444444;
       font-weight: normal;
-      
+
     }
 
   #item div#user_information div#category_name{
@@ -461,7 +461,7 @@ li a, .dropbtn {
   #item #description{
     color:#000000;
     font-weight: bold;
-    font-size: 16px;    
+    font-size: 16px;
 
   }
   #item #user_information{
@@ -612,13 +612,13 @@ li a, .dropbtn {
   @media only screen and (max-width:576px) {
 
     #item .container{
-      margin-right:0 !important; 
+      margin-right:0 !important;
     }
     #item div#comments div.container {
       width: 100%;
       margin-left: 0;
       margin-bottom: 50px;
-      
+
     }
 
     #item div#comments div.row {
@@ -856,7 +856,7 @@ hr.style17 {
 /*Wish List*/
 
 #wish_list{
-    padding: 150px 70px 10px 70px;
+    padding: 70px 70px 10px 70px;
 }
 
 #wish_list h2{
@@ -1344,7 +1344,7 @@ hr.style17 {
     color: #597ca0ff;
 }
 #edit_profile img {
-  width:140px; 
+  width:140px;
   height:140px;
 }
 .btn-file {
@@ -1371,7 +1371,7 @@ hr.style17 {
    font-size:25px;
 }
   #edit_profile img {
-    width:100px; 
+    width:100px;
     height:100px;
   }
 }
@@ -1448,7 +1448,7 @@ color: #606060;
       background-color: #597ca0ff;
       margin-left:0;
       margin-bottom:150px;
-    
+
     }
 }
 
@@ -1480,7 +1480,7 @@ color: #606060;
       background-color: #597ca0ff;
       margin-left:80px;
       margin-bottom:150px;
-    
+
     }
 }
 
@@ -1512,7 +1512,7 @@ color: #606060;
       background-color: #597ca0ff;
       margin-left:60px;
       margin-bottom:150px;
-    
+
     }
 }
 /*administration*/
@@ -2068,7 +2068,7 @@ footer li{
       padding: 90px 80px 88px 80px;
     }
 
-    
+
     .contact1-pic {
       display: none;
     }
