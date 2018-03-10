@@ -11,7 +11,7 @@
 	 crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	 crossorigin="anonymous"></script>
-	 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	 crossorigin="anonymous"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
@@ -24,153 +24,154 @@
 
 <body>
 
-		<nav class="navbar navbar-expand-lg" id="myTopNav">
-				<a href="index.html" class="link_logo">
-					<img class="topnavLogo" src="images/icon.png"></img>
-				</a>
-				<div class="shop_by_category">
-					<li class="dropdown">
-						<a href="javascript:void(0)" class="dropbtn nav-link dropdown-toggle" style="color: #597ca0ff">Category</a>
-						<span class="caret"></span>
-						<div class="dropdown-content">
-							<div class="row">
-								<div class="d-block d-sm-none">
-									<a class="dropdown-item" href="#electronics">Electronics</a>
-									<a class="dropdown-item" href="#fashion">Fashion</a>
-									<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-									<a class="dropdown-item" href="#motors">Motors</a>
-									<a class="dropdown-item" href="#music">Music</a>
-									<a class="dropdown-item" href="#toys">Toys</a>
-									<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-									<a class="dropdown-item" href="#sporting">Sporting</a>
-									<a class="dropdown-item" href="#others">Others</a>
-								</div>
-								<div class="col-md-2 d-none d-sm-block">
-									<a class="dropdown-item" href="#electronics">Electronics</a>
-									<a class="dropdown-item" href="#fashion">Fashion</a>
-									<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-									<a class="dropdown-item" href="#motors">Motors</a>
-									<a class="dropdown-item" href="#music">Music</a>
-								</div>
-								<div class="col-md-2 d-none d-sm-block" style="padding-left:180px">
-									<a class="dropdown-item" href="#toys">Toys</a>
-									<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-									<a class="dropdown-item" href="#sporting">Sporting</a>
-									<a class="dropdown-item" href="#others">Others</a>
-								</div>
+	<nav class="navbar navbar-expand-lg" id="myTopNav">
+		<a href="index.html" class="link_logo">
+			<img class="topnavLogo" src="images/icon.png"></img>
+		</a>
+		<div class="shop_by_category">
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn nav-link dropdown-toggle" style="color: #597ca0ff">Category</a>
+				<span class="caret"></span>
+				<div class="dropdown-content">
+					<div class="row">
+						<div class="d-block d-sm-none">
+							<a class="dropdown-item" href="#electronics">Electronics</a>
+							<a class="dropdown-item" href="#fashion">Fashion</a>
+							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
+							<a class="dropdown-item" href="#motors">Motors</a>
+							<a class="dropdown-item" href="#music">Music</a>
+							<a class="dropdown-item" href="#toys">Toys</a>
+							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+							<a class="dropdown-item" href="#sporting">Sporting</a>
+							<a class="dropdown-item" href="#others">Others</a>
+						</div>
+						<div class="col-md-2 d-none d-sm-block">
+							<a class="dropdown-item" href="#electronics">Electronics</a>
+							<a class="dropdown-item" href="#fashion">Fashion</a>
+							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
+							<a class="dropdown-item" href="#motors">Motors</a>
+							<a class="dropdown-item" href="#music">Music</a>
+						</div>
+						<div class="col-md-2 d-none d-sm-block" style="padding-left:180px">
+							<a class="dropdown-item" href="#toys">Toys</a>
+							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+							<a class="dropdown-item" href="#sporting">Sporting</a>
+							<a class="dropdown-item" href="#others">Others</a>
+						</div>
+					</div>
+				</div>
+			</li>
+		</div>
+		<a class="navbar-brand"></a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+		 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse bg-white" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<div class="input-group stylish-input-group" id="search_bar">
+						<input type="text" class="form-control" placeholder="Search">
+						<span class="search_icon">
+							<button class="" type="submit">
+								<span class="fa fa-search" style="color:#666666"></span>
+							</button>
+						</span>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="login.html">Sign in</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="add_auction.html">Add Auction</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
+						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="row">
+				<div class="col-10">
+					<div class="container contact text-center">
+						<h2 class="section-heading text-center" style="color:#437ab2;">Contact Us</h2>
+						<hr class="style17" style="color:grey;">
+						<div class="row">
+							<div class="col">
+								<i class="fa fa-phone fa-3x mb-3 sr-contact mb-3 sr-icons" style="color: #437ab2;"></i>
+								<p style="color: #437ab2;">123-456-6789</p>
+							</div>
+							<div class="col">
+								<i class="fas fa-at fa-3x mb-3 sr-contact mb-3 sr-icons" style="color: #437ab2;"></i>
+								<p>
+									<a href="mailto:your-email@your-domain.com" style="color: #437ab2;">topbid@geral.com</a>
+								</p>
 							</div>
 						</div>
-					</li>
+					</div>
 				</div>
-				<a class="navbar-brand"></a>
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-				 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse bg-white" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-								<div class="input-group stylish-input-group" id="search_bar">
-									<input type="text" class="form-control" placeholder="Search">
-									<span class="search_icon">
-										<button class="" type="submit">
-											<span class="fa fa-search" style="color:#666666"></span>
-										</button>
-									</span>
-								</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="login.html">Sign in</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="add_auction.html">Add Auction</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
-								<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
 
-
-      <div class="contact1">
-            <div class="container-contact1">
-                <div class="row">
-                <div class="col-10" >
-                    <div class="container contact text-center">
-                            <h2 class="section-heading text-center" style="color:#437ab2;">Contact Us</h2>
-                            <hr class="style17" style="color:grey;">
-                            <div class="row">
-                                <div class="col">
-                                <i class="fa fa-phone fa-3x mb-3 sr-contact mb-3 sr-icons" style="color: #437ab2;"></i>
-                                <p style="color: #437ab2;">123-456-6789</p>
-                            </div>
-                            <div class="col">
-                                <i class="fas fa-at fa-3x mb-3 sr-contact mb-3 sr-icons" style="color: #437ab2;"></i>
-                                <p>
-                                  <a href="mailto:your-email@your-domain.com" style="color: #437ab2;">topbid@geral.com</a>
-                                </p>
-                            </div>
+				<div class="col-xl-2 col-xs-10">
+					<form class="contact1-form validate-form">
+						<span class="contact1-form-title">
+							Get in touch
+						</span>
+						<div class="wrap-input1 validate-input" data-validate="Name is required">
+							<input class="input1" type="text" name="name" placeholder="Name">
+							<span class="shadow-input1"></span>
 						</div>
-                      </div>
+
+						<div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+							<input class="input1" type="text" name="email" placeholder="Email">
+							<span class="shadow-input1"></span>
+						</div>
+
+						<div class="wrap-input1 validate-input" data-validate="Subject is required">
+							<input class="input1" type="text" name="subject" placeholder="Subject">
+							<span class="shadow-input1"></span>
+						</div>
+
+						<div class="wrap-input1 validate-input" data-validate="Message is required">
+							<textarea class="input1" name="message" placeholder="Message"></textarea>
+							<span class="shadow-input1"></span>
+						</div>
+
+						<div class="container-contact1-form-btn">
+							<button class="contact1-form-btn">
+								<span>Send Email
+									<i class="fas fa-arrow-right"></i>
+								</span>
+							</button>
+						</div>
+					</form>
 				</div>
-
-                <div class="col-xl-2 col-xs-10">
-                <form class="contact1-form validate-form">
-                    <span class="contact1-form-title">
-                        Get in touch
-                    </span>
-                    <div class="wrap-input1 validate-input" data-validate = "Name is required">
-                        <input class="input1" type="text" name="name" placeholder="Name">
-                        <span class="shadow-input1"></span>
-                    </div>
-    
-                    <div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                        <input class="input1" type="text" name="email" placeholder="Email">
-                        <span class="shadow-input1"></span>
-                    </div>
-    
-                    <div class="wrap-input1 validate-input" data-validate = "Subject is required">
-                        <input class="input1" type="text" name="subject" placeholder="Subject">
-                        <span class="shadow-input1"></span>
-                    </div>
-    
-                    <div class="wrap-input1 validate-input" data-validate = "Message is required">
-                        <textarea class="input1" name="message" placeholder="Message"></textarea>
-                        <span class="shadow-input1"></span>
-                    </div>
-    
-                    <div class="container-contact1-form-btn">
-                        <button class="contact1-form-btn">
-                            <span>Send Email
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-            </div>
-            </div>
-        </div>
-
-		<footer class="bg-4 text-center">
-			<div id="org">
-				&nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
 			</div>
-			<div id="orgInfo">
-				<li>
-					<a href="faq.html">FAQ</a>
-				</li>
-				<li>
-					<a href="about.html">About</a>
-				</li>
-				<li>
-					<a href="contact_us.html">Contact Us</a>
-				</li>
-			</div>
-		</footer>
+		</div>
+	</div>
+
+	<footer class="bg-4 text-center">
+		<div id="org">
+			&nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
+		</div>
+		<div id="orgInfo">
+			<li>
+				<a href="faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="about.html">About</a>
+			</li>
+			<li>
+				<a href="contact_us.html">Contact Us</a>
+			</li>
+		</div>
+	</footer>
 
 </body>
+
 </html>
