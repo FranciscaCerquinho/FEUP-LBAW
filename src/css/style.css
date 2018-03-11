@@ -2042,9 +2042,7 @@ footer li{
       margin: auto;
     }
 
-    .user_infomation{
-      padding-top: 100px;
-    }
+    
 
     .container-contact1 .col-8{
       margin: auto;
@@ -2065,6 +2063,10 @@ footer li{
 
     .container-contact1 .col-10{
       margin: auto;
+    }
+
+    .user_infomation{
+      padding-top: 100px;
     }
 
 
