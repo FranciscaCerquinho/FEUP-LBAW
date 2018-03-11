@@ -1,9 +1,11 @@
 body {
     font: 20px Montserrat, sans-serif;
+    position: absolute;
     line-height: 1.8;
     color: #f5f6f7;
     background-color:#dfe5eb;
     min-height: 100%;
+    width: 100%;
 }
 
 /* Navigation */
@@ -2273,6 +2275,10 @@ iframe {
   color: #437ab2;
 }
 
+#loginGoogle {
+  white-space: normal;
+}
+
 /* Search Page*/
 #searchPage {
   padding-top: 100px;
@@ -2343,4 +2349,8 @@ iframe {
 
 .breadcrumb li a{
   color: #437ab2;
+}
+
+#loginPage {
+  min-height: 73.3vh;
 }
