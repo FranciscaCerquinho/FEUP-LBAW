@@ -2346,6 +2346,37 @@ iframe {
   font-weight: 100;
 }
 
+@media only screen and (max-width: 576px) {
+
+  #category_filter{
+    margin-bottom: 30px;
+  }
+
+  #searchPage img{
+    width: 250px;
+    align-content: center;
+    margin-left: 10%;
+    margin-top: 10%;
+  }
+
+  #searchPage .card {
+    width: 300px;
+    left: 15%;
+  }
+}
+
+@media only screen and (width: 755px) {
+  #category_filter{
+    margin-bottom: 30px;
+  }
+
+}
+
+@media only screen and (min-width: 577px) {
+  #category_filter{
+    margin-bottom: 30px;
+  }
+}
 /* Breacrumb */
 .breadcrumb li{
   color: #437ab2;
