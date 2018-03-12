@@ -2409,13 +2409,15 @@ iframe {
 #loginPage {
   min-height: 73.3vh;
   margin-top: 80px;
+  margin-bottom: 50px;
   align-content: center;
-  
+  margin-left: 30px;
+  padding-right: 0;
 }
 
 @media only screen and (min-width: 576px) {
 #button_login{
-  margin-left: 140px;
+  margin-left: 190px;
 }
 }
 
