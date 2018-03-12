@@ -2357,4 +2357,20 @@ iframe {
 
 #loginPage {
   min-height: 73.3vh;
+  margin-top: 80px;
+  align-content: center;
+  
+}
+
+@media only screen and (min-width: 576px) {
+#button_login{
+  margin-left: 140px;
+}
+}
+
+@media only screen and (max-width: 576px) {
+
+  #button_login{
+    margin-left: 100px;
+  }
 }
