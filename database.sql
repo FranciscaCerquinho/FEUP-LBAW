@@ -14,7 +14,9 @@ CREATE TABLE user(
 CREATE TABLE bid(
   id SERIAL NOT NULL,
   status BOOLEAN,
-  price FLOAT
+  price FLOAT,
+  id_auction INTEGER NOT NULL,
+  id_user INTEGER NOT NULL
 );
 
 CREATE TABLE auction(
@@ -27,16 +29,18 @@ CREATE TABLE auction(
 );
 
 CREATE TABLE comment(
-  id SERIAL NOT NULL,
   "like" INTEGER,
   dislike INTEGER,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  comment text NOT NULL
+  comment text NOT NULL,
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL
 );
 
 CREATE TABLE reportUser(
   id SERIAL NOT NULL,
-  reason text NOT NULL
+  reason text NOT NULL,
+  id_user INTEGER NOT NULL
 );
 
 CREATE TABLE reportAuction(
@@ -66,9 +70,13 @@ CREATE TABLE wishList(
   follow BOOLEAN
 );
 
-CREATE TABLE category (
+CREATE TABLE category(
     id_auction INTEGER NOT NULL,
     CATEGORY text NOT NULL,
     CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 'Toys'::text,
       'Toys'::text, 'Daily Deals'::text, 'Sporting'::text, 'Others'::text])))
 );
+
+-- Primary Keys and Uniques
+
+-- Foreign Keys
