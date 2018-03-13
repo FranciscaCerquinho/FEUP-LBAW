@@ -13,7 +13,7 @@ CREATE TABLE user(
 
 CREATE TABLE bid(
   id SERIAL NOT NULL,
-  status BOOLEAN,
+  status BOOLEAN NOT NULL,
   price FLOAT,
   id_auction INTEGER NOT NULL,
   id_user INTEGER NOT NULL
@@ -50,12 +50,14 @@ CREATE TABLE reportAuction(
 
 CREATE TABLE banUser(
   id_admin INTEGER NOT NULL,
-  id_user INTEGER NOT NULL
+  id_user INTEGER NOT NULL,
+  isBanned BOOLEAN NOT NULL
 );
 
 CREATE TABLE banAuction(
   id_admin INTEGER NOT NULL,
-  id_auction INTEGER NOT NULL
+  id_auction INTEGER NOT NULL,
+  isBanned BOOLEAN NOT NULL
 );
 
 CREATE TABLE owner(
@@ -67,7 +69,7 @@ CREATE TABLE wishList(
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  follow BOOLEAN
+  follow BOOLEAN NOT NULL
 );
 
 CREATE TABLE category(
