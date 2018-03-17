@@ -49,13 +49,12 @@ CREATE TABLE reportAuction(
 );
 
 CREATE TABLE banUser(
-  id_admin INTEGER NOT NULL,
   id_user INTEGER NOT NULL,
   isBanned BOOLEAN NOT NULL
 );
 
 CREATE TABLE banAuction(
-  id_admin INTEGER NOT NULL,
+  id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
   isBanned BOOLEAN NOT NULL
 );
@@ -80,5 +79,35 @@ CREATE TABLE category(
 );
 
 -- Primary Keys and Uniques
+
+ALTER TABLE ONLY user
+  ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY auction
+  ADD CONSTRAINT auction_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY bid
+  ADD CONSTRAINT bid_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY comment
+  ADD CONSTRAINT comment_pkey PRIMARY KEY (id_user, id_auction);
+
+ALTER TABLE ONLY reportUser
+  ADD CONSTRAINT reportUser_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY reportAuction
+  ADD CONSTRAINT reportAuction_pkey PRIMARY KEY (id_user,id_auction);
+
+ALTER TABLE ONLY banUser
+  ADD CONSTRAINT banUser_pkey PRIMARY KEY (id_user);
+
+ALTER TABLE ONLY banAuction
+  ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id_user,id_auction);
+
+ALTER TABLE ONLY owner
+  ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
+
+ALTER TABLE ONLY wishList
+  ADD CONSTRAINT wishList_pkey PRIMARY KEY (id_user, id_auction);
 
 -- Foreign Keys
