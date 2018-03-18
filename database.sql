@@ -74,7 +74,7 @@ CREATE TABLE wishList(
 CREATE TABLE category(
     id_auction INTEGER NOT NULL,
     CATEGORY text NOT NULL,
-    CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 'Toys'::text,
+    CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 
       'Toys'::text, 'Daily Deals'::text, 'Sporting'::text, 'Others'::text])))
 );
 
