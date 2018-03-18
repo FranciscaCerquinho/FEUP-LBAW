@@ -111,3 +111,24 @@ ALTER TABLE ONLY wishList
   ADD CONSTRAINT wishList_pkey PRIMARY KEY (id_user, id_auction);
 
 -- Foreign Keys
+
+ALTER TABLE ONLY bid
+    ADD CONSTRAINT bid_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY bid
+    ADD CONSTRAINT bid_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
+ALTER TABLE ONLY category
+    ADD CONSTRAINT category_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY comment
+    ADD CONSTRAINT comment_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY comment
+    ADD CONSTRAINT comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
+ALTER TABLE ONLY wishlist
+    ADD CONSTRAINT wishlist_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY wishlist
+    ADD CONSTRAINT wishlist_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
