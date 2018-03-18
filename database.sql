@@ -112,6 +112,15 @@ ALTER TABLE ONLY wishList
 
 -- Foreign Keys
 
+ALTER TABLE ONLY banauction
+    ADD CONSTRAINT banauction_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY banauction
+    ADD CONSTRAINT banauction_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
+ALTER TABLE ONLY banuser
+    ADD CONSTRAINT banuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
 ALTER TABLE ONLY bid
     ADD CONSTRAINT bid_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
 
@@ -127,8 +136,24 @@ ALTER TABLE ONLY comment
 ALTER TABLE ONLY comment
     ADD CONSTRAINT comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
 
+ALTER TABLE ONLY owner
+    ADD CONSTRAINT owner_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY owner
+    ADD CONSTRAINT owner_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
+ALTER TABLE ONLY reportauction
+    ADD CONSTRAINT reportauction_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY reportauction
+    ADD CONSTRAINT reportauction_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
+ALTER TABLE ONLY reportuser
+    ADD CONSTRAINT reportuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
 ALTER TABLE ONLY wishlist
     ADD CONSTRAINT wishlist_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
 
 ALTER TABLE ONLY wishlist
     ADD CONSTRAINT wishlist_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
