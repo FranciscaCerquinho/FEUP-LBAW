@@ -1,5 +1,5 @@
 ---Tables
-CREATE TABLE user(
+CREATE TABLE users(
   id SERIAL NOT NULL,
   email text NOT NULL UNIQUE,
   password text NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE user(
   photo text,
   adress text,
   country text,
-  contact NUMERIC(14,17),
+  contact NUMERIC(17,14),
   type text NOT NULL
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE auction(
   name text NOT NULL,
   description text,
   buyNow FLOAT NOT NULL,
-  active NOT NULL
+  active BOOLEAN NOT NULL
 );
 
 CREATE TABLE comment(
@@ -80,7 +80,7 @@ CREATE TABLE category(
 
 -- Primary Keys and Uniques
 
-ALTER TABLE ONLY user
+ALTER TABLE ONLY users
   ADD CONSTRAINT user_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY auction
