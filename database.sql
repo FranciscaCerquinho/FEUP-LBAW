@@ -19,14 +19,15 @@ CREATE TABLE bid(
   id_user INTEGER NOT NULL
 );
 
-CREATE TABLE auction(
-  id SERIAL NOT NULL,
-  "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+CREATE TABLE auction (
+  id integer NOT NULL,
+  date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
   name text NOT NULL,
   description text,
-  buyNow FLOAT NOT NULL,
-  active BOOLEAN NOT NULL
+  buynow double precision NOT NULL,
+  active boolean NOT NULL
 );
+
 
 CREATE TABLE comment(
   "like" INTEGER,
@@ -59,7 +60,7 @@ CREATE TABLE banAuction(
   isBanned BOOLEAN NOT NULL
 );
 
-CREATE TABLE owner(
+CREATE TABLE "owner"(
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL
 );
@@ -76,6 +77,11 @@ CREATE TABLE category(
     CATEGORY text NOT NULL,
     CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 
       'Toys'::text, 'Daily Deals'::text, 'Sporting'::text, 'Others'::text])))
+);
+
+CREATE TABLE buyNow (
+    id_user integer NOT NULL,
+    id_auction integer NOT NULL
 );
 
 -- Primary Keys and Uniques
@@ -109,6 +115,9 @@ ALTER TABLE ONLY owner
 
 ALTER TABLE ONLY wishList
   ADD CONSTRAINT wishList_pkey PRIMARY KEY (id_user, id_auction);
+
+ALTER TABLE ONLY buyNow
+    ADD CONSTRAINT buynow_pkey PRIMARY KEY (id_user, id_auction);
 
 -- Foreign Keys
 
@@ -157,3 +166,8 @@ ALTER TABLE ONLY wishlist
 ALTER TABLE ONLY wishlist
     ADD CONSTRAINT wishlist_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
 
+ALTER TABLE ONLY buynow
+    ADD CONSTRAINT buynow_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+
+ALTER TABLE ONLY buynow
+    ADD CONSTRAINT buynow_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
