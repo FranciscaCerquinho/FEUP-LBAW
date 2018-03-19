@@ -11,6 +11,11 @@ CREATE TABLE users(
   type text NOT NULL
 );
 
+CREATE TABLE admin(
+  id SERIAL NOT NULL,
+  id_user INTEGER NOT NULL
+);
+
 CREATE TABLE bid(
   id SERIAL NOT NULL,
   status BOOLEAN NOT NULL,
@@ -41,7 +46,8 @@ CREATE TABLE comment(
 CREATE TABLE reportUser(
   id SERIAL NOT NULL,
   reason text NOT NULL,
-  id_user INTEGER NOT NULL
+  id_user INTEGER NOT NULL,
+  id_admin INTEGER NOT NULL
 );
 
 CREATE TABLE reportAuction(
@@ -89,6 +95,9 @@ CREATE TABLE buyNow (
 ALTER TABLE ONLY users
   ADD CONSTRAINT user_pkey PRIMARY KEY (id);
 
+ALTER TABLE ONLY admin
+  ADD CONSTRAINT admin_pkey PRIMARY KEY (id,id_user);
+
 ALTER TABLE ONLY auction
   ADD CONSTRAINT auction_pkey PRIMARY KEY (id);
 
@@ -120,6 +129,9 @@ ALTER TABLE ONLY buyNow
     ADD CONSTRAINT buynow_pkey PRIMARY KEY (id_user, id_auction);
 
 -- Foreign Keys
+
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT admin_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
 
 ALTER TABLE ONLY banauction
     ADD CONSTRAINT banauction_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
@@ -159,6 +171,9 @@ ALTER TABLE ONLY reportauction
 
 ALTER TABLE ONLY reportuser
     ADD CONSTRAINT reportuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+
+ALTER TABLE ONLY reportuser
+    ADD CONSTRAINT reportuser_id_admin_fkey FOREIGN KEY (id_admin) REFERENCES admin(id);
 
 ALTER TABLE ONLY wishlist
     ADD CONSTRAINT wishlist_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
