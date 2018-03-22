@@ -8,7 +8,6 @@ CREATE TABLE users(
   adress text,
   country text,
   contact NUMERIC(17,14),
-  type text NOT NULL
 );
 
 CREATE TABLE admin(
@@ -26,15 +25,19 @@ CREATE TABLE bid(
 
 CREATE TABLE auction (
   id integer NOT NULL,
-  date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
   name text NOT NULL,
   description text,
+  actual price double precision NOT NULL,
+  photo text NOT NULL,
   buynow double precision NOT NULL,
   active boolean NOT NULL
 );
 
 
 CREATE TABLE comment(
+  id SERIAL NOT NULL,
   "like" INTEGER,
   dislike INTEGER,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
@@ -46,24 +49,28 @@ CREATE TABLE comment(
 CREATE TABLE reportUser(
   id SERIAL NOT NULL,
   reason text NOT NULL,
-  id_user INTEGER NOT NULL,
-  id_admin INTEGER NOT NULL
+  userReported INTEGER NOT NULL,
+  userReporting INTEGER NOT NULL
 );
 
 CREATE TABLE reportAuction(
   id_user INTEGER NOT NULL,
-  id_auction INTEGER NOT NULL
+  id_auction INTEGER NOT NULL,
 );
 
 CREATE TABLE banUser(
   id_user INTEGER NOT NULL,
-  isBanned BOOLEAN NOT NULL
+  isBanned BOOLEAN NOT NULL,
+  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
+
 );
 
 CREATE TABLE banAuction(
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
-  isBanned BOOLEAN NOT NULL
+  isBanned BOOLEAN NOT NULL,
+  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "owner"(
@@ -105,7 +112,7 @@ ALTER TABLE ONLY bid
   ADD CONSTRAINT bid_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY comment
-  ADD CONSTRAINT comment_pkey PRIMARY KEY (id_user, id_auction);
+  ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY reportUser
   ADD CONSTRAINT reportUser_pkey PRIMARY KEY (id);
