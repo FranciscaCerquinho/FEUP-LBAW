@@ -56,6 +56,7 @@ CREATE TABLE reportUser(
 CREATE TABLE reportAuction(
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
+  reason text NOT NULL
 );
 
 CREATE TABLE banUser(
