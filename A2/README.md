@@ -91,7 +91,7 @@ can finish the auction
  ### Technical requirements
  
  Identifier    | Name                        |  Description                                                                   
- --------------|-----------------------------|------------------------------------------------------------------------------- -----------------------------
+ --------------|-----------------------------|------------------------------------------------------------------------------------------------------------
   TR01         | Availability                | The system must be available 99 percent of the time in each 24-hour
 period
   TR02         | Accessibility               | The system must ensure that everyone can access the pages, regardless of whether they have any handicap or not, or the Web browser they use
