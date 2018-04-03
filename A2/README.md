@@ -78,8 +78,7 @@ requirements on the project.
 
 Identifier    | Name                        |  Description                                                                     
 --------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- BR01         | Ownership                   | Only a user from the same site that the creator of the item (Owner)
-can finish the auction
+ BR01         | Ownership                   | Only a user from the same site that the creator of the item (Owner) can finish the auction
  BR02         | Registered customers        | Only registered customers can buy products
  BR03         | Available auctions          | I can only buy products available in auctions that haven’t finished
  BRO4         | Auction time                | The system must be prepared to end the auction by the stipulated date, even if there are no buyers.When a Bid is made in a auction with a time left under than 30 seconds,the time of auction restarts at 30 seconds.
@@ -92,12 +91,10 @@ can finish the auction
  
  Identifier    | Name                        |  Description                                                                   
  --------------|-----------------------------|------------------------------------------------------------------------------------------------------------
-  TR01         | Availability                | The system must be available 99 percent of the time in each 24-hour
-period
+  TR01         | Availability                | The system must be available 99 percent of the time in each 24-hour period
   TR02         | Accessibility               | The system must ensure that everyone can access the pages, regardless of whether they have any handicap or not, or the Web browser they use
   TR03         | Usability                   | The system should be simple and easy to use
-  TR04         | Performance                 | The system should have response times shorter than 2s to ensure
-the user's attention
+  TR04         | Performance                 | The system should have response times shorter than 2s to ensure the user's attention
   TR05         | Web application             | The system should be implemented as a Web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP)
   TR06         | Portability                 | The server-side system should work across multiple platforms (Linux, Mac OS, etc.)
   TR07         | Database                    | The PostgreSQL 9.4 database management system must be used
