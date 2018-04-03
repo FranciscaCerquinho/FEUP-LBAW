@@ -1,4 +1,4 @@
-### A2: Actors and User stories
+## A2: Actors and User stories
 
 <img width="350" alt="captura de ecra 2018-04-03 as 23 17 13" src="https://user-images.githubusercontent.com/22794956/38278742-303537e8-3795-11e8-949d-5115da82811d.png">
 
