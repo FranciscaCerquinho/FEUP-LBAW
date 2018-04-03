@@ -1,5 +1,7 @@
 ### A2: Actors and User stories
 
+<img width="378" alt="captura de ecra 2018-04-03 as 18 56 27" src="https://user-images.githubusercontent.com/22794956/38278669-ee0a9b74-3794-11e8-81c8-fc9c5cc99836.png">
+
 ### Actors
 
 Identifier    | Description                                                                                                                                                           | Examples
