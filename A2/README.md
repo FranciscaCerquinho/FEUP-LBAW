@@ -76,7 +76,46 @@ requirements on the project.
 
 ### Business rules
 
-
+Identifier    | Name                        |  Description                                                                     
+--------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ BR01         | Ownership                   | Only a user from the same site that the creator of the item (Owner)
+can finish the auction
+ BR02         | Registered customers        | Only registered customers can buy products
+ BR03         | Available auctions          | I can only buy products available in auctions that haven’t finished
+ BRO4         | Auction time                | The system must be prepared to end the auction by the stipulated date, even if there are no buyers.When a Bid is made in a auction with a time left under than 30 seconds,the time of auction restarts at 30 seconds.
+ BR05         | Ban user                    | The system will ban a user that use offensive messages or comments in auctions and excessive reports.
+ BR06         | Ban auction                 | The system will ban an auction because is offensive or illegal
  
+ Table 7: Business rules
+ 
+ ### Technical requirements
+ 
+ Identifier    | Name                        |  Description                                                                   
+ --------------|-----------------------------|------------------------------------------------------------------------------- -----------------------------
+  TR01         | Availability                | The system must be available 99 percent of the time in each 24-hour
+period
+  TR02         | Accessibility               | The system must ensure that everyone can access the pages, regardless of whether they have any handicap or not, or the Web browser they use
+  TR03         | Usability                   | The system should be simple and easy to use
+  TR04         | Performance                 | The system should have response times shorter than 2s to ensure
+the user's attention
+  TR05         | Web application             | The system should be implemented as a Web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP)
+  TR06         | Portability                 | The server-side system should work across multiple platforms (Linux, Mac OS, etc.)
+  TR07         | Database                    | The PostgreSQL 9.4 database management system must be used
+  TR08         | Security                    | The system shall protect information from unauthorised access through the use of an authentication and verification system
+  TR09         | Robustness                  | The system must be prepared to handle and continue operating when runtime errors occur
+  TR10         | Scalability                 | The system must be prepared to deal with the growth in the number of users and their actions
+  TR11         | Ethics                      | The system must respect the ethical principles in software development (for example, the password must be stored encrypted to ensure that only the owner knows it)
+  
+  Table 8: Technical requirements
+  
+  ### Restrictions
+ 
+ Identifier    | Name                        |  Description                                                                   
+ --------------|-----------------------------|------------------------------------------------------------------------------- 
+ C01           | Deadline                    |  Project delivery until deadline
+ 
+ Table 9: Restrictions
+ 
+
  
  
