@@ -1,3 +1,308 @@
+CREATE TABLE users(
+  id SERIAL NOT NULL,
+  email text NOT NULL UNIQUE,
+  password text NOT NULL,
+  name text,
+  photo text,
+  adress text,
+  country text,
+  contact NUMERIC(17,14),
+  type text NOT NULL
+);
+ 
+CREATE TABLE admin(
+  id SERIAL NOT NULL,
+  id_user INTEGER NOT NULL
+);
+ 
+CREATE TABLE bid(
+  id SERIAL NOT NULL,
+  status BOOLEAN NOT NULL,
+  price FLOAT,
+  id_auction INTEGER NOT NULL,
+  id_user INTEGER NOT NULL
+);
+ 
+CREATE TABLE auction (
+  id integer NOT NULL,
+  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  name text NOT NULL,
+  description text,
+  actualPrice double precision NOT NULL,
+  photo text NOT NULL,
+  buynow double precision NOT NULL,
+  active boolean NOT NULL
+);
+ 
+CREATE TABLE comment(
+  id SERIAL NOT NULL,
+  "like" INTEGER,
+  dislike INTEGER,
+  "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  comment text NOT NULL,
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL
+); 
+ 
+CREATE TABLE reportUser(
+  id SERIAL NOT NULL,
+  reason text NOT NULL,
+  id_userReporting INTEGER NOT NULL,
+  id_userReported INTEGER NOT NULL
+);
+ 
+CREATE TABLE reportAuction(
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL,
+  reason text NOT NULL,
+);
+ 
+CREATE TABLE banUser(
+  id SERIAL NOT NULL,
+  id_user INTEGER NOT NULL,
+  id_admin  INTEGER NOT NULL,
+  isBanned BOOLEAN NOT NULL,
+  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
+);
+ 
+CREATE TABLE banAuction(
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL,
+  isBanned BOOLEAN NOT NULL,
+  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
+);
+ 
+CREATE TABLE “owner”(
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL
+);
+ 
+CREATE TABLE wishList(
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL,
+  "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  follow BOOLEAN NOT NULL
+);
+ 
+CREATE TABLE category(
+    id_auction INTEGER NOT NULL,
+    CATEGORY text NOT NULL,
+    CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 'Toys'::text, 'Daily Deals'::text, 'Sporting'::text, 'Others'::text]))));
+ 
+CREATE TABLE buyNow(
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL
+);
+
+
+- Primary Keys and Uniques
+ 
+ALTER TABLE ONLY users
+  ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+ 
+ALTER TABLE ONLY admin
+  ADD CONSTRAINT user_pkey PRIMARY KEY (id,id_user);
+ 
+ALTER TABLE ONLY auction
+  ADD CONSTRAINT auction_pkey PRIMARY KEY (id);
+ 
+ALTER TABLE ONLY bid
+  ADD CONSTRAINT bid_pkey PRIMARY KEY (id);
+ 
+ALTER TABLE ONLY comment
+  ADD CONSTRAINT comment_pkey PRIMARY KEY (id_user, id_auction);
+ 
+ALTER TABLE ONLY reportUser
+  ADD CONSTRAINT reportUser_pkey PRIMARY KEY (id);
+ 
+ALTER TABLE ONLY reportAuction
+  ADD CONSTRAINT reportAuction_pkey PRIMARY KEY (id_user,id_auction);
+ 
+ALTER TABLE ONLY banUser
+  ADD CONSTRAINT banUser_pkey PRIMARY KEY (id_user);
+ 
+ALTER TABLE ONLY banAuction
+  ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id_user,id_auction);
+ALTER TABLE ONLY owner
+  ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
+ 
+ALTER TABLE ONLY wishList
+  ADD CONSTRAINT wishList_pkey PRIMARY KEY (id_user, id_auction);
+ 
+ALTER TABLE ONLY buyNow
+  ADD CONSTRAINT buynow_pkey PRIMARY KEY (id_user, id_auction);
+ 
+ 
+-- Foreign Keys
+ 
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT admin_id_auction_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY banauction
+    ADD CONSTRAINT banauction_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY banauction
+    ADD CONSTRAINT banauction_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ 
+ALTER TABLE ONLY banuser
+    ADD CONSTRAINT banuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY bid
+    ADD CONSTRAINT bid_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY bid
+    ADD CONSTRAINT bid_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY category
+    ADD CONSTRAINT category_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY comment
+  ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
+ 
+ALTER TABLE ONLY comment
+    ADD CONSTRAINT comment_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY comment
+    ADD CONSTRAINT comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY owner
+    ADD CONSTRAINT owner_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY owner
+    ADD CONSTRAINT owner_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY reportauction
+    ADD CONSTRAINT reportauction_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY reportauction
+    ADD CONSTRAINT reportauction_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY reportuser
+    ADD CONSTRAINT reportuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY wishlist
+    ADD CONSTRAINT wishlist_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY wishlist
+    ADD CONSTRAINT wishlist_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+ 
+ALTER TABLE ONLY buynow
+    ADD CONSTRAINT buynow_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(id);
+ 
+ALTER TABLE ONLY buynow
+    ADD CONSTRAINT buynow_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
+- INDEXES
+CREATE INDEX email_user ON "users" USING hash (email);
+CREATE INDEX auctions ON auction USING hash (id);
+CREATE INDEX wishList_auction ON wishList USING hash (id_auction);
+CREATE INDEX auction_comments ON comment USING hash (id_auction);
+-- TRIGGERS and UDFs
+CREATE FUNCTION "CheckAuctionDate"() RETURNS trigger
+   LANGUAGE plpgsql
+   AS $$
+DECLARE
+   auctionDateEnd date;
+BEGIN
+   SELECT auction."dateEnd" INTO auctionDateEnd FROM auction WHERE auction.id = NEW.id_auction;
+   IF auctionDateEnd < NEW.date THEN
+       RAISE EXCEPTION 'Cannot bid on closed auction!';
+   END IF;
+   RETURN NEW;
+END;
+$$;
+ 
+CREATE TRIGGER "CheckAuctionDate"
+   BEFORE INSERT ON bid
+   FOR EACH ROW
+       EXECUTE PROCEDURE "CheckAuctionDate"();
+ 
+CREATE FUNCTION "CheckUser"() RETURNS trigger
+   LANGUAGE plpgsql
+   AS $$
+DECLARE
+   sellerId integer;
+BEGIN
+   SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.id_auction;
+      
+   IF NEW.id_user = sellerId THEN
+       RAISE EXCEPTION 'Cannot have the same buyer as its seller!';
+   END IF;
+   RETURN NEW;
+END;
+$$;
+ 
+CREATE TRIGGER "CheckUser"
+   BEFORE INSERT ON bid
+   FOR EACH ROW
+       EXECUTE PROCEDURE "CheckUser"();
+ 
+CREATE FUNCTION "CheckUser"() RETURNS trigger
+   LANGUAGE plpgsql
+   AS $$
+DECLARE
+   sellerId INTEGER;
+BEGIN
+   SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.id_auction;
+   IF NEW.id_user = sellerId THEN
+       RAISE EXCEPTION 'Cannot have the same buyer as its seller!';
+   END IF;
+   RETURN NEW;
+END;
+$$;
+ 
+CREATE TRIGGER "CheckUser"
+   BEFORE INSERT ON "buyNow"
+   FOR EACH ROW
+       EXECUTE PROCEDURE "CheckUser"();
+ 
+ 
+CREATE FUNCTION "CheckReportedUserNotAdmin"() RETURNS trigger
+   LANGUAGE plpgsql
+   AS $$
+DECLARE
+   adminCount integer;
+BEGIN
+   SELECT count(*) INTO adminCount FROM admin WHERE admin.id_user = NEW.id_user_reported;
+   IF adminCount > 0 THEN
+       RAISE EXCEPTION 'Cannot report an admin!';
+   END IF;
+   RETURN NEW;
+END;
+$$;
+ 
+CREATE TRIGGER "ReportedUserNotAdmin"
+   BEFORE INSERT ON "reportuser"
+   FOR EACH ROW
+       EXECUTE PROCEDURE "CheckReportedUserNotAdmin"();
+ 
+CREATE FUNCTION "CheckReportingNotAuctionOwner"() RETURNS trigger
+   LANGUAGE plpgsql
+   AS $$
+DECLARE
+   idOwner integer;
+BEGIN
+   SELECT owner.id_user INTO idOwner FROM auction, owner WHERE auction.id = owner.id_auction AND auction.id = NEW.id_auction;
+   IF idOwner = NEW.id_user THEN
+       RAISE EXCEPTION 'Cannot report own auction!';
+   END IF;
+   RETURN NEW;
+END;
+$$;
+ 
+CREATE TRIGGER "ReportingNotOwner"
+BEFORE INSERT ON reportauction
+FOR EACH ROW
+EXECUTE PROCEDURE "CheckReportingNotAuctionOwner"();
+
+
+
+
+
+
+
 INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Melvin Flowers','pede.Suspendisse.dui@magna.ca','neccursusaenimSuspendissealiquet','Ap #593-1560 Rhoncus. Avenue','16670680424499','Samoa','DD99828558BF504D5A1DB0E646554811');
 INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Cadman Albert','id@Integersemelit.com','neccursusaenimSuspendissealiquet','P.O. Box 854, 9268 Vehicula Road','16954062003699','Bangladesh','DHDH7439FJDHD3749DNDBF48484HFHF8');
 INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Sacha Stephens','tincidunt.nibh.Phasellus@euligula.edu','neccursusaenimSuspendissealiquet','1784 Metus Rd.','16761061088899','Reunion','DJ464837DJDJD474747DHDD74747DDFD');
