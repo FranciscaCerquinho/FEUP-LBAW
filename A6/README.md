@@ -60,10 +60,11 @@ R12           | buyNow            | hundreds            |  units per day
     <tr>
     <td colspan="2">
        <pre>
-      SELECT auction."dateBegin", auction."dateEnd", auction.name, auction.description, auction."buyNow", auction.active, auction."actualPrice", auction.photo, users.name,users.id,
-owner.id_auction,owner.id_user
-     FROM auction, users, owner
-     WHERE auction.id= $auctionID AND auction.id=owner.id_auction AND users.id=owner.id_user;
+      <b>SELECT</> auction."dateBegin", auction."dateEnd", auction.name, auction.description, auction."buyNow", 
+      auction.active, auction."actualPrice", auction.photo, users.name,users.id,
+    owner.id_auction,owner.id_user
+     <b>FROM</b> auction, users, owner
+     <b>WHERE</b> auction.id= $auctionID <b>AND</b> auction.id=owner.id_auction <b>AND</b> users.id=owner.id_user;
         </pre>
     </td>
   </tr>
@@ -86,9 +87,11 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-      SELECT wishList.follow, auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction.description, auction."actualPrice", auction.photo, auction."buyNow", auction.active, auction.id, wishList.id_user
-     FROM auction,wishList
-     WHERE wishList.id_user=$userID AND wishList.id_auction=auction.id ORDER BY auction."dateEnd";
+       <b>SELECT</b> wishList.follow, auction.name, auction."dateBegin", auction."dateEnd", auction.name, 
+       auction.description, auction."actualPrice", auction.photo, auction."buyNow", auction.active, 
+       auction.id, wishList.id_user
+     <b>FROM</b> auction,wishList
+     <b>WHERE</b> wishList.id_user=$userID AND wishList.id_auction=auction.id <b>ORDER BY</b> auction."dateEnd";
         </pre>
     </td>
   </tr>
@@ -110,9 +113,10 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-     SELECT comment.like, comment.dislike, comment.date, comment.comment, comment.id_auction, auction.id, users.id, users.name, comment.id_user
-     FROM auction,comment,users
-     WHERE auction.id=comment.id_auction AND comment.id_user = users.id;
+     <b>SELECT</b> comment.like, comment.dislike, comment.date, comment.comment, comment.id_auction, 
+     auction.id, users.id, users.name, comment.id_user
+     <b>FROM</b> auction,comment,users
+     <b>WHERE</b> auction.id=comment.id_auction <b>AND</b> comment.id_user = users.id;
         </pre>
     </td>
   </tr>
@@ -134,9 +138,9 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-     SELECT id,name
-     FROM users
-     WHERE users.email=$email AND users.password=hash($password);
+     <b>SELECT</b> id,name
+     <b>FROM</b> users
+     <b>WHERE</b> users.email=$email <b>AND</b> users.password=hash($password);
         </pre>
     </td>
   </tr>
@@ -158,9 +162,12 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-    SELECT auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction."actualPrice", auction.photo, auction.active, auction.id, category.id_auction, category.category, owner.id_user, users.name, owner.id_auction,users.id
-  FROM auction,category,owner,users
-  WHERE  owner.id_auction=auction.id  AND users.id=owner.id_user AND category.id_auction=auction.id AND category.category= $category;
+    <b>SELECT</b> auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction."actualPrice", 
+    auction.photo, auction.active, auction.id, category.id_auction, category.category, 
+    owner.id_user, users.name, owner.id_auction,users.id
+  <b>FROM</b> auction,category,owner,users
+  <b>WHERE</b>  owner.id_auction=auction.id  <b>AND</b> users.id=owner.id_user <b>AND</b> category.id_auction=auction.id 
+  <b>AND</b> category.category= $category;
         </pre>
     </td>
   </tr>
@@ -182,9 +189,12 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   SELECT auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction.active, auction.description, auction.id, auction.photo, auction."actualPrice", owner.id_user, users.name, owner.id_auction,users.id,auction.description
-  FROM auction,owner,users
-  WHERE owner.id_auction=auction.id  AND users.id=owner.id_user AND (auction.name LIKE %$search% OR auction.description LIKE %$search%);
+   <b>SELECT</b> auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction.active, 
+   auction.description, auction.id, auction.photo, auction."actualPrice", owner.id_user, users.name, 
+   owner.id_auction,users.id,auction.description
+  <b>FROM</b> auction,owner,users
+  <b>WHERE</b> owner.id_auction=auction.id  <b>AND</b> users.id=owner.id_user <b>AND</b> 
+  (auction.name <b>LIKE</b> %$search% <b>OR</b> auction.description <b>LIKE</b> %$search%);
         </pre>
     </td>
   </tr>
@@ -206,9 +216,11 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   SELECT auction.name, auction.id, users.id, auction."dateBegin",auction."dateEnd", auction."actualPrice", auction.photo,owner.id_user, owner.id_auction, users.name
-     FROM auction,owner,users
-     WHERE owner.id_user != $userID AND auction.id = owner.id_auction AND users.id=owner.id_user ORDER BY auction."dateEnd";
+   <b>SELECT</b> auction.name, auction.id, users.id, auction."dateBegin",auction."dateEnd", auction."actualPrice", 
+   auction.photo,owner.id_user, owner.id_auction, users.name
+     <b>FROM</b> auction,owner,users
+     <b>WHERE</b> owner.id_user != $userID <b>AND</b> auction.id = owner.id_auction <b>AND</b> users.id=owner.id_user 
+     <b>ORDER BY</b> auction."dateEnd";
         </pre>
     </td>
   </tr>
@@ -230,9 +242,11 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   SELECT auction.name, auction.id, users.id, auction."dateBegin",auction."dateEnd", auction."actualPrice", auction.photo,owner.id_user, owner.id_auction, users.name
-     FROM auction,owner,users
-     WHERE owner.id_user != $userID AND auction.id = owner.id_auction AND users.id=owner.id_user ORDER BY auction."dateEnd";
+   <b>SELECT</b> auction.name, auction.id, users.id, auction."dateBegin",auction."dateEnd", auction."actualPrice", 
+   auction.photo,owner.id_user, owner.id_auction, users.name
+    <b>FROM</b> auction,owner,users
+    <b>WHERE</b> owner.id_user != $userID <b>AND</b> auction.id = owner.id_auction <b>AND</b> users.id=owner.id_user 
+    <b>ORDER BY</b> auction."dateEnd";
         </pre>
     </td>
   </tr>
@@ -254,8 +268,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   SELECT *
-     FROM banuser
+   <b>SELECT</b> *
+     <b>FROM</b> banuser
         </pre>
     </td>
   </tr>
@@ -277,8 +291,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   SELECT *
-     FROM banAuction
+   <b>SELECT</b> *
+     <b>FROM</b> banAuction
         </pre>
     </td>
   </tr>
@@ -300,8 +314,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   SELECT *
-     FROM reportUser
+   <b>SELECT</b> *
+     <b>FROM</b> reportUser
         </pre>
     </td>
   </tr>
@@ -323,8 +337,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   SELECT *
-     FROM reportAuctions
+   <b>SELECT</b> *
+     <b>FROM</b> reportAuctions
         </pre>
     </td>
   </tr>
@@ -348,9 +362,10 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   UPDATE users 
-     SET email = $email, name = $name, photo = $photo, address = $address, contact = $contact, country = $country, password =hash($password)
-     WHERE id=$id
+   <b>UPDATE</b> users 
+     <b>SET</b> email = $email, name = $name, photo = $photo, address = $address, contact = $contact, country = $country, 
+     password =hash($password)
+     <b>WHERE</b> id=$id
         </pre>
     </td>
   </tr>
@@ -372,9 +387,9 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   UPDATE auction 
-     SET "actualPrice" =$actualPrice
-     WHERE id=$id
+   <b>UPDATE</b> auction 
+     <b>SET</b> "actualPrice" =$actualPrice
+     <b>WHERE</b> id=$id
         </pre>
     </td>
   </tr>
@@ -396,9 +411,9 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
- UPDATE auction 
-     SET active = FALSE
-     WHERE auction.id = $id;
+    </b>UPDATE</b> auction 
+    <b>SET</b> active = FALSE
+    <b>WHERE</b> auction.id = $id;
         </pre>
     </td>
   </tr>
@@ -420,9 +435,9 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
- UPDATE banUser
-     SET "isBanned" = $isBanned
-     WHERE id = $id
+ <b>UPDATE</b> banUser
+     <b>SET</b> "isBanned" = $isBanned
+     <b>WHERE</b> id = $id
         </pre>
     </td>
   </tr>
@@ -444,9 +459,9 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
- UPDATE banAuction
-     SET "isBanned" = $isBanned
-     WHERE id_user = $user_id AND id_auction = $id_auction
+ <b>UPDATE</b> banAuction
+     <b>SET</b> "isBanned" = $isBanned
+     <b>WHERE</b> id_user = $user_id <b>AND</b> id_auction = $id_auction
         </pre>
     </td>
   </tr>
@@ -468,8 +483,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
- DELETE FROM WishList
-     WHERE id_auction = $id_auction AND id_user = $id_user
+ <b>DELETE FROM</b> WishList
+     <b>WHERE</b> id_auction = $id_auction <b>AND</b> id_user = $id_user
         </pre>
     </td>
   </tr>
@@ -491,8 +506,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-  INSERT INTO users(name,email,address,contact,country,photo,password)
-       VALUES ($name,$email,$address, $contact, $country, $photo, $password)
+  <b>INSERT INTO</b> users(name,email,address,contact,country,photo,password)
+       <b>VALUES</b> ($name,$email,$address, $contact, $country, $photo, $password)
         </pre>
     </td>
   </tr>
@@ -514,8 +529,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
- INSERT INTO auction ("dateBegin", "dateEnd", name, description, "buyNow", "actualPrice", photo, active)
-         VALUES ($dateBegin, $dateEnd, $name, $description, $buynow, $actualPrice, $photo, TRUE);
+ <b>INSERT INTO</b> auction ("dateBegin", "dateEnd", name, description, "buyNow", "actualPrice", photo, active)
+         <b>VALUES</b> ($dateBegin, $dateEnd, $name, $description, $buynow, $actualPrice, $photo, TRUE);
         </pre>
     </td>
   </tr>
@@ -537,8 +552,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-  INSERT INTO wishList(date,follow,id_user,id_auction)
-       VALUES ($date,$follow, $id_user, $id_auction);
+  <b>INSERT INTO</b> wishList(date,follow,id_user,id_auction)
+       <b>VALUES</b> ($date,$follow, $id_user, $id_auction);
         </pre>
     </td>
   </tr>
@@ -560,8 +575,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   INSERT INTO reportUser(reason,"id_userReporting","id_userReported")
-       VALUES ($reason,$userReporting,$userReported);
+   <b>INSERT INTO</b> reportUser(reason,"id_userReporting","id_userReported")
+       <b>VALUES</b> ($reason,$userReporting,$userReported);
         </pre>
     </td>
   </tr>
@@ -583,8 +598,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-   INSERT INTO reportAuction(reason, id_user, id_auction)
-       VALUES ($reason, $id_user, $id_auction);
+   <b>INSERT INTO</b> reportAuction(reason, id_user, id_auction)
+       <b>VALUES</b> ($reason, $id_user, $id_auction);
         </pre>
     </td>
   </tr>
@@ -606,8 +621,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
-    INSERT INTO banUser("isBanned", id_user, "dateBegin", dateEnd)
-       VALUES ($isBanned, $id_user, $dateBegin, $dateEnd);
+    <b>INSERT INTO</b> banUser("isBanned", id_user, "dateBegin", dateEnd)
+       <b>VALUES</b> ($isBanned, $id_user, $dateBegin, $dateEnd);
         </pre>
     </td>
   </tr>
@@ -629,8 +644,8 @@ owner.id_auction,owner.id_user
     <tr>
     <td colspan="2">
        <pre>
- INSERT INTO banAuction("isBanned", id_user, "dateBegin", id_auction)
-       VALUES ($isBanned, $id_user, $dateBegin, $id_auction);
+ <b>INSERT INTO</> banAuction("isBanned", id_user, "dateBegin", id_auction)
+       <b>VALUES</b> ($isBanned, $id_user, $dateBegin, $id_auction);
         </pre>
     </td>
   </tr>
@@ -675,7 +690,7 @@ owner.id_auction,owner.id_user
       <tr>
     <td colspan="2">
        <pre>
-    CREATE INDEX email_user ON "users" USING hash (email);
+    <b>CREATE INDEX</b>email_user <b>ON</b> "users" <b>USING</b> hash (email);
         </pre>
     </td>
   </tr>
@@ -717,7 +732,7 @@ owner.id_auction,owner.id_user
       <tr>
     <td colspan="2">
        <pre>
-    CREATE INDEX auctions ON auction USING hash (id);
+    <b>CREATE INDEX</b> auctions <b>ON</b> auction <b>USING</b> hash (id);
         </pre>
     </td>
   </tr>
@@ -759,7 +774,7 @@ owner.id_auction,owner.id_user
       <tr>
     <td colspan="2">
        <pre>
-    CREATE INDEX wishList_auction ON wishList USING hash (id_auction);
+    <b>CREATE INDEX</b> wishList_auction <b>ON</b> wishList <b>USING</b> hash (id_auction);
         </pre>
     </td>
   </tr>
@@ -801,7 +816,7 @@ owner.id_auction,owner.id_user
       <tr>
     <td colspan="2">
        <pre>
-    CREATE INDEX auction_comments ON comment USING hash (id_auction);
+    <b>CREATE INDEX</b> auction_comments <b>ON</b> comment <b>USING</b> hash (id_auction);
         </pre>
     </td>
   </tr>
@@ -840,7 +855,7 @@ owner.id_auction,owner.id_user
   </tr>
       <tr>
     <td colspan="2">
-       <pre>CREATE INDEX search_auctions ON auction USING to_tsvector(‘pg_catalog.portuguese’, GiST(id_auction));
+       <pre><b>CREATE INDEX</b> search_auctions <b>ON</b> auction <b>USING</b> to_tsvector(‘pg_catalog.portuguese’, GiST(id_auction));
         </pre>
     </td>
   </tr>
@@ -877,7 +892,7 @@ owner.id_auction,owner.id_user
   </tr>
       <tr>
     <td colspan="2">
-       <pre>CREATE INDEX auction_category ON auction USING to_tsvector(‘pg_catalog.portuguese’, GiST(category));
+       <pre><b>CREATE INDEX</b> auction_category <b>ON</b> auction <b>USING</b> to_tsvector(‘pg_catalog.portuguese’, GiST(category));
         </pre>
     </td>
   </tr>
@@ -896,24 +911,24 @@ owner.id_auction,owner.id_user
   </tr>
       <tr>
     <td colspan="2">
-       <pre>CREATE FUNCTION "CheckAuctionDate"() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
+       <pre><b>CREATE FUNCTION</b> "CheckAuctionDate"() <b>RETURNS</b> trigger
+    <b>LANGUAGE</b> plpgsql
+    <b>AS</b> $$
+<b>DECLARE</b>
     auctionDateEnd date;
-BEGIN
-    SELECT auction."dateEnd" INTO auctionDateEnd FROM auction WHERE auction.id = NEW.id_auction;
-    IF auctionDateEnd < NEW.date THEN
-        RAISE EXCEPTION 'Cannot bid on closed auction!';
-    END IF;
-    RETURN NEW;
-END;
+<b>BEGIN</b>
+    <b>SELECT</b> auction."dateEnd" <b>INTO</b> auctionDateEnd <b>FROM</b> auction <b>WHERE</b> auction.id = NEW.id_auction;
+    <b>IF</b> auctionDateEnd < NEW.date <b>THEN</b>
+        <b>RAISE EXCEPTION</b> 'Cannot bid on closed auction!';
+    <b>END IF</b>;
+    <b>RETURN NEW;
+END;</b>
 $$;
 
-CREATE TRIGGER "CheckAuctionDate" 
-    BEFORE INSERT ON bid 
-    FOR EACH ROW 
-        EXECUTE PROCEDURE "CheckAuctionDate"();
+<b>CREATE TRIGGER</b> "CheckAuctionDate" 
+    <b>BEFORE INSERT ON</b> bid 
+    <b>FOR EACH ROW 
+        EXECUTE PROCEDURE </b>"CheckAuctionDate"();
         </pre>
     </td>
   </tr>
@@ -930,25 +945,24 @@ CREATE TRIGGER "CheckAuctionDate"
   </tr>
       <tr>
     <td colspan="2">
-       <pre>CREATE FUNCTION "CheckUser"() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
+       <pre><b>CREATE FUNCTION</b> "CheckUser"() <b>RETURNS</b> trigger
+    <b>LANGUAGE</b> plpgsql
+    <b>AS</b> $$
+<b>DECLARE</b>
     sellerId integer;
-BEGIN
-    SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.id_auction;
-        
-    IF NEW.id_user = sellerId THEN
-        RAISE EXCEPTION 'Cannot have the same buyer as its seller!';
-    END IF;
+<b>BEGIN</b>
+    <b>SELECT</b> owner.id_user <b>INTO</b> sellerId <b>FROM</b> owner <b>WHERE</b> owner.id_auction = NEW.id_auction;     
+    <b>IF</b> NEW.id_user = sellerId <b>THEN</b>
+        <b>RAISE EXCEPTION</b> 'Cannot have the same buyer as its seller!';
+    <b>END IF;
     RETURN NEW;
-END;
+END;</b>
 $$;
 
-CREATE TRIGGER "CheckUser"
-    BEFORE INSERT ON bid
-    FOR EACH ROW
-        EXECUTE PROCEDURE "CheckUser"();
+<b>CREATE TRIGGER</b>"CheckUser"
+    <b>BEFORE INSERT ON</b> bid
+    <b>FOR EACH ROW
+        EXECUTE PROCEDURE</b> "CheckUser"();
         </pre>
     </td>
   </tr>
@@ -965,24 +979,24 @@ CREATE TRIGGER "CheckUser"
   </tr>
       <tr>
     <td colspan="2">
-       <pre>CREATE FUNCTION "CheckUser"() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
-    sellerId INTEGER;
+       <pre><b>CREATE FUNCTION</b> "CheckUser"() <b>RETURNS</b> trigger
+    <b>LANGUAGE</b> plpgsql
+    <b>AS</b> $$
+<b>DECLARE</b>
+    sellerId <b>INTEGER;
 BEGIN
-    SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.id_auction;
-    IF NEW.id_user = sellerId THEN
-        RAISE EXCEPTION 'Cannot have the same buyer as its seller!';
-    END IF;
+    SELECT</b> owner.id_user <b>INTO</b> sellerId <b>FROM</b> owner <b>WHERE</b> owner.id_auction = NEW.id_auction;
+    <b>IF</b> NEW.id_user = sellerId <b>THEN</b>
+        <b>RAISE EXCEPTION</b> 'Cannot have the same buyer as its seller!';
+    <b>END IF;
     RETURN NEW;
-END;
+END;</b>
 $$;
 
-CREATE TRIGGER "CheckUser" 
-    BEFORE INSERT ON buynow
-    FOR EACH ROW 
-        EXECUTE PROCEDURE "CheckUser"();
+<b>CREATE TRIGGER</b> "CheckUser" 
+    <b>BEFORE INSERT ON</b> buynow
+    <b>FOR EACH ROW 
+        EXECUTE PROCEDURE</b> "CheckUser"();
         </pre>
     </td>
   </tr>
@@ -999,24 +1013,24 @@ CREATE TRIGGER "CheckUser"
   </tr>
       <tr>
     <td colspan="2">
-       <pre>CREATE FUNCTION "CheckReportedUserNotAdmin"() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
+       <pre><b>CREATE FUNCTION</b> "CheckReportedUserNotAdmin"() <b>RETURNS</b> trigger
+    <b>LANGUAGE</b> plpgsql
+    <b>AS</b> $$
+<b>DECLARE</b>
     adminCount integer;
-BEGIN
-    SELECT count(*) INTO adminCount FROM admin WHERE admin.id_user = NEW.id_user_reported;
-    IF adminCount > 0 THEN
-        RAISE EXCEPTION 'Cannot report an admin!';
-    END IF;
+<b>BEGIN</b>
+    <b>SELECT</b> count(*) <b>INTO</b> adminCount <b>FROM</b> admin <b>WHERE</b> admin.id_user = NEW.id_user_reported;
+    <b>IF</b> adminCount > 0 <b>THEN</b>
+       <b>RAISE EXCEPTION</b> 'Cannot report an admin!';
+    <b>END IF;
     RETURN NEW;
-END;
+END;</b>
 $$;
 
-CREATE TRIGGER "ReportedUserNotAdmin"
-    BEFORE INSERT ON reportuser
-    FOR EACH ROW
-        EXECUTE PROCEDURE "CheckReportedUserNotAdmin"();
+<b>CREATE TRIGGER</b> "ReportedUserNotAdmin"
+    <b>BEFORE INSERT ON</b> reportuser
+    <b>FOR EACH ROW
+        EXECUTE PROCEDURE</b> "CheckReportedUserNotAdmin"();
         </pre>
     </td>
   </tr>
@@ -1033,24 +1047,25 @@ CREATE TRIGGER "ReportedUserNotAdmin"
   </tr>
       <tr>
     <td colspan="2">
-       <pre>CREATE FUNCTION "CheckReportingNotAuctionOwner"() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
+       <pre><b>CREATE FUNCTION</b> "CheckReportingNotAuctionOwner"() <b>RETURNS</b> trigger
+    <b>LANGUAGE</b> plpgsql
+    <b>AS</b> $$
+<b>DECLARE</b>
     idOwner integer;
-BEGIN
-    SELECT owner.id_user INTO idOwner FROM auction, owner WHERE auction.id = owner.id_auction AND auction.id = NEW.id_auction;
-    IF idOwner = NEW.id_user THEN
-        RAISE EXCEPTION 'Cannot report own auction!';
-    END IF;
+<b>BEGIN</b>
+    <b>SELECT</b> owner.id_user INTO idOwner <b>FROM</b> auction, owner <b>WHERE</b> auction.id = owner.id_auction 
+    <b>AND</b> auction.id = NEW.id_auction;
+    <b>IF</b> idOwner = NEW.id_user THEN
+        <b>RAISE EXCEPTION</b> 'Cannot report own auction!';
+    <b>END IF;
     RETURN NEW;
-END;
+END;</b>
 $$;
 
-CREATE TRIGGER "ReportingNotOwner" 
-BEFORE INSERT ON reportauction 
-FOR EACH ROW
-EXECUTE PROCEDURE "CheckReportingNotAuctionOwner"();
+<b>CREATE TRIGGER</b> "ReportingNotOwner" 
+<b>BEFORE INSERT ON</b> reportauction 
+<b>FOR EACH ROW
+EXECUTE PROCEDURE</b> "CheckReportingNotAuctionOwner"();
         </pre>
     </td>
   </tr>
