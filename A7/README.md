@@ -118,8 +118,8 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 <tr>
     <th>Request Body</th>
-    <tr><td>+email: string</td><td>Username</td></tr>
-    <tr><td>+password: string</td><td>Password</td></tr>
+    <td><td>+email: string</td><td>Username</td></td>
+    <td><td>+password: string</td><td>Password</td></td>
   </tr>
 <tr>
     <th>Redirects</th>
