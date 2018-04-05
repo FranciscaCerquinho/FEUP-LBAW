@@ -55,7 +55,7 @@
   </tr>
 </table>
 
-###  2.Modules
+###  3.Modules
 
 ### Module M01: Authentication and Individual Profile
 
@@ -118,8 +118,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 <tr>
     <th>Request Body</th>
-    <td>+email: string</td><td>Username</td>
-    <td>+password: string</td><td>Password</td>
+    <td>+email: string<td>Username</td></td>
   </tr>
 <tr>
     <th>Redirects</th>
