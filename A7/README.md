@@ -105,24 +105,126 @@ These are the endpoints available in the Authentication and Individual Profile M
 <table>
   <tr>
     <th>URL</th>
-    <td>/login</td>
+    <td colspan=2>
+      /login
+    </td>
   </tr>
-   <tr>
+  <tr>
     <th>Description</th>
-    <td>This web resource logs the user into the system. Redirects to the user profile page on success and the login form on 
-    failure.</td>
+    <td colspan=2>
+      This web resource logs the user into the system. Redirects to the user profile page on success and the login form on failure.
+    </td>
   </tr>
-    <tr>
+  <tr>
     <th>Method</th>
-    <td>POST</td>
+    <td colspan=2>
+      POST
+    </td>
   </tr>
-<tr>
-    <th>Request Body</th>
-    <td>+email: string<td>Username</td></td>
+  <tr>
+    <th rowspan=2>Request Body</th>
+    <td>
+      +email: string
+    </td>
+    <td>
+      Email
+    </td>
   </tr>
-<tr>
-    <th>Redirects</th>
-    <tr><td></td><td></td></tr>
-    <tr><td>R101</td><td>Error</td></tr>
+  <tr>
+    <td>
+      +password:String
+    </td>
+    <td>
+      Password
+    </td>
   </tr>
+  <tr>
+    <th rowspan=2 >Redirects</th>
+    <td>
+      R106
+    </td>
+    <td>
+      Success
+    </td>
+  </tr>
+  <tr>
+    <td>
+      R101
+    </td>
+    <td>
+      Error
+    </td>
+  </tr>
+  <tr>
+    <th>Permissions</th>
+    <td colspan=2>
+      PUB
+    </td>
+  </tr>
+</table>
+
+**R103: Logout Action**
+
+<table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>
+      /logout
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2>
+      This web resource logs out the authenticated user or admin.
+    </td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>
+      POST
+    </td>
+  </tr>
+  <tr>
+    <th rowspan=2 >Redirects</th>
+    <td>
+      R101
+    </td>
+    <td>
+      Success
+    </td>
+  </tr>
+  <tr>
+    <th>Permissions</th>
+    <td colspan=2>
+      USR, ADM
+    </td>
+  </tr>
+</table>
+
+**R104: Register Form**
+<table>
+    <tr>
+        <th>URL</th>
+        <td>/register</td>
+    </tr>
+     <tr>
+        <th>Description</th>
+        <td>Page with a form to register a new user account.</td>
+    </tr>
+     <tr>
+        <th>Method</th>
+        <td>GET</td>
+    </tr>
+     <tr>
+        <th>UI</th>
+        <td>UI05</td>
+    </tr>
+    <tr>
+        <th>SUBMIT</th>
+        <td>R105</td>
+    </tr>
+    <tr>
+        <th>Permisson</th>
+        <td>PUB</td>
+    </tr>
 </table>
