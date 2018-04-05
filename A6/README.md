@@ -36,9 +36,9 @@ R12           | buyNow            | hundreds            |  units per day
     <tr>
     <td colspan="2">
        <pre>
-      SELECT name,email,photo,address,contact,country,password
-        FROM users
-        WHERE users.id= $userID;
+      <b>SELECT</b> name,email,photo,address,contact,country,password
+        <b>FROM</b> users
+        <b>WHERE</b> users.id= $userID;
         </pre>
     </td>
   </tr>
