@@ -60,7 +60,7 @@ R12           | buyNow            | hundreds            |  units per day
     <tr>
     <td colspan="2">
        <pre>
-      <b>SELECT</> auction."dateBegin", auction."dateEnd", auction.name, auction.description, auction."buyNow", 
+      <b>SELECT</></b> auction."dateBegin", auction."dateEnd", auction.name, auction.description, auction."buyNow", 
       auction.active, auction."actualPrice", auction.photo, users.name,users.id,
     owner.id_auction,owner.id_user
      <b>FROM</b> auction, users, owner
