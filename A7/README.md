@@ -682,8 +682,7 @@ These are the endpoints available in the Auctions Module.
  <table>
   <tr>
     <th>URL</th>
-    <td> /add_auction
-    </td>
+    <td> /add_auction</td>
   </tr>
   <tr>
     <th>Description</th>
@@ -694,7 +693,7 @@ These are the endpoints available in the Auctions Module.
     <td>GET</td>
   </tr>
     <tr>
-  <th>UI>
+  <th>UI</th>
   <td>U107</td>
   </tr>
    <tr>
