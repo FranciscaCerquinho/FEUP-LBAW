@@ -1,21 +1,21 @@
-## A7: Web Resources Documentation
+remaining time to auction end## A7: Web Resources Documentation
 
 ###  1. Overview
 
 <table>
     <tr>
     <th>M01: Authentication and Individual Profile</th>
-    <td>Web resources associated with user authentication and individual profile management, includes the following system 
+    <td>Web resources associated with user authentication and individual profile management, includes the following system
     features: login/logout, registration, view and edit personal profile information.</td>
   </tr>
   <tr>
     <th>M02: Auctions</th>
-    <td>Web resources associated with auctions, includes the following system features: auctions list, search and view auction 
+    <td>Web resources associated with auctions, includes the following system features: auctions list, search and view auction
     details and comment auction.</td>
   </tr>
   <tr>
     <th>M03: Wish list</th>
-    <td>Web resources associated with wish list, includes the following system features: add/remove auctions 
+    <td>Web resources associated with wish list, includes the following system features: add/remove auctions
     to/from wish list.</td>
   </tr>
     <tr>
@@ -24,8 +24,8 @@
   </tr>
   <tr>
     <th>M05: User and Auction Administration and Static pages</th>
-    <td>Web resources associated with user management, specifically: view users, report users and ban users; Web resources 
-    associated with auction management: view auctions, report auctions and ban auctions; Web resources with static content are 
+    <td>Web resources associated with user management, specifically: view users, report users and ban users; Web resources
+    associated with auction management: view auctions, report auctions and ban auctions; Web resources with static content are
     associated with this module: about, contact and FAQ.</td>
   </tr>
 </table>
@@ -237,7 +237,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
   <tr>
     <th>Description</th>
-    <td colspan=2 >This web resource inserts the user into the system. Redirects to user profile on success and the register 
+    <td colspan=2 >This web resource inserts the user into the system. Redirects to user profile on success and the register
         form on failure.</td>
   </tr>
   <tr>
@@ -397,7 +397,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
   <tr>
     <th>Description</th>
-    <td colspan=2 >Web resource that changes user profile info based on the input received. 
+    <td colspan=2 >Web resource that changes user profile info based on the input received.
         Redirects to the user profile on success and edit profile on failure.</td>
   </tr>
   <tr>
@@ -490,19 +490,318 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 </table>
 
-### Module M02: Works
+### Module M02: Auctions
 
-Endpoints of Module Works
-These are the endpoints available in the Works Module.
+Endpoints of Module Auctions
+These are the endpoints available in the Auctions Module.
 
-* R201: Search Work Page /works
-* R202: Search Work API /api/works
-* R203: View Work /works/{id}
-* R204: Add Work Form /works/create
-* R205: Add Work Action /works
-* R206: Edit Work Form /works/{id}/edit
-* R207: Edit Work Action /works/{id}
-* R208: Add Item Form /works/{id}/items/create
-* R209: Add Item Action /works/{id}/items
-* R210: Delete Work Action /works/{id}
-* R211: Delete Item Action /works/{id}/items/{id}
+* R201: Search Auction Page /search/{id}
+* R202: Search Auction By Category /search_category/{id}
+* R203: View Auction /item/{id}
+* R204: Add Auction Form /add_auction
+* R205: Add Auction Action /add_auction
+
+**R201: Search Auction Page**
+
+<table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>/search/{id}
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >Page when searching for an auction through navbar</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>GET</td>
+  </tr>
+   <tr>
+    <th rowspan=6>Parameters</th>
+    <td>?query: string</td>
+    <td>String field to search for in auctions</td>
+  </tr>
+  <tr>
+    <td>
+      	?item: string
+    </td>
+    <td>
+      Auction name
+    </td>
+  </tr>
+    <tr>
+    <td>
+      ?ActualPrice: float
+    </td>
+    <td>
+      Auction actual price
+    </td>
+  </tr>
+       <tr>
+    <td>
+      ?time: integer
+    </td>
+    <td>
+      Remaining time to the end
+      of the auction
+    </td>
+  </tr>
+       <tr>
+    <td>
+      ?owner:string
+    </td>
+    <td>
+      Owner name
+    </td>
+  </tr>
+           <tr>
+    <td>
+    ?available: boolean
+    </td>
+    <td>
+      Boolean with the available auction lable
+    </td>
+  </tr>
+    <tr>
+    <th>UI</th>
+    <td colspan=2>UI109</td>
+  </tr>
+      <tr>
+    <th>AJAX Calls</th>
+    <td colspan=2>R202</td>
+  </tr>
+      <tr>
+    <th>Permissons</th>
+    <td colspan=2>PUB</td>
+  </tr>
+</table>
+
+**R202: Search Auction By Category**
+
+<table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>/search_category/{id}
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >Page when searching for an auction by category 
+    through navbar</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>GET</td>
+  </tr>
+   <tr>
+    <th rowspan=6>Parameters</th>
+    <td>?query: string</td>
+    <td>String field to search for in auctions</td>
+  </tr>
+  <tr>
+    <td>
+      	?item: string
+    </td>
+    <td>
+      Auction name
+    </td>
+  </tr>
+    <tr>
+    <td>
+      ?ActualPrice: float
+    </td>
+    <td>
+      Auction actual price
+    </td>
+  </tr>
+       <tr>
+    <td>
+      ?time: integer
+    </td>
+    <td>
+      Remaining time to the end
+      of the auction
+    </td>
+  </tr>
+       <tr>
+    <td>
+      ?owner:string
+    </td>
+    <td>
+      Owner name
+    </td>
+  </tr>
+           <tr>
+    <td>
+    ?available: boolean
+    </td>
+    <td>
+      Boolean with the available auction lable
+    </td>
+  </tr>
+    <tr>
+    <th>Response body</th>
+    <td colspan=2>JSON202</td>
+  </tr>
+      <tr>
+    <th>Permissons</th>
+    <td colspan=2>PUB</td>
+  </tr>
+</table>
+
+**R203: View Auction**
+
+<table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2> /item/{id}
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >Show the auction page</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>GET</td>
+  </tr>
+   <tr>
+    <th rowspan=1>Parameters</th>
+    <td>+id: integer</td>
+    <td>Auction primary key.</td>
+  </tr>
+  <tr>
+    <th>Permissons</th>
+    <td colspan=2>PUB</td>
+  </tr>
+</table>
+
+**R204: Add Auction Form**
+
+ <table>
+  <tr>
+    <th>URL</th>
+    <td> /add_auction
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td >Page with a form to post a new auction.</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td>GET</td>
+  </tr>
+    <tr>
+  <th>UI>
+  <td>U107</td>
+  </tr>
+   <tr>
+    <th>SUBMIT</th>
+    <td>R205</td>
+  </tr>
+  <tr>
+    <th>Permissons</th>
+    <td>USR</td>
+  </tr>
+</table>
+
+**R205: Add Auction Action**
+ /add_auction
+ <table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>/add_auction
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >Web resource that creates a new auction based on the 
+    input received. Redirects to the new auction page on success and back 
+    to new auction form on failure.</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>POST</td>
+  </tr>
+   <tr>
+    <th rowspan=7>Request Body</th>
+    <td>+name: string</td>
+    <td>Name of the Auction</td>
+  </tr>
+  <tr>
+    <td>
+      +category: string	
+    </td>
+    <td>
+      Auction category
+    </td>
+  </tr>
+    <tr>
+    <td>
+      +des:string
+    </td>
+    <td>
+      Description of the Auction
+    </td>
+  </tr>
+       <tr>
+    <td>
+      +inicialPrice:float
+    </td>
+    <td>
+      Initial price of the Auction
+    </td>
+  </tr>
+       <tr>
+    <td>
+      +EndDate: string
+    </td>
+    <td>
+      End of Auction date
+    </td>
+  </tr>
+           <tr>
+    <td>
+    +photo:string
+    </td>
+    <td>
+      Auction photo
+    </td>
+  </tr>
+        <tr>
+    <td>
+    ?ownerName:name
+    </td>
+    <td>
+      Auction owner name
+    </td>
+  </tr>
+    <tr>
+    <th rowspan=2>Redirects</th>
+    <td>R203</td>
+    <td>SUCESS</td>
+  </tr>
+   <tr>
+    <td>R204</td>
+    <td>ERROR</td>
+  </tr>
+      <tr>
+    <th>Permissons</th>
+    <td colspan=2>USR,OWN</td>
+  </tr>
+</table>
+
+### Module M03: Reviews and Wish list
+
+Endpoints of Module Reviews and Wish list
+These are the endpoints available in the Reviews and Wish list Module.
+
+* R301: View Reviews /auction/{id}/reviews
+* R302: Add Review /works/{id}/reviews
+* R303: Edit Review /works/{work_id}/reviews/{review_id}
+* R304: Delete Review /works/{id}/reviews/{id}
+* R305: View Wish list /users/{id}/wishlist
+* R306: Add to Wish list /users/{id}/wishlist/works/{id}
+* R307: Remove from Wish list /users/{id}/wishlist/works/{id}
