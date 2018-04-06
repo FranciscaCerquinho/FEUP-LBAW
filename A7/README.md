@@ -708,7 +708,7 @@ These are the endpoints available in the Auctions Module.
 </table>
 
 **R205: Add Auction Action**
- /add_auction
+
  <table>
   <tr>
     <th>URL</th>
