@@ -947,6 +947,130 @@ These are the endpoints available in the Reviews and Wish list Module.
 * R306: Add to Wish list /users/{id}/wishlist/works/{id}
 * R307: Remove from Wish list /users/{id}/wishlist/works/{id}
 
+### Module M04: Bids
+
+* R401: My bids /users/{id}/bids
+* R402: Bid Auction /users/{id}/bids
+* R403: End Bid /users/{id}/bids/{id}/end
+
+**R401: My bids**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/users/{id}/bids</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>Get all my bid auctions.</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>GET</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<th>UI</th>
+<td colspan=2>UIXX</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
+
+**R402: Bid Auction**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/users/{id}/bids</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>Bid an auction</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>POST</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<th rowspan=1>Request body</th>
+<td>+bid:float</td>
+<td>Bid value</td>
+</tr>
+<tr>
+<th rowspan=3>Returns</th>
+<td>200 OK</td>
+<td>The auction was successfully bid.</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>Error. No auction with the specified primary key exists.</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
+
+**R403: End Bid**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/users/{id}/bids/{id}/end</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>This web resource ends a auction bid.</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>PUT</td>
+</tr>
+<tr>
+<th rowspan=2>Parameters</th>
+<td>+user_id:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<td>+auction_id:integer</td>
+<td>Auction id</td>
+</tr>
+<tr>
+<th rowspan=1>Request body</th>
+<td>+bid:float</td>
+<td>Bid value</td>
+</tr>
+<tr>
+<th rowspan=3>Returns</th>
+<td>200 OK</td>
+<td>The auction was successfully close.</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>Error. No auction with the specified primary key exists.</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
 
 ### Module M05: User Administration and Static pages
 
