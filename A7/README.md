@@ -500,6 +500,9 @@ These are the endpoints available in the Auctions Module.
 * R203: View Auction /item/{id}
 * R204: Add Auction Form /add_auction
 * R205: Add Auction Action /add_auction
+* R206: Auction Owner Page /owner/{id}
+* R207: Text Owner Form /owner/{id}
+* R208: Text Owner Action /owner/{id}
 
 **R201: Search Auction Page**
 
@@ -792,6 +795,145 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
+**R206:Auction Owner Page**
+
+<table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>/owner/{id}
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >Web redirects to auction owner page when you click on the owner in auction page</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>GET</td>
+  </tr>
+   <tr>
+    <th rowspan=6>Parameters</th>
+    <td>?query: string</td>
+    <td>String field to search for auction owner</td>
+  </tr>
+  <tr>
+    <td>
+      	?First Name: string
+    </td>
+    <td>
+      Owner First Name
+    </td>
+  </tr>
+    <tr>
+    <td>
+      ?Last Name: string
+    </td>
+    <td>
+      Owner Last Name
+    </td>
+  </tr>
+       <tr>
+    <td>
+      ?City,Country: string
+    </td>
+    <td>
+      City and Country of the owner
+    </td>
+  </tr>
+       <tr>
+    <td>
+      ?email:string
+    </td>
+    <td>
+      Owner email
+    </td>
+  </tr>
+     <tr>
+    <td>
+      ?contact:integer
+    </td>
+    <td>
+      Owner contact
+    </td>
+  </tr>
+    <tr>
+    <th>UI</th>
+    <td colspan=2>UI10</td>
+  </tr>
+      <tr>
+    <th>Permissons</th>
+    <td colspan=2>PUB</td>
+  </tr>
+</table>
+
+**R207: Text Owner Form**
+
+ <table>
+  <tr>
+    <th>URL</th>
+    <td> /owner/{id}</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td >Page with a form to post a new message for the auction owner.</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td>GET</td>
+  </tr>
+    <tr>
+  <th>UI</th>
+  <td>UI10</td>
+  </tr>
+   <tr>
+    <th>SUBMIT</th>
+    <td>R208</td>
+  </tr>
+  <tr>
+    <th>Permissons</th>
+    <td>USR</td>
+  </tr>
+</table>
+
+**R207: Text Owner Action**
+
+ <table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2> /owner/{id}</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2>Web resource that creates a new email for the auction owner
+    based on the input received. The user receives an alert in case of success or failure</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>POST</td>
+  </tr>
+    <tr>
+    <th rowspan=4>Request body</th>
+    <td>+name:string</td>
+    <td>User name</td>
+  </tr>
+  <tr>
+    <td>+email:string</td>
+    <td>User email</td>
+  </tr>
+    <tr>
+    <td>+subject:string</td>
+    <td>Email subject</td>
+  </tr>
+    <tr>
+    <td>+message:string</td>
+    <td>Email message</td>
+  </tr>
+  <tr>
+    <th>Permissons</th>
+    <td colspan=2>USR</td>
+  </tr>
+</table>
+
 ### Module M03: Reviews and Wish list
 
 Endpoints of Module Reviews and Wish list
@@ -804,3 +946,308 @@ These are the endpoints available in the Reviews and Wish list Module.
 * R305: View Wish list /users/{id}/wishlist
 * R306: Add to Wish list /users/{id}/wishlist/works/{id}
 * R307: Remove from Wish list /users/{id}/wishlist/works/{id}
+
+
+### Module M05: User Administration and Static pages
+
+Endpoints of User Administration and Static pages
+These are the endpoints available in the User Administration and Static pages Module.
+
+* R501: Get users /adminstration/users
+* R502: Suspend user /adminstration/users/{id}/suspend
+* R503: Reinstate users /adminstration/users/{id}/reinstate
+* R504: Suspend auction /adminstration/auctions/{id}/suspend
+* R505: Reinstate auction /adminstration/auctions/{id}/reinstate
+* R506: About /about
+* R507: Contact US /contact_us
+* R508: FAQ /faq
+* R509: 404 Error /404
+
+**R501: Get users**
+
+<table>
+<tr>
+<th>URL</th>
+<td>/administration/users</td>
+</tr>
+<tr>
+<th>Description</th>
+<td>Get all registed users</td>
+</tr>
+<tr>
+<th>Method</th>
+<td>GET</td>
+</tr>
+<tr>
+<th>Method</th>
+<td>GET</td>
+</tr>
+<tr>
+<th>UI</th>
+<td>UI12</td>
+</tr>
+<tr>
+<th>Permissons</th>
+<td>ADM</td>
+</tr>
+</table>
+
+**R502: Suspend user**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/adminstration/users/{id}/suspend</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>This web resource suspends an user</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>PUT</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<th rowspan=3>Returns</th>
+<td>200 OK</td>
+<td>The user was successfully suspended.</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>Error. No user with the specified primary key exists.</td>
+</tr>
+<tr>
+<th>Permissons</th>
+<td colspan=2>ADM</td>
+</tr>
+</table>
+
+**R503: Reinstate user**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/adminstration/users/{id}/reinstate</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>This web resource reinstates an user</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>PUT</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<th rowspan=3>Returns</th>
+<td>200 OK</td>
+<td>The user was successfully reinstated.</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>Error. No user with the specified primary key exists.</td>
+</tr>
+<tr>
+<th>Permissons</th>
+<td colspan=2>ADM</td>
+</tr>
+</table>
+
+**R504: Suspend auction**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/adminstration/auctions/{id}/suspend</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>This web resource suspends an auction</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>PUT</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id:integer</td>
+<td>Auction id</td>
+</tr>
+<tr>
+<th rowspan=3>Returns</th>
+<td>200 OK</td>
+<td>The auction was successfully suspended.</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>Error. No user with the specified primary key exists.</td>
+</tr>
+<tr>
+<th>Permissons</th>
+<td colspan=2>ADM</td>
+</tr>
+</table>
+
+**R505: Reinstate auction**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/adminstration/auctions/{id}/reinstate</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>This web resource reinstates an auction</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>PUT</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id:integer</td>
+<td>Auction id</td>
+</tr>
+<tr>
+<th rowspan=3>Returns</th>
+<td>200 OK</td>
+<td>The auction was successfully reinstated.</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>Error. No user with the specified primary key exists.</td>
+</tr>
+<tr>
+<th>Permissons</th>
+<td colspan=2>ADM</td>
+</tr>
+</table>
+
+**R506: About**
+
+<table>
+<tr>
+<th>URL</th>
+<td>/about</td>
+</tr>
+<tr>
+<th>Description</th>
+<td>Get about page</td>
+</tr>
+<tr>
+<th>Method</th>
+<td>GET</td>
+</tr>
+<tr>
+<th>UI</th>
+<td>UI02</td>
+</tr>
+<tr>
+<th>Permissions</th>
+<td>PUB</td>
+</tr>
+</table>
+
+**R507: Contact Us**
+
+<table>
+<tr>
+<th>URL</th>
+<td>/contact_us</td>
+</tr>
+<tr>
+<th>Description</th>
+<td>Get contact page</td>
+</tr>
+<tr>
+<th>Method</th>
+<td>GET</td>
+</tr>
+<tr>
+<th>UI</th>
+<td>UI04</td>
+</tr>
+<tr>
+<th>Permissions</th>
+<td>PUB</td>
+</tr>
+</table>
+
+**R508: FAQ**
+
+<table>
+<tr>
+<th>URL</th>
+<td>/faq</td>
+</tr>
+<tr>
+<th>Description</th>
+<td>Get faq page</td>
+</tr>
+<tr>
+<th>Method</th>
+<td>GET</td>
+</tr>
+<tr>
+<th>UI</th>
+<td>UI03</td>
+</tr>
+<tr>
+<th>Permissions</th>
+<td>PUB</td>
+</tr>
+</table>
+
+**R509: 404 Error**
+
+<table>
+<tr>
+<th>URL</th>
+<td>/404</td>
+</tr>
+<tr>
+<th>Description</th>
+<td>Get 404 error page</td>
+</tr>
+<tr>
+<th>Method</th>
+<td>GET</td>
+</tr>
+<tr>
+<th>UI</th>
+<td>UI06</td>
+</tr>
+<tr>
+<th>Permissions</th>
+<td>PUB</td>
+</tr>
+</table>
+
+### JSON/XML Types
+
+The structure of the JSON formatted answers must be documented as illustrated below.
