@@ -1,4 +1,4 @@
-remaining time to auction end## A7: Web Resources Documentation
+## A7: Web Resources Documentation
 
 ###  1. Overview
 
