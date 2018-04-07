@@ -934,18 +934,130 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-### Module M03: Reviews and Wish list
+### Module M03: Wish list
 
-Endpoints of Module Reviews and Wish list
-These are the endpoints available in the Reviews and Wish list Module.
+* R301: View Wish list /users/{id}/wishlist
+* R302: Add to Wish list /users/{id_user}/wishlist/auctions/{id_auction}
+* R303: Remove from Wish list /users/{id_user}/wishlist/auctions/{id_auction}
 
-* R301: View Reviews /auction/{id}/reviews
-* R302: Add Review /works/{id}/reviews
-* R303: Edit Review /works/{work_id}/reviews/{review_id}
-* R304: Delete Review /works/{id}/reviews/{id}
-* R305: View Wish list /users/{id}/wishlist
-* R306: Add to Wish list /users/{id}/wishlist/works/{id}
-* R307: Remove from Wish list /users/{id}/wishlist/works/{id}
+**R301: View Wish list**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/users/{id}/wishlist</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>Show user's wishList page.</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>GET</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<th>UI</th>
+<td colspan=2>UIXX</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
+
+**R302: Add to Wish list**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/users/{id_user}/wishlist/auctions/{id_auction}</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>Add a auction to the user's wishList page.</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>POST</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id_user:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>+id_auction:integer</td>
+<td>Auction id</td>
+</tr>
+<tr>
+<th rowspan=1>Returns</th>
+<td>200 OK</td>
+<td>The auction was successfully added to the user's wishlist.</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>404 Not Found</td>
+<td>Error. No auction with the specified primary key exists.</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
+
+**R303: Remove from Wish list**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/users/{id_user}/wishlist/auctions/{id_auction}</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>Show user's wishList page.</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>DELETE</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id_user:integer</td>
+<td>User id</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>+id_auction:integer</td>
+<td>Auction id</td>
+</tr>
+<tr>
+<th rowspan=1>Returns</th>
+<td>200 OK</td>
+<td>The auction was successfully deleted from the user's wishlist.</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>404 Not Found</td>
+<td>Error. No auction with the specified primary key exists.</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
 
 ### Module M04: Bids
 
