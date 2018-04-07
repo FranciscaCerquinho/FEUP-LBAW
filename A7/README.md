@@ -987,27 +987,24 @@ These are the endpoints available in the Auctions Module.
 <td colspan=2>POST</td>
 </tr>
 <tr>
-<th rowspan=1>Parameters</th>
+<th rowspan=2>Parameters</th>
 <td>+id_user:integer</td>
 <td>User id</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>+id_auction:integer</td>
 <td>Auction id</td>
 </tr>
 <tr>
-<th rowspan=1>Returns</th>
+<th rowspan=3>Returns</th>
 <td>200 OK</td>
 <td>The auction was successfully added to the user's wishlist.</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>400 Bad Request</td>
 <td>Error. Error message is specified via a HTTP header.</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>404 Not Found</td>
 <td>Error. No auction with the specified primary key exists.</td>
 </tr>
@@ -1032,27 +1029,24 @@ These are the endpoints available in the Auctions Module.
 <td colspan=2>DELETE</td>
 </tr>
 <tr>
-<th rowspan=1>Parameters</th>
+<th rowspan=2>Parameters</th>
 <td>+id_user:integer</td>
 <td>User id</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>+id_auction:integer</td>
 <td>Auction id</td>
 </tr>
 <tr>
-<th rowspan=1>Returns</th>
+<th rowspan=3>Returns</th>
 <td>200 OK</td>
 <td>The auction was successfully deleted from the user's wishlist.</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>400 Bad Request</td>
 <td>Error. Error message is specified via a HTTP header.</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>404 Not Found</td>
 <td>Error. No auction with the specified primary key exists.</td>
 </tr>
