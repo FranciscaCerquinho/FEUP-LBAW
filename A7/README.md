@@ -1105,17 +1105,15 @@ These are the endpoints available in the Auctions Module.
 <td>Auction id</td>
 </tr>
 <tr>
-<th rowspan=1>Returns</th>
+<th rowspan=3>Returns</th>
 <td>200 OK</td>
 <td>The Comment was successfully added to the auction.</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>400 Bad Request</td>
 <td>Error. Error message is specified via a HTTP header.</td>
 </tr>
 <tr>
-<th rowspan=1></th>
 <td>404 Not Found</td>
 <td>Error. No auction with the specified primary key exists.</td>
 </tr>
