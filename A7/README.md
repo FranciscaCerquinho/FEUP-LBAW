@@ -1086,7 +1086,7 @@ These are the endpoints available in the Auctions Module.
 <td colspan=2>UI08</td>
 </tr>
 <th>Permissons</th>
-<td colspan=2>USR</td>
+<td colspan=2>USR,OWN</td>
 </tr>
 </table>
 
