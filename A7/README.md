@@ -934,11 +934,13 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-### Module M03: Wish list
+### Module M03: Wish list and Comments
 
 * R301: View Wish list /users/{id}/wishlist
 * R302: Add to Wish list /users/{id_user}/wishlist/auctions/{id_auction}
 * R303: Remove from Wish list /users/{id_user}/wishlist/auctions/{id_auction}
+* R304: View Comments on a item /auction/{id_auction}/comments
+* R305: Add Comments on a item /auction/{id_auction}/comments
 
 **R301: View Wish list**
 
@@ -962,10 +964,10 @@ These are the endpoints available in the Auctions Module.
 </tr>
 <tr>
 <th>UI</th>
-<td colspan=2>UIXX</td>
+<td colspan=2>UI13</td>
 </tr>
 <th>Permissons</th>
-<td colspan=2>USR</td>
+<td colspan=2>USR,OWN</td>
 </tr>
 </table>
 
@@ -1058,6 +1060,76 @@ These are the endpoints available in the Auctions Module.
 <td colspan=2>USR</td>
 </tr>
 </table>
+
+**R304: View Comments on a item**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/auction/{id_auction}/comments</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>Show comments on a item.</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>GET</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id_auction:integer</td>
+<td>Auction id</td>
+</tr>
+<tr>
+<th>UI</th>
+<td colspan=2>UI08</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
+
+**R305: Add Comments on a auction**
+
+<table>
+<tr>
+<th>URL</th>
+<td colspan=2>/auction/{id_auction}/comments</td>
+</tr>
+<tr>
+<th>Description</th>
+<td colspan=2>Add a comment to one auction.</td>
+</tr>
+<tr>
+<th>Method</th>
+<td colspan=2>POST</td>
+</tr>
+<tr>
+<th rowspan=1>Parameters</th>
+<td>+id_auction:integer</td>
+<td>Auction id</td>
+</tr>
+<tr>
+<th rowspan=1>Returns</th>
+<td>200 OK</td>
+<td>The Comment was successfully added to the auction.</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>400 Bad Request</td>
+<td>Error. Error message is specified via a HTTP header.</td>
+</tr>
+<tr>
+<th rowspan=1></th>
+<td>404 Not Found</td>
+<td>Error. No auction with the specified primary key exists.</td>
+</tr>
+<th>Permissons</th>
+<td colspan=2>USR</td>
+</tr>
+</table>
+
 
 ### Module M04: Bids
 
