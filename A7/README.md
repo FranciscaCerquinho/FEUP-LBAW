@@ -1375,3 +1375,10 @@ These are the endpoints available in the User Administration and Static pages Mo
 ### JSON/XML Types
 
 The structure of the JSON formatted answers must be documented as illustrated below.
+
+### Members
+
+- Diogo Silva, up201405742@fe.up.pt
+- Francisca Cerquinho, up201505791@fe.up.pt
+- José Azevedo, up201506448@fe.up.pt
+- Pedro Miranda, up201506574@fe.up.pt
