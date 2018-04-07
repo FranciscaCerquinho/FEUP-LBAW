@@ -1,7 +1,7 @@
-### A6: Integrity constraints. Indexes, triggers, user functions and database populated with data
+## A6: Integrity constraints. Indexes, triggers, user functions and database populated with data
 
-## 1. Database workload
-   ## 1.1 Estimate of tuples
+### 1. Database workload
+   ### 1.1 Estimate of tuples
 
 Identifier    | Relational Schema | Order of magnitude  |  Estimated growth
 --------------|-------------------|---------------------|---------------------
@@ -18,7 +18,7 @@ R10           | banUser           | tens                |  units per day
 R11           | owner             | thousands           |  dozens per day
 R12           | buyNow            | hundreds            |  units per day
 
-   ## 1.2 Most frequent queries
+   ### 1.2 Most frequent queries
 
 <table>
     <tr>
@@ -411,7 +411,7 @@ R12           | buyNow            | hundreds            |  units per day
     <tr>
     <td colspan="2">
        <pre>
-    </b>UPDATE</b> auction 
+    <b>UPDATE</b> auction 
     <b>SET</b> active = FALSE
     <b>WHERE</b> auction.id = $id;
         </pre>
@@ -651,8 +651,8 @@ R12           | buyNow            | hundreds            |  units per day
   </tr>
 </table>
 
-## 2. Proposed Indexes
-   ## 2.1  Performance indexes
+### 2. Proposed Indexes
+   ### 2.1  Performance indexes
 
 <table>
   <tr>
@@ -822,7 +822,7 @@ R12           | buyNow            | hundreds            |  units per day
   </tr>
 </table>
 
-   ## 2.2  Full-text search indexes
+   ### 2.2  Full-text search indexes
 
 <table>
   <tr>
