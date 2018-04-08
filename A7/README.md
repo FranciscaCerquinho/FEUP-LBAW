@@ -1552,6 +1552,20 @@ These are the endpoints available in the User Administration and Static pages Mo
 
 The structure of the JSON formatted answers must be documented as illustrated below.
 
+**JSON106: View User: {User}**
+
+```
+"user": {
+	"id": "1",
+	"email": "something@example.com",
+	"name": "Example",
+	"photo": "photopah_example.jpg".
+	"address": "Rua Something",
+	"country": "Portugal",
+	"contact": ""
+}
+```
+
 **JSON202: Search Auction By Category: {auction}[]**
 
 ```
@@ -1573,6 +1587,62 @@ The structure of the JSON formatted answers must be documented as illustrated be
       "owner": "Francisca Teixeira",
       "type": "Electronics"
     }
+  ]
+}
+```
+
+**JSON301: View WishList: {Auction}[]**
+
+```
+{
+	"auction": [
+		{
+      "id": "",
+      "dateBegin": "",
+      "name": "",
+      "description": "",
+      "buyNow": "",
+      "active": "",
+      "dateEnd": "",
+      "actualPrice": "",
+      "photo": ""
+		},
+		{
+      "id": "",
+      "dateBegin": "",
+      "name": "",
+      "description": "",
+      "buyNow": "",
+      "active": "",
+      "dateEnd": "",
+      "actualPrice": "",
+      "photo": ""
+		}
+  ]
+}
+```
+
+**JSON304: View Comments: {Comment}[]**
+
+```
+{
+	"comment": [
+		{
+      "id": "2",
+      "like": "14",
+      "dislike": "3",
+      "date": "2018-03-28 02:28:40+01",
+      "comment": "Proin nisl sem, consequat nec,",
+      "id_user": "30"
+		},
+		{
+      "id": "7",
+      "like": "6",
+      "dislike": "5",
+      "date": "2018-04-01 04:19:56+01",
+      "comment": "dictum cursus. Nunc mauris elit, dictum eu, eleifend nec,	",
+      "id_user": "5"
+		}
   ]
 }
 ```
