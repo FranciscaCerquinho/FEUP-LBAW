@@ -1552,6 +1552,31 @@ These are the endpoints available in the User Administration and Static pages Mo
 
 The structure of the JSON formatted answers must be documented as illustrated below.
 
+**JSON202: Search Auction By Category: {auction}[]**
+
+```
+{
+  "auction": [
+    {
+      "id": "1",
+      "title": "PS4 Controllers",
+      "obs": "Two Sony PS4 controllers that were only used once.",
+      "year": "2017",
+      "owner": "Mariana Gomes",
+      "type": "Electronics"
+    },
+    {
+      "id": "15",
+      "title": "Macbook Pro",
+      "obs": "Only with 2 months of use, and with a 2-year warranty.",
+      "year": "2017",
+      "owner": "Francisca Teixeira",
+      "type": "Electronics"
+    }
+  ]
+}
+```
+
 ### Members
 
 - Diogo Silva, up201405742@fe.up.pt
