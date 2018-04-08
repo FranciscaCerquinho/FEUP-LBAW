@@ -167,7 +167,8 @@ R12           | buyNow            | hundreds            |  units per day
     owner.id_user, users.name, owner.id_auction,users.id
   <b>FROM</b> auction,category,owner,users
   <b>WHERE</b>  owner.id_auction=auction.id  <b>AND</b> users.id=owner.id_user <b>AND</b> category.id_auction=auction.id 
-  <b>AND</b> category.category= $category;
+  <b>AND</b> category.category= $category <b>AND</b> auction.active=TRUE
+  <b>LIMIT</b> 60;
         </pre>
     </td>
   </tr>
@@ -194,7 +195,8 @@ R12           | buyNow            | hundreds            |  units per day
    owner.id_auction,users.id,auction.description
   <b>FROM</b> auction,owner,users
   <b>WHERE</b> owner.id_auction=auction.id  <b>AND</b> users.id=owner.id_user <b>AND</b> 
-  (auction.name <b>LIKE</b> %$search% <b>OR</b> auction.description <b>LIKE</b> %$search%);
+  (auction.name <b>LIKE</b> %$search% <b>OR</b> auction.description <b>LIKE</b> %$search%) <b>AND</b> auction.active=TRUE
+  <b>LIMIT</b> 60;
         </pre>
     </td>
   </tr>
@@ -216,37 +218,13 @@ R12           | buyNow            | hundreds            |  units per day
     <tr>
     <td colspan="2">
        <pre>
-   <b>SELECT</b> auction.name, auction.id, users.id, auction."dateBegin",auction."dateEnd", auction."actualPrice", 
-   auction.photo,owner.id_user, owner.id_auction, users.name
+   <b>SELECT</b> auction.name, auction.id, auction.active,users.id, auction."dateBegin",auction."dateEnd", 
+   auction."actualPrice", auction.photo,owner.id_user, owner.id_auction, users.name
      <b>FROM</b> auction,owner,users
      <b>WHERE</b> owner.id_user != $userID <b>AND</b> auction.id = owner.id_auction <b>AND</b> users.id=owner.id_user 
-     <b>ORDER BY</b> auction."dateEnd";
-        </pre>
-    </td>
-  </tr>
-</table>
-
-<table>
-    <tr>
-    <th>Query reference</th>
-    <td>SELECT08</td>
-  </tr>
-  <tr>
-    <th>Query description</th>
-    <td>HomePage Auctions</td>
-  </tr>
-  <tr>
-    <th> Query frequency</th>
-    <td>thousands per day</td>
-  </tr>
-    <tr>
-    <td colspan="2">
-       <pre>
-   <b>SELECT</b> auction.name, auction.id, users.id, auction."dateBegin",auction."dateEnd", auction."actualPrice", 
-   auction.photo,owner.id_user, owner.id_auction, users.name
-    <b>FROM</b> auction,owner,users
-    <b>WHERE</b> owner.id_user != $userID <b>AND</b> auction.id = owner.id_auction <b>AND</b> users.id=owner.id_user 
-    <b>ORDER BY</b> auction."dateEnd";
+     <b>AND</b> auction.active=TRUE
+     <b>ORDER BY</b> auction."dateEnd"
+     <b>LIMIT</b> 60;
         </pre>
     </td>
   </tr>
