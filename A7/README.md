@@ -1553,10 +1553,10 @@ The structure of the JSON formatted answers must be documented as illustrated be
 ```
 "user": {
   "id": "1",
-  "email": "something@example.com",
-  "name": "Example",
-  "photo": "photopah_example.jpg".
-  "address": "Rua Something",
+  "email": "mteixeira@gmail.com",
+  "name": "Mariana Teixeira",
+  "photo": "marianaTeixeira.jpg".
+  "address": "Rua do Aleixo 143",
   "country": "Portugal",
   "contact": "915463445"
 }
@@ -1586,19 +1586,25 @@ The structure of the JSON formatted answers must be documented as illustrated be
   "auction": [
     {
       "id": "1",
-      "title": "PS4 Controllers",
-      "obs": "Two Sony PS4 controllers that were only used once.",
-      "year": "2017",
-      "owner": "Mariana Gomes",
-      "type": "Electronics"
+      "name": "PS4 Controllers",
+      "description": "Two Sony PS4 controllers that were only used once.",
+      "buyNow": "80",
+      "active": "1",
+      "dateBegin": "2018-04-03 12:28:40+01",
+      "dateEnd": "2018-05-20 12:28:40+01",
+      "actualPrice": "60",
+      "photo": "resources/PS4Controllers.jpg"
     },
     {
       "id": "15",
-      "title": "Macbook Pro",
-      "obs": "Only with 2 months of use, and with a 2-year warranty.",
-      "year": "2017",
-      "owner": "Francisca Teixeira",
-      "type": "Electronics"
+      "name": "Macbook Pro",
+      "description": "Only with 2 months of use, and with a 2-year warranty.",
+      "buyNow": "1300",
+      "active": "1",
+      "dateBegin": "2018-05-03 12:28:40+01",
+      "dateEnd": "2018-05-20 12:28:40+01",
+      "actualPrice": "1100",
+      "photo": "resources/macbookPro.jpg"
     }
   ]
 }
@@ -1611,25 +1617,25 @@ The structure of the JSON formatted answers must be documented as illustrated be
   "auction": [
     {
       "id": "1",
-      "name": "Auction1",
-      "description": "Example Auction 1",
+      "name": "Vinyl Mike Evans",
+      "description": "Vinyl from 90's with a good price.",
       "buyNow": "100",
       "active": "1",
       "dateBegin": "2018-04-05 12:28:40+01",
       "dateEnd": "2018-04-20 12:28:40+01",
       "actualPrice": "50",
-      "photo": "resources/example_auction1.jpg"
+      "photo": "resources/vinylMikeEvans.jpg"
     },
     {
       "id": "2",
-      "name": "Auction2",
-      "description": "Example Auction 2",
-      "buyNow": "50",
+      "name": "Tennis Nike",
+      "description": "Last fashion! do not miss this opportunity.",
+      "buyNow": "80",
       "active": "1",
       "dateBegin": "2018-04-07 15:18:20+01",
       "dateEnd": "2018-04-15 15:18:20+01",
-      "actualPrice": "15",
-      "photo": "resources/example_auction2.jpg"
+      "actualPrice": "50",
+      "photo": "resources/tennisNike.jpg"
     }
   ]
 }
@@ -1645,7 +1651,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
       "like": "14",
       "dislike": "3",
       "date": "2018-03-28 02:28:40+01",
-      "comment": "Proin nisl sem, consequat nec,",
+      "comment": "Very good price, I want to win.",
       "id_user": "30"
     },
     {
@@ -1653,7 +1659,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
       "like": "6",
       "dislike": "5",
       "date": "2018-04-01 04:19:56+01",
-      "comment": "dictum cursus. Nunc mauris elit, dictum eu, eleifend nec,	",
+      "comment": "I don't want to lose the opportunity to win this auction",
       "id_user": "5"
     }
   ]
