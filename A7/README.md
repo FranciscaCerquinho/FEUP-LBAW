@@ -1569,11 +1569,14 @@ The structure of the JSON formatted answers must be documented as illustrated be
   "auction": [
     {
       "id": "1",
-      "title": "PS4 Controllers",
-      "obs": "Two Sony PS4 controllers that were only used once.",
-      "year": "2017",
-      "owner": "Mariana Gomes",
-      "type": "Electronics"
+      "name": "PS4 Controllers",
+      "description": "Two Sony PS4 controllers that were only used once.",
+      "buyNow": "80",
+      "active": "1",
+      "dateBegin": "2018-04-03 12:28:40+01",
+      "dateEnd": "2018-05-20 12:28:40+01",
+      "actualPrice": "60",
+      "photo": "resources/PS4Controllers.jpg"
     }
   ]
 }
@@ -1629,7 +1632,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
     {
       "id": "2",
       "name": "Tennis Nike",
-      "description": "Last fashion! do not miss this opportunity.",
+      "description": "Last fashion! Do not miss this opportunity.",
       "buyNow": "80",
       "active": "1",
       "dateBegin": "2018-04-07 15:18:20+01",
