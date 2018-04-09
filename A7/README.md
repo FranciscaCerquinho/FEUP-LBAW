@@ -1595,8 +1595,8 @@ The structure of the JSON formatted answers must be documented as illustrated be
 
 ```
 {
-	"auction": [
-		{
+  "auction": [
+    {
       "id": "",
       "dateBegin": "",
       "name": "",
@@ -1606,8 +1606,8 @@ The structure of the JSON formatted answers must be documented as illustrated be
       "dateEnd": "",
       "actualPrice": "",
       "photo": ""
-		},
-		{
+    },
+    {
       "id": "",
       "dateBegin": "",
       "name": "",
@@ -1617,7 +1617,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
       "dateEnd": "",
       "actualPrice": "",
       "photo": ""
-		}
+    }
   ]
 }
 ```
@@ -1626,23 +1626,23 @@ The structure of the JSON formatted answers must be documented as illustrated be
 
 ```
 {
-	"comment": [
-		{
+  "comment": [
+    {
       "id": "2",
       "like": "14",
       "dislike": "3",
       "date": "2018-03-28 02:28:40+01",
       "comment": "Proin nisl sem, consequat nec,",
       "id_user": "30"
-		},
-		{
+    },
+    {
       "id": "7",
       "like": "6",
       "dislike": "5",
       "date": "2018-04-01 04:19:56+01",
       "comment": "dictum cursus. Nunc mauris elit, dictum eu, eleifend nec,	",
       "id_user": "5"
-		}
+    }
   ]
 }
 ```
