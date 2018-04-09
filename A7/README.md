@@ -345,8 +345,8 @@ These are the endpoints available in the Authentication and Individual Profile M
         <td>user primary key</td>
   </tr>
        <tr>
-    <th>UI</th>
-    <td colspan=2>UI10</td>
+    <th>Response body</th>
+    <td colspan=2>JSON106</td>
   </tr>
        <tr>
     <th>Permissions</th>
@@ -567,8 +567,8 @@ These are the endpoints available in the Auctions Module.
     </td>
   </tr>
     <tr>
-    <th>UI</th>
-    <td colspan=2>UI109</td>
+    <th>Response Body</th>
+    <td colspan=2>JSON201</td>
   </tr>
       <tr>
     <th>AJAX Calls</th>
@@ -963,8 +963,8 @@ These are the endpoints available in the Auctions Module.
 <td>User id</td>
 </tr>
 <tr>
-<th>UI</th>
-<td colspan=2>UI13</td>
+<th>Response Body</th>
+<td colspan=2>JSON301</td>
 </tr>
 <th>Permissons</th>
 <td colspan=2>USR,OWN</td>
@@ -1076,8 +1076,8 @@ These are the endpoints available in the Auctions Module.
 <td>Auction id</td>
 </tr>
 <tr>
-<th>UI</th>
-<td colspan=2>UI08</td>
+<th>Response Body</th>
+<td colspan=2>JSON304</td>
 </tr>
 <th>Permissons</th>
 <td colspan=2>USR,OWN</td>
@@ -1273,10 +1273,6 @@ These are the endpoints available in the User Administration and Static pages Mo
 <tr>
 <th>Description</th>
 <td>Get all registed users</td>
-</tr>
-<tr>
-<th>Method</th>
-<td>GET</td>
 </tr>
 <tr>
 <th>Method</th>
