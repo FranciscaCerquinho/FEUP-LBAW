@@ -1556,13 +1556,30 @@ The structure of the JSON formatted answers must be documented as illustrated be
 
 ```
 "user": {
-	"id": "1",
-	"email": "something@example.com",
-	"name": "Example",
-	"photo": "photopah_example.jpg".
-	"address": "Rua Something",
-	"country": "Portugal",
-	"contact": ""
+  "id": "1",
+  "email": "something@example.com",
+  "name": "Example",
+  "photo": "photopah_example.jpg".
+  "address": "Rua Something",
+  "country": "Portugal",
+  "contact": "915463445"
+}
+```
+
+**JSON201: Search Auction: {auction}[]**
+
+```
+{
+  "auction": [
+    {
+      "id": "1",
+      "title": "PS4 Controllers",
+      "obs": "Two Sony PS4 controllers that were only used once.",
+      "year": "2017",
+      "owner": "Mariana Gomes",
+      "type": "Electronics"
+    }
+  ]
 }
 ```
 
