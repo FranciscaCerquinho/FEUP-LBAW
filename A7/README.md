@@ -311,7 +311,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
     <tr>
     <th rowspan=2>Redirects</th>
-    <td></td>
+    <td>UI01</td>
         <td>SUCCESS</td>
   </tr>
       <tr>
@@ -320,8 +320,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
       <tr>
     <th>Permissons</th>
-    <td></td>
-        <td>PUB</td>
+    <td colspan=2>PUB</td>
   </tr>
 </table>
 
