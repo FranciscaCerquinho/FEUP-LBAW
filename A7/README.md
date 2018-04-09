@@ -1614,26 +1614,26 @@ The structure of the JSON formatted answers must be documented as illustrated be
 {
   "auction": [
     {
-      "id": "",
-      "dateBegin": "",
-      "name": "",
-      "description": "",
-      "buyNow": "",
-      "active": "",
-      "dateEnd": "",
-      "actualPrice": "",
-      "photo": ""
+      "id": "1",
+      "name": "Auction1",
+      "description": "Example Auction 1",
+      "buyNow": "100",
+      "active": "1",
+      "dateBegin": "2018-04-05 12:28:40+01",
+      "dateEnd": "2018-04-20 12:28:40+01",
+      "actualPrice": "50",
+      "photo": "resources/example_auction1.jpg"
     },
     {
-      "id": "",
-      "dateBegin": "",
-      "name": "",
-      "description": "",
-      "buyNow": "",
-      "active": "",
-      "dateEnd": "",
-      "actualPrice": "",
-      "photo": ""
+      "id": "2",
+      "name": "Auction2",
+      "description": "Example Auction 2",
+      "buyNow": "50",
+      "active": "1",
+      "dateBegin": "2018-04-07 15:18:20+01",
+      "dateEnd": "2018-04-15 15:18:20+01",
+      "actualPrice": "15",
+      "photo": "resources/example_auction2.jpg"
     }
   ]
 }
