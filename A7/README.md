@@ -1667,7 +1667,244 @@ The structure of the JSON formatted answers must be documented as illustrated be
   ]
 }
 ```
+###  Revision History
 
+### Module M01: Authentication and Individual Profile
+
+**R105: Register Action**
+
+<table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>/register
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >This web resource inserts the user into the system. Redirects to user profile on success and the register
+        form on failure.</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>POST</td>
+  </tr>
+     <tr>
+    <th rowspan=8>Request Body</th>
+    <td>
+     +firstName: string
+    </td>
+    <td>
+     First name
+    </td>
+    </tr>
+  <tr>
+    <td>
+      +lastName: string
+    </td>
+    <td>
+      Last name
+    </td>
+  </tr>
+    <tr>
+    <td>
+      +email: string
+    </td>
+    <td>
+      Email
+    </td>
+  </tr>
+       <tr>
+    <td>
+      +contact: string
+    </td>
+    <td>
+      Contact
+    </td>
+  </tr>
+       <tr>
+    <td>
+      +address: string
+    </td>
+    <td>
+      Adress
+    </td>
+  </tr>
+           <tr>
+    <td>
+    +cityCountry
+    </td>
+    <td>
+      City,Country
+    </td>
+  </tr>
+             <tr>
+    <td>
+    +password
+    </td>
+    <td>
+     Password
+    </td>
+  </tr>
+               <tr>
+    <td>
+    +confirmPassword
+    </td>
+    <td>
+     Password Confirmation
+    </td>
+  </tr>
+    <tr>
+    <th rowspan=2>Redirects</th>
+    <td>R209</td>
+        <td>SUCCESS</td>
+  </tr>
+      <tr>
+    <td>R104</td>
+    <td>Error</td>
+  </tr>
+      <tr>
+    <th>Permissons</th>
+    <td colspan=2>PUB</td>
+  </tr>
+</table>
+
+### Module M02: Auctions
+
+ * R209: HomePage /home
+
+**R205: Add Auction Action**
+
+ <table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>/add_auction
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >Web resource that creates a new auction based on the 
+    input received. Redirects to the new auction page on success and back 
+    to new auction form on failure.</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>POST</td>
+  </tr>
+   <tr>
+    <th rowspan=7>Request Body</th>
+    <td>+name: string</td>
+    <td>Name of the Auction</td>
+  </tr>
+  <tr>
+    <td>
+      +category: string	
+    </td>
+    <td>
+      Auction category
+    </td>
+  </tr>
+    <tr>
+    <td>
+      +des:string
+    </td>
+    <td>
+      Description of the Auction
+    </td>
+  </tr>
+       <tr>
+    <td>
+      +inicialPrice:float
+    </td>
+    <td>
+      Initial price of the Auction
+    </td>
+  </tr>
+       <tr>
+    <td>
+      +EndDate: string
+    </td>
+    <td>
+      End of Auction date
+    </td>
+  </tr>
+           <tr>
+    <td>
+    +photo:string
+    </td>
+    <td>
+      Auction photo
+    </td>
+  </tr>
+        <tr>
+    <td>
+    +ownerName:name
+    </td>
+    <td>
+      Auction owner name
+    </td>
+  </tr>
+    <tr>
+    <th rowspan=2>Redirects</th>
+    <td>R203</td>
+    <td>SUCESS</td>
+  </tr>
+   <tr>
+    <td>R204</td>
+    <td>ERROR</td>
+  </tr>
+      <tr>
+    <th>Permissons</th>
+    <td colspan=2>USR,OWN</td>
+  </tr>
+</table>
+
+**R209: HomePage**
+
+<table>
+  <tr>
+    <th>URL</th>
+    <td colspan=2>/home
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td colspan=2 >The Home Page, where anyone can see the most recent auctions.</td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td colspan=2>GET</td>
+  </tr>
+  <tr>
+    <th>Response Body</th>
+    <td colspan=2>JSON209</td>
+  </tr>
+  <tr>
+    <th>Permissons</th>
+    <td colspan=2>PUB</td>
+  </tr>
+</table>
+
+### JSON/XML Types
+
+**JSON209: Home Page: {auction}[]**
+
+```
+{
+  "auction": [
+    {
+      "id": "1",
+      "name": "PS4 Controllers",
+      "description": "Two Sony PS4 controllers that were only used once.",
+      "buyNow": "80",
+      "active": "1",
+      "dateBegin": "2018-04-03 12:28:40+01",
+      "dateEnd": "2018-05-20 12:28:40+01",
+      "actualPrice": "60",
+      "photo": "resources/PS4Controllers.jpg"
+    }
+  ]
+}
+```
 ### Members
 
 - Diogo Silva, up201405742@fe.up.pt
