@@ -99,7 +99,7 @@
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
-								<a href="edit_profile.html">Edit Profile</a>
+								<a href="{{url ('editProfile') }}">Edit Profile</a>
 								<a href="{{ url ('logout') }}">Logout</a>
 							</ul>
 						</div>
