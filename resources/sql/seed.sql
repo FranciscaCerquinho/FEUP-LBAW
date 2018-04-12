@@ -29,12 +29,12 @@ CREATE TABLE users(
   id SERIAL NOT NULL,
   email text NOT NULL UNIQUE,
   password text NOT NULL,
-  name text,
+  firstName text,
+  lastName text,
   photo text,
   address text,
   country text,
-  contact NUMERIC,
-  remember_token text
+  contact NUMERIC
 );
 
 CREATE TABLE admin(
@@ -329,40 +329,40 @@ EXECUTE PROCEDURE "CheckReportingNotAuctionOwner"();
 
 
 
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Melvin Flowers','pede.Suspendisse.dui@magna.ca','neccursusaenimSuspendissealiquet','Ap #593-1560 Rhoncus. Avenue',16670680424499,'Samoa','DD99828558BF504D5A1DB0E646554811');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Cadman Albert','id@Integersemelit.com','neccursusaenimSuspendissealiquet','P.O. Box 854, 9268 Vehicula Road',16954062003699,'Bangladesh','DHDH7439FJDHD3749DNDBF48484HFHF8');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Sacha Stephens','tincidunt.nibh.Phasellus@euligula.edu','neccursusaenimSuspendissealiquet','1784 Metus Rd.',16761061088899,'Reunion','DJ464837DJDJD474747DHDD74747DDFD');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Ferris Meyer','ornare.placerat.orci@luctuslobortisClass.co.uk','neccursusaenimSuspendissealiquet','3854 Phasellus Rd.',16101242675199,'Vanuatu','DHF6D6D88888D8643934HHH434G4G848');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('John Rich','justo.faucibus@porttitorscelerisque.net','neccursusaenimSuspendissealiquet','644-9260 Nisl. Avenue',16080251457399,'Papua New Guinea','GF7575JG8867458FHGJ68685943FJ494');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Kiayada Glass','pharetra.felis.eget@leoVivamusnibh.com','neccursusaenimSuspendissealiquet','9694 Facilisis. Avenue',16736041004499,'Oman','FGF53884839FNVJF848484HFFHF8484');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Orson Andrews','mi.enim@musDonec.net','neccursusaenimSuspendissealiquet','344-4356 In St.',16400826496996,'Niue','FGF5DSF4FGHD74645848484HFFHF8484');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Elmo Simpson','ipsum.dolor.sit@arcu.ca','neccursusaenimSuspendissealiquet','Ap #973-5666 Donec St.',16040421975299,'Christmas Island','FDRTR547735FNVJF848484HFFHF8484');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Phillip Mathis','orci@maurissagittisplacerat.net','neccursusaenimSuspendissealiquet','4576 Mauris Ave',16361003936599,'Virgin Islands, British','FJKGDHSJ8734HJFSU77437RUJDDG4');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Fulton Fuentes','fringilla.euismod.enim@nibhPhasellusnulla.com','neccursusaenimSuspendissealiquet','P.O. Box 171, 8947 Quis, St.',16961122182999,'Madagascar','SDGSDHFKSGFH784W64345MNGJDBN744');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Joel David','ipsum.Donec.sollicitudin@Sed.edu','neccursusaenimSuspendissealiquet','Ap #284-6045 Tortor, St.',16010122315299,'Trinidad and Tobago','DJHFJKSHF8473473283SDFNBHSFDGHV332');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Sophia Clark','mauris.id.sapien@vulputatemaurissagittis.ca','neccursusaenimSuspendissealiquet','P.O. Box 550, 6334 Elit, Av.',16235031958499,'Mali','SNDGHSM46732ERYHDJSBN473435');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Madeson Velasquez','velit.Aliquam.nisl@id.com','neccursusaenimSuspendissealiquet','P.O. Box 948, 2265 Sem Avenue',16790628317299,'Spain','GHJ456783267839634758GHFDJDF');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Eagan Hampton','Donec@ipsumportaelit.net','neccursusaenimSuspendissealiquet','Ap #961-7290 Amet, Street',16520402529799,'Uzbekistan','GHJK452367485964537FGSDH');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Joshua Camacho','euismod.et.commodo@Donectempor.com','neccursusaenimSuspendissealiquet','P.O. Box 657, 8909 Taciti St.',16650030671099,'Dominican Republic','3HF567485DSFGHFJ467DHS46YTGFD');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Halla Langley','odio.Nam.interdum@augue.org','neccursusaenimSuspendissealiquet','2051 Fusce Road',16570512533899,'Chile','SGHJ647586GFHJG64758987FG');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Burton Stuart','mollis@idantedictum.ca','neccursusaenimSuspendissealiquet','356 Nostra, Av.',16510540764799,'United Kingdom (Great Britain)','DF456789TFGHJYT345678DFGHJKT6U');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Yoshio Chan','tincidunt.tempus.risus@laciniavitae.com','neccursusaenimSuspendissealiquet','7528 Amet St.',16520222583799,'Kuwait','DFG3456789OIHG45TGHU6545TGHJU');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Carson Hansen','hendrerit.id@ultriciesligulaNullam.com','neccursusaenimSuspendissealiquet','P.O. Box 238, 9874 Varius St.',16210660785099,'Bahamas','DFGR45TYGBNJUYT567IOIUHGFDCVSDFGH');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Tyler Callahan','id.nunc@augueeu.ca','neccursusaenimSuspendissealiquet','Ap #450-1601 Varius Avenue',16570751541099,'Jordan','DFGHR456YGHBNJKIUYT567UJKOI5FR');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Roanna Walton','est@eget.net','neccursusaenimSuspendissealiquet','423-8125 Felis, Avenue',16430501642699,'Antarctica','EFVBHR45678IJNMKO6543WSDFGHJKO09');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Tallulah Le','mattis.ornare@Namligula.co.uk','neccursusaenimSuspendissealiquet','724-8471 Ullamcorper, Rd.',16361030768299,'Argentina','DFGEW23456789UHGFRTYU9873FGT6J');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Rajah Santana','non.nisi@anteipsum.org','neccursusaenimSuspendissealiquet','P.O. Box 654, 8869 Velit Av.',16900408827499,'Cambodia','ASDCVB87627865433EFJI9654987654R');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Elizabeth Doyle','felis@dolorelitpellentesque.com','neccursusaenimSuspendissealiquet','Ap #824-1976 Arcu Av.',16011213032299,'Bahamas','XCVBFE2345T5JNGT323456YGF4873RG7YH');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Ingrid Shelton','vulputate.eu.odio@mattisvelitjusto.org','neccursusaenimSuspendissealiquet','738-1932 Tortor Rd.',16463070322799,'Latvia','CDV234560987653CBR7E8INCB74839FYTYRE');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Colleen Hoover','vestibulum.massa@fringilla.edu','neccursusaenimSuspendissealiquet','1135 Metus. St.',16031030131599,'Grenada','BVCVBDS1234567YHJI8765RFVBH567UHBNJHGT');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Amber Alvarado','imperdiet.erat.nonummy@magnaPhasellusdolor.net','neccursusaenimSuspendissealiquet','Ap #357-8402 Faucibus Road',16154123077799,'Mali','CFDSW23R87654EFVGFRTGBNJYTHJYTF');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Remedios Hopper','vestibulum.Mauris.magna@laoreet.co.uk','neccursusaenimSuspendissealiquet','767-1240 Donec Street',16170511950199,'El Salvador','C23456TGDERGHUYT5TGHR45TGYTR5TYTT');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Kitra Jennings','eu@neceuismod.edu','neccursusaenimSuspendissealiquet','Ap #192-5474 Pretium Street',16240531568799,'Georgia','CVFDE23456765GHGFRTGHJUYGFRTGHT');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Julie Ross','tempus@tempor.com','neccursusaenimSuspendissealiquet','Ap #755-9925 Purus Avenue',16490591007299,'Zimbabwe','CVBN35465748BGVCBN84254VCCSFGBR4');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Pedro Miranda','pedro21fcp@gmail.com','neccursusaenimSuspendissealiquet','Rua Nova da Gandra',00351961835740,'Portugal','D658403C209155E3DC13E77D957C9350');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Francisca Cerquinho','up201505791@fe.up.pt','neccursusaenimSuspendissealiquet','Rua da Batalha',00351937563986,'Portugal','D5CEE94F46088F62192C74894B5EE74F');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('Diogo Silva','up201405742@fe.up.pt','neccursusaenimSuspendissealiquet','Rua da Batalha',00351937563986,'Portugal','D5CEE94F46088F62192C74894B5EE74F');
-INSERT INTO users (name,email,photo,address,contact,country,password) VALUES ('José Azevedo','up201506448@fe.up.pt','neccursusaenimSuspendissealiquet','Rua da Batalha',00351937563986,'Portugal','D5CEE94F46088F62192C74894B5EE74F');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Melvin', 'Flowers','pede.Suspendisse.dui@magna.ca','neccursusaenimSuspendissealiquet','Ap #593-1560 Rhoncus. Avenue',16670680424499,'Samoa','DD99828558BF504D5A1DB0E646554811');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Cadman', 'Albert','id@Integersemelit.com','neccursusaenimSuspendissealiquet','P.O. Box 854, 9268 Vehicula Road',16954062003699,'Bangladesh','DHDH7439FJDHD3749DNDBF48484HFHF8');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Sacha', 'Stephens','tincidunt.nibh.Phasellus@euligula.edu','neccursusaenimSuspendissealiquet','1784 Metus Rd.',16761061088899,'Reunion','DJ464837DJDJD474747DHDD74747DDFD');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Ferris', 'Meyer','ornare.placerat.orci@luctuslobortisClass.co.uk','neccursusaenimSuspendissealiquet','3854 Phasellus Rd.',16101242675199,'Vanuatu','DHF6D6D88888D8643934HHH434G4G848');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('John', 'Rich','justo.faucibus@porttitorscelerisque.net','neccursusaenimSuspendissealiquet','644-9260 Nisl. Avenue',16080251457399,'Papua New Guinea','GF7575JG8867458FHGJ68685943FJ494');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Kiayada', 'Glass','pharetra.felis.eget@leoVivamusnibh.com','neccursusaenimSuspendissealiquet','9694 Facilisis. Avenue',16736041004499,'Oman','FGF53884839FNVJF848484HFFHF8484');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Orson', 'Andrews','mi.enim@musDonec.net','neccursusaenimSuspendissealiquet','344-4356 In St.',16400826496996,'Niue','FGF5DSF4FGHD74645848484HFFHF8484');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Elmo', 'Simpson','ipsum.dolor.sit@arcu.ca','neccursusaenimSuspendissealiquet','Ap #973-5666 Donec St.',16040421975299,'Christmas Island','FDRTR547735FNVJF848484HFFHF8484');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Phillip', 'Mathis','orci@maurissagittisplacerat.net','neccursusaenimSuspendissealiquet','4576 Mauris Ave',16361003936599,'Virgin Islands, British','FJKGDHSJ8734HJFSU77437RUJDDG4');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Fulton', 'Fuentes','fringilla.euismod.enim@nibhPhasellusnulla.com','neccursusaenimSuspendissealiquet','P.O. Box 171, 8947 Quis, St.',16961122182999,'Madagascar','SDGSDHFKSGFH784W64345MNGJDBN744');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Joel', 'David','ipsum.Donec.sollicitudin@Sed.edu','neccursusaenimSuspendissealiquet','Ap #284-6045 Tortor, St.',16010122315299,'Trinidad and Tobago','DJHFJKSHF8473473283SDFNBHSFDGHV332');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Sophia', 'Clark','mauris.id.sapien@vulputatemaurissagittis.ca','neccursusaenimSuspendissealiquet','P.O. Box 550, 6334 Elit, Av.',16235031958499,'Mali','SNDGHSM46732ERYHDJSBN473435');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Madeson', 'Velasquez','velit.Aliquam.nisl@id.com','neccursusaenimSuspendissealiquet','P.O. Box 948, 2265 Sem Avenue',16790628317299,'Spain','GHJ456783267839634758GHFDJDF');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Eagan', 'Hampton','Donec@ipsumportaelit.net','neccursusaenimSuspendissealiquet','Ap #961-7290 Amet, Street',16520402529799,'Uzbekistan','GHJK452367485964537FGSDH');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Joshua', 'Camacho','euismod.et.commodo@Donectempor.com','neccursusaenimSuspendissealiquet','P.O. Box 657, 8909 Taciti St.',16650030671099,'Dominican Republic','3HF567485DSFGHFJ467DHS46YTGFD');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Halla', 'Langley','odio.Nam.interdum@augue.org','neccursusaenimSuspendissealiquet','2051 Fusce Road',16570512533899,'Chile','SGHJ647586GFHJG64758987FG');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Burton', 'Stuart','mollis@idantedictum.ca','neccursusaenimSuspendissealiquet','356 Nostra, Av.',16510540764799,'United Kingdom (Great Britain)','DF456789TFGHJYT345678DFGHJKT6U');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Yoshio', 'Chan','tincidunt.tempus.risus@laciniavitae.com','neccursusaenimSuspendissealiquet','7528 Amet St.',16520222583799,'Kuwait','DFG3456789OIHG45TGHU6545TGHJU');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Carson', 'Hansen','hendrerit.id@ultriciesligulaNullam.com','neccursusaenimSuspendissealiquet','P.O. Box 238, 9874 Varius St.',16210660785099,'Bahamas','DFGR45TYGBNJUYT567IOIUHGFDCVSDFGH');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Tyler', 'Callahan','id.nunc@augueeu.ca','neccursusaenimSuspendissealiquet','Ap #450-1601 Varius Avenue',16570751541099,'Jordan','DFGHR456YGHBNJKIUYT567UJKOI5FR');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Roanna', 'Walton','est@eget.net','neccursusaenimSuspendissealiquet','423-8125 Felis, Avenue',16430501642699,'Antarctica','EFVBHR45678IJNMKO6543WSDFGHJKO09');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Tallulah', 'Le','mattis.ornare@Namligula.co.uk','neccursusaenimSuspendissealiquet','724-8471 Ullamcorper, Rd.',16361030768299,'Argentina','DFGEW23456789UHGFRTYU9873FGT6J');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Rajah', 'Santana','non.nisi@anteipsum.org','neccursusaenimSuspendissealiquet','P.O. Box 654, 8869 Velit Av.',16900408827499,'Cambodia','ASDCVB87627865433EFJI9654987654R');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Elizabeth', 'Doyle','felis@dolorelitpellentesque.com','neccursusaenimSuspendissealiquet','Ap #824-1976 Arcu Av.',16011213032299,'Bahamas','XCVBFE2345T5JNGT323456YGF4873RG7YH');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Ingrid', 'Shelton','vulputate.eu.odio@mattisvelitjusto.org','neccursusaenimSuspendissealiquet','738-1932 Tortor Rd.',16463070322799,'Latvia','CDV234560987653CBR7E8INCB74839FYTYRE');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Colleen', 'Hoover','vestibulum.massa@fringilla.edu','neccursusaenimSuspendissealiquet','1135 Metus. St.',16031030131599,'Grenada','BVCVBDS1234567YHJI8765RFVBH567UHBNJHGT');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Amber', 'Alvarado','imperdiet.erat.nonummy@magnaPhasellusdolor.net','neccursusaenimSuspendissealiquet','Ap #357-8402 Faucibus Road',16154123077799,'Mali','CFDSW23R87654EFVGFRTGBNJYTHJYTF');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Remedios', 'Hopper','vestibulum.Mauris.magna@laoreet.co.uk','neccursusaenimSuspendissealiquet','767-1240 Donec Street',16170511950199,'El Salvador','C23456TGDERGHUYT5TGHR45TGYTR5TYTT');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Kitra', 'Jennings','eu@neceuismod.edu','neccursusaenimSuspendissealiquet','Ap #192-5474 Pretium Street',16240531568799,'Georgia','CVFDE23456765GHGFRTGHJUYGFRTGHT');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Julie', 'Ross','tempus@tempor.com','neccursusaenimSuspendissealiquet','Ap #755-9925 Purus Avenue',16490591007299,'Zimbabwe','CVBN35465748BGVCBN84254VCCSFGBR4');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Pedro', 'Miranda','pedro21fcp@gmail.com','neccursusaenimSuspendissealiquet','Rua Nova da Gandra',00351961835740,'Portugal','D658403C209155E3DC13E77D957C9350');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Francisca', 'Cerquinho','up201505791@fe.up.pt','neccursusaenimSuspendissealiquet','Rua da Batalha',00351937563986,'Portugal','D5CEE94F46088F62192C74894B5EE74F');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('Diogo', 'Silva','up201405742@fe.up.pt','neccursusaenimSuspendissealiquet','Rua da Batalha',00351937563986,'Portugal','D5CEE94F46088F62192C74894B5EE74F');
+INSERT INTO users (firstName,lastName,email,photo,address,contact,country,password) VALUES ('José', 'Azevedo','up201506448@fe.up.pt','neccursusaenimSuspendissealiquet','Rua da Batalha',00351937563986,'Portugal','D5CEE94F46088F62192C74894B5EE74F');
 
 INSERT INTO admin (id_user) VALUES (31);
 INSERT INTO admin (id_user) VALUES (32);

@@ -31,7 +31,7 @@
   <body>
     
 	<nav class="navbar navbar-expand-lg" id="myTopNav">
-		<a href="index.html" class="link_logo">
+		<a href="{{route('auctions')}}" class="link_logo">
 			<img class="topnavLogo" src="./images/icon.png"></img>
 		</a>
 		<div class="shop_by_category">
@@ -95,7 +95,8 @@
 					<div class="username">
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-								<img class="img-circle" src="images/perfil_blue.png" style="max-width: 30px; max-height:30px; margin-right:15px; "></img>Username
+								<img class="img-circle" src="images/perfil_blue.png" style="max-width: 30px; max-height:30px; margin-right:15px; "></img>
+								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
 								<a href="edit_profile.html">Edit Profile</a>

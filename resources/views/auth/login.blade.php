@@ -82,13 +82,13 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fa fa-user fa" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="name" id="name" placeholder="First Name" />
+												<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" />
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('firstName'))
                                         <span class="error">
-                                        {{ $errors->first('name') }}
+                                        {{ $errors->first('firstName') }}
                                         </span>
                                     @endif
 									<div class="form-group">
@@ -97,13 +97,13 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fa fa-user fa" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="name" id="name" placeholder="Last Name" />
+												<input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" />
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('lastName'))
                                         <span class="error">
-                                        {{ $errors->first('name') }}
+                                        {{ $errors->first('lastName') }}
                                         </span>
                                     @endif
 									<div class="form-group">
