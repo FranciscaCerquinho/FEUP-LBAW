@@ -33,7 +33,8 @@ CREATE TABLE users(
   photo text,
   address text,
   country text,
-  contact NUMERIC
+  contact NUMERIC,
+  remember_token text
 );
 
 CREATE TABLE admin(

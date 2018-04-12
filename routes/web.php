@@ -33,3 +33,11 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
+Route::get('auctions', 'AuctionController@list')->name('auctions');
+
+//Footer
+
+Route::get('about', 'FooterController@showAbout')->name('about');
+Route::get('faq', 'FooterController@showFAQ')->name('faq');
+Route::get('contact_us', 'FooterController@showContactUs')->name('contact_us');
