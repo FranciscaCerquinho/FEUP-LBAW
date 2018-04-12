@@ -2441,3 +2441,7 @@ iframe {
     margin-left: 100px;
   }
 }
+
+.error {
+  color: #437ab2;
+}

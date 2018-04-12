@@ -112,13 +112,13 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fa fa-envelope fa" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="email" id="email" placeholder="Email" />
+												<input type="text" class="form-control" name="email" id="registerEmail" placeholder="Email" />
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('registerEmail'))
                                         <span class="error">
-                                        {{ $errors->first('email') }}
+                                        {{ $errors->first('registerEmail') }}
                                         </span>
                                     @endif
 									<div class="form-group">
@@ -172,13 +172,13 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fa fa-lock fa-lg" aria-hidden="true"></i>
 												</span>
-												<input type="password" class="form-control" name="password" id="password" placeholder="Password" />
+												<input type="password" class="form-control" name="password" id="registerPassword" placeholder="Password" />
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('password'))
+                                    @if ($errors->has('registerPassword'))
                                         <span class="error">
-                                        {{ $errors->first('password') }}
+                                        {{ $errors->first('registerPassword') }}
                                         </span>
                                     @endif
 									<div class="form-group">
