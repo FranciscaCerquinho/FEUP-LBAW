@@ -57,7 +57,6 @@ class RegisterController extends Controller
             'country' => 'required|string|min:6',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
