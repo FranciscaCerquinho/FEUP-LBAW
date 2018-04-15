@@ -31,7 +31,7 @@
   <body>
     
 	<nav class="navbar navbar-expand-lg" id="myTopNav">
-		<a href="{{route('auctions')}}" class="link_logo">
+		<a href="{{route('auction')}}" class="link_logo">
 			<img class="topnavLogo" src="./images/icon.png"></img>
 		</a>
 		<div class="shop_by_category">

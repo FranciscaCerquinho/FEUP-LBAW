@@ -17,7 +17,7 @@
         <hr class="style17" style="color:grey;">
     </div>
     <div id="error_home">
-        <button type="submit" onclick="window.location= '{{ route('auctions') }}'">Go to home page </button>
+        <button type="submit" onclick="window.location= '{{ route('auction') }}'">Go to home page </button>
     </div>
 </div>
 

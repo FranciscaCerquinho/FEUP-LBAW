@@ -177,10 +177,10 @@ body {
       font-size: 15px;
     }
 
-    .pagination .pagination-centered{
-        float: left;
-    }
+  }
 
+  .pagination{
+    justify-content: center;
   }
 
 
