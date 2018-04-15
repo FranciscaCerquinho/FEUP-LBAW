@@ -1,280 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Top Bid</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script defer src="css/fontawesome-all.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <link rel="icon" type="image/png" href="./images/icon.png">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Top Bid</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	 crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script defer src="css/fontawesome-all.js"></script>
+	<link rel="icon" type="image/png" href="./images/icon.png">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
-  <script defer src="css/fontawesome-all.js"></script>
 </head>
+
 <body>
 
-  <header>
-    <nav class="topnav" id="myTopnav">
-        <a  href="index.html" class="link_logo">
-            <img class="topnav__logo" src="images/icon.png" style='max-width: 120px; max-height: 120px; margin-top:10px;'></img>
-        </a>      
-        <ul>
-            <div class="shop_by_category">
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" style="color: #597ca0ff">Category</a>
-                <span class="caret"></span>
-                <div class="dropdown-content">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <a class="dropdown-item" href="#electronics">Electronics</a>
-                            <a class="dropdown-item" href="#fashion">Fashion</a>
-                            <a class="dropdown-item" href="#home_garden">Home & Garden</a>
-                            <a class="dropdown-item" href="#motors">Motors</a>
-                            <a class="dropdown-item" href="#music">Music</a>
-                        </div>
-                        <div class="col-md-2" style="padding-left:180px">
-                            <a class="dropdown-item" href="#toys">Toys</a>
-                            <a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-                            <a class="dropdown-item" href="#sporting">Sporting</a>
-                            <a class="dropdown-item" href="#others">Others</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            </div>
-            <div class="links">
-            <li><a title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
-                    <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
-                </a>
-            </li>
-            <li><a href="add_auction.html">Add Auction</a></li>
-            <li><a href="login.html">Sign in</a></li>
-            <li>
-                <div class="container" style="max-width:420px; padding-right:120px;">
-                    <div class="input-group stylish-input-group">
-                        <input type="text" class="form-control"  placeholder="Search" >
-                            <span class="input-group-addon">
-                                <button type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                                </button>  
-                            </span>
-                    </div>
-                </div>
-            </li>
-            </div>
-        </ul>
-    </nav>
-</header>
+	<nav class="navbar navbar-expand-lg" id="myTopNav">
+		<a href="index.html" class="link_logo">
+			<img class="topnavLogo" src="images/icon.png"></img>
+		</a>
+		<div class="shop_by_category">
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn nav-link dropdown-toggle" style="color: #597ca0ff">Category</a>
+				<span class="caret"></span>
+				<div class="dropdown-content">
+					<div class="row">
+						<div class="d-block d-sm-none">
+							<a class="dropdown-item" href="#electronics">Electronics</a>
+							<a class="dropdown-item" href="#fashion">Fashion</a>
+							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
+							<a class="dropdown-item" href="#motors">Motors</a>
+							<a class="dropdown-item" href="#music">Music</a>
+							<a class="dropdown-item" href="#toys">Toys</a>
+							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+							<a class="dropdown-item" href="#sporting">Sporting</a>
+							<a class="dropdown-item" href="#others">Others</a>
+						</div>
+						<div class="col-md-2 d-none d-sm-block">
+							<a class="dropdown-item" href="#electronics">Electronics</a>
+							<a class="dropdown-item" href="#fashion">Fashion</a>
+							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
+							<a class="dropdown-item" href="#motors">Motors</a>
+							<a class="dropdown-item" href="#music">Music</a>
+						</div>
+						<div class="col-md-2 d-none d-sm-block" style="padding-left:180px">
+							<a class="dropdown-item" href="#toys">Toys</a>
+							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+							<a class="dropdown-item" href="#sporting">Sporting</a>
+							<a class="dropdown-item" href="#others">Others</a>
+						</div>
+					</div>
+				</div>
+			</li>
+		</div>
+		<a class="navbar-brand"></a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+		 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse bg-white" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<div class="input-group stylish-input-group" id="search_bar">
+						<input type="text" class="form-control" placeholder="Search">
+						<span class="search_icon">
+							<button class="" type="submit">
+								<span class="fa fa-search" style="color:#666666"></span>
+							</button>
+						</span>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="login.html">Sign in</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="add_auction.html">Add Auction</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
+						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
-<div class="container-fluid bg-1">
-<div class="new_auctions">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 mb-4">
-              <div class="card h-100">
-                <a href="item.html"><img class="card-img-top" src="images/play.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="item.html">PS4 Controllers</a>
-                  </h4>
-                  <h5>EUR 50.99</h5>
-                  <h1>2 days left</h1>
-                  <p class="card-text">Mariana Gomes</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="card h-100">
-                  <a href="#"><img class="card-img-top" src="images/phone.jpg" alt=""></a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="#">Phone</a>
-                    </h4>
-                    <h5>EUR 280.00</h5>
-                    <h1>2 min left</h1>
-                    <p class="card-text">João Silva</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4 mb-4">
-                  <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="images/macbook.jpg" alt=""></a>
-                    <div class="card-body">
-                      <h4 class="card-title">
-                        <a href="#">Macbook Pro</a>
-                      </h4>
-                      <h5>EUR 1000.99</h5>
-                      <h1>2 seg left</h1>
-                      <p class="card-text">Teresa Sá</p>
-                    </div>
-                  </div>
-                </div>
+	<div class="container-fluid" id="newAuctions">
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="item.html" class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/play.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="item.html">PS4 Controllers</a>
+						</h4>
+						<h5>EUR 50.99</h5>
+						<h1>2 days left</h1>
+						<p class="card-text auctionCardText">Mariana Gomes</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4  col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/phone.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Phone</a>
+						</h4>
+						<h5>EUR 280.00</h5>
+						<h1>2 min left</h1>
+						<p class="card-text auctionCardText">João Silva</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4  col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/macbook.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Macbook Pro</a>
+						</h4>
+						<h5>EUR 1000.99</h5>
+						<h1>2 seg left</h1>
+						<p class="card-text auctionCardText">Teresa Sá</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/iphone.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Iphone 7</a>
+						</h4>
+						<h5>EUR 1100.50</h5>
+						<h1>10 seg left</h1>
+						<p class="card-text auctionCardText">Henrique Trigueiros</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/music.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">New Album David Bowie</a>
+						</h4>
+						<h5>EUR 20.90</h5>
+						<h1>1 day left</h1>
+						<p class="card-text auctionCardText">Dinis Lopes</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4  col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/music2.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Vinyl Mike Evans</a>
+						</h4>
+						<h5>EUR 25.90</h5>
+						<h1>5 min left</h1>
+						<p class="card-text auctionCardText">Teresa Ramos</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4  col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/music3.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Vinyl</a>
+						</h4>
+						<h5>EUR 30.90</h5>
+						<h1>1 hour left</h1>
+						<p class="card-text auctionCardText">Eduardo Azevedo</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4  col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#" class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/prada.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Prada Cameo Saffiano</a>
+						</h4>
+						<h5>EUR 500.00</h5>
+						<h1>1 hour left</h1>
+						<p class="card-text auctionCardText">Francisca Cerquinho</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/camera.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Camera Nikon D7500</a>
+						</h4>
+						<h5>EUR 468.00</h5>
+						<h1>10 min left</h1>
+						<p class="card-text auctionCardText">Filipe Novais</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/camera2.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">New Camera</a>
+						</h4>
+						<h5>EUR 26.00</h5>
+						<h1>15 min left</h1>
+						<p class="card-text auctionCardText">Joana Torrinha</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/sport.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">Tennis Nike</a>
+						</h4>
+						<h5>EUR 96.00</h5>
+						<h1>10 min left</h1>
+						<p class="card-text auctionCardText">Pedro Ramos</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card auctionCard">
+					<a href="#"  class="text-center">
+						<img class="card-img-top auctionCardImage" src="images/sunglasses.jpg" alt="">
+					</a>
+					<div class="card-body auctionCardBody">
+						<h4 class="card-title auctionCardTitle">
+							<a href="#">QUAY AUSTRALIA Sunglasses</a>
+						</h4>
+						<h5>EUR 90.77</h5>
+						<h1>13 min left</h1>
+						<p class="card-text auctionCardText">Lúcia Costa</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="searchNav" class="text-center">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 
-                <div class="col-lg-3 col-md-4 mb-4">
-                    <div class="card h-100">
-                      <a href="#"><img class="card-img-top" src="images/iphone.jpg" alt=""></a>
-                      <div class="card-body">
-                        <h4 class="card-title">
-                          <a href="#">Iphone 7</a>
-                        </h4>
-                        <h5>EUR 1100.50</h5>
-                        <h1>10 seg left</h1>
-                        <p class="card-text">Henrique Trigueiros</p>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-    <div class="row">
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/music.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">New Album David Bowie</a>
-                </h4>
-                <h5>EUR 20.90</h5>
-                <h1>1 day left</h1>
-                <p class="card-text">Dinis Lopes</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="images/music2.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Vinyl Mike Evans</a>
-                  </h4>
-                  <h5>EUR 25.90</h5>
-                  <h1>5 min left</h1>
-                  <p class="card-text">Teresa Ramos</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="card h-100">
-                  <a href="#"><img class="card-img-top" src="images/music3.jpg" alt=""></a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="#">Vinyl</a>
-                    </h4>
-                    <h5>EUR 30.90</h5>
-                    <h1>1 hour left</h1>
-                    <p class="card-text">Eduardo Azevedo</p>
-                  </div>
-                </div>
-              </div>
-
-      <div class="col-lg-3 col-md-4 mb-4">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="images/prada.jpg" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Prada Cameo Saffiano</a>
-              </h4>
-              <h5>EUR 500.00</h5>
-              <h1>1 hour left</h1>
-              <p class="card-text">Francisca Cerquinho</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-
-      <div class="col-lg-3 col-md-4 mb-4">
-          <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="images/camera.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Camera Nikon D7500</a>
-                </h4>
-                <h5>EUR 468.00</h5>
-                <h1>10 min left</h1>
-                <p class="card-text">Filipe Novais</p>
-              </div>
-            </div>
-          </div>
-
-      <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="images/camera2.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">New Camera</a>
-                  </h4>
-                  <h5>EUR 26.00</h5>
-                  <h1>15 min left</h1>
-                  <p class="card-text">Joana Torrinha</p>
-                </div>
-              </div>
-            </div>
-
-              <div class="col-lg-3 col-md-4 mb-4">
-              <div class="card h-100">
-                  <a href="#"><img class="card-img-top" src="images/sport.jpg" alt=""></a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="#">Tennis Nike</a>
-                    </h4>
-                    <h5>EUR 96.00</h5>
-                    <h1>10 min left</h1>
-                    <p class="card-text">Pedro Ramos</p>
-                  </div>
-                </div>
-              </div>
-
-      <div class="col-lg-3 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="images/sunglasses.jpg" alt=""></a>
-                    <div class="card-body">
-                      <h4 class="card-title">
-                        <a href="#">QUAY AUSTRALIA Sunglasses</a>
-                      </h4>
-                      <h5>EUR 90.77</h5>
-                      <h1>13 min left</h1>
-                      <p class="card-text">Lúcia Costa</p>
-                    </div>
-                  </div>
-                </div>
-    </div>
-</div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination pagination-centered" style="margin-left:45%">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-        </ul>
-    </nav>
-  </div>
-
-<!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-    <div id="org">
-        &nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
-    </div>
-    <div id="orgInfo">
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact_us.html">Contact Us</a></li>
-    </div>	
-</footer>
+	<!-- Footer -->
+	<!-- Footer -->
+	<footer class="bg-4 text-center">
+		<div id="org">
+			&nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
+		</div>
+		<div id="orgInfo">
+			<li>
+				<a href="faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="about.html">About</a>
+			</li>
+			<li>
+				<a href="contact_us.html">Contact Us</a>
+			</li>
+		</div>
+	</footer>
 
 </body>
+
 </html>

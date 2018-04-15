@@ -1,168 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Top Bid</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script defer src="css/fontawesome-all.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <link rel="icon" type="image/png" href="./images/icon.png">
+	<title>Top Bid</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	 crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script defer src="css/fontawesome-all.js"></script>
+	<link rel="icon" type="image/png" href="./images/icon.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
-  <script defer src="css/fontawesome-all.js"></script>
 </head>
+
 <body>
 
-  <header>
-    <nav class="topnav" id="myTopnav">
-        <a  href="index.html" class="link_logo">
-            <img class="topnav__logo" src="images/icon.png" style='max-width: 120px; max-height: 120px; margin-top:10px;'></img>
-        </a>      
-        <ul>
-            <div class="shop_by_category">
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" style="color: #597ca0ff">Category</a>
-                <span class="caret"></span>
-                <div class="dropdown-content">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <a class="dropdown-item" href="#electronics">Electronics</a>
-                            <a class="dropdown-item" href="#fashion">Fashion</a>
-                            <a class="dropdown-item" href="#home_garden">Home & Garden</a>
-                            <a class="dropdown-item" href="#motors">Motors</a>
-                            <a class="dropdown-item" href="#music">Music</a>
-                        </div>
-                        <div class="col-md-2" style="padding-left:180px">
-                            <a class="dropdown-item" href="#toys">Toys</a>
-                            <a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-                            <a class="dropdown-item" href="#sporting">Sporting</a>
-                            <a class="dropdown-item" href="#others">Others</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            </div>
-            <div class="links">
-            <li><a title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
-                    <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
-                </a>
-            </li>
-            <li><a href="#add_auction">Add Auction</a></li>
-            <li><a href="sign_in.html">Sign in</a></li>
-            <li>
-                <div class="container" style="max-width:420px; padding-right:120px;">
-                    <div class="input-group stylish-input-group">
-                        <input type="text" class="form-control"  placeholder="Search" >
-                            <span class="input-group-addon">
-                                <button type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                                </button>  
-                            </span>
-                    </div>
-                </div>
-            </li>
-            </div>
-        </ul>
-    </nav>
-</header>
-		
-<section class="bg-primary" id="about" style="padding-top:100px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto container-fluid  text-center">
-          <h2 class="section-heading text-white text-center">We've got what you need!</h2>
-          <hr class="light my-4">
-          <p class="text-faded mb-4" style="font-size:18px">Top Bid is a site designed for online auctions, connecting millions of buyers and sellers around the world. Empowering people and creating economic opportunity for all.</p>
-          <a  style="color:white; font-size:20px;" href="index.html">
-              <i class="far fa-hand-point-right"></i> Get Started!</a>
-        </div>
-      </div>
-    </div>
-  </section>
+	<nav class="navbar navbar-expand-lg" id="myTopNav">
+		<a href="index.html" class="link_logo">
+			<img class="topnavLogo" src="images/icon.png"></img>
+		</a>
+		<div class="shop_by_category">
+			<li class="dropdown">
+				<a href="javascript:void(0)" class="dropbtn nav-link dropdown-toggle" style="color: #597ca0ff">Category</a>
+				<span class="caret"></span>
+				<div class="dropdown-content">
+					<div class="row">
+						<div class="d-block d-sm-none">
+							<a class="dropdown-item" href="#electronics">Electronics</a>
+							<a class="dropdown-item" href="#fashion">Fashion</a>
+							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
+							<a class="dropdown-item" href="#motors">Motors</a>
+							<a class="dropdown-item" href="#music">Music</a>
+							<a class="dropdown-item" href="#toys">Toys</a>
+							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+							<a class="dropdown-item" href="#sporting">Sporting</a>
+							<a class="dropdown-item" href="#others">Others</a>
+						</div>
+						<div class="col-md-2 d-none d-sm-block">
+							<a class="dropdown-item" href="#electronics">Electronics</a>
+							<a class="dropdown-item" href="#fashion">Fashion</a>
+							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
+							<a class="dropdown-item" href="#motors">Motors</a>
+							<a class="dropdown-item" href="#music">Music</a>
+						</div>
+						<div class="col-md-2 d-none d-sm-block" style="padding-left:180px">
+							<a class="dropdown-item" href="#toys">Toys</a>
+							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
+							<a class="dropdown-item" href="#sporting">Sporting</a>
+							<a class="dropdown-item" href="#others">Others</a>
+						</div>
+					</div>
+				</div>
+			</li>
+		</div>
+		<a class="navbar-brand"></a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+		 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse bg-white" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<div class="input-group stylish-input-group" id="search_bar">
+						<input type="text" class="form-control" placeholder="Search">
+						<span class="search_icon">
+							<button class="" type="submit">
+								<span class="fa fa-search" style="color:#666666"></span>
+							</button>
+						</span>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="login.html">Sign in</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="add_auction.html">Add Auction</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
+						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
-  <section id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading" style="color: #444444;">Services</h2>
-          <hr class="style17" style="color:grey;">
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="far fa-hand-point-up text-primary mb-3 sr-icons" style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Make Bid</h3>
-            <p class="text-muted mb-0">Make a bid for the product you want to buy.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="fas fa-gavel text-primary mb-3 sr-icons"  style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Add an auction</h3>
-            <p class="text-muted mb-0">Add an auction and control that!</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="fas fa-comments text-primary mb-3 sr-icons" style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Text the sellers</h3>
-            <p class="text-muted mb-0">Talk to the sellers.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box mt-5 mx-auto">
-            <i class="fas fa-bullhorn text-primary mb-3 sr-icons" style="font-size:80px"></i>
-            <h3 class="mb-3" style="color: #444444;">Report an auction</h3>
-            <p class="text-muted mb-0">Report an auction that you think used offensive messages or comments.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto container-fluid text-center">
-          <h2 class="section-heading" style="color: #444444;" >Let's Get In Touch!</h2>
-          <hr class="style17" style="color:grey;">
-          <p class="mb-5" style=" color: #437ab2; font-size:18px">Ready to start? That's great! Give us a call or send us an email if you have any question!</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 ml-auto container-fluid text-center">
-          <i class="fa fa-phone fa-3x mb-3 sr-contact text-primary mb-3 sr-icons"></i>
-          <p style="color: #437ab2;">123-456-6789</p>
-        </div>
-        <div class="col-lg-4 mr-auto container-fluid  text-center">
-          <i class="fas fa-at fa-3x mb-3 sr-contact text-primary mb-3 sr-icons"></i>
-          <p>
-            <a href="mailto:your-email@your-domain.com">topbid@geral.com</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+	<section class="" id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto container-fluid  text-center">
+					<h2 class="section-heading text-white text-center">We've got what you need!</h2>
+					<hr class="light my-4">
+					<p class="text-faded mb-4" style="font-size:18px">Top Bid is a site designed for online auctions, connecting millions of buyers and sellers around the world. Empowering
+						people and creating economic opportunity for all.</p>
+					<a style="color:white; font-size:20px;" href="index.html">
+						<i class="far fa-hand-point-right"></i> Get Started!</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
-<!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-    <div id="org">
-        &nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
-    </div>
-    <div id="orgInfo">
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact_us.html">Contact Us</a></li>
-    </div>	
-</footer>
+	<section id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading" style="color: #444444;">Services</h2>
+					<hr class="style17" style="color:grey;">
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box mt-5 mx-auto">
+						<i class="far fa-hand-point-up mb-3 sr-icons" style="font-size:80px;color: #437ab2;"></i>
+						<h3 class="mb-3" style="color: #444444;">Make Bid</h3>
+						<p class="text-muted mb-0">Make a bid for the product you want to buy.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box mt-5 mx-auto">
+						<i class="fas fa-gavel mb-3 sr-icons" style="font-size:80px;color: #437ab2;"></i>
+						<h3 class="mb-3" style="color: #444444;">Add an auction</h3>
+						<p class="text-muted mb-0">Add an auction and control that!</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box mt-5 mx-auto">
+						<i class="fas fa-comments mb-3 sr-icons" style="font-size:80px;color: #437ab2;"></i>
+						<h3 class="mb-3" style="color: #444444;">Text the sellers</h3>
+						<p class="text-muted mb-0">Talk to the sellers.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 text-center">
+					<div class="service-box mt-5 mx-auto">
+						<i class="fas fa-bullhorn mb-3 sr-icons" style="font-size:80px;color: #437ab2;"></i>
+						<h3 class="mb-3" style="color: #444444;">Report an auction</h3>
+						<p class="text-muted mb-0">Report an auction that you think used offensive messages or comments.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto container-fluid text-center">
+					<h2 class="section-heading" style="color: #444444;">Let's Get In Touch!</h2>
+					<hr class="style17" style="color:grey;">
+					<p class="mb-5" style=" color: #437ab2; font-size:18px">Ready to start? That's great! Give us a call or send us an email if you have any question!</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 ml-auto container-fluid text-center">
+					<i class="fa fa-phone fa-3x mb-3 sr-contact mb-3 sr-icons" style="color: #437ab2;"></i>
+					<p style="color: #437ab2;">123-456-6789</p>
+				</div>
+				<div class="col-lg-4 mr-auto container-fluid  text-center">
+					<i class="fas fa-at fa-3x mb-3 sr-contact mb-3 sr-icons" style="color: #437ab2;"></i>
+					<p>
+						<a href="mailto:your-email@your-domain.com" style="color: #437ab2;">topbid@geral.com</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-4 text-center">
+		<div id="org">
+			&nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
+		</div>
+		<div id="orgInfo">
+			<li>
+				<a href="faq.html">FAQ</a>
+			</li>
+			<li>
+				<a href="about.html">About</a>
+			</li>
+			<li>
+				<a href="contact_us.html">Contact Us</a>
+			</li>
+		</div>
+	</footer>
 </body>
+
 </html>
