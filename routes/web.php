@@ -12,12 +12,10 @@
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('auctions');
 });
 
-// Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+
 
 //User
 Route::get('editProfile', 'UserController@show');

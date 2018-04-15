@@ -19,17 +19,10 @@ class Auction extends Model
         'dateBegin','dateEnd', 'name', 'description','actualPrice','photo','buyNow','active',
     ];
 
-  /**
-   * The user this card belongs to
-   */
-  public function user() {
-    return $this->belongsTo('App\User','id_user');
-  }
-
-  /**
-   * The card this item belongs to.
-   */
-  public function card() {
-    return $this->belongsTo('App\Card');
-  }
+    /**
+    * The user this auction belongs to
+    */
+    public function user() {
+        return $this->belongsTo('App\Owner','id_user');
+    }
 }
