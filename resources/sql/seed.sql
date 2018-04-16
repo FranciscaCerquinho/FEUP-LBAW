@@ -370,7 +370,7 @@ INSERT INTO admin (id_user) VALUES (31);
 INSERT INTO admin (id_user) VALUES (32);
 INSERT INTO admin (id_user) VALUES (33);
 
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active) VALUES ('2018-03-13 00:00:00','2018-05-02 00:00:00','PS4 Controllers','Two Sony PS4 controllers that were only used once.',50.99,'play.jpg',70,'1');
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active) VALUES ('2018-03-13 00:00:00','2018-04-17 13:25:25','PS4 Controllers','Two Sony PS4 controllers that were only used once.',50.99,'play.jpg',70,'1');
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active) VALUES ('2018-03-26 00:00:00','2018-05-03 00:00:00','Phone','The new one! Two good to be true! Buy now!',280.00,'phone.jpg',350.50,'1');
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active) VALUES ('2018-03-20 00:00:00','2018-05-02 00:00:00','MacbookPro','The new MacbookPro, 13 polg.',1000.99,'macbook.jpg',1500.10,'1');
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active) VALUES ('2018-03-14 00:00:00','2018-05-01 00:00:00','Iphone7','The new iphone 7 with 64GB.',700.50,'iphone.jpg',750.60,'1');

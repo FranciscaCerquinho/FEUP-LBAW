@@ -133,7 +133,7 @@ body {
 #newAuctions .card-body #auctionCardBody{
   float: left !important;
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 780px) {
     #newAuctions{
       padding: 30px 60px 10px 60px;
     }
@@ -142,13 +142,13 @@ body {
         align-content: center;
     }
     .auctionCardImage {
-        width: 170px;
+        width: 160px;
     }
     
     .auctionCard {
       padding: 20px;
-      height: 350px;
-      width: 250px;
+      height: 380px;
+      width: 200px;
       background-color: white;
       align-content: center;
     }
@@ -184,7 +184,7 @@ body {
   }
 
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 782px) {
 .auctionCardImage {
     width: 100%;
 }
@@ -194,7 +194,7 @@ body {
 
 .auctionCard{
   padding: 15px;
-  height: 500px;
+  height: 515px;
   background-color: white;
 }
 

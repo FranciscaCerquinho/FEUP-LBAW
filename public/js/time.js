@@ -20,45 +20,64 @@ function SplitDate(dateTime){
     var minute = parseInt(time[1]);
     var second_aux = time[2];
     var splitSecond = second_aux.split("+");
-    var second = parseInt(splitSecond[0]);
-    var hour = hour + parseInt(second_aux[1]);
-  
+    var second = parseInt(splitSecond[0]) 
+    var hour = hour + parseInt(splitSecond[1]);
+
     if(currentDate.getFullYear()==year){
       if(currentDate.getMonth()+1==month){
         if(currentDate.getDay()==day){
           if(currentDate.getHours()==hour){
             if(currentDate.getMinutes()==minute){
               timeLeft= second-currentDate.getSeconds();
-              stringToReturn= timeLeft.toString()+" seconds";
+              if(parseInt(timeLeft)!=1){
+              stringToReturn= timeLeft.toString()+" seconds left";
+              }
+              else stringToReturn= timeLeft.toString()+" second left";
+
               document.write(stringToReturn);
             }
             else{
               timeLeft= minute-currentDate.getMinutes();
+              if(parseInt(timeLeft)!=1){
               stringToReturn= timeLeft.toString()+" minutes left";
+              }
+              else stringToReturn= timeLeft.toString()+" minute left";
               document.write(stringToReturn);
             }
           }
           else{
             timeLeft= hour-currentDate.getHours();
+            if(parseInt(timeLeft)!=1){
             stringToReturn= timeLeft.toString()+" hours left";
+            }
+            else stringToReturn= timeLeft.toString()+" hour left";
             document.write(stringToReturn);
           }
         }
         else{
-          timeLeft= day-currentDate.getDay();
+          timeLeft= day-currentDate.getDate();
+          if(parseInt(timeLeft)!=1){
           stringToReturn= timeLeft.toString()+" days left";
+          }
+          else stringToReturn= timeLeft.toString()+" day left";
           document.write(stringToReturn);
         }
       }
       else{
-        timeLeft= month-currentDate.getMonth()+1;
+        timeLeft= month-currentDate.getMonth();
+        if(parseInt(timeLeft)!=1){
         stringToReturn= timeLeft.toString()+" months left";
+        }
+        else stringToReturn= timeLeft.toString()+" month left";
         document.write(stringToReturn);
       }
     }
     else{
       timeLeft= year-currentDate.getFullYear();
+      if(parseInt(timeLeft)!=1){
       stringToReturn= timeLeft.toString()+" years left";
+      }
+      else stringToReturn= timeLeft.toString()+" year left";
       document.write(stringToReturn);
     }
   }
