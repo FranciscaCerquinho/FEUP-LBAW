@@ -34,6 +34,15 @@ class UserController extends Controller
       Auth::user()->address = $request->input('address');
       Auth::user()->contact = $request->input('contact');
       Auth::user()->password = bcrypt($request->input('password'));
+
+      $image = $request->file('userPhoto');  
+
+      $photoName = time().'.'.$image->getClientOriginalExtension();
+
+      $image->move(public_path('avatars'), $photoName);
+
+      Auth::user()->photoName = $photoName;
+
       if($request->input('confirmPassword')== $request->input('password')) {
         Auth::user()->save();
       }
