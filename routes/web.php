@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 //User
 Route::get('editProfile', 'UserController@show');
+Route::post('editProfile', 'UserController@update');
 
 // API
 Route::put('api/cards', 'CardController@create');

@@ -11,16 +11,30 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
-     * Shows the card for a given id.
-     *
+     * 
+     * 
      * @return Response
      */
     public function show()
     {
-
       return view('pages.editProfile');
     }
 
-    
+    /**
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+      $user = User::where('email',$request->input('email')) -> first();
+      
+      $user->firstname = $request->input('firstName');
+      $user->lastname = $request->input('lastName');
+      $user->address = $request->input('address');
 
+      // redirect
+      Session::flash('message', 'Successfully updated your profile!');
+      return Redirect::to('editProfile');
+    }
 }
