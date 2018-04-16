@@ -21,6 +21,7 @@
 				<!-- edit form column -->
 				<div class="col-md-9 personal-info">
 					<form action="{{ route('editProfile') }}" method="post" class="form-horizontal" role="form">
+						{{ csrf_field() }}
 						<div class="form-group row">
 							<label for="example-text-input" class="col-lg-2 col-control-label">First name:</label>
 							<div class="col-lg-8">
