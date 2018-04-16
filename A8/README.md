@@ -1,4 +1,4 @@
-## Online Auctions - Vertical prototype (A8)
+## Vertical prototype (A8)
     
 The Vertical Prototype includes the implementation of two or more user stories (the simplest) and 
 aims to validate the architecture presented, also serving to gain familiarity with the technologies used 
@@ -76,7 +76,9 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
     <tr>
         <td>R101: Login Form</td>
-        <td>[/login](http://lbaw1756.lbaw-prod.fe.up.pt/login)</td>
+        <td>
+            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/login">/login</a>
+        </td>
     </tr>
     <tr>
         <td>R102: Login Action</td>
@@ -88,7 +90,9 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
     <tr>
         <td>R104: Register Form</td>
-        <td>[/register](http://lbaw1756.lbaw-prod.fe.up.pt/register)</td>
+        <td>
+           <a href="http://lbaw1756.lbaw-prod.fe.up.pt/login">/login</a>
+        </td>
     </tr>
     <tr>
         <td>R105: Register Action</td>
@@ -96,11 +100,15 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
     <tr>
         <td>R106: View Profile</td>
-        <td>[/users/{id}](http://lbaw1756.lbaw-prod.fe.up.pt/users/{id})</td>
+        <td>
+            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/editProfile">/editProfile</a>
+        </td>
     </tr>
     <tr>
         <td>R107: Edit Profile Form</td>
-        <td>[/users/{id}/edit](http://lbaw1756.lbaw-prod.fe.up.pt/users/{id}/edit)</td>
+        <td>
+           <a href="http://lbaw1756.lbaw-prod.fe.up.pt/editProfile">/editProfile</a>
+        </td>
     </tr>
     <tr>
         <td>R108: Edit Profile Action</td>
@@ -118,19 +126,27 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
     <tr>
         <td>R506: About</td>
-        <td>[/about](http://lbaw1756.lbaw-prod.fe.up.pt/about)</td>
+        <td>
+           <a href="http://lbaw1756.lbaw-prod.fe.up.pt/about">/about</a>
+        </td>
     </tr>
     <tr>
         <td>R507: Contact US</td>
-        <td>[/contact](http://lbaw1756.lbaw-prod.fe.up.pt/contact)</td>
+        <td>
+           <a href="http://lbaw1756.lbaw-prod.fe.up.pt/contact_us">/contact_us</a>
+        </td>
     </tr>
     <tr>
         <td>R508: FAQ</td>
-        <td>[/faq](http://lbaw1756.lbaw-prod.fe.up.pt/faq)</td>
+        <td>
+           <a href="http://lbaw1756.lbaw-prod.fe.up.pt/faq">/faq</a>
+        </td>
     </tr>
     <tr>
         <td>R509: 404 Error</td>
-        <td> [/404](http://lbaw1756.lbaw-prod.fe.up.pt/error) </td>
+        <td>
+            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/error">/error</a>
+        </td>
     </tr>
 </table>
 
@@ -145,13 +161,3 @@ Credentials:
 
 The code is avalable at 
 https://github.com/FranciscaCerquinho/LBAW-56/tree/proto
-
-
-
-## Members
-
-- Diogo Silva, up201405742@fe.up.pt
-- Francisca Cerquinho, up201505791@fe.up.pt
-- José Azevedo, up201506448@fe.up.pt
-- Pedro Miranda, up201506574@fe.up.pt
-
