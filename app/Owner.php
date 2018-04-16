@@ -14,13 +14,13 @@ class Owner extends Model
    * The auction owner
    */
   public function user() {
-    return $this->belongsTo('App\User','id');
+    return $this->belongsTo('App\User','id_user', 'id_auction');
   }
 
   /**
    * Return id auction
    */
   public function auction() {
-    return  $this->belongsTo('App\Auction','id_auction');
+    return  $this->belongsTo('App\Auction','id_auction', 'id_user');
   }
 }

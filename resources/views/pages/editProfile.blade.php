@@ -70,12 +70,6 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-md-2 control-label">Profile picture:</label>
-							<div class="col-md-8">
-								<input class="form-control" type="file" name="userPhoto" accept="image/*">
-							</div>
-						</div>
-						<div class="form-group row">
 							<label class="col-md-2 control-label"></label>
 							<div class="col-md-8">
 								<input type="submit" class="btn" value="Save Changes" style="background-color:#437ab2; color:white">

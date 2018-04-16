@@ -22,7 +22,7 @@ class Auction extends Model
     /**
     * The user this auction belongs to
     */
-    public function user() {
-        return $this->belongsTo('App\Owner','id_user');
+    public function owner() {
+        return $this->belongsTo('App\Owner', 'id_auction', 'id_user');
     }
 }

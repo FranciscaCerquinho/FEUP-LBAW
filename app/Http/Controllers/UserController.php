@@ -37,15 +37,7 @@ class UserController extends Controller
       if($request->input('confirmPassword')== $request->input('password')) {
         Auth::user()->save();
       }
-
-      $image = $request->file('userPhoto');  
-
-      $photoName = time().'.'.$image->getClientOriginalExtension();
-
-      $image->move(public_path('avatars'), $photoName);
-
-      Auth::user()->photoName = $photoName;
-
+      
       // redirect
       //Session::flash('message', 'Successfully updated your profile!');
       return redirect('editProfile');

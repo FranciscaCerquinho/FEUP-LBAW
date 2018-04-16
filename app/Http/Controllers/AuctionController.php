@@ -15,7 +15,7 @@ class AuctionController extends Controller
     public function list()
     {
 
-      $auctions = Auction::where('active', 1)->orderBy('dateend', 'asc')->get();
+      $auctions = Auction::where('active', 1)->orderBy('dateend', 'asc')->join('owner', 'owner.id_auction', '=', 'id')->join('users', 'users.id', '=', 'owner.id_user')->get();
       return view('pages.auctions', [ 'auctions' => $auctions]);
     }
  
