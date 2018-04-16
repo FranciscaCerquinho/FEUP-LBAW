@@ -22,8 +22,8 @@ class UserController extends Controller
 
     /**
      * 
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
     public function update(Request $request)
     {
