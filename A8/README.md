@@ -1,4 +1,4 @@
-## Vertical prototype (A8)
+## Online Auctions - Vertical prototype (A8)
     
 The Vertical Prototype includes the implementation of two or more user stories (the simplest) and 
 aims to validate the architecture presented, also serving to gain familiarity with the technologies used 
@@ -130,7 +130,7 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
     <tr>
         <td>R509: 404 Error</td>
-        <td>[/404](http://lbaw1756.lbaw-prod.fe.up.pt/error)</td>
+        <td> [/404](http://lbaw1756.lbaw-prod.fe.up.pt/error) </td>
     </tr>
 </table>
 
@@ -145,3 +145,13 @@ Credentials:
 
 The code is avalable at 
 https://github.com/FranciscaCerquinho/LBAW-56/tree/proto
+
+
+
+## Members
+
+- Diogo Silva, up201405742@fe.up.pt
+- Francisca Cerquinho, up201505791@fe.up.pt
+- José Azevedo, up201506448@fe.up.pt
+- Pedro Miranda, up201506574@fe.up.pt
+
