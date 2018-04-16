@@ -33,6 +33,8 @@ class UserController extends Controller
       $user->lastname = $request->input('lastName');
       $user->address = $request->input('address');
 
+      $user->save();
+
       // redirect
       Session::flash('message', 'Successfully updated your profile!');
       return Redirect::to('editProfile');
