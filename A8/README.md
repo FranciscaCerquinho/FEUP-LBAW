@@ -60,12 +60,7 @@ The user stories that were implemented in the prototype are described in the fol
         <td>high</td>
         <td>As a Customer, I want to change my information</td>
     </tr>
-                 <tr>
-        <td>US32</th>
-        <td>Sell item</td>
-        <td>high</td>
-        <td>As Owner, I want to register the item that I want to sell</td>
-    </tr>
+   
 </table>
 
 ### 1.2. Implemented Web Resources
@@ -81,52 +76,35 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
     <tr>
         <td>R101: Login Form</td>
-        <td></td>
+        <td>[/login](http://lbaw1756.lbaw-prod.fe.up.pt/login)</td>
     </tr>
     <tr>
         <td>R102: Login Action</td>
-        <td></td>
+        <td>POST /login</td>
     </tr>
       <tr>
         <td>R103: Logout Action</td>
-        <td></td>
+        <td>POST /logout</td>
     </tr>
     <tr>
         <td>R104: Register Form</td>
-        <td></td>
+        <td>[/register](http://lbaw1756.lbaw-prod.fe.up.pt/register)</td>
     </tr>
     <tr>
         <td>R105: Register Action</td>
-        <td></td>
+        <td>POST /register</td>
     </tr>
     <tr>
         <td>R106: View Profile</td>
-        <td></td>
+        <td>[/users/{id}](http://lbaw1756.lbaw-prod.fe.up.pt/users/{id})</td>
     </tr>
     <tr>
         <td>R107: Edit Profile Form</td>
-        <td></td>
+        <td>[/users/{id}/edit](http://lbaw1756.lbaw-prod.fe.up.pt/users/{id}/edit)</td>
     </tr>
     <tr>
         <td>R108: Edit Profile Action</td>
-        <td></td>
-    </tr>
-</table>
-
-**Module M02: Auctions**
-
-<table>
-    <tr>
-        <th>Web Resource Reference</th>
-        <th>URL</th>
-    </tr>
-    <tr>
-        <td>R204: Add Auction Form</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>R205: Add Auction Action</td>
-        <td></td>
+        <td>POST /users/{id}/edit</td>
     </tr>
 </table>
 
@@ -140,28 +118,30 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
     <tr>
         <td>R506: About</td>
-        <td></td>
+        <td>[/about](http://lbaw1756.lbaw-prod.fe.up.pt/about)</td>
     </tr>
     <tr>
         <td>R507: Contact US</td>
-        <td></td>
+        <td>[/contact](http://lbaw1756.lbaw-prod.fe.up.pt/contact)</td>
     </tr>
     <tr>
         <td>R508: FAQ</td>
-        <td></td>
+        <td>[/faq](http://lbaw1756.lbaw-prod.fe.up.pt/faq)</td>
     </tr>
     <tr>
         <td>R509: 404 Error</td>
-        <td></td>
+        <td>[/404](http://lbaw1756.lbaw-prod.fe.up.pt/error)</td>
     </tr>
 </table>
 
 ### 2. Prototype
 
-The prototype is available at ...
+The prototype is available at http://lbaw1756.lbaw-prod.fe.up.pt/
 
 Credentials:
 
-* regular user: ...
+* regular user: fcassola@fe.up.pt
+* user password: 123456
 
 The code is avalable at 
+https://github.com/FranciscaCerquinho/LBAW-56/tree/proto
