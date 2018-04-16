@@ -13,7 +13,7 @@
 						<br>
 						<label class="btn btn-file" style="background-color:#437ab2; color:white; margin-top:20px">
 							Change Photo
-							<input type="file" style="display: none;">
+							<input class="form-control" type="file" name="userPhoto" accept="image/*">
 						</label>
 					</div>
 				</div>
