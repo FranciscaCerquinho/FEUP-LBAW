@@ -116,6 +116,22 @@ The web resources that were implemented in the prototype are described in the ne
     </tr>
 </table>
 
+### Module M02: Auctions
+
+**R209: HomePage**
+
+<table>
+    <tr>
+        <th>Web Resource Reference</th>
+        <th>URL</th>
+    </tr>
+    <tr>
+        <td>R209: Home Page</td>
+        <td>
+            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/auctions">/auctions</a>
+        </td>
+    </tr>
+</table>
 
 **Module M05: User Administration and Static pages**
 
