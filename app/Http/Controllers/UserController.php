@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-//use App\Card;
+use App\User;
 
 class UserController extends Controller
 {
@@ -27,16 +27,20 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-      $user = User::where('email',$request->input('email')) -> first();
+      echo $request->input('firstName');
       
-      $user->firstname = $request->input('firstName');
-      $user->lastname = $request->input('lastName');
-      $user->address = $request->input('address');
+      Auth::user()->firstname = $request->input('firstName');
+      Auth::user()->lastname = $request->input('lastName');
+      Auth::user()->address = $request->input('address');
+      Auth::user()->contact = $request->input('contact');
+      Auth::user()->password = bcrypt($request->input('password'));
+      if($request->input('confirmPassword')== $request->input('password')) {
+        Auth::user()->save();
+      }
 
-      $user->save();
 
       // redirect
-      Session::flash('message', 'Successfully updated your profile!');
-      return Redirect::to('editProfile');
+      //Session::flash('message', 'Successfully updated your profile!');
+      return redirect('editProfile');
     }
 }

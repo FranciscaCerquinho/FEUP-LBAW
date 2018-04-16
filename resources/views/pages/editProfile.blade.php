@@ -43,8 +43,13 @@
                         <div class="form-group row">
 							<label class="col-lg-2 control-label">Contact:</label>
 							<div class="col-lg-8">
-								<input class="form-control" type="number" name="contact" min="14" max="17" value="{{Auth::user()->contact}}" id="example-text-input">
+								<input class="form-control" type="number" name="contact" value="{{Auth::user()->contact}}" id="example-text-input">
 							</div>
+							@if ($errors->has('contact'))
+							<span class="error">
+							{{ $errors->first('contact') }}
+							</span>
+						@endif
 						</div>
 						<div class="form-group row">
 							<label class="col-md-2 control-label">Address:</label>

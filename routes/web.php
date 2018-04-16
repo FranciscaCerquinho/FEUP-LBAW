@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 
 //User
-Route::get('editProfile', 'UserController@show');
+Route::get('editProfile', 'UserController@show')->name('editProfile');
 Route::post('editProfile', 'UserController@update');
 
 // API
