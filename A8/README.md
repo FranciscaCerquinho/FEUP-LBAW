@@ -1,3 +1,4 @@
+## Online Auctions
 ## Vertical prototype (A8)
     
 The Vertical Prototype includes the implementation of two or more user stories (the simplest) and 
@@ -177,3 +178,11 @@ Credentials:
 
 The code is avalable at 
 https://github.com/FranciscaCerquinho/LBAW-56/tree/proto
+
+
+## Members
+
+- Diogo Silva, up201405742@fe.up.pt
+- Francisca Cerquinho, up201505791@fe.up.pt
+- José Azevedo, up201506448@fe.up.pt
+- Pedro Miranda, up201506574@fe.up.pt
