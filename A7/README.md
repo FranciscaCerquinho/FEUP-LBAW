@@ -71,7 +71,7 @@ These are the endpoints available in the Authentication and Individual Profile M
 * R107: Edit Profile Form /edit_profile/{id}
 * R108: Edit Profile Action /profile/{id}
 
-**R101: Login Form**
+#### R101: Login Form
 
 <table>
   <tr>
@@ -100,7 +100,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 </table>
 
-**R102: Login Action**
+#### R102: Login Action
 
 <table>
   <tr>
@@ -163,7 +163,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 </table>
 
-**R103: Logout Action**
+#### R103: Logout Action
 
 <table>
   <tr>
@@ -199,7 +199,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 </table>
 
-**R104: Register Form**
+#### R104: Register Form
 <table>
     <tr>
         <th>URL</th>
@@ -227,7 +227,7 @@ These are the endpoints available in the Authentication and Individual Profile M
     </tr>
 </table>
 
-**R105: Register Action**
+#### R105: Register Action
 
 <table>
   <tr>
@@ -324,7 +324,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 </table>
 
-**R106: View Profile**
+#### R106: View Profile
 <table>
     <tr>
     <th>URL</th>
@@ -353,7 +353,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 </table>
 
-**R108: Edit Profile Form**
+#### R108: Edit Profile Form
 <table>
     <tr>
     <th>URL</th>
@@ -386,7 +386,7 @@ These are the endpoints available in the Authentication and Individual Profile M
   </tr>
 </table>
 
-**R108: Edit Profile Action**
+#### R108: Edit Profile Action
 
 <table>
   <tr>
@@ -503,7 +503,7 @@ These are the endpoints available in the Auctions Module.
 * R207: Text Owner Form /owner/{id}
 * R208: Text Owner Action /owner/{id}
 
-**R201: Search Auction Page**
+#### R201: Search Auction Page
 
 <table>
   <tr>
@@ -579,7 +579,7 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-**R202: Search Auction By Category**
+#### R202: Search Auction By Category
 
 <table>
   <tr>
@@ -652,7 +652,7 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-**R203: View Auction**
+#### R203: View Auction
 
 <table>
   <tr>
@@ -679,7 +679,7 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-**R204: Add Auction Form**
+#### R204: Add Auction Form
 
  <table>
   <tr>
@@ -708,7 +708,7 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-**R205: Add Auction Action**
+#### R205: Add Auction Action
 
  <table>
   <tr>
@@ -794,7 +794,7 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-**R206:Auction Owner Page**
+#### R206:Auction Owner Page
 
 <table>
   <tr>
@@ -865,7 +865,7 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-**R207: Text Owner Form**
+#### R207: Text Owner Form
 
  <table>
   <tr>
@@ -894,7 +894,7 @@ These are the endpoints available in the Auctions Module.
   </tr>
 </table>
 
-**R207: Text Owner Action**
+#### R207: Text Owner Action
 
  <table>
   <tr>
@@ -941,7 +941,7 @@ These are the endpoints available in the Auctions Module.
 * R304: View Comments on a item /auction/{id_auction}/comments
 * R305: Add Comments on a item /auction/{id_auction}/comments
 
-**R301: View Wish list**
+#### R301: View Wish list
 
 <table>
 <tr>
@@ -970,7 +970,7 @@ These are the endpoints available in the Auctions Module.
 </tr>
 </table>
 
-**R302: Add to Wish list**
+#### R302: Add to Wish list
 
 <table>
 <tr>
@@ -1012,7 +1012,7 @@ These are the endpoints available in the Auctions Module.
 </tr>
 </table>
 
-**R303: Remove from Wish list**
+#### R303: Remove from Wish list
 
 <table>
 <tr>
@@ -1054,7 +1054,7 @@ These are the endpoints available in the Auctions Module.
 </tr>
 </table>
 
-**R304: View Comments on a item**
+#### R304: View Comments on a item
 
 <table>
 <tr>
@@ -1083,7 +1083,7 @@ These are the endpoints available in the Auctions Module.
 </tr>
 </table>
 
-**R305: Add Comments on a auction**
+#### R305: Add Comments on a auction
 
 <table>
 <tr>
@@ -1128,7 +1128,7 @@ These are the endpoints available in the Auctions Module.
 * R402: Bid Auction /users/{id}/bids
 * R403: End Bid /users/{id}/bids/{id}/end
 
-**R401: My bids**
+#### R401: My bids
 
 <table>
 <tr>
@@ -1157,7 +1157,7 @@ These are the endpoints available in the Auctions Module.
 </tr>
 </table>
 
-**R402: Bid Auction**
+#### R402: Bid Auction
 
 <table>
 <tr>
@@ -1200,7 +1200,7 @@ These are the endpoints available in the Auctions Module.
 </tr>
 </table>
 
-**R403: End Bid**
+#### R403: End Bid
 
 <table>
 <tr>
@@ -1262,7 +1262,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 * R508: FAQ /faq
 * R509: 404 Error /404
 
-**R501: Get users**
+#### R501: Get users
 
 <table>
 <tr>
@@ -1287,7 +1287,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R502: Suspend user**
+#### R502: Suspend user
 
 <table>
 <tr>
@@ -1326,7 +1326,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R503: Reinstate user**
+#### R503: Reinstate user
 
 <table>
 <tr>
@@ -1365,7 +1365,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R504: Suspend auction**
+#### R504: Suspend auction
 
 <table>
 <tr>
@@ -1404,7 +1404,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R505: Reinstate auction**
+#### R505: Reinstate auction
 
 <table>
 <tr>
@@ -1443,7 +1443,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R506: About**
+#### R506: About
 
 <table>
 <tr>
@@ -1468,7 +1468,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R507: Contact Us**
+#### R507: Contact Us
 
 <table>
 <tr>
@@ -1493,7 +1493,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R508: FAQ**
+#### R508: FAQ
 
 <table>
 <tr>
@@ -1518,7 +1518,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 </tr>
 </table>
 
-**R509: 404 Error**
+#### R509: 404 Error
 
 <table>
 <tr>
@@ -1547,7 +1547,7 @@ These are the endpoints available in the User Administration and Static pages Mo
 
 The structure of the JSON formatted answers must be documented as illustrated below.
 
-**JSON106: View User: {User}**
+#### JSON106: View User: {User}
 
 ```
 "user": {
@@ -1561,7 +1561,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
 }
 ```
 
-**JSON201: Search Auction: {auction}[]**
+#### JSON201: Search Auction: {auction}[]
 
 ```
 {
@@ -1581,7 +1581,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
 }
 ```
 
-**JSON202: Search Auction By Category: {auction}[]**
+#### JSON202: Search Auction By Category: {auction}[]
 
 ```
 {
@@ -1612,7 +1612,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
 }
 ```
 
-**JSON301: View WishList: {Auction}[]**
+#### JSON301: View WishList: {Auction}[]
 
 ```
 {
@@ -1643,7 +1643,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
 }
 ```
 
-**JSON304: View Comments: {Comment}[]**
+#### JSON304: View Comments: {Comment}[]
 
 ```
 {
@@ -1671,7 +1671,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
 
 ### Module M01: Authentication and Individual Profile
 
-**R105: Register Action**
+#### R105: Register Action
 
 <table>
   <tr>
@@ -1772,7 +1772,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
 
  * R209: HomePage /home
 
-**R205: Add Auction Action**
+#### R205: Add Auction Action
 
  <table>
   <tr>
@@ -1858,7 +1858,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
   </tr>
 </table>
 
-**R209: HomePage**
+#### R209: HomePage
 
 <table>
   <tr>
@@ -1886,7 +1886,7 @@ The structure of the JSON formatted answers must be documented as illustrated be
 
 ### JSON/XML Types
 
-**JSON209: Home Page: {auction}[]**
+#### JSON209: Home Page: {auction}[]
 
 ```
 {
