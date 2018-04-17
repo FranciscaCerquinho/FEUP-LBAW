@@ -15,10 +15,22 @@ class AuctionController extends Controller
     public function list()
     {
 
-      $auctions = Auction::where('active', 1)->orderBy('dateend', 'asc')->join('owner', 'owner.id_auction', '=', 'id')->join('users', 'users.id', '=', 'owner.id_user')->get();
+      $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
       return view('pages.auctions', [ 'auctions' => $auctions]);
     }
- 
+
+    public function show($id){
+      $auction = Auction::where('auction_id',$id)
+      ->join('owner', 'owner.id_auction', '=', 'auction_id')
+      ->join('users', 'users.user_id', '=', 'owner.id_user')
+      ->join('category','category.id_auction','=','auction_id')
+      ->first();
+
+      $comments = Auction::where('id_auction',$id);
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments]);
+    }
+
+
     /**
      * Creates a new auction.
      *

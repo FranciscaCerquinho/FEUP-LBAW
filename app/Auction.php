@@ -10,6 +10,7 @@ class Auction extends Model
   public $timestamps  = false;
   public $table='auction';
 
+  protected $primaryKey= 'auction_id';
     /**
     * The attributes that are mass assignable.
     *
@@ -24,5 +25,14 @@ class Auction extends Model
     */
     public function owner() {
         return $this->belongsTo('App\Owner', 'id_auction', 'id_user');
+    }
+
+
+    /**
+    * The auction comments
+    */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

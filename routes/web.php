@@ -37,6 +37,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('auctions', 'AuctionController@list')->name('auction');
+Route::get('auction/{id}', 'AuctionController@show')->name('item');
 
 //Footer
 

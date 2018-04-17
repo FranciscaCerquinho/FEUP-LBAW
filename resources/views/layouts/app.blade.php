@@ -24,16 +24,16 @@
 	      crossorigin="anonymous"></script>
 	    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	      crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="./css/app.css">
-	    <script defer src="./js/fontawesome-all.js"></script>
-	    <link rel="icon" type="image/png" href="./images/icon.png">
+      <link rel="stylesheet" type="text/css" href="/css/app.css">
+	    <script defer src="/js/fontawesome-all.js"></script>
+	    <link rel="icon" type="image/png" href="/images/icon.png">
 	    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   </head>
   <body>
     
 	<nav class="navbar navbar-expand-lg" id="myTopNav">
 		<a href="{{route('auction')}}" class="link_logo">
-			<img class="topnavLogo" src="./images/icon.png"></img>
+			<img class="topnavLogo" src="/images/icon.png"></img>
 		</a>
 		<div class="shop_by_category">
 			<li class="dropdown">
@@ -96,7 +96,7 @@
 					<div class="username">
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-								<img class="img-circle" src="images/perfil_blue.png" style="max-width: 30px; max-height:30px; margin-right:15px; "></img>
+								<img class="img-circle" src="/images/perfil_blue.png" style="max-width: 30px; max-height:30px; margin-right:15px; "></img>
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
