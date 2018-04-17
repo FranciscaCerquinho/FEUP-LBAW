@@ -440,6 +440,7 @@ Transactions needed to assure the integrity of the data, with a proper justifica
         </td>
     </tr>
 </table>
+
 ## Members
 
 - Diogo Silva, up201405742@fe.up.pt
