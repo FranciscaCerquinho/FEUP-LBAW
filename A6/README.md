@@ -622,7 +622,7 @@ R12           | buyNow            | hundreds            |  units per day
     <tr>
     <td colspan="2">
        <pre>
- <b>INSERT INTO</> banAuction("isBanned", id_user, "dateBegin", id_auction)
+ <b>INSERT INTO</b> banAuction("isBanned", id_user, "dateBegin", id_auction)
        <b>VALUES</b> ($isBanned, $id_user, $dateBegin, $id_auction);
         </pre>
     </td>
