@@ -77,7 +77,7 @@
 								<p class="time" id="description">Time:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<p class="time_left"><script>SplitDate("{{$auction->dateend}}");</script></p>
+								<p class="time_left"><script>SplitDate("{{$auction->dateend}}");</script> left</p>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="object_description">
@@ -115,7 +115,7 @@
 			</div>
 		
 		<div class="row" id="first">
-		<?php if(count($comments)==0) {?> <div class="row"> <div id="comments">  <?php } ?>
+		<?php if(count($comments)==0) { ?> <div class="row"> <div id="comments">  <?php } ?>
         <?php foreach($comments as $comment) {?>
         @include('partials.comments',['comment'=>$comment])
         <?php } ?>
@@ -126,8 +126,8 @@
                         <div class="col-sm-8">
                             <div class="panel panel-white post panel-shadow">
                                 <div class="status-upload">
-                                    <form>
-                                        <textarea placeholder="Add a comment..." cols="60" rows="2"></textarea>
+                                    <form action="{{route('comment', ['id'=>$comment->id]) }}" method="post" role="form" >
+                                        <textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
                                         <button class="btn" type="submit">Send</button>
                                     </form>
                                 </div>

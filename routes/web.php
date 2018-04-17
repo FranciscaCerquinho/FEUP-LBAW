@@ -36,9 +36,14 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+//Auctions
+
 Route::get('auctions', 'AuctionController@list')->name('auction');
 Route::get('auction/{id}', 'AuctionController@show')->name('item');
 
+//Auctions comments
+
+Route::put('auction/{id}', 'CommentController@create')->name('comment');
 //Footer
 
 Route::get('about', 'FooterController@showAbout')->name('about');

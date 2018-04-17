@@ -11,20 +11,20 @@
                             <div class="pull-left meta">
                                 <div class="comment_owner">
                                     <a href="#">
-                                        <b>Pedro Miranda</b>
+                                        <b>{{$comment->firstname}} {{$comment->lastname}}</b>
                                     </a>
                                 </div>
-                                <h6 class="text-muted time">1 minute ago</h6>
+                                <h6 class="text-muted time"> <script>SplitDate("{{$auction->dateend}}");</script> ago</h6>
                             </div>
                         </div>
                         <div class="post-description">
-                            <p>A very good product at a great price. I really want to win this auction.</p>
+                            <p>{{$comment->comment}}</p>
                             <div class="stats">
                                 <a href="#" class="btn stat-item">
-                                    <i class="far fa-thumbs-up"></i>12
+                                    <i class="far fa-thumbs-up"></i>{{$comment->like}}
                                 </a>
                                 <a href="#" class="btn stat-item">
-                                    <i class="far fa-thumbs-down"></i>2
+                                    <i class="far fa-thumbs-down"></i>{{$comment->dislike}}
                                 </a>
                                 <a href="#" class="btn btn-sm stat-item" style="padding:6px;">
                                     <i class="fas fa-bullhorn"></i>Report

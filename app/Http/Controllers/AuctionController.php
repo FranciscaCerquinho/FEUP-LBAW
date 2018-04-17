@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Auction;
-
+use App\Comment;
 
 class AuctionController extends Controller
 {
@@ -26,7 +26,9 @@ class AuctionController extends Controller
       ->join('category','category.id_auction','=','auction_id')
       ->first();
 
-      $comments = Auction::where('id_auction',$id);
+      $comments = Comment::where('id_auction',$id)
+      ->join('users', 'users.user_id', '=', 'comment.id_user')
+      ->get();
       return view('pages.item',['auction' => $auction, 'comments'=> $comments]);
     }
 
@@ -53,12 +55,13 @@ class AuctionController extends Controller
       $auction->active = 1;
       $auction->save();
 
-      $owner->id_user = Auth::user()->id;
-      $owner->id_auction = $auction->id;
+      $owner->id_user = Auth::user()->user_id;
+      $owner->id_auction = $auction->auction_id;
       $owner->save();
 
       return $auction;
     }
+    
 
 }
 ?>

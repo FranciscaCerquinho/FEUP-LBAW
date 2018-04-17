@@ -7,7 +7,7 @@
         </h4>
         <h5>EUR {{$auction->actualprice}}</h5>
         <h1>
-            <script>SplitDate("{{$auction->dateend}}");</script>
+            <script>SplitDate("{{$auction->dateend}}");</script> left
         </h1>
         <p class="card-text auctionCardText">{{$auction->firstname}} {{$auction->lastname}}</p>
     </div>
