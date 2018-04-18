@@ -44,10 +44,10 @@ Main accesses to the database.
     <tr>
         <td colspan="2">
                <pre>
-   <b>UPDATE</b> users 
-     <b>SET</b> email = $email, name = $name, photo = $photo, address = $address, contact = $contact, country = $country, 
-     password =hash($password)
-     <b>WHERE</b> user_id=$id
+<b>UPDATE</b> users 
+<b>SET</b> email = $email, name = $name, photo = $photo, address = $address, contact = $contact, 
+country = $country, password =hash($password)
+<b>WHERE</b> user_id=$id
         </pre>
         </td>
     </tr>
@@ -68,12 +68,13 @@ Main accesses to the database.
     <tr>
         <td colspan="2">
              <pre>
-   <b>SELECT</b> auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction.active, 
-   auction.description, auction.auction_id, auction.photo, auction."actualPrice", owner.id_user, users.name, 
-   owner.id_auction,users.user_id,auction.description
-  <b>FROM</b> auction,owner,users
-  <b>WHERE</b> owner.id_auction=auction.auction_id  <b>AND</b> users.user_id=owner.id_user <b>AND</b> 
-  (auction.name <b>LIKE</b> %$search% <b>OR</b> auction.description <b>LIKE</b> %$search%) <b>AND</b> auction.active=TRUE
+<b>SELECT</b> auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction.active, 
+auction.description, auction.auction_id, auction.photo, auction."actualPrice", owner.id_user, 
+users.name, owner.id_auction,users.user_id,auction.description
+<b>FROM</b> auction,owner,users
+<b>WHERE</b> owner.id_auction=auction.auction_id  <b>AND</b> users.user_id=owner.id_user <b>AND</b> 
+(auction.name <b>LIKE</b> %$search% <b>OR</b> auction.description <b>LIKE</b> %$search%) 
+<b>AND</b> auction.active=TRUE
   <b>LIMIT</b> 60;
         </pre>
         </td>
@@ -93,15 +94,14 @@ Main accesses to the database.
     <tr>
         <td colspan="2">
               <pre>
-    <b>SELECT</b> auction.name, auction."dateBegin", auction."dateEnd", auction.name, auction."actualPrice", 
-    auction.photo, auction.active, auction.auction_id, category.id_auction, category.category, 
-    owner.id_user, users.name, owner.id_auction,users.user_id
-  <b>FROM</b> auction,category,owner,users
-  <b>WHERE</b>  owner.id_auction=auction.auction_id  <b>AND</b> users.user_id=owner.id_user <b>AND</b> category.id_auction=auction.auction_id 
-  <b>AND</b> category.category= $category <b>AND</b> auction.active=TRUE
-  <b>LIMIT</b> 60;</pre>
-        </td>
-    </tr>
+<b>SELECT</b> auction.name, auction."dateBegin", auction."dateEnd", auction.name, 
+auction."actualPrice", auction.photo, auction.active, auction.auction_id, 
+category.id_auction, category.category, owner.id_user, users.name, owner.id_auction,users.user_id
+<b>FROM</b> auction,category,owner,users
+<b>WHERE</b>  owner.id_auction=auction.auction_id  <b>AND</b> users.user_id=owner.id_user 
+<b>AND</b> category.id_auction=auction.auction_id 
+<b>AND</b> category.category= $category <b>AND</b> auction.active=TRUE
+<b>LIMIT</b> 60;</pre></td></tr>
 </table>
 
 <table>
@@ -117,11 +117,12 @@ Main accesses to the database.
     <tr>
         <td colspan="2">
               <pre>
-    <b>SELECT</></b> auction."dateBegin", auction."dateEnd", auction.name, auction.description, auction."buyNow", 
-      auction.active, auction."actualPrice", auction.photo, users.name,users.user_id,
-    owner.id_auction,owner.id_user
-     <b>FROM</b> auction, users, owner
-     <b>WHERE</b> auction.auction_id= $auctionID <b>AND</b> auction.auction_id=owner.id_auction <b>AND</b> users.user_id=owner.id_user;</pre>
+<b>SELECT</></b> auction."dateBegin", auction."dateEnd", auction.name, auction.description, 
+auction."buyNow", auction.active, auction."actualPrice", auction.photo, users.name,
+users.user_id,owner.id_auction,owner.id_user
+<b>FROM</b> auction, users, owner
+<b>WHERE</b> auction.auction_id= $auctionID <b>AND</b> auction.auction_id=owner.id_auction 
+<b>AND</b> users.user_id=owner.id_user;</pre>
         </td>
     </tr>
 </table>
@@ -139,9 +140,9 @@ Main accesses to the database.
     <tr>
         <td colspan="2">
               <pre>
-    <b>INSERT INTO</b> auction ("dateBegin", "dateEnd", name, description, "buyNow", "actualPrice", photo, active)
-         <b>VALUES</b> ($dateBegin, $dateEnd, $name, $description, $buynow, $actualPrice, $photo, TRUE);</pre>
-        </td>
+<b>INSERT INTO</b> auction ("dateBegin", "dateEnd", name, description, "buyNow", "actualPrice", 
+photo, active)
+<b>VALUES</b> ($dateBegin, $dateEnd, $name, $description, $buynow, $actualPrice, $photo, TRUE)</pre></td>
     </tr>
 </table>
 
@@ -197,14 +198,13 @@ Main accesses to the database.
     </tr>
     <tr>
         <td colspan="2">
-              <pre>
-    <b>SELECT</b> wishList.follow, auction.name, auction."dateBegin", auction."dateEnd", auction.name, 
-       auction.description, auction."actualPrice", auction.photo, auction."buyNow", auction.active, 
-       auction.auction_id, wishList.id_user
-     <b>FROM</b> auction,wishList
-     <b>WHERE</b> wishList.id_user=$userID AND wishList.id_auction=auction.auction_id <b>ORDER BY</b> auction."dateEnd";</pre>
-        </td>
-    </tr>
+            <pre>
+<b>SELECT</b> wishList.follow, auction.name, auction."dateBegin", auction."dateEnd", auction.name, 
+auction.description, auction."actualPrice", auction.photo, auction."buyNow", auction.active, 
+auction.auction_id, wishList.id_user
+<b>FROM</b> auction,wishList
+<b>WHERE</b> wishList.id_user=$userID AND wishList.id_auction=auction.auction_id 
+<b>ORDER BY</b> auction."dateEnd";</pre></td></tr>
 </table>
 
 <table>
@@ -257,12 +257,11 @@ Main accesses to the database.
     </tr>
     <tr>
         <td colspan="2"><pre>
-             <b>SELECT</b> comment.like, comment.dislike, comment.date, comment.comment, comment.id_auction, 
-     auction.id, users.user_id, users.name, comment.id_user
-     <b>FROM</b> auction,comment,users
-     <b>WHERE</b> auction.auction_id=comment.id_auction <b>AND</b> comment.id_user = users.user_id;</pre>
-        </td>
-    </tr>
+<b>SELECT</b> comment.like, comment.dislike, comment.date, comment.comment,
+comment.id_auction, auction.id, users.user_id, users.name, comment.id_user
+<b>FROM</b> auction,comment,users
+<b>WHERE</b> auction.auction_id=comment.id_auction 
+<b>AND</b> comment.id_user = users.user_id;</pre></td></tr>
 </table>
 
 <table>
@@ -320,8 +319,7 @@ Main accesses to the database.
               <pre>
     <b>UPDATE</b> auction
         <b>SET</b> active = FALSE
-            <b>WHERE</b> auction.auction_id = $id;
-        </td>
+            <b>WHERE</b> auction.auction_id = $id;</pre></td>
     </tr>
 </table>
 
