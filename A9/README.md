@@ -179,6 +179,9 @@ photo, active)
     <tr>
         <td colspan="2">
               <pre>
+        <b>SELECT</b> email
+        <b>FROM</b> users
+        <b>WHERE</b> users.user_id= $userID;
      </pre>
         </td>
     </tr>
