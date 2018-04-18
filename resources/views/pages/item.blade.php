@@ -119,6 +119,7 @@
         <?php foreach($comments as $comment) {?>
         @include('partials.comments',['comment'=>$comment])
         <?php } ?>
+	@if (Auth::check())
 	<div class="row">
             <div class="leave_comment">
                 <div class="container">
@@ -126,7 +127,7 @@
                         <div class="col-sm-8">
                             <div class="panel panel-white post panel-shadow">
                                 <div class="status-upload">
-                                    <form action="{{route('comment', ['id'=>$comment->id]) }}" method="post" role="form" >
+                                    <form action="{{route('comment', ['id'=>$auction->auction_id]) }}" method="post" role="form" >
                                         <textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
                                         <button class="btn" type="submit">Send</button>
                                     </form>
@@ -138,6 +139,7 @@
             </div>
         </div>
     </div>
+	@endif
 </div>
 </div>
 </div>

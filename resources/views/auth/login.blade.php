@@ -27,7 +27,7 @@
 													<span class="input-group-text">
 														<i class="fa fa-envelope fa" aria-hidden="true"></i>
 													</span>
-													<input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+													<input type="text" class="form-control" name="email" id="email" @if(old('email'))value="{{old('email')}}"@endif placeholder="Enter your Email" />
 												</div>
 											</div>
                                             @if ($errors->has('email'))
@@ -82,7 +82,7 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fa fa-user fa" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" />
+												<input type="text" class="form-control" name="firstName" id="firstName" @if(old('firstName'))value="{{old('firstName')}}"@endif placeholder="First Name" />
 											</div>
 										</div>
 									</div>
@@ -97,7 +97,7 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fa fa-user fa" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" />
+												<input type="text" class="form-control" name="lastName" id="lastName"  @if(old('lastName'))value="{{old('lastName')}}"@endif placeholder="Last Name" />
 											</div>
 										</div>
 									</div>
@@ -112,7 +112,7 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fa fa-envelope fa" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="email" id="email" placeholder="Email" />
+												<input type="text" class="form-control" name="email" id="email"  @if(old('email'))value="{{old('email')}}"@endif placeholder="Email" />
 											</div>
 										</div>
 									</div>
@@ -127,7 +127,7 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fas fa-phone" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="contact" id="email" placeholder="Contact" />
+												<input type="text" class="form-control" name="contact" id="email" @if(old('contact'))value="{{old('contact')}}"@endif placeholder="Contact" />
 											</div>
 										</div>
 									</div>
@@ -142,7 +142,7 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fas fa-address-card" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="address" id="address" placeholder="Address" />
+												<input type="text" class="form-control" name="address" id="address" @if(old('address'))value="{{old('address')}}"@endif placeholder="Address" />
 											</div>
 										</div>
 									</div>
@@ -157,7 +157,7 @@
 												<span class="input-group-text" id="basic-addon1">
 													<i class="fas fa-map-marker" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="country" id="country" placeholder="City, Country" />
+												<input type="text" class="form-control" name="country" id="country" @if(old('country'))value="{{old('country')}}"@endif placeholder="City, Country" />
 											</div>
 										</div>
 									</div>

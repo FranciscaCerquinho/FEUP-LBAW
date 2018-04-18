@@ -17,7 +17,10 @@ class UserController extends Controller
      */
     public function show()
     {
+      if(Auth::check())
       return view('pages.editProfile');
+      else
+      return view('errors.404');
     }
 
     /**

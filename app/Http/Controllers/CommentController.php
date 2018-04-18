@@ -23,14 +23,13 @@ class CommentController extends Controller
       $comment = new Comment();
       $comment->id_auction = $auction_id;
 
-      $this->authorize('create', $comment);
+      //$this->authorize('create', $comment);
 
       $comment->comment = $request->input('comment');
       $comment->like = 0;
       $comment->dislike = 0;
-      $comment->id_user = Auth::user()->id;;
+      $comment->id_user = Auth::user()->user_id;;
       $comment->save();
-
       return $comment;
     }
 

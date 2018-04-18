@@ -20,12 +20,16 @@ class AuctionController extends Controller
     }
 
     public function show($id){
+
       $auction = Auction::where('auction_id',$id)
       ->join('owner', 'owner.id_auction', '=', 'auction_id')
       ->join('users', 'users.user_id', '=', 'owner.id_user')
       ->join('category','category.id_auction','=','auction_id')
       ->first();
 
+      if($auction == null)
+        return view('errors.404');
+        
       $comments = Comment::where('id_auction',$id)
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->get();
