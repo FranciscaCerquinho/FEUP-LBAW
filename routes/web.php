@@ -20,6 +20,7 @@ Route::get('/', function () {
 //User
 Route::get('editProfile', 'UserController@show')->name('editProfile');
 Route::post('editProfile', 'UserController@update');
+Route::get('administration', 'AdminController@show')->name('administration');
 
 // API
 Route::put('api/cards', 'CardController@create');

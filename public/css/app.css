@@ -50,7 +50,9 @@ body {
         height: 100px; } }
 
 
-
+.nav-item:last-child a{
+  margin-right: 20px;
+} 
 @media only screen and (max-width: 576px) {
   .topnav .links {
     padding-top: 0px; }
@@ -1542,6 +1544,7 @@ section#middle{
     color: #000000;
     margin-left: 100px;
     padding-bottom: 100px;
+    margin-top:0; 
   }
 
   #middle .style17{
@@ -1559,7 +1562,7 @@ section#middle{
   }
   @media only screen and (min-width: 576px) {
     section#middle{
-    padding-top: 180px;
+    padding-top: 100px;
     }
   }
 

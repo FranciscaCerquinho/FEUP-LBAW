@@ -107,6 +107,13 @@
 					</div>
 				</li>
 				@endif
+				@if(isset($type))
+				@if($type==2)
+				<li class="nav-item">
+					<a class="nav-link" href="{{url ('administration') }}">Administration</a>
+				</li>
+				@endif
+				@if($type==1)
 				<li class="nav-item">
 					<a class="nav-link" href="add_auction.html">Add Auction</a>
 				</li>
@@ -115,6 +122,8 @@
 						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
 					</a>
 				</li>
+				@endif
+				@endif
 			</ul>
 		</div>
 	</nav>

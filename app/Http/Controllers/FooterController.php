@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class FooterController extends Controller
 {
     /**
-     * Shows the card for a given id.
+     * Shows the about page
      *
      * @return Response
      */
@@ -21,12 +21,22 @@ class FooterController extends Controller
       return view('pages.about');
     }
 
+    /**
+     * Shows the faq page
+     *
+     * @return Response
+     */
     public function showFAQ()
     {
 
       return view('pages.faq');
     }
 
+    /**
+     * Shows the contact page
+     *
+     * @return Response
+     */
     public function showContactUs()
     {
 

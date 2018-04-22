@@ -8,15 +8,25 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Auction;
 use App\Comment;
+use App\Admin;
 
 class AuctionController extends Controller
 {
 
     public function list()
     {
-
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+      else
+        $type=0;
+      
       $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
-      return view('pages.auctions', [ 'auctions' => $auctions]);
+      return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
     public function show($id){

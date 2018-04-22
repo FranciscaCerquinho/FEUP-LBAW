@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['type'=>$type])
 
 @section('content')
 <div class="container-fluid" id="newAuctions">
