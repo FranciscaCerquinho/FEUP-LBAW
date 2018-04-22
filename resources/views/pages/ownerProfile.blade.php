@@ -5,21 +5,26 @@
 		<div class="container-contact1">
 			<div class="row col-12">
 				<div class="col-lg-3" id="profile_pic">
-					<img src="http://placehold.it/300x290" alt="" class="img-rounded img-responsive img-fluid" id="profile_pic" />
+                @if($owner->photo=='perfil_blue.png')
+                    <img src="http://placehold.it/300x290" alt="" class="img-rounded img-responsive img-fluid" id="profile_pic" />
+                @endif
+                @if($owner->photo!='perfil_blue.png')
+                    <img src="/images/{{$owner->photo}}" alt="" class="img-rounded img-responsive img-fluid" id="profile_pic" />
+                @endif
 				</div>
 				<div class="col-lg-5">
 					<div class="user_infomation">
-						<h4>Mariana Gomes</h4>
+						<h4>{{$owner->firstname}} {{$owner->lastname}}</h4>
 						<small>
-							<cite title="San Francisco, USA">Porto, Portugal
+							<cite title="San Francisco, USA">{{$owner->country}}
 								<i class="fas fa-map-marker-alt" style="margin-left:10px;"></i>
 							</cite>
 						</small>
 						<p>
-							<i class="far fa-envelope"></i> &nbsp; marianagomes@gmail.com
+							<i class="far fa-envelope"></i> &nbsp; {{$owner->email}}
 						</p>
 						<p>
-							<i class="fas fa-phone"></i> &nbsp; 912875765
+							<i class="fas fa-phone"></i> &nbsp; {{$owner->contact}}
 						</p>
 
 						<!-- Split button -->
@@ -40,7 +45,7 @@
 				<div class="col-xl-4 col-xs-10">
 					<form class="contact1-form validate-form">
 						<span class="contact1-form-title">
-							Text Mariana Gomes
+							Text {{$owner->firstname}} {{$owner->lastname}}
 						</span>
 						<div class="wrap-input1 validate-input" data-validate="Name is required">
 							<input class="input1" type="text" name="name" placeholder="Name">

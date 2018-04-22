@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Owner;
-use App\User;
 use App\Admin;
+use App\Auction;
 
 class OwnerController extends Controller
 {
@@ -25,10 +25,12 @@ class OwnerController extends Controller
           else
             $type=0;
 
-        $owner = Owner::where('id_auction',$id)
-      ->join('users', 'users.user_id', '=', 'owner.id_user')
-      ->first();
+        $owner = Auction::where('auction_id',$id)
+        ->join('owner', 'owner.id_auction', '=', 'auction_id')
+        ->join('users', 'users.user_id', '=', 'id_user')
+        ->first();
 
+       
         if($owner == null)
             return view('errors.404');
       
