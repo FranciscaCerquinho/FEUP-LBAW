@@ -63,7 +63,7 @@ class UserController extends Controller
       if($validator->fails()){
         return view('pages.editProfile',['type'=>$type])->withErrors($validator);
       }
-
+      echo 'aqui';
       Auth::user()->firstname = $request->input('firstName');
       Auth::user()->lastname = $request->input('lastName');
       Auth::user()->address = $request->input('address');
@@ -76,44 +76,15 @@ class UserController extends Controller
         Auth::user()->photo = $imageName;
       }
       if($request->input('confirmPassword')== $request->input('password')) {
+        echo 'estou';
         Auth::user()->save();
         return view('pages.editProfile',['success' => 'Modifications made <strong>successfully</strong>.','type'=>$type])->withErrors($validator);
       }
       else{
+        echo 'estou';
         return view('pages.editProfile',['alert' => 'The <strong>password</strong> does not match. Try again.','type'=>$type])->withErrors($validator);
       }
 
     }
 
-        /**
-     * 
-     * @param  Request  $request
-     * @return Response
-     */
-    public function updatePhoto(Request $request)
-    {
-      $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
-      if($user_admin==null)
-        $type=1;
-      else
-        $type=2;
- 
-      $rules = array (
-        'photo' => 'required|mimes:jpg,png,jpeg,gif,svg',
-      );
-
-      $validator= Validator::make(Input::all(),$rules);
-      if($validator->fails()){
-        return view('pages.editProfile',['type'=>$type])->withErrors($validator);
-      }
-
-      if($request->hasFile('photo')){
-
-        $imageName= $request->photo->getClientOriginalName();
-        $request->photo->move(public_path('images/'),$imageName);
-        Auth::user()->photo = $imageName;
-        Auth::user()->save();
-        return view('pages.editProfile',['success' => 'Modifications made <strong>successfully</strong>.','type'=>$type])->withErrors($validator);
-      }
-    }      
 }

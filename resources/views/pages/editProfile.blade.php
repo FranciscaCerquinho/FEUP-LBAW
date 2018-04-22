@@ -6,9 +6,10 @@
 			<h1>Edit Profile</h1>
 			<hr class="style17" style="color:grey;">
 			<form action="{{ route('editProfile') }}" enctype="multipart/form-data" method="post" class="form-horizontal" role="form">
+			{{ csrf_field() }}
 			<div class="row">
 				<!-- left column -->
-				<div class="col-md-3">
+				<div class="col-md-3 form-group row">
 					<div class="text-center">
 						@if(Auth::user()->photo=='perfil_blue.png')
 						<img src="images/perfil-icon_grey.png" class="avatar img-circle" alt="avatar">
@@ -17,7 +18,6 @@
 						<img src="images/{{Auth::user()->photo}}" class="avatar img-circle" alt="avatar">
 						@endif
 						<br>
-						{{ csrf_field() }}
 						<label class="btn btn-file" style="background-color:#437ab2; color:white; margin-top:20px">
 							Change Photo
 							<input class="form-control" type="file" name="photo" accept="image/*">
@@ -81,8 +81,6 @@
 						</div>
 					@endif
 				</div>
-					<div>
-						{{ csrf_field() }}
 						<div class="form-group row">
 							<label for="example-text-input" class="col-lg-2 col-control-label">First name:</label>
 							<div class="col-lg-8">
@@ -140,7 +138,6 @@
 								<input type="reset" class="btn btn-default" value="Cancel">
 							</div>
 						</div>
-					</div>
 				</div>
 			</div>
 			</form>
