@@ -68,7 +68,7 @@ The user stories that were implemented in the prototype are described in the fol
     
 The web resources that were implemented in the prototype are described in the next section.
 
-**Module M01: Authentication and Individual Profile**
+#### Module M01: Authentication and Individual Profile
 
 <table>
     <tr>
@@ -76,50 +76,49 @@ The web resources that were implemented in the prototype are described in the ne
         <th>URL</th>
     </tr>
     <tr>
-        <td>R101: Login Form</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r101-login-form">R101: Login Form</a></td>
         <td>
             <a href="http://lbaw1756.lbaw-prod.fe.up.pt/login">/login</a>
         </td>
     </tr>
     <tr>
-        <td>R102: Login Action</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r102-login-action">R102: Login Action</a></td>
         <td>POST /login</td>
     </tr>
       <tr>
-        <td>R103: Logout Action</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r103-logout-action">R103: Logout Action</a></td>
         <td>POST /logout</td>
     </tr>
     <tr>
-        <td>R104: Register Form</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r104-register-form">R104: Register Form</a></td>
         <td>
            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/login">/login</a>
         </td>
     </tr>
     <tr>
-        <td>R105: Register Action</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r105-register-action">R105: Register Action</a></td>
         <td>POST /register</td>
     </tr>
     <tr>
-        <td>R106: View Profile</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r106-view-profile">R106: View Profile</a></td>
         <td>
             <a href="http://lbaw1756.lbaw-prod.fe.up.pt/editProfile">/editProfile</a>
         </td>
     </tr>
     <tr>
-        <td>R107: Edit Profile Form</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r108-edit-profile-form">R107: Edit Profile Form</a></td>
         <td>
            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/editProfile">/editProfile</a>
         </td>
     </tr>
     <tr>
-        <td>R108: Edit Profile Action</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r108-edit-profile-action">R108: Edit Profile Action</a></td>
         <td>POST /users/{id}/edit</td>
     </tr>
 </table>
 
-### Module M02: Auctions
+#### Module M02: Auctions
 
-**R209: HomePage**
 
 <table>
     <tr>
@@ -127,14 +126,14 @@ The web resources that were implemented in the prototype are described in the ne
         <th>URL</th>
     </tr>
     <tr>
-        <td>R209: Home Page</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r209-homepage">R209: Home Page</a></td>
         <td>
             <a href="http://lbaw1756.lbaw-prod.fe.up.pt/auctions">/auctions</a>
         </td>
     </tr>
 </table>
 
-**Module M05: User Administration and Static pages**
+#### Module M05: User Administration and Static pages
 
 <table>
     <tr>
@@ -142,25 +141,25 @@ The web resources that were implemented in the prototype are described in the ne
         <th>URL</th>
     </tr>
     <tr>
-        <td>R506: About</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r506-about">R506: About</a></td>
         <td>
            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/about">/about</a>
         </td>
     </tr>
     <tr>
-        <td>R507: Contact US</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r507-contact-us">R507: Contact US</a></td>
         <td>
            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/contact_us">/contact_us</a>
         </td>
     </tr>
     <tr>
-        <td>R508: FAQ</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r508-faq">R508: FAQ</a></td>
         <td>
            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/faq">/faq</a>
         </td>
     </tr>
     <tr>
-        <td>R509: 404 Error</td>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r509-404-error">R509: 404 Error</a></td>
         <td>
             <a href="http://lbaw1756.lbaw-prod.fe.up.pt/error">/error</a>
         </td>
@@ -178,6 +177,41 @@ Credentials:
 
 The code is avalable at 
 https://github.com/FranciscaCerquinho/LBAW-56/tree/proto
+
+### 2. Revision History
+
+We did distinction between users: visitor, regular user and administrator.
+Futhermore we apply control messages when creating an account or editing a user's information.
+#### Module M02: Auctions
+
+<table>
+    <tr>
+        <th>Web Resource Reference</th>
+        <th>URL</th>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r203-view-auction">R203: View Auction</a></td>
+        <td>
+            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/auction/11">/auction/{id}</a>
+        </td>
+    </tr>
+</table>
+
+#### Module M03: Wish list and Comments
+
+<table>
+    <tr>
+        <th>Web Resource Reference</th>
+        <th>URL</th>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r304-view-comments-on-a-item">R304: View Comments on a item</a></td>
+        <td>
+            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/auction/11">/auction/{id}</a>
+        </td>
+    </tr>
+</table>
+
 
 
 ## Members
