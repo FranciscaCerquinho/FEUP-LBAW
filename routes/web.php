@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('editProfile', 'UserController@show')->name('editProfile');
 Route::post('editProfile', 'UserController@update');
 Route::get('administration', 'AdminController@show')->name('administration');
-
+Route::get('user/{id}', 'OwnerController@show')->name('ownerProfile');
 // API
 Route::put('api/cards', 'CardController@create');
 Route::delete('api/cards/{card_id}', 'CardController@delete');
@@ -41,6 +41,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('auctions', 'AuctionController@list')->name('auction');
 Route::get('auction/{id}', 'AuctionController@show')->name('item');
+
 
 //Auctions comments
 

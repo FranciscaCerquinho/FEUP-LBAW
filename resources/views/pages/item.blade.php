@@ -61,7 +61,7 @@
 								<p class="owner" id="description">Owner:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<a class="owner_name" href="profile.html">{{$auction->firstname}} {{$auction->lastname}}</a>
+								<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->auction_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="category">
