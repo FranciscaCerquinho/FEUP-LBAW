@@ -120,6 +120,7 @@
         @include('partials.comments',['comment'=>$comment])
         <?php } ?>
 	@if (Auth::check())
+	@if($type==1)
 	<div class="row">
             <div class="leave_comment">
                 <div class="container">
@@ -139,6 +140,7 @@
             </div>
         </div>
     </div>
+	@endif
 	@endif
 </div>
 </div>

@@ -96,7 +96,7 @@
 					<div class="username">
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-								<img class="img-circle" src="/images/perfil_blue.png" style="max-width: 30px; max-height:30px; margin-right:15px; "></img>
+								<img class="img-circle" src="/images/{{Auth::user()->photo}}" style="max-width: 40px; max-height:40px; margin-right:10px; border-radius: 50%;"></img>
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
@@ -115,7 +115,7 @@
 				@endif
 				@if($type==1)
 				<li class="nav-item">
-					<a class="nav-link" href="add_auction.html">Add Auction</a>
+					<a class="nav-link" href="">Add Auction</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">

@@ -30,11 +30,13 @@
 													<input type="text" class="form-control" name="email" id="email" @if(old('email'))value="{{old('email')}}"@endif placeholder="Enter your Email" />
 												</div>
 											</div>
-                                            @if ($errors->has('email'))
-                                                <span class="error">
-                                                {{ $errors->first('email') }}
-                                                </span>
-                                            @endif
+									@if ($errors->has('email'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
+                                        {{ $errors->first('email') }}
+									</div>
+                                    @endif
 										</div>
 										<div class="col-sm-12">
 											<div class="form-group">
@@ -45,11 +47,13 @@
 													<input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
 												</div>
 											</div>
-                                            @if ($errors->has('password'))
-                                                <span class="error">
-                                                {{ $errors->first('password') }}
-                                                </span>
-                                            @endif
+									@if ($errors->has('password'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
+                                        {{ $errors->first('password') }}
+									</div>
+                                    @endif
 										</div>
 										<div class="col-12">
 											<div class="form-group text-center" id="rememberMe">
@@ -86,10 +90,12 @@
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('firstName'))
-                                        <span class="error">
+									@if ($errors->has('firstName'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
                                         {{ $errors->first('firstName') }}
-                                        </span>
+									</div>
                                     @endif
 									<div class="form-group">
 										<div class="cols-sm-10">
@@ -102,9 +108,11 @@
 										</div>
 									</div>
                                     @if ($errors->has('lastName'))
-                                        <span class="error">
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
                                         {{ $errors->first('lastName') }}
-                                        </span>
+									</div>
                                     @endif
 									<div class="form-group">
 										<div class="cols-sm-10">
@@ -116,10 +124,12 @@
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('email'))
-                                        <span class="error">
-                                        {{ $errors->first('email') }}
-                                        </span>
+									@if ($errors->has('email'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
+										{{ $errors->first('email') }}
+									</div>
                                     @endif
 									<div class="form-group">
 										<div class="cols-sm-10">
@@ -131,10 +141,12 @@
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('contact'))
-                                        <span class="error">
-                                        {{ $errors->first('contact') }}
-                                        </span>
+									@if ($errors->has('contact'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
+										{{ $errors->first('contact') }}
+									</div>
                                     @endif
 									<div class="form-group">
 										<div class="cols-sm-10">
@@ -146,10 +158,12 @@
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('address'))
-                                        <span class="error">
-                                        {{ $errors->first('address') }}
-                                        </span>
+									@if ($errors->has('address'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
+										{{ $errors->first('address') }}
+									</div>
                                     @endif
 									<div class="form-group">
 										<div class="cols-sm-10">
@@ -161,10 +175,12 @@
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('country'))
-                                        <span class="error">
-                                        {{ $errors->first('country') }}
-                                        </span>
+									@if ($errors->has('country'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
+										{{ $errors->first('country') }}
+									</div>
                                     @endif
 									<div class="form-group">
 										<div class="cols-sm-10">
@@ -176,10 +192,12 @@
 											</div>
 										</div>
 									</div>
-                                    @if ($errors->has('password'))
-                                        <span class="error">
-                                        {{ $errors->first('password') }}
-                                        </span>
+									@if ($errors->has('password'))
+									<div class="alert alert-danger alert-dismissable" role="alert">
+										<a class="panel-close close" data-dismiss="alert">x</a>
+										<i class="far fa-bell"></i>
+										{{ $errors->first('password') }}
+									</div>
                                     @endif
 									<div class="form-group">
 										<div class="cols-sm-10">

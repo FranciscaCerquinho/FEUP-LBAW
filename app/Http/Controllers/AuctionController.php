@@ -30,6 +30,15 @@ class AuctionController extends Controller
     }
 
     public function show($id){
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+      else
+        $type=0;
 
       $auction = Auction::where('auction_id',$id)
       ->join('owner', 'owner.id_auction', '=', 'auction_id')
@@ -43,7 +52,7 @@ class AuctionController extends Controller
       $comments = Comment::where('id_auction',$id)
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->get();
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments]);
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type]);
     }
 
 

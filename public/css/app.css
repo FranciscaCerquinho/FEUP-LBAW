@@ -71,6 +71,7 @@ body {
     font-size: 18px;
     font-weight:normal;
     letter-spacing: 0.3px;
+    margin-right: 20px;
 }
 
 @media only screen and (max-width: 375px) {
@@ -760,7 +761,7 @@ hr.style17 {
     text-transform: uppercase;
     color: #597ca0ff;
     text-align: center;
-    padding-top: 12px;
+    padding-top: 8px;
     margin-right: 25px;
     border-top: 1px solid #e4ece000;
     text-decoration: none;
@@ -794,8 +795,7 @@ hr.style17 {
 
 .username .dropdown-menu{
     background-color: #8b9fb7;
-    margin-top: 40px;
-
+    margin-top: 10px;
 }
 .username .dropdown-menu a{
     text-transform: none;
@@ -1369,6 +1369,7 @@ hr.style17 {
 #edit_profile img {
   width:140px;
   height:140px;
+  border-radius: 50%;
 }
 .btn-file {
     position: relative;
@@ -1560,6 +1561,8 @@ section#middle{
     color: #0c59cf;
     font-size: 16px;
   }
+
+
   @media only screen and (min-width: 576px) {
     section#middle{
     padding-top: 100px;
@@ -1649,8 +1652,6 @@ section#middle{
     }
 
   }
-
-
 
 
 /*ABOUT*/
@@ -2447,4 +2448,11 @@ iframe {
 
 .error {
   color: #437ab2;
+}
+.alert{
+  font-size:17px;
+}
+#loginPage .alert{
+  font-size:15px;
+  height: auto;
 }

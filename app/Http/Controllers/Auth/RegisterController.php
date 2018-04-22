@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'contact' => $data['contact'],
             'address' => $data['address'],
             'country' => $data['country'],
+            'photo'=> 'perfil_blue.png',
         ]);
     }
 }

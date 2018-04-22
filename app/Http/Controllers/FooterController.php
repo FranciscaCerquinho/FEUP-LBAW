@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use App\Admin;
+
 //use App\Card;
 
 class FooterController extends Controller
@@ -17,8 +19,16 @@ class FooterController extends Controller
      */
     public function showAbout()
     {
-
-      return view('pages.about');
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+      else
+        $type=0;
+      return view('pages.about',['type' => $type]);
     }
 
     /**
@@ -28,8 +38,16 @@ class FooterController extends Controller
      */
     public function showFAQ()
     {
-
-      return view('pages.faq');
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+      else
+        $type=0;
+      return view('pages.faq',['type' => $type]);
     }
 
     /**
@@ -39,8 +57,16 @@ class FooterController extends Controller
      */
     public function showContactUs()
     {
-
-      return view('pages.contact_us');
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+      else
+        $type=0;
+      return view('pages.contact_us',['type' => $type]);
     }
 
 }
