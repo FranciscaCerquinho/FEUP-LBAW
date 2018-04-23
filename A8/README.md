@@ -224,6 +224,22 @@ Futhermore we apply control messages when creating an account or editing a user'
     </tr>
 </table>
 
+### 2. Prototype
+
+The prototype is available at http://lbaw1756.lbaw-prod.fe.up.pt/
+
+Credentials:
+
+As an admin:
+* admin user: fcassola@fe.up.pt
+* user password: 123456
+
+As an regular user:
+* regular user: pedro21fcp@gmail.com
+* user password: 123456
+
+The code is avalable at 
+https://github.com/FranciscaCerquinho/LBAW-56/tree/proto
 
 
 ## Members
