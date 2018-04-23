@@ -32,8 +32,8 @@ class CommentController extends Controller
       $comment->id_user = Auth::user()->user_id;
       $comment->date= date('Y-m-d H:i:s');
       $comment->save();
-      $comment->join('users', 'users.user_id', '=', 'comment.id_user')->first();
-      
+      $comment->load('user');
+      $comment->url= '/images/'.($comment->user->photo=='perfil_blue.png'?'perfil-icon_grey.png' : $comment->user->photo);
       return $comment;
     }
 
