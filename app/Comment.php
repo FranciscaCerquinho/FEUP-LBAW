@@ -27,5 +27,14 @@ class Comment extends Model
         return $this->belongsTo('App\Auction');
     }
 
+
+    /**
+     * Get the auction comment.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User','id_user');
+    }
+
    
 }

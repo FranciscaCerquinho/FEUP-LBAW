@@ -67,12 +67,12 @@ function addCommentHandler(){
               <div class="panel panel-white post panel-shadow">
                   <div class="post-heading">
                       <div class="pull-left image">
-                          <img src="/images/perfil-icon_grey.png" class="img-circle avatar" alt="user profile image">
+                          <img src=${newComment.url} class="img-circle avatar" alt="user profile image">
                       </div>
                       <div class="pull-left meta">
                           <div class="comment_owner">
                               <a href="#">
-                                  <b>${newComment.firstName} ${newComment.lastName}</b>
+                                  <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
                               </a>
                           </div>
                           <h6 class="text-muted time"> ${date} ago</h6>
