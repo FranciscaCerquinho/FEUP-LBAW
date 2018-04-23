@@ -22,7 +22,8 @@ function SplitDate(dateTime){
   var splitSecond = second_aux.split("+");
   var second = parseInt(splitSecond[0]) 
   var hour = hour + parseInt(splitSecond[1]);
-
+  console.log(year+' '+month+' '+day+' ');
+  console.log(hour+' '+minute+' '+second);
   if(currentDate.getFullYear()==year){
     if(currentDate.getMonth()+1==month){
       if(currentDate.getDay()==day){
