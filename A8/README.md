@@ -234,7 +234,7 @@ As an admin:
 * admin user: fcassola@fe.up.pt
 * user password: 123456
 
-As an regular user:
+As a regular user:
 * regular user: pedro21fcp@gmail.com
 * user password: 123456
 
