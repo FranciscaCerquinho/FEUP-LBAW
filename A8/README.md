@@ -216,6 +216,12 @@ Futhermore we apply control messages when creating an account or editing a user'
             <a href="http://lbaw1756.lbaw-prod.fe.up.pt/auction/11">/auction/{id}</a>
         </td>
     </tr>
+      <tr>
+        <td><a href="https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7#r305-add-comments-on-a-auction">R305: Add Comments on a auction</a></td>
+        <td>
+            <a href="http://lbaw1756.lbaw-prod.fe.up.pt/auction/11">/comment/{id}</a>
+        </td>
+    </tr>
 </table>
 
 
