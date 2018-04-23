@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="item">
+<section id="item" data-id="{{$auction->auction_id}}">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -115,35 +115,34 @@
 			</div>
 		
 		<div class="row" id="first">
-		<?php if(count($comments)==0) { ?> <div class="row"> <div id="comments">  <?php } ?>
-        <?php foreach($comments as $comment) {?>
-        @include('partials.comments',['comment'=>$comment])
-        <?php } ?>
-	@if (Auth::check())
-	@if($type==1)
-	<div class="row">
-            <div class="leave_comment">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <div class="panel panel-white post panel-shadow">
-                                <div class="status-upload">
-                                    <form action="{{route('comment', ['id'=>$auction->auction_id]) }}" method="post" role="form" >
-                                        <textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
-                                        <button class="btn" type="submit">Send</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	@endif
-	@endif
-</div>
-</div>
-</div>
+			<div class="row"> 
+				<div id="comments">
+					<?php foreach($comments as $comment) {?>
+						@include('partials.comments',['comment'=>$comment])
+					<?php } ?>
+					@if (Auth::check())
+						@if($type==1)
+							<div class="row" id="addComment">
+								<div class="leave_comment">
+									<div class="container">
+										<div class="row">
+											<div class="col-sm-8">
+												<div class="panel panel-white post panel-shadow">
+													<div class="status-upload">
+															<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
+															<button class="btn" type="submit">Send</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						@endif
+					@endif
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 @endsection

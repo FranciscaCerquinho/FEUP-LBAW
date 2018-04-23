@@ -6,7 +6,12 @@
                     <div class="panel panel-white post panel-shadow">
                         <div class="post-heading">
                             <div class="pull-left image">
+                            @if($comment->photo=='perfil_blue.png')
                                 <img src="/images/perfil-icon_grey.png" class="img-circle avatar" alt="user profile image">
+                            @endif
+                            @if($comment->photo!='perfil_blue.png')
+                                <img src="/images/{{$comment->photo}}" class="img-circle avatar" alt="user profile image">
+                            @endif
                             </div>
                             <div class="pull-left meta">
                                 <div class="comment_owner">
@@ -14,7 +19,7 @@
                                         <b>{{$comment->firstname}} {{$comment->lastname}}</b>
                                     </a>
                                 </div>
-                                <h6 class="text-muted time"> <script>SplitDate("{{$auction->dateend}}");</script> ago</h6>
+                                <h6 class="text-muted time"> <script>SplitDate("{{$comment->date}}");</script> ago</h6>
                             </div>
                         </div>
                         <div class="post-description">
@@ -35,3 +40,5 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>

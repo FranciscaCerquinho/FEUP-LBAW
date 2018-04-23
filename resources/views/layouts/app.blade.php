@@ -96,7 +96,7 @@
 					<div class="username">
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-								<img class="img-circle" src="/images/{{Auth::user()->photo}}" style="margin-right:10px;"></img>
+								<img class="img-circle" src="/images/{{Auth::user()->photo}}" style="margin-right:10px; width: 31px;height: 30px;"></img>
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">

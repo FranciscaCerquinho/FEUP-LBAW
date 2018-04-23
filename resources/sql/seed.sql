@@ -70,7 +70,7 @@ CREATE TABLE comment(
   id SERIAL NOT NULL,
   "like" INTEGER,
   dislike INTEGER,
-  "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
+  date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
   comment text NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL

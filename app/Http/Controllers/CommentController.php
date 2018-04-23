@@ -20,16 +20,20 @@ class CommentController extends Controller
      */
     public function create(Request $request, $auction_id)
     {
+      
       $comment = new Comment();
       $comment->id_auction = $auction_id;
 
       //$this->authorize('create', $comment);
-
+     
       $comment->comment = $request->input('comment');
       $comment->like = 0;
       $comment->dislike = 0;
-      $comment->id_user = Auth::user()->user_id;;
+      $comment->id_user = Auth::user()->user_id;
+      $comment->date= date('Y-m-d H:i:s');
       $comment->save();
+      $comment->join('users', 'users.user_id', '=', 'comment.id_user')->first();
+      
       return $comment;
     }
 

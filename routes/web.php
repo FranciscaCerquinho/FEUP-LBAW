@@ -45,7 +45,7 @@ Route::get('auction/{id}', 'AuctionController@show')->name('item');
 
 //Auctions comments
 
-Route::post('comment/{id}', 'CommentController@create')->name('comment');
+Route::post('comment/{id}', 'CommentController@create');
 //Footer
 
 Route::get('about', 'FooterController@showAbout')->name('about');

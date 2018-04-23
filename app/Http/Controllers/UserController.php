@@ -50,9 +50,9 @@ class UserController extends Controller
         'contact' => 'required|string|min:9|max:17',
         'address' => 'required|string|min:6',
         'country' => 'required|string|min:6',
-        'photo' => 'required|mimes:jpg,png,jpeg,gif,svg',
+        'photo' => 'mimes:jpg,png,jpeg,gif,svg',
       );
-
+  
       $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
       if($user_admin==null)
         $type=1;
@@ -63,7 +63,7 @@ class UserController extends Controller
       if($validator->fails()){
         return view('pages.editProfile',['type'=>$type])->withErrors($validator);
       }
-      echo 'aqui';
+      
       Auth::user()->firstname = $request->input('firstName');
       Auth::user()->lastname = $request->input('lastName');
       Auth::user()->address = $request->input('address');
@@ -76,12 +76,12 @@ class UserController extends Controller
         Auth::user()->photo = $imageName;
       }
       if($request->input('confirmPassword')== $request->input('password')) {
-        echo 'estou';
+       
         Auth::user()->save();
         return view('pages.editProfile',['success' => 'Modifications made <strong>successfully</strong>.','type'=>$type])->withErrors($validator);
       }
       else{
-        echo 'estou';
+       
         return view('pages.editProfile',['alert' => 'The <strong>password</strong> does not match. Try again.','type'=>$type])->withErrors($validator);
       }
 

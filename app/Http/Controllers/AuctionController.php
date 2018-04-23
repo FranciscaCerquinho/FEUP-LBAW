@@ -51,6 +51,7 @@ class AuctionController extends Controller
         
       $comments = Comment::where('id_auction',$id)
       ->join('users', 'users.user_id', '=', 'comment.id_user')
+      ->orderBy('date','asc')
       ->get();
       return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type]);
     }
