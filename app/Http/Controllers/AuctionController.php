@@ -15,12 +15,14 @@ class AuctionController extends Controller
 
     public function list()
     {
+  
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
           $type=1;
         else
           $type=2;
+      
       }
       else
         $type=0;
@@ -30,12 +32,21 @@ class AuctionController extends Controller
     }
 
     public function show($id){
+      $like=0;
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
           $type=1;
         else
           $type=2;
+
+        $user_like = DB::table('userauctionlike')->where([['id_auction','=', $id],['id_user','=',Auth::user()->user_id]])->first();
+        if($user_like!=null){
+          if($user_like->islike==true)
+            $like=1;
+          else
+            $like=2;
+        }
       }
       else
         $type=0;
@@ -53,7 +64,7 @@ class AuctionController extends Controller
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->orderBy('date','asc')
       ->get();
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type]);
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like]);
     }
 
 

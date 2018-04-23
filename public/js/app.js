@@ -136,6 +136,13 @@ function addAuctionLikeHandler(){
   let unlike = document.querySelector("#item #unlikeAuction");
 
   unlike.innerHTML= newLike.auction_dislike;
+
+  document.getElementById('like_hand').style='color: #437ab2;';
+  like.style='color: #437ab2;';
+
+
+  document.getElementById('unlike_hand').style='color: black;';
+  unlike.style='color: black;';
   
 }
 
@@ -159,8 +166,18 @@ function addAuctionUnlikeHandler(){
 
     unlike.innerHTML= newUnlike.auction_dislike;
 
+
     let like = document.querySelector("#item #likeAuction");
    
     like.innerHTML= newUnlike.auction_like;
+  
+
+    document.getElementById('unlike_hand').style='color: #437ab2;';
+    unlike.style='color: #437ab2;';
+  
+  
+    document.getElementById('like_hand').style='color: black;';
+    like.style='color: black;';
   }
+
 addEventListeners();

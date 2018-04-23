@@ -38,12 +38,12 @@
 					<img class="product_image" src="/images/{{$auction->auctionphoto}}" alt="Play">
 					<div id="buttons">
 						<button type="button" id="likeButton" class="btn btn-default btn-sm">
-							<span class="far fa-thumbs-up"></span>
-							<span id="likeAuction">{{$auction->auction_like}}</span>
+							<span class="far fa-thumbs-up" id="like_hand" @if($like==1) style="color:#437ab2"@endif></span>
+							<span id="likeAuction" @if($like==1) style="color:#437ab2"@endif>{{$auction->auction_like}}</span>
 						</button>
 						<button type="button" id="unlikeButton" class="btn btn-default btn-sm">
-							<span class="far fa-thumbs-down"></span>
-							<span id="unlikeAuction">{{$auction->auction_dislike}}</span>
+							<span class="far fa-thumbs-down" id="unlike_hand" @if($like==2) style="color:#437ab2"@endif></span>
+							<span id="unlikeAuction"  @if($like==2) style="color:#437ab2"@endif>{{$auction->auction_dislike}}</span>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="fas fa-bullhorn"></span> Report
