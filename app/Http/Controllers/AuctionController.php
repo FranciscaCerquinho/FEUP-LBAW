@@ -85,6 +85,68 @@ class AuctionController extends Controller
 
       return $auction;
     }
+
+        /**
+     * Updates the state of an individual item.
+     *
+     * @param  int  $auction id
+     * @param  Request request containing the new state
+     * @return Response
+     */
+    public function updateLike(Request $request, $auction_id)
+    {
+      $auction = Auction::find($auction_id);
+
+      $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
+
+      if($user_like==null){
+        DB::table('userauctionlike')->insert(['id_user'=> Auth::user()->user_id, 'id_auction'=> $auction_id, 'islike'=>true]);
+        $auction->auction_like = $request->input('like');
+        $auction->save();
+      }
+      else {
+        if($user_like->islike == false){
+          $auction->auction_dislike=$auction->auction_dislike-1;
+          $auction->auction_like=$auction->auction_like+1;
+          $auction->save();
+          DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->update(['islike'=> true]);
+        }
+
+      }
+     
+      return $auction;
+    }
+
+            /**
+     * Updates the state of an individual item.
+     *
+     * @param  int  $auction id
+     * @param  Request request containing the new state
+     * @return Response
+     */
+    public function updateUnlike(Request $request, $auction_id)
+    {
+      $auction = Auction::find($auction_id);
+
+      $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
+
+      if($user_like==null){
+        DB::table('userauctionlike')->insert(['id_user'=> Auth::user()->user_id, 'id_auction'=> $auction_id, 'islike'=>true]);
+        $auction->auction_dislike = $request->input('unlike');
+        $auction->save();
+
+      }
+      else {
+        if($user_like->islike == true){
+          $auction->auction_like=$auction->auction_like-1;
+          $auction->auction_dislike=$auction->auction_dislike+1;
+          $auction->save();
+          DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->update(['islike'=> false]);
+        }
+
+      }
+      return $auction;
+    }
     
 
 }

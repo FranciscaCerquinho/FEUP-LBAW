@@ -13,6 +13,8 @@ DROP TABLE IF EXISTS category CASCADE;
 DROP TABLE IF EXISTS buyNow CASCADE;
 DROP TABLE IF EXISTS cards CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
+DROP TABLE IF EXISTS userAuctionLike CASCADE;
+DROP TABLE IF EXISTS userCommentLike CASCADE;
 
 DROP FUNCTION IF EXISTS "CheckAuctionDate"() CASCADE;
 DROP TRIGGER IF EXISTS "CheckAuctionDate" ON bid CASCADE;
@@ -66,6 +68,12 @@ CREATE TABLE auction (
   auction_dislike INTEGER
 );
 
+CREATE TABLE userAuctionLike(
+    islike boolean NOT NULL,
+    id_user INTEGER NOT NULL,
+    id_auction INTEGER NOT NULL
+);
+
 CREATE TABLE comment(
   id SERIAL NOT NULL,
   "like" INTEGER,
@@ -76,6 +84,11 @@ CREATE TABLE comment(
   id_auction INTEGER NOT NULL
 );
 
+CREATE TABLE userCommentLike(
+    islike boolean NOT NULL,
+    id_user INTEGER NOT NULL,
+    id_comment INTEGER NOT NULL
+);
 CREATE TABLE reportUser(
   id SERIAL NOT NULL,
   reason text NOT NULL,
@@ -139,11 +152,17 @@ ALTER TABLE ONLY admin
 ALTER TABLE ONLY auction
   ADD CONSTRAINT auction_pkey PRIMARY KEY (auction_id);
 
+ALTER TABLE ONLY userAuctionLike
+  ADD CONSTRAINT userAuctionLike_pkey PRIMARY KEY (id_user, id_auction);
+
 ALTER TABLE ONLY bid
   ADD CONSTRAINT bid_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY comment
   ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY userCommentLike
+  ADD CONSTRAINT userCommentLike_pkey PRIMARY KEY (id_user, id_comment);
 
 ALTER TABLE ONLY reportUser
   ADD CONSTRAINT reportUser_pkey PRIMARY KEY (id);
@@ -177,6 +196,11 @@ ALTER TABLE ONLY banauction
 ALTER TABLE ONLY banauction
     ADD CONSTRAINT banauction_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
 
+ALTER TABLE ONLY userAuctionLike
+    ADD CONSTRAINT userAuctionLike_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
+
+ALTER TABLE ONLY userAuctionLike
+    ADD CONSTRAINT userAuctionLike_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
 
 ALTER TABLE ONLY banuser
     ADD CONSTRAINT banuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
@@ -195,6 +219,12 @@ ALTER TABLE ONLY comment
 
 ALTER TABLE ONLY comment
     ADD CONSTRAINT comment_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
+
+ALTER TABLE ONLY userCommentLike
+    ADD CONSTRAINT userCommentLike_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
+
+ALTER TABLE ONLY userCommentLike
+    ADD CONSTRAINT userCommentLike_id_comment_fkey FOREIGN KEY (id_comment) REFERENCES comment(id);
 
 ALTER TABLE ONLY owner
     ADD CONSTRAINT owner_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);

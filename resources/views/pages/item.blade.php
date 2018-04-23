@@ -37,11 +37,13 @@
 				<div class="col-lg-6">
 					<img class="product_image" src="/images/{{$auction->auctionphoto}}" alt="Play">
 					<div id="buttons">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="far fa-thumbs-up"></span>{{$auction->auction_like}}
+						<button type="button" id="likeButton" class="btn btn-default btn-sm">
+							<span class="far fa-thumbs-up"></span>
+							<span id="likeAuction">{{$auction->auction_like}}</span>
 						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="far fa-thumbs-down"></span>{{$auction->auction_dislike}}
+						<button type="button" id="unlikeButton" class="btn btn-default btn-sm">
+							<span class="far fa-thumbs-down"></span>
+							<span id="unlikeAuction">{{$auction->auction_dislike}}</span>
 						</button>
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="fas fa-bullhorn"></span> Report

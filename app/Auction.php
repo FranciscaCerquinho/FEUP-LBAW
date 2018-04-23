@@ -17,7 +17,7 @@ class Auction extends Model
     * @var array
     */
     protected $fillable = [
-        'dateBegin','dateEnd', 'name', 'description','actualPrice','photo','buyNow','active',
+        'dateBegin','dateEnd', 'name', 'description','actualPrice','photo','buyNow','active','auction_like','auction_dislike'
     ];
 
     /**

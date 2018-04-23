@@ -16,6 +16,22 @@ $(function () {
   });
 
 });
+function encodeForAjax(data) {
+    if (data == null) return null;
+    return Object.keys(data).map(function(k){
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&');
+  }
+  
+function sendAjaxRequest(method, url, data, handler) {
+let request = new XMLHttpRequest();
+
+request.open(method, url, true);
+request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+request.addEventListener('load', handler);
+request.send(encodeForAjax(data));
+}
 
 function addEventListeners(){
 
@@ -23,38 +39,31 @@ function addEventListeners(){
   if(addComment){
     addComment.addEventListener('click',sendCommentRequest);
   }
+
+  let addLike = document.querySelector("#item #likeButton");
+  if(addLike){
+    addLike.addEventListener('click',sendAuctionLikeRequest);
+  }
+
+  let addUnlike = document.querySelector("#item #unlikeButton");
+  if(addUnlike){
+    addUnlike.addEventListener('click',sendAuctionUnlikeRequest);
+  }
 };
-
-function encodeForAjax(data) {
-  if (data == null) return null;
-  return Object.keys(data).map(function(k){
-    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-  }).join('&');
-}
-
-function sendAjaxRequest(method, url, data, handler) {
-  let request = new XMLHttpRequest();
-
-  request.open(method, url, true);
-  request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
-  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  request.addEventListener('load', handler);
-  request.send(encodeForAjax(data));
-}
 
 function sendCommentRequest(){
   let text = document.querySelector(".leave_comment .status-upload textarea").value;
   let id = this.closest('section#item').getAttribute('data-id');
-  console.log(text);
+
   if(text != '')
     sendAjaxRequest('post','/comment/' + id,{comment: text}, addCommentHandler);
 };
 
 function addCommentHandler(){
-  console.log(this.responseText);
+ 
   if(this.status!=200) window.location = '/';
   let newComment = JSON.parse(this.responseText);
-  console.log("newComment",newComment);
+ 
   let comment = document.createElement('div');
   comment.setAttribute('class','row');
   let date =SplitDateReturn(newComment.date);
@@ -103,4 +112,55 @@ comment.innerHTML = `
   comments.insertBefore(comment,commentBox);
 }
 
+
+function sendAuctionLikeRequest(){
+    let like = document.querySelector("#buttons #likeAuction").textContent;
+    like = parseInt(like) +1;
+
+    let id = this.closest('section#item').getAttribute('data-id');
+
+    if(like != '')
+      sendAjaxRequest('post','/likeAuction/' + id,{like: like}, addAuctionLikeHandler);
+}
+
+function addAuctionLikeHandler(){
+ 
+  if(this.status!=200) window.location = '/';
+  let newLike = JSON.parse(this.responseText);
+
+    console.log(newLike);
+  let like = document.querySelector("#item #likeAuction");
+  console.log('aqui'+like);
+  like.innerHTML= newLike.auction_like;
+
+  let unlike = document.querySelector("#item #unlikeAuction");
+
+  unlike.innerHTML= newLike.auction_dislike;
+  
+}
+
+
+function sendAuctionUnlikeRequest(){
+    let unlike = document.querySelector("#buttons #unlikeAuction").textContent;
+    unlike = parseInt(unlike)+1;
+
+    let id = this.closest('section#item').getAttribute('data-id');
+
+    if(unlike != '')
+      sendAjaxRequest('post','/unlikeAuction/' + id,{unlike: unlike}, addAuctionUnlikeHandler);
+}
+
+function addAuctionUnlikeHandler(){
+ 
+    if(this.status!=200) window.location = '/';
+    let newUnlike = JSON.parse(this.responseText);
+  
+    let unlike = document.querySelector("#item #unlikeAuction");
+
+    unlike.innerHTML= newUnlike.auction_dislike;
+
+    let like = document.querySelector("#item #likeAuction");
+   
+    like.innerHTML= newUnlike.auction_like;
+  }
 addEventListeners();
