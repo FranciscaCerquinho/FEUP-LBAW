@@ -16,6 +16,7 @@ class AuctionController extends Controller
     public function list()
     {
   
+      
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
@@ -27,8 +28,8 @@ class AuctionController extends Controller
       else
         $type=0;
       
-      $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
-      return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
+        $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
+        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
     public function show($id){
@@ -50,12 +51,12 @@ class AuctionController extends Controller
             $like=2;
         }
 
-        $comment_likes = DB::table('usercommentlike')->where('comment.id_user','=',Auth::user()->user_id)
-        ->join('comment', 'comment.id', '=', 'usercommentlike.id_comment')
+        $comment_likes = DB::table('usercommentlike')
+        ->join('comment', 'comment.id', '=', 'usercommentlike.id_comment')->where('usercommentlike.id_user','=',Auth::user()->user_id)
         ->join('auction','auction.auction_id','=','comment.id_auction')->where('auction_id', '=', $id)
         ->orderBy('comment.date','asc')
         ->get();
-
+        
         if($comment_likes!=null){
           for($i=0; $i< count($comment_likes);$i++){
           if($comment_likes[$i]->islike==true)
@@ -82,7 +83,7 @@ class AuctionController extends Controller
       ->orderBy('date','asc')
       ->get();
       
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes]);
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes]);
     }
 
 

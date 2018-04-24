@@ -122,10 +122,11 @@
 					<?php foreach($comments as $comment) {
 						$j = -1;
 						for($i = 0; $i < count($commentsLikes); $i++){
-							if($commentsLikes->id_comment == $comment->id)
+						
+							if($id_comment_likes[$i]->id_comment == $comment->id)
 								$j = $i;
 						 } 
-						if($j != -1)  {?> 
+						if($j != -1)  { ?> 
 						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j]])	<?php }
 						else { ?>
 						@include('partials.comments',['comment'=>$comment])	
