@@ -32,6 +32,10 @@ class AuctionController extends Controller
         return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
+    public function search($name) {
+      
+    }
+
     public function show($id){
       $like=0;
       $commentsLikes = array();
