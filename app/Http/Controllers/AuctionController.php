@@ -40,7 +40,7 @@ class AuctionController extends Controller
     public function show($id){
       $like=0;
       $commentsLikes = array();
-
+      $comment_likes = array();
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
