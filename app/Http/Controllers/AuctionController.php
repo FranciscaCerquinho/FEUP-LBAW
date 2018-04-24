@@ -32,8 +32,9 @@ class AuctionController extends Controller
         return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
-    public function search($name) {
+    public function search($name = null) {
       
+      return view('pages.search');
     }
 
     public function show($id){

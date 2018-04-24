@@ -46,4 +46,4 @@ Route::get('faq', 'FooterController@showFAQ')->name('faq');
 Route::get('contact_us', 'FooterController@showContactUs')->name('contact_us');
 
 //Search Bar
-Route::get("search",'AuctionController@search')->name('search');
+Route::get("search/{name?}",'AuctionController@search')->name('search');
