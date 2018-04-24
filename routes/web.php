@@ -42,6 +42,8 @@ Route::post('unlikeAuction/{id}', 'AuctionController@updateUnlike');
 //Auctions comments
 
 Route::post('comment/{id}', 'CommentController@create');
+Route::post('likeComment/{id}', 'CommentController@updateLike');
+Route::post('unlikeComment/{id}', 'CommentController@updateUnlike');
 //Footer
 
 Route::get('about', 'FooterController@showAbout')->name('about');

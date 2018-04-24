@@ -27,12 +27,14 @@ class AuctionController extends Controller
       else
         $type=0;
       
-      $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
+      $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
       return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
     public function show($id){
       $like=0;
+      $commentsLikes = array();
+
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
@@ -47,7 +49,22 @@ class AuctionController extends Controller
           else
             $like=2;
         }
-      }
+
+        $comment_likes = DB::table('usercommentlike')->where('comment.id_user','=',Auth::user()->user_id)
+        ->join('comment', 'comment.id', '=', 'usercommentlike.id_comment')
+        ->join('auction','auction.auction_id','=','comment.id_auction')->where('auction_id', '=', $id)
+        ->orderBy('comment.date','asc')
+        ->get();
+
+        if($comment_likes!=null){
+          for($i=0; $i< count($comment_likes);$i++){
+          if($comment_likes[$i]->islike==true)
+            array_push($commentsLikes,1);
+          else
+            array_push($commentsLikes,2);
+          }
+        }
+        }
       else
         $type=0;
 
@@ -64,7 +81,8 @@ class AuctionController extends Controller
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->orderBy('date','asc')
       ->get();
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like]);
+      
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes]);
     }
 
 
@@ -107,7 +125,7 @@ class AuctionController extends Controller
     public function updateLike(Request $request, $auction_id)
     {
       $auction = Auction::find($auction_id);
-
+      if(Auth::check()){
       $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
 
       if($user_like==null){
@@ -124,7 +142,7 @@ class AuctionController extends Controller
         }
 
       }
-     
+    }
       return $auction;
     }
 
@@ -139,6 +157,7 @@ class AuctionController extends Controller
     {
       $auction = Auction::find($auction_id);
 
+      if(Auth::check()){
       $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
 
       if($user_like==null){
@@ -156,6 +175,7 @@ class AuctionController extends Controller
         }
 
       }
+    }      
       return $auction;
     }
     

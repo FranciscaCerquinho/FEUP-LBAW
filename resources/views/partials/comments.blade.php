@@ -24,15 +24,30 @@
                         </div>
                         <div class="post-description">
                             <p>{{$comment->comment}}</p>
-                            <div class="stats">
-                                <a href="#" class="btn stat-item">
-                                    <i class="far fa-thumbs-up"></i>{{$comment->like}}
+                            <div class="buttonsComments" data-id="{{$comment->id}}">
+                                <a  id="commentLike" class="btn">
+                                @if(isset($commentsLikes))
+                                    <span @if($commentsLikes==1) style="color:#437ab2"@endif id ="likeCommentHand" class="far fa-thumbs-up"></span>
+                                    <span @if($commentsLikes==1) style="color:#437ab2"@endif id ="likeComment">{{$comment->like}}</span>
+                                @endif
+                                @if(!isset($commentsLikes))
+                                    <span  id ="likeCommentHand" class="far fa-thumbs-up"></span>
+                                    <span  id ="likeComment">{{$comment->like}}</span>
+                                @endif
                                 </a>
-                                <a href="#" class="btn stat-item">
-                                    <i class="far fa-thumbs-down"></i>{{$comment->dislike}}
+                                <a id="commentUnlike" href="#" class="btn">
+                                @if(isset($commentsLikes))
+                                    <span @if($commentsLikes==2) style="color:#437ab2"@endif id ="unlikeCommentHand" class="far fa-thumbs-down"></span>
+                                    <span @if($commentsLikes==2) style="color:#437ab2"@endif id ="unlikeComment">{{$comment->dislike}}</span>
+                                @endif
+                                @if(!isset($commentsLikes))
+                                    <span  id ="unlikeCommentHand" class="far fa-thumbs-down"></span>
+                                    <span  id ="unlikeComment">{{$comment->dislike}}</span>
+                                @endif
                                 </a>
-                                <a href="#" class="btn btn-sm stat-item" style="padding:6px;">
-                                    <i class="fas fa-bullhorn"></i>Report
+                                <a id="commentReport" class="btn btn-sm stat-item" style="padding:6px;">
+                                    <span id ="reportComment" class="fas fa-bullhorn"></span>
+                                    <span>&nbsp; Report</span>
                                 </a>
                             </div>
                         </div>

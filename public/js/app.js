@@ -49,6 +49,18 @@ function addEventListeners(){
   if(addUnlike){
     addUnlike.addEventListener('click',sendAuctionUnlikeRequest);
   }
+
+  let addCommentLike = document.querySelectorAll("#comments #commentLike");
+  if(addCommentLike){
+    for(var i=0; i < addCommentLike.length;i++)
+      addCommentLike[i].addEventListener('click',sendCommentLikeRequest);
+  }
+
+  let addCommentUnlike = document.querySelectorAll("#comments #commentUnlike");
+  if(addCommentUnlike){
+    for(var i=0; i < addCommentUnlike.length;i++)
+      addCommentUnlike[i].addEventListener('click',sendCommentUnlikeRequest);
+  }
 };
 
 function sendCommentRequest(){
@@ -179,5 +191,75 @@ function addAuctionUnlikeHandler(){
     document.getElementById('like_hand').style='color: black;';
     like.style='color: black;';
   }
+
+  function sendCommentLikeRequest(){
+    let like = document.querySelector("#commentLike").textContent;
+    like = parseInt(like) +1;
+
+    let id = this.closest('div.buttonsComments').getAttribute('data-id');
+
+    if(like != '')
+      sendAjaxRequest('post','/likeComment/' + id,{like: like}, addCommentLikeHandler);
+}
+
+function addCommentLikeHandler(){
+ 
+  if(this.status!=200) window.location = '/';
+  let newLike = JSON.parse(this.responseText);
+
+    console.log(newLike);
+  let stats = document.querySelector('div.buttonsComments[data-id="'+newLike.id+'"]');
+  let like= stats.querySelector("#likeComment");
+
+  like.innerHTML= newLike.like;
+
+  let unlike = stats.querySelector("#unlikeComment");
+
+  unlike.innerHTML= newLike.dislike;
+
+  stats.querySelector('#likeCommentHand').style='color: #437ab2;';
+  like.style='color: #437ab2;';
+
+
+  stats.querySelector('#unlikeCommentHand').style='color: black;';
+  unlike.style='color: black;';
+  
+}
+
+
+
+function sendCommentUnlikeRequest(){
+    let unlike = document.querySelector("#commentUnlike").textContent;
+    unlike = parseInt(unlike)+1;
+
+    let id = this.closest('div.buttonsComments').getAttribute('data-id');
+  console.log(id);
+    if(unlike != '')
+      sendAjaxRequest('post','/unlikeComment/' + id,{unlike: unlike}, addCommentUnlikeHandler);
+}
+
+function addCommentUnlikeHandler(){
+    if(this.status!=200) window.location = '/';
+    let newUnlike = JSON.parse(this.responseText);
+    console.log(newUnlike);
+
+    let stats = document.querySelector('div.buttonsComments[data-id="'+newUnlike.id+'"]');
+    let unlike = stats.querySelector("#unlikeComment");
+
+    unlike.innerHTML= newUnlike.dislike;
+
+
+    let like = stats.querySelector("#likeComment");
+   
+    like.innerHTML= newUnlike.like;
+  
+    stats.querySelector('#unlikeCommentHand').style='color: #437ab2;';
+    unlike.style='color: #437ab2;';
+  
+  
+    stats.querySelector('#likeCommentHand').style='color: black;';
+    like.style='color: black;';
+  }
+  
 
 addEventListeners();

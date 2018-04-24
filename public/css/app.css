@@ -563,6 +563,37 @@ section#item h2.item_name{
     margin-top: 20px;
   }
 
+  #commentLike{
+    border: none;
+    color: black;
+  }
+
+  #commentUnlike{
+    border: none;
+    color: black;
+  }
+
+  #commentReport{
+    border: none;
+    color:black;
+  }
+
+  .buttonsComments a:hover #likeCommentHand{
+    color:#437ab2;
+  }
+
+  .buttonsComments a:hover span{
+    color:#437ab2;
+  }
+
+  .buttonsComments a:hover #unlikeCommentHand{
+    color:#437ab2;
+  }
+
+  .buttonsComments a:hover #reportComment{
+    color:#437ab2;
+  }
+
 
   #item div#comments div.container{
     width: 1000px;

@@ -119,9 +119,17 @@
 		<div class="row" id="first">
 			<div class="row"> 
 				<div id="comments">
-					<?php foreach($comments as $comment) {?>
-						@include('partials.comments',['comment'=>$comment])
-					<?php } ?>
+					<?php foreach($comments as $comment) {
+						$j = -1;
+						for($i = 0; $i < count($commentsLikes); $i++){
+							if($commentsLikes->id_comment == $comment->id)
+								$j = $i;
+						 } 
+						if($j != -1)  {?> 
+						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j]])	<?php }
+						else { ?>
+						@include('partials.comments',['comment'=>$comment])	
+					<?php }} ?>
 					@if (Auth::check())
 						@if($type==1)
 							<div class="row" id="addComment">
