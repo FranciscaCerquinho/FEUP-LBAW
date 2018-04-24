@@ -2504,3 +2504,7 @@ iframe {
   font-size:15px;
   height: auto;
 }
+
+#usersPag .active a{
+  color:white;
+}

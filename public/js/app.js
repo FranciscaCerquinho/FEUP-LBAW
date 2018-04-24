@@ -207,7 +207,6 @@ function addCommentLikeHandler(){
   if(this.status!=200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
-    console.log(newLike);
   let stats = document.querySelector('div.buttonsComments[data-id="'+newLike.id+'"]');
   let like= stats.querySelector("#likeComment");
 
@@ -233,7 +232,7 @@ function sendCommentUnlikeRequest(){
     unlike = parseInt(unlike)+1;
 
     let id = this.closest('div.buttonsComments').getAttribute('data-id');
-  console.log(id);
+
     if(unlike != '')
       sendAjaxRequest('post','/unlikeComment/' + id,{unlike: unlike}, addCommentUnlikeHandler);
 }
@@ -241,7 +240,6 @@ function sendCommentUnlikeRequest(){
 function addCommentUnlikeHandler(){
     if(this.status!=200) window.location = '/';
     let newUnlike = JSON.parse(this.responseText);
-    console.log(newUnlike);
 
     let stats = document.querySelector('div.buttonsComments[data-id="'+newUnlike.id+'"]');
     let unlike = stats.querySelector("#unlikeComment");
