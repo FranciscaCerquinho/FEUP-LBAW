@@ -34,11 +34,16 @@ Route::get('auctions', 'AuctionController@list')->name('auction');
 Route::get('auction/{id}', 'AuctionController@show')->name('item');
 Route::post('likeAuction/{id}', 'AuctionController@updateLike');
 Route::post('unlikeAuction/{id}', 'AuctionController@updateUnlike');
+Route::post('makeBid/{id}', 'BidController@makeBid')->name('makeBid');
 
 //Auctions comments
 Route::post('comment/{id}', 'CommentController@create');
 Route::post('likeComment/{id}', 'CommentController@updateLike');
 Route::post('unlikeComment/{id}', 'CommentController@updateUnlike');
+
+//User bids
+
+Route::get('myBids', 'BidController@show')->name('myBids');
 
 //Footer
 Route::get('about', 'FooterController@showAbout')->name('about');

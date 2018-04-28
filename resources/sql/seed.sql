@@ -50,8 +50,8 @@ CREATE TABLE bid(
   status BOOLEAN NOT NULL,
   price FLOAT,
   date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  id_auction INTEGER NOT NULL,
-  id_user INTEGER NOT NULL
+  bid_id_auction INTEGER NOT NULL,
+  bid_id_user INTEGER NOT NULL
 );
 
 CREATE TABLE auction (
@@ -108,7 +108,7 @@ CREATE TABLE banUser(
   id_admin  INTEGER NOT NULL,
   isBanned BOOLEAN NOT NULL,
   dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
+  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now()
 );
 
 CREATE TABLE banAuction(
@@ -206,10 +206,10 @@ ALTER TABLE ONLY banuser
     ADD CONSTRAINT banuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
 
 ALTER TABLE ONLY bid
-    ADD CONSTRAINT bid_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
+    ADD CONSTRAINT bid_id_auction_fkey FOREIGN KEY (bid_id_auction) REFERENCES auction(auction_id);
 
 ALTER TABLE ONLY bid
-    ADD CONSTRAINT bid_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
+    ADD CONSTRAINT bid_id_user_fkey FOREIGN KEY (bid_id_user) REFERENCES users(user_id);
 
 ALTER TABLE ONLY category
     ADD CONSTRAINT category_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
@@ -269,7 +269,7 @@ CREATE FUNCTION "CheckAuctionDate"() RETURNS trigger
 DECLARE
    auctionDateEnd date;
 BEGIN
-   SELECT auction.dateEnd INTO auctionDateEnd FROM auction WHERE auction.auction_id = NEW.id_auction;
+   SELECT auction.dateEnd INTO auctionDateEnd FROM auction WHERE auction.auction_id = NEW.bid_id_auction;
    IF auctionDateEnd < NEW.date THEN
        RAISE EXCEPTION 'Cannot bid on closed auction!';
    END IF;
@@ -288,9 +288,9 @@ CREATE FUNCTION "CheckUserBid"() RETURNS trigger
 DECLARE
    sellerId integer;
 BEGIN
-   SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.id_auction;
+   SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.bid_id_auction;
 
-   IF NEW.id_user = sellerId THEN
+   IF NEW.bid_id_user = sellerId THEN
        RAISE EXCEPTION 'Cannot have the same buyer as its seller!';
    END IF;
    RETURN NEW;
@@ -454,106 +454,106 @@ INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-02 00:00:00','2018-06-01 00:00:00','Keaton','magnis',1.78,'gravidanuncsedpedeumsociis',6.61,'0',12,1);
 
 
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',0.80,DEFAULT,7,12);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',3.85,DEFAULT,16,26);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',1.59,DEFAULT,13,21);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',14.06,DEFAULT,32,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',5.86,DEFAULT,14,1);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',18.51,DEFAULT,8,17);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',6.27,DEFAULT,38,29);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',8.26,DEFAULT,23,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',8.46,DEFAULT,29,18);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',1.17,DEFAULT,48,12);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',3.22,DEFAULT,7,16);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',17.36,DEFAULT,35,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',14.38,DEFAULT,34,5);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',5.45,DEFAULT,21,29);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',12.86,DEFAULT,25,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',11.43,DEFAULT,2,15);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',14.65,DEFAULT,24,7);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',6.86,DEFAULT,32,26);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',16.48,DEFAULT,42,19);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',17.18,DEFAULT,41,4);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',1.79,DEFAULT,36,20);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',8.23,DEFAULT,1,29);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',12.29,DEFAULT,4,8);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',19.49,DEFAULT,12,19);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',18.43,DEFAULT,15,14);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',16.96,DEFAULT,2,30);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',6.40,DEFAULT,40,15);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',0.65,DEFAULT,36,19);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',13.58,DEFAULT,22,3);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',2.10,DEFAULT,40,9);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',8.51,DEFAULT,44,5);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',0.88,DEFAULT,6,9);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',11.01,DEFAULT,18,12);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',1.23,DEFAULT,13,14);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',2.67,DEFAULT,11,8);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',18.74,DEFAULT,32,3);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',2.30,DEFAULT,7,2);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',11.00,DEFAULT,38,9);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',16.69,DEFAULT,25,11);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',9.47,DEFAULT,21,3);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',8.31,DEFAULT,16,15);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',13.27,DEFAULT,39,20);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',12.81,DEFAULT,1,14);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.52,DEFAULT,29,11);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',2.44,DEFAULT,7,4);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.50,DEFAULT,35,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',25.41,DEFAULT,8,18);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',22.12,DEFAULT,42,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',4.51,DEFAULT,13,11);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',8.75,DEFAULT,10,29);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.87,DEFAULT,33,26);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',21.16,DEFAULT,33,27);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',12.44,DEFAULT,3,11);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',15.62,DEFAULT,23,4);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',11.63,DEFAULT,18,5);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.78,DEFAULT,13,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',7.53,DEFAULT,28,29);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',8.30,DEFAULT,32,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.57,DEFAULT,25,7);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.52,DEFAULT,4,8);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',18.25,DEFAULT,37,19);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.31,DEFAULT,24,6);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.56,DEFAULT,7,17);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',19.04,DEFAULT,42,16);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',11.59,DEFAULT,14,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.34,DEFAULT,9,28);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',18.57,DEFAULT,23,24);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',0.80,DEFAULT,20,17);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.69,DEFAULT,20,10);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',15.87,DEFAULT,45,22);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',9.69,DEFAULT,24,2);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',3.08,DEFAULT,49,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.78,DEFAULT,50,2);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',5.80,DEFAULT,5,7);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',14.07,DEFAULT,29,6);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',10.53,DEFAULT,19,19);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',16.92,DEFAULT,11,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',14.34,DEFAULT,10,23);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.89,DEFAULT,37,29);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',6.17,DEFAULT,5,5);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.58,DEFAULT,15,23);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',3.34,DEFAULT,32,26);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',4.61,DEFAULT,27,12);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.45,DEFAULT,48,23);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',9.02,DEFAULT,45,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',9.39,DEFAULT,18,20);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.56,DEFAULT,50,7);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.94,DEFAULT,49,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',16.29,DEFAULT,17,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',7.95,DEFAULT,45,9);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',17.00,DEFAULT,17,1);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.81,DEFAULT,41,22);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',15.61,DEFAULT,47,16);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',18.31,DEFAULT,33,24);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',3.65,DEFAULT,49,28);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.22,DEFAULT,6,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',2.62,DEFAULT,20,22);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',0.52,DEFAULT,36,4);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.19,DEFAULT,20,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',17.85,DEFAULT,1,19);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',0.80,DEFAULT,7,12);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',3.85,DEFAULT,16,26);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',1.59,DEFAULT,13,21);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',14.06,DEFAULT,32,24);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',5.86,DEFAULT,14,1);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',18.51,DEFAULT,8,17);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',6.27,DEFAULT,38,29);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',8.26,DEFAULT,23,24);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',8.46,DEFAULT,29,18);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',1.17,DEFAULT,48,12);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',3.22,DEFAULT,7,16);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',17.36,DEFAULT,35,24);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',14.38,DEFAULT,34,5);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',5.45,DEFAULT,21,29);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',12.86,DEFAULT,25,24);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',11.43,DEFAULT,2,15);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',14.65,DEFAULT,24,7);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',6.86,DEFAULT,32,26);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',16.48,DEFAULT,42,19);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',17.18,DEFAULT,41,4);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',1.79,DEFAULT,36,20);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',8.23,DEFAULT,1,29);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',12.29,DEFAULT,4,8);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',19.49,DEFAULT,12,19);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',18.43,DEFAULT,15,14);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',16.96,DEFAULT,2,30);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',6.40,DEFAULT,40,15);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',0.65,DEFAULT,36,19);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',13.58,DEFAULT,22,3);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',2.10,DEFAULT,40,9);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',8.51,DEFAULT,44,5);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',0.88,DEFAULT,6,9);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',11.01,DEFAULT,18,12);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',1.23,DEFAULT,13,14);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',2.67,DEFAULT,11,8);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',18.74,DEFAULT,32,3);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',2.30,DEFAULT,7,2);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',11.00,DEFAULT,38,9);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',16.69,DEFAULT,25,11);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',9.47,DEFAULT,21,3);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('1',8.31,DEFAULT,16,15);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',13.27,DEFAULT,39,20);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',12.81,DEFAULT,1,14);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',10.52,DEFAULT,29,11);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',2.44,DEFAULT,7,4);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',19.50,DEFAULT,35,21);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',25.41,DEFAULT,8,18);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',22.12,DEFAULT,42,13);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',4.51,DEFAULT,13,11);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',8.75,DEFAULT,10,29);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',10.87,DEFAULT,33,26);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',21.16,DEFAULT,33,27);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',12.44,DEFAULT,3,11);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',15.62,DEFAULT,23,4);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',11.63,DEFAULT,18,5);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',1.78,DEFAULT,13,13);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',7.53,DEFAULT,28,29);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',8.30,DEFAULT,32,21);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',10.57,DEFAULT,25,7);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',19.52,DEFAULT,4,8);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',18.25,DEFAULT,37,19);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',10.31,DEFAULT,24,6);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',1.56,DEFAULT,7,17);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',19.04,DEFAULT,42,16);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',11.59,DEFAULT,14,30);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',1.34,DEFAULT,9,28);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',18.57,DEFAULT,23,24);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',0.80,DEFAULT,20,17);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',1.69,DEFAULT,20,10);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',15.87,DEFAULT,45,22);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',9.69,DEFAULT,24,2);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',3.08,DEFAULT,49,30);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',1.78,DEFAULT,50,2);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',5.80,DEFAULT,5,7);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',14.07,DEFAULT,29,6);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',10.53,DEFAULT,19,19);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',16.92,DEFAULT,11,30);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',14.34,DEFAULT,10,23);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',19.89,DEFAULT,37,29);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',6.17,DEFAULT,5,5);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',19.58,DEFAULT,15,23);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',3.34,DEFAULT,32,26);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',4.61,DEFAULT,27,12);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',1.45,DEFAULT,48,23);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',9.02,DEFAULT,45,13);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',9.39,DEFAULT,18,20);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',1.56,DEFAULT,50,7);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',1.94,DEFAULT,49,21);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',16.29,DEFAULT,17,30);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',7.95,DEFAULT,45,9);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',17.00,DEFAULT,17,1);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',10.81,DEFAULT,41,22);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',15.61,DEFAULT,47,16);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',18.31,DEFAULT,33,24);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',3.65,DEFAULT,49,28);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',1.22,DEFAULT,6,21);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',2.62,DEFAULT,20,22);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',0.52,DEFAULT,36,4);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('0',1.19,DEFAULT,20,13);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user)  VALUES ('1',17.85,DEFAULT,1,19);
 
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (4,3,'2018-03-26 00:46:15','in, hendrerit consectetuer, cursus et, magna. Praesent',19,1);
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (14,3,'2018-03-28 02:28:40','Proin nisl sem, consequat nec,',30,4);

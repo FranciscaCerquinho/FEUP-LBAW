@@ -9,6 +9,6 @@
         <span span style="color:#0c59cf">{{$reported_users->reason}}</span>
     </div>
     <div class="col-md-2 col-sm-3">
-        <input class="check" type="checkbox"> Ban </input>
+        <input class="banUser" type="checkbox"> Ban </input>
     </div>
 </div>

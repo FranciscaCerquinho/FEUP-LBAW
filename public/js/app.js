@@ -61,6 +61,11 @@ function addEventListeners(){
     for(var i=0; i < addCommentUnlike.length;i++)
       addCommentUnlike[i].addEventListener('click',sendCommentUnlikeRequest);
   }
+
+  let makeBid = document.querySelector("#bid_buttons #bid button");
+  if(makeBid){
+    makeBid.addEventListener('click',sendBidRequest);
+  }
 };
 
 function sendCommentRequest(){
@@ -259,5 +264,38 @@ function addCommentUnlikeHandler(){
     like.style='color: black;';
   }
   
+
+  function sendBidRequest(){
+    let bid = document.querySelector("#bid_buttons #price_button").value;
+  
+    let id = this.closest('section#item').getAttribute('data-id');
+
+    if(bid != '')
+      sendAjaxRequest('post','/makeBid/' + id,{bid: bid}, makeBidHandler);
+}
+
+function makeBidHandler(){
+ 
+  if(this.status!=200) window.location = '/';
+  let newBid = JSON.parse(this.responseText);
+
+  let bid = document.querySelector("#item_price");
+  bid.innerHTML = 'EUR '+ newBid.price;
+
+  let message = document.createElement('div');
+  message.setAttribute('class','row');
+                  
+  message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+  <a class="panel-close close" data-dismiss="alert">x</a>
+  <i class="far fa-check-circle"></i>
+  Bet made! The auction has been added to your bids, you will receive a warning if you are the winner
+</div>`;
+  
+let item_info = document.querySelector("#item_information");
+
+let info = document.querySelector("#info");
+
+item_info.insertBefore(message,info);
+}
 
 addEventListeners();

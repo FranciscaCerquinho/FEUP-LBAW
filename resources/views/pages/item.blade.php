@@ -53,8 +53,8 @@
 						</button>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="row">
+				<div class="col-lg-6" id ="item_information">
+					<div class="row" id="info">
 						<h2 class="information">Information</h2>
 					</div>
 					<div class="row">
@@ -95,7 +95,7 @@
 								<p class="object_actualprice" id="description">Actual Price:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<p class="object_actualprice">EUR {{$auction->actualprice}}</p>
+								<p class="object_actualprice" id ="item_price">EUR {{$auction->actualprice}}</p>
 							</div>
 						</div>
 					</div>
