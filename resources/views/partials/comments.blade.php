@@ -19,7 +19,7 @@
                                         <b>{{$comment->firstname}} {{$comment->lastname}}</b>
                                     </a>
                                 </div>
-                                <h6 class="text-muted time"> <script>SplitDate("{{$comment->date}}");</script> ago</h6>
+                                <h6 class="text-muted time"> <script>SplitDate("{{$comment->date}}",0);</script> ago</h6>
                             </div>
                         </div>
                         <div class="post-description">

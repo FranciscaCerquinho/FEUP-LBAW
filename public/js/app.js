@@ -66,6 +66,11 @@ function addEventListeners(){
   if(makeBid){
     makeBid.addEventListener('click',sendBidRequest);
   }
+
+  let buyNow = document.querySelector("#buy_now_button button");
+  if(buyNow){
+    buyNow.addEventListener('click',sendBuyNowRequest);
+  }
 };
 
 function sendCommentRequest(){
@@ -275,22 +280,64 @@ function addCommentUnlikeHandler(){
 }
 
 function makeBidHandler(){
- 
-  if(this.status!=200) window.location = '/';
+  console.log(this.responseText);
+  let message = document.createElement('div'); 
+  message.setAttribute('class','row');
+  
+  if(this.status!=200) {
+    message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="fas fa-bell"></i>
+    Bid lower than the actual price! &nbsp;
+  </div>`;
+  let item_info = document.querySelector("#item_information");
+
+  let info = document.querySelector("#info");
+  
+  item_info.insertBefore(message,info);
+  }
   let newBid = JSON.parse(this.responseText);
 
   let bid = document.querySelector("#item_price");
   bid.innerHTML = 'EUR '+ newBid.price;
-
-  let message = document.createElement('div');
-  message.setAttribute('class','row');
-                  
+             
   message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="far fa-check-circle"></i>
   Bet made! The auction has been added to your bids, you will receive a warning if you are the winner
 </div>`;
   
+let item_info = document.querySelector("#item_information");
+
+let info = document.querySelector("#info");
+
+item_info.insertBefore(message,info);
+}
+
+function sendBuyNowRequest(){
+
+  let id = this.closest('section#item').getAttribute('data-id');
+
+  sendAjaxRequest('post','/buyNow/' + id,null, buyNowHandler);
+}
+
+function buyNowHandler(){
+
+  console.log(this.responseText);
+
+if(this.status!=200) window.location = '/';
+  let buyNow = JSON.parse(this.responseText);
+
+
+let message = document.createElement('div');
+message.setAttribute('class','row');
+                
+message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+<a class="panel-close close" data-dismiss="alert">x</a>
+<i class="far fa-check-circle"></i>
+The auction is yours! Congratulations! The owner will contact you.
+</div>`;
+
 let item_info = document.querySelector("#item_information");
 
 let info = document.querySelector("#info");

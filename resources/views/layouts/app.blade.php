@@ -101,7 +101,7 @@
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
-								<a href="{{ url ('logout') }}">My Auctions</a>
+								<a href="{{ url ('myAuctions') }}">My Auctions</a>
 								<a href="{{ url ('myBids') }}">My Bids</a>
 								<a href="{{url ('editProfile') }}">Edit Profile</a>
 								<a href="{{ url ('logout') }}">Logout</a>

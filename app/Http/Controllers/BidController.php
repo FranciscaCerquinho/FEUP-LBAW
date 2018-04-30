@@ -27,17 +27,19 @@ class BidController extends Controller
       else
         $type=0;
 
-        $auctions = Bid::where('bid_id_user', Auth::user()->user_id)->orderBy('date','asc')->join('auction', 'auction.auction_id', '=', 'bid.bid_id_auction')->join('owner', 'owner.id_auction', '=', 'bid.bid_id_auction')
+        $auctions = Bid::where('bid_id_user', Auth::user()->user_id)->orderBy('date','asc')->join('auction', 'auction.auction_id', '=', 'bid.bid_id_auction')->where('active',1)->join('owner', 'owner.id_auction', '=', 'bid.bid_id_auction')
         ->join('users','users.user_id','=','owner.id_user')->get();
         
         return view('pages.userBids', ['auctions'=> $auctions,'type' => $type]);
     }
 
     protected function makeBid(Request $request, $auction_id)
-    {
+    {  
         $bid = new Bid();
         $auction = Auction::find($auction_id);
-
+  
+        if($bid->price < intval($request->input('bid'))){
+       
         $bid->status = 1;
         $bid->price = $request->input('bid');
         $bid->date = date('Y-m-d H:i:s');
@@ -47,8 +49,8 @@ class BidController extends Controller
 
         $auction->actualprice = $request->input('bid');
         $auction->save();
-     
-
+        }
+        
         return $bid;
     }
 

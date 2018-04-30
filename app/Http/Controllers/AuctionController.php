@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Auction;
 use App\Comment;
 use App\Admin;
+use App\Owner;
 
 class AuctionController extends Controller
 {
@@ -91,7 +92,26 @@ class AuctionController extends Controller
       return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes]);
     }
 
+    public function myAuctions(){
+            
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      
+      }
+      else
+        $type=0;
+      
+        $auctions = DB::table('owner')->where('id_user',Auth::user()->user_id)
+        ->join('users', 'users.user_id', '=', 'owner.id_user')
+        ->join('auction','auction_id','=','owner.id_auction')
+        ->where('auction.active',1)->orderBy('dateend','asc')->get();
 
+        return view('pages.userAuctions', [ 'auctions' => $auctions, 'type' => $type]);
+    }
     /**
      * Creates a new auction.
      *
