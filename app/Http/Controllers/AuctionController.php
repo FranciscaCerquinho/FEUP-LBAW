@@ -72,6 +72,8 @@ class AuctionController extends Controller
             array_push($commentsLikes,2);
           }
         }
+        $auctionReported = ReportAuction::where([['id_auction','=',$id],['id_user','=',Auth::user()->user_id]])
+        ->first();
         }
       else
         $type=0;
@@ -90,8 +92,7 @@ class AuctionController extends Controller
       ->orderBy('date','asc')
       ->get();
 
-      $auctionReported = ReportAuction::where([['id_auction','=',$id],['id_user','=',Auth::user()->user_id]])
-      ->first();
+   
       if($auctionReported!=null){
         $reported=1;
       }

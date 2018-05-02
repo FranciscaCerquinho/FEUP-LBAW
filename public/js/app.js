@@ -77,10 +77,10 @@ function addEventListeners(){
     reportAuction.addEventListener('click',reportAuctionRequest);
   }
 
-  let reportUser = document.querySelector("#reportUserButton #btn");
+  let reportUser = document.querySelectorAll("#reportUserButton #btn");
   if(reportUser){
-    reportUser.addEventListener('click',reportUserRequest);
-    console.log('passei');
+    for(var i=0; i < addCommentUnlike.length;i++)
+      reportUser[i].addEventListener('click',reportUserRequest);
   }
 };
 
@@ -429,18 +429,18 @@ function reportAuctionHandler(){
 }
 
 function reportUserRequest(){
-  console.log('entrei');
-  let reason = document.querySelector("#reportUserText").value;
+
+  let reason = document.querySelector(".reportUserText").value;
   console.log(reason);
   let id = this.closest('.popup-reportUser').getAttribute('data-id');
 
-  sendAjaxRequest('post','/reportUser/' + id,{reason:reason}, reportUserHandler);
+//  sendAjaxRequest('post','/reportUser/' + id,{reason:reason}, reportUserHandler);
 }
 
 function reportUserHandler(){
 
   console.log(this.responseText);
-
+/*
 if(this.status!=200) window.location = '/';
 let reportAuction = JSON.parse(this.responseText);
 
@@ -458,6 +458,6 @@ let item_info = document.querySelector(".popup-inner-reportUser");
 
 let info = document.querySelector("#userForm");
 
-item_info.insertBefore(message,info);
+item_info.insertBefore(message,info);*/
 }
 addEventListeners();

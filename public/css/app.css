@@ -370,6 +370,8 @@ li a, .dropbtn {
 #item #reportA{
   color:black;
   font-size: 17px;
+  background-color: transparent;
+  border: none;
 }
 section#item h2.item_name{
   color: #444444;

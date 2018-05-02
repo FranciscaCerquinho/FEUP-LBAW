@@ -53,7 +53,7 @@
 											<span class="input-group-text">
 												<i class="fas fa-comment-alt" aria-hidden="true"></i>
 											</span>
-												<input type="text" class="form-control" id="reportUserText" name="reason" placeholder="Reason" />
+												<input type="text" class="form-control reportUserText" name="reason" placeholder="Reason" />
 											</div>
 									</div>
 									<div class="row" id="reportUserButton">

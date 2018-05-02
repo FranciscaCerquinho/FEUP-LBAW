@@ -20,4 +20,9 @@ class ReportUser extends Model
         'reason', 'id_userReporting', 'id_userReported', 
     ];
 
+    protected $casts=[
+        'id_userReporting'=>'integer',
+        'id_userReported'=>'integer',
+        'reason'=>'string',
+    ];
 }
