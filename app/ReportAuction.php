@@ -9,8 +9,12 @@ class ReportAuction extends Model
   // Don't add create and update timestamps in database.
   public $timestamps  = false;
   public $table='reportauction';
-  protected $primaryKey = ['id_auction','id_user'];
 
+  protected $casts=[
+    'id_user'=>'integer',
+    'id_auction'=>'integer',
+    'reason'=>'string',
+  ];
     /**
      * The attributes that are mass assignable.
      *

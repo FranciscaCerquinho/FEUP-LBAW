@@ -45,10 +45,10 @@
                                     <span  id ="unlikeComment">{{$comment->dislike}}</span>
                                 @endif
                                 </a>
-                                <a  data-popup-reportUser-open="popup-1" type="button" class="btn btn-default btn-sm" id="reportA"><span class="reportAuctionButton fas fa-bullhorn"></span> Report</a>
-							<div class="popup-reportUser" data-popup-reportUser="popup-1">
+                                <a  data-popup-reportUser-open="popup-1" type="button" class="btn btn-default btn-sm" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</a>
+							<div class="popup-reportUser" data-popup-reportUser="popup-1" data-id="{{$comment->user_id}}">
     							<div class="popup-inner-reportUser">
-									 <div class="form-group" id="auctionForm">
+									 <div class="form-group" id="userForm">
 										<div class="input-group-prepend">
 											<span class="input-group-text">
 												<i class="fas fa-comment-alt" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
 												<input type="text" class="form-control" id="reportUserText" name="reason" placeholder="Reason" />
 											</div>
 									</div>
-									<div class="row" id="reportButton">
+									<div class="row" id="reportUserButton">
 											<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
 												<div class="text-center">
 													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>

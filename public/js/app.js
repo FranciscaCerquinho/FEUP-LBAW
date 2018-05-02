@@ -22,7 +22,7 @@ function encodeForAjax(data) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
     }).join('&');
   }
-  
+
 function sendAjaxRequest(method, url, data, handler) {
 let request = new XMLHttpRequest();
 
@@ -74,7 +74,13 @@ function addEventListeners(){
 
   let reportAuction = document.querySelector("#reportButton #btn");
   if(reportAuction){
-    reportAuction.addEventListener('click',reportAuctionRequest)
+    reportAuction.addEventListener('click',reportAuctionRequest);
+  }
+
+  let reportUser = document.querySelector("#reportUserButton #btn");
+  if(reportUser){
+    reportUser.addEventListener('click',reportUserRequest);
+    console.log('passei');
   }
 };
 
@@ -87,14 +93,14 @@ function sendCommentRequest(){
 };
 
 function addCommentHandler(){
- 
+
   if(this.status!=200) window.location = '/';
   let newComment = JSON.parse(this.responseText);
- 
+
   let comment = document.createElement('div');
   comment.setAttribute('class','row');
   let date =SplitDateReturn(newComment.date);
-                  
+
 comment.innerHTML = `
   <div id="comments">
   <div class="container">
@@ -151,7 +157,7 @@ function sendAuctionLikeRequest(){
 }
 
 function addAuctionLikeHandler(){
- 
+
   if(this.status!=200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
@@ -170,7 +176,7 @@ function addAuctionLikeHandler(){
 
   document.getElementById('unlike_hand').style='color: black;';
   unlike.style='color: black;';
-  
+
 }
 
 
@@ -185,24 +191,24 @@ function sendAuctionUnlikeRequest(){
 }
 
 function addAuctionUnlikeHandler(){
- 
+
     if(this.status!=200) window.location = '/';
     let newUnlike = JSON.parse(this.responseText);
-  
+
     let unlike = document.querySelector("#item #unlikeAuction");
 
     unlike.innerHTML= newUnlike.auction_dislike;
 
 
     let like = document.querySelector("#item #likeAuction");
-   
+
     like.innerHTML= newUnlike.auction_like;
-  
+
 
     document.getElementById('unlike_hand').style='color: #437ab2;';
     unlike.style='color: #437ab2;';
-  
-  
+
+
     document.getElementById('like_hand').style='color: black;';
     like.style='color: black;';
   }
@@ -218,7 +224,7 @@ function addAuctionUnlikeHandler(){
 }
 
 function addCommentLikeHandler(){
- 
+
   if(this.status!=200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
@@ -237,7 +243,7 @@ function addCommentLikeHandler(){
 
   stats.querySelector('#unlikeCommentHand').style='color: black;';
   unlike.style='color: black;';
-  
+
 }
 
 
@@ -263,21 +269,21 @@ function addCommentUnlikeHandler(){
 
 
     let like = stats.querySelector("#likeComment");
-   
+
     like.innerHTML= newUnlike.like;
-  
+
     stats.querySelector('#unlikeCommentHand').style='color: #437ab2;';
     unlike.style='color: #437ab2;';
-  
-  
+
+
     stats.querySelector('#likeCommentHand').style='color: black;';
     like.style='color: black;';
   }
-  
+
 
   function sendBidRequest(){
     let bid = document.querySelector("#bid_buttons #price_button").value;
-  
+
     let id = this.closest('section#item').getAttribute('data-id');
 
     if(bid != '')
@@ -285,10 +291,10 @@ function addCommentUnlikeHandler(){
 }
 
 function makeBidHandler(){
-  console.log(this.responseText);
-  let message = document.createElement('div'); 
+
+  let message = document.createElement('div');
   message.setAttribute('class','row');
-  
+
   if(this.status!=200) {
     message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
     <a class="panel-close close" data-dismiss="alert">x</a>
@@ -299,26 +305,42 @@ function makeBidHandler(){
   let item_info = document.querySelector("#item_information");
 
   let info = document.querySelector("#info");
-  
+
   item_info.insertBefore(message,info);
   }
   let newBid = JSON.parse(this.responseText);
 
   if(newBid.message != 'You have to login! &nbsp'){
-  let bid = document.querySelector("#item_price");
-  bid.innerHTML = 'EUR '+ newBid.price;
-             
+
+  if(newBid.message != 'Bid lower than the actual price! &nbsp'){
+    let bid = document.querySelector("#item_price");
+    bid.innerHTML = 'EUR '+ newBid.price;
+
   message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="far fa-check-circle"></i>
   Bet made! The auction has been added to your bids, you will receive a warning if you are the winner
 </div>`;
-  
+
 let item_info = document.querySelector("#item_information");
 
 let info = document.querySelector("#info");
 
 item_info.insertBefore(message,info);
+  }
+  else{
+    message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="fas fa-bell"></i>
+    ${newBid.message}
+  </div>`;
+
+  let item_info = document.querySelector("#item_information");
+
+  let info = document.querySelector("#info");
+
+  item_info.insertBefore(message,info);
+  }
 }
 else{
   message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
@@ -330,7 +352,7 @@ else{
   let item_info = document.querySelector("#item_information");
 
   let info = document.querySelector("#info");
-  
+
   item_info.insertBefore(message,info);
 }
 }
@@ -352,7 +374,7 @@ if(this.status!=200) window.location = '/';
 
 let message = document.createElement('div');
 message.setAttribute('class','row');
-                
+
 message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
 <a class="panel-close close" data-dismiss="alert">x</a>
 <i class="far fa-check-circle"></i>
@@ -377,26 +399,65 @@ function reportAuctionRequest(){
 
 function reportAuctionHandler(){
 
+  let message = document.createElement('div');
+  message.setAttribute('class','row');
+  if(this.status!=200) {
+    message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="fas fa-bell"></i>
+    Did not report! Try again! 
+    </div>`;
+  }
+  else{
+  let reportAuction = JSON.parse(this.responseText);
+
+  message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="far fa-check-circle"></i>
+    The Auction has been sucessfully reported!
+    </div>`;
+  
+    document.querySelector('#reportA').style='color: rgb(204,68,74);';
+    document.querySelector('.reportAuctionButton').style='color: rgb(204,68,74);';
+
+  }
+  let item_info = document.querySelector(".popup-inner-reportAuction");
+
+  let info = document.querySelector("#auctionForm");
+
+  item_info.insertBefore(message,info);
+}
+
+function reportUserRequest(){
+  console.log('entrei');
+  let reason = document.querySelector("#reportUserText").value;
+  console.log(reason);
+  let id = this.closest('.popup-reportUser').getAttribute('data-id');
+
+  sendAjaxRequest('post','/reportUser/' + id,{reason:reason}, reportUserHandler);
+}
+
+function reportUserHandler(){
+
   console.log(this.responseText);
-/*
+
 if(this.status!=200) window.location = '/';
 let reportAuction = JSON.parse(this.responseText);
 
 
 let message = document.createElement('div');
 message.setAttribute('class','row');
-                
+
 message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
 <a class="panel-close close" data-dismiss="alert">x</a>
 <i class="far fa-check-circle"></i>
-The Auction has been sucessfully reported!
+The User has been sucessfully reported!
 </div>`;
 
-let item_info = document.querySelector("#reportAuction");
+let item_info = document.querySelector(".popup-inner-reportUser");
 
-let info = document.querySelector("#auctionForm");
+let info = document.querySelector("#userForm");
 
-item_info.insertBefore(message,info);*/
+item_info.insertBefore(message,info);
 }
-
 addEventListeners();

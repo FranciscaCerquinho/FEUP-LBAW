@@ -38,7 +38,7 @@ class BidController extends Controller
         $bid = new Bid();
         $auction = Auction::find($auction_id);
         if(Auth::check()){
-        if($bid->price < intval($request->input('bid'))){
+        if($auction->actualprice < intval($request->input('bid'))){
        
         $bid->status = 1;
         $bid->price = $request->input('bid');

@@ -2573,4 +2573,10 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   font-size: 16px;
 }
 
+#reportUserButton #buttonReport a#btn{
+  background-color:#437ab2;
+  z-index: 1;
+  font-size: 16px;
+}
+
 

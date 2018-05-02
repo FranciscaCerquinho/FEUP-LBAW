@@ -97,6 +97,7 @@ CREATE TABLE reportUser(
 );
 
 CREATE TABLE reportAuction(
+  id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
   reason text NOT NULL
@@ -168,7 +169,7 @@ ALTER TABLE ONLY reportUser
   ADD CONSTRAINT reportUser_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY reportAuction
-  ADD CONSTRAINT reportAuction_pkey PRIMARY KEY (id_user,id_auction);
+  ADD CONSTRAINT reportAuction_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY banUser
   ADD CONSTRAINT banUser_pkey PRIMARY KEY (id_user);

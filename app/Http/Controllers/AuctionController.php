@@ -10,6 +10,7 @@ use App\Auction;
 use App\Comment;
 use App\Admin;
 use App\Owner;
+use App\ReportAuction;
 
 class AuctionController extends Controller
 {
@@ -88,8 +89,16 @@ class AuctionController extends Controller
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->orderBy('date','asc')
       ->get();
-      
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes]);
+
+      $auctionReported = ReportAuction::where([['id_auction','=',$id],['id_user','=',Auth::user()->user_id]])
+      ->first();
+      if($auctionReported!=null){
+        $reported=1;
+      }
+      else{
+        $reported=0;
+      }
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes, 'auctionReported'=>$reported]);
     }
 
     public function myAuctions(){
