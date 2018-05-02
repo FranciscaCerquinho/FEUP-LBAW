@@ -97,6 +97,28 @@
     text-align: center;
   }
   
+  @media only screen and (max-width:1024px) {
+    .reportAuction{
+      width: 80em;
+      height: 80em;
+    }
+    .popup-inner-reportAuction {
+        width: 0%;
+        width: 600px;
+    }
+    }
+
+@media only screen and (max-width:576px) {
+    .reportAuction{
+        width: 80em;
+        height: 80em;
+    }
+    .popup-inner-reportAuction {
+        width: 0%;
+        width: 300px;
+    }
+    }
+      
   .reportUser{
     width: 50em;
     height: 50em;
@@ -110,7 +132,7 @@
     position:fixed;
     top:0px;
     left:0px;
-    background:rgba(0,0,0,0.75);
+    background:rgba(0,0,0,0.5);
     z-index: 1;
   }
   
@@ -196,4 +218,24 @@
     text-align: center;
   }
   
-  
+  @media only screen and (max-width:1024px) {
+    .reportUser{
+      width: 80em;
+      height: 80em;
+    }
+    .popup-inner-reportUser {
+        width: 0%;
+        width: 600px;
+    }
+    }
+
+@media only screen and (max-width:576px) {
+    .reportUser{
+        width: 80em;
+        height: 80em;
+    }
+    .popup-inner-reportUser {
+        width: 0%;
+        width: 300px;
+    }
+    }

@@ -57,7 +57,7 @@
 											</div>
 									</div>
 									<div class="row" id="reportButton">
-											<div class="col-lg-5 col-sm-6 " id="buttonReport">
+											<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
 												<div class="text-center">
 													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
 												</div>

@@ -358,9 +358,13 @@ li a, .dropbtn {
   color:black;
   font-size: 18px;
 }
+
+#item a#reportA::hover{
+  background-color: white;
+}
 @media only screen and (max-width:576px) {
-#item  #reportA {
-  font-size: 12px;
+#buttonReport {
+  margin-left:15px;
 }
 }
 #item #reportA{

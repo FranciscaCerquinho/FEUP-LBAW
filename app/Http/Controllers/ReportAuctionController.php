@@ -22,8 +22,8 @@ class ReportAuctionController extends Controller
     public function create(Request $request, $auction_id)
     {
       
-      $reportAuction = ReportAuction::create();
-
+      $reportAuction = new ReportAuction();
+      
       $reportAuction->reason = $request->input('reason');
       $reportAuction->id_auction = $auction_id;
       $reportAuction->id_user = Auth::user()->user_id;

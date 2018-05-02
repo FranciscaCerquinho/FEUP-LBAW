@@ -61,3 +61,6 @@ Route::get("search/{name?}",'AuctionController@search')->name('search');
 
 //Report Auction
 Route::post('reportAuction/{id}', 'ReportAuctionController@create')->name('reportAuction');
+
+//Report User
+Route::post('reportUser/{id}', 'ReportUserController@create')->name('reportUser');
