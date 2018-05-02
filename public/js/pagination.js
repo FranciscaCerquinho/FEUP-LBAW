@@ -44,7 +44,7 @@ function getPageList(totalPages, page, maxLength) {
   $(function () {
     // Number of items and limits the number of items per page
     var numberOfItems = $(".new_auctions #auctions-list").length;
-    console.log('number'+numberOfItems);
+   
     var limitPerPage = 8;
     // Total pages rounded upwards
     var totalPages = Math.ceil(numberOfItems / limitPerPage);

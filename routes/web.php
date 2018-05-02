@@ -48,6 +48,9 @@ Route::post('makeBid/{id}', 'BidController@makeBid')->name('makeBid');
 //BuyNow Auctions
 Route::post('buyNow/{id}', 'BuyNowController@buyNow')->name('buyNow');
 
+//Search
+Route::get('category/{id}', 'AuctionController@searchByCategory')->name('searchByCategory');
+
 //Footer
 Route::get('about', 'FooterController@showAbout')->name('about');
 Route::get('faq', 'FooterController@showFAQ')->name('faq');

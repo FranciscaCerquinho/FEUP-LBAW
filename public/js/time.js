@@ -39,7 +39,7 @@ function SplitDate(dateTime,value){
           }
           else{
             if(value==1)
-              timeLeft= minute-currentDate.getMinutes();
+              timeLeft= currentDate.getMinutes()-minute;
             else
               timeLeft= currentDate.getMinutes()-minute;
             if(parseInt(timeLeft)!=1){
@@ -65,7 +65,7 @@ function SplitDate(dateTime,value){
         if(value==1)
           timeLeft= day-currentDate.getDate();
         else
-        timeLeft= currentDate.getDate()-day;
+          timeLeft= currentDate.getDate()-day;
         if(parseInt(timeLeft)!=1){
         stringToReturn= timeLeft.toString()+" days";
         }

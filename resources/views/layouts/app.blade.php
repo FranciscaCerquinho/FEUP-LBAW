@@ -43,28 +43,28 @@
 				<div class="dropdown-content">
 					<div class="row">
 						<div class="d-block d-sm-none">
-							<a class="dropdown-item" href="#electronics">Electronics</a>
-							<a class="dropdown-item" href="#fashion">Fashion</a>
-							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-							<a class="dropdown-item" href="#motors">Motors</a>
-							<a class="dropdown-item" href="#music">Music</a>
-							<a class="dropdown-item" href="#toys">Toys</a>
-							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-							<a class="dropdown-item" href="#sporting">Sporting</a>
-							<a class="dropdown-item" href="#others">Others</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Electronics'])}}">Electronics</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Fashion'])}}">Fashion</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Home & Garden'])}}">Home & Garden</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Motors'])}}">Motors</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Music'])}}">Music</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Toys'])}}">Toys</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Daily Deals'])}}">Daily Deals</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Sporting'])}}">Sporting</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Others'])}}">Others</a>
 						</div>
 						<div class="col-md-2 d-none d-sm-block">
-							<a class="dropdown-item" href="#electronics">Electronics</a>
-							<a class="dropdown-item" href="#fashion">Fashion</a>
-							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-							<a class="dropdown-item" href="#motors">Motors</a>
-							<a class="dropdown-item" href="#music">Music</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Electronics'])}}">Electronics</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Fashion'])}}">Fashion</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Home & Garden'])}}">Home & Garden</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Motors'])}}">Motors</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Music'])}}">Music</a>
 						</div>
 						<div class="col-md-2 d-none d-sm-block" style="padding-left:180px">
-							<a class="dropdown-item" href="#toys">Toys</a>
-							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-							<a class="dropdown-item" href="#sporting">Sporting</a>
-							<a class="dropdown-item" href="#others">Others</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Toys'])}}">Toys</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Daily Deals'])}}">Daily Deals</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Sporting'])}}">Sporting</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Others'])}}">Others</a>
 						</div>
 					</div>
 				</div>

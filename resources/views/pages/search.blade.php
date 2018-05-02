@@ -92,84 +92,22 @@
 				</form>
 			</div>
 		</div>
+		<?php
+			$elems_per_row = 3;
+			$num_elems = count($auctions);
+			$num_rows = ceil($num_elems / $elems_per_row);
+		?>
 		<div class="col-lg-9 col-md-8 searchResults">
-			<div class="row">
-				<div class="col-lg-4 col-md-6 mb-4">
-					<div class="card h-100 auctionCard searchCard">
-						<a href="#">
-							<img class="card-img-top searchResultImage" src="images/music.jpg" alt="">
-						</a>
-						<div class="card-body searchResultBody">
-							<h5 class="card-title searchResultTitle">
-								<a href="#">New Album David Bowie</a>
-							</h5>
-							<h4 class="auctionPrice">EUR 20.90</h5>
-								<h6 class="auctionTimeLeft">1 day left</h1>
-									<p class="card-text searchResultText">
-										Dinis Lopes
-									</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 mb-4">
-					<div class="card h-100 auctionCard searchCard">
-						<a href="#">
-							<img class="card-img-top searchResultImage" src="images/music2.jpg" alt="">
-						</a>
-						<div class="card-body">
-							<h5 class="card-title">
-								<a href="#">Vinyl Mike Evans</a>
-							</h5>
-							<h4 class="auctionPrice">EUR 25.90</h5>
-								<h6 class="auctionTimeLeft">5 min left</h1>
-									<p class="card-text searchResultText">Teresa Ramos</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 mb-4">
-					<div class="card h-100 auctionCard ">
-						<a href="#">
-							<img class="card-img-top searchResultImage" src="images/music3.jpg" alt="">
-						</a>
-						<div class="card-body">
-							<h5 class="card-title">
-								<a href="#">Vinyl</a>
-							</h5>
-							<h4 class="auctionPrice">EUR 30.90</h5>
-								<h6 class="auctionTimeLeft">1 hour left</h1>
-									<p class="card-text searchResultText">Eduardo Azevedo</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="searchNav" class="text-center">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center">
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-							</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-								<span class="sr-only">Next</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
+			<?php for($i = 0; $i < $num_rows; $i++) {?>
+        	<div class="row">
+        	<?php for($j = 0; $j < $elems_per_row && $num_elems > 0; $j++, $num_elems--) {
+              $actual_elem = $i*$elems_per_row + $j; 
+              ?>
+        	@include('partials.auctionSearch',['auction'=>$auctions[$actual_elem]])
+        	<?php } ?>
+          <!-- auction -->
+        	</div>
+    	<?php } ?>
 		</div>
-	</div>
 </div>
 @endsection

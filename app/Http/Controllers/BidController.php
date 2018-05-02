@@ -37,7 +37,7 @@ class BidController extends Controller
     {  
         $bid = new Bid();
         $auction = Auction::find($auction_id);
-  
+        if(Auth::check()){
         if($bid->price < intval($request->input('bid'))){
        
         $bid->status = 1;
@@ -50,7 +50,13 @@ class BidController extends Controller
         $auction->actualprice = $request->input('bid');
         $auction->save();
         }
-        
+        else{
+          $bid->message='Bid lower than the actual price! &nbsp';
+        }
+      }
+        else{
+          $bid->message='You have to login! &nbsp';
+        }
         return $bid;
     }
 

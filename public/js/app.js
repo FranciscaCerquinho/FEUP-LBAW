@@ -290,6 +290,7 @@ function makeBidHandler(){
     <i class="fas fa-bell"></i>
     Bid lower than the actual price! &nbsp;
   </div>`;
+
   let item_info = document.querySelector("#item_information");
 
   let info = document.querySelector("#info");
@@ -298,6 +299,7 @@ function makeBidHandler(){
   }
   let newBid = JSON.parse(this.responseText);
 
+  if(newBid.message != 'You have to login! &nbsp'){
   let bid = document.querySelector("#item_price");
   bid.innerHTML = 'EUR '+ newBid.price;
              
@@ -312,6 +314,20 @@ let item_info = document.querySelector("#item_information");
 let info = document.querySelector("#info");
 
 item_info.insertBefore(message,info);
+}
+else{
+  message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="fas fa-bell"></i>
+    ${newBid.message}
+  </div>`;
+
+  let item_info = document.querySelector("#item_information");
+
+  let info = document.querySelector("#info");
+  
+  item_info.insertBefore(message,info);
+}
 }
 
 function sendBuyNowRequest(){
