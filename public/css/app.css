@@ -354,6 +354,19 @@ li a, .dropbtn {
   padding-bottom: 100px;
 }
 
+#item .reportAuctionButton{
+  color:black;
+  font-size: 18px;
+}
+@media only screen and (max-width:576px) {
+#item  #reportA {
+  font-size: 12px;
+}
+}
+#item #reportA{
+  color:black;
+  font-size: 17px;
+}
 section#item h2.item_name{
   color: #444444;
   font-size: 26px;
@@ -2549,3 +2562,11 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 .shop_by_category  .dropdown-content {
   z-index: 1;
 }
+
+#reportButton #buttonReport a#btn{
+  background-color:#437ab2;
+  z-index: 1;
+  font-size: 16px;
+}
+
+

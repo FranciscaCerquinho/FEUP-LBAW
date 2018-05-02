@@ -45,9 +45,27 @@
 							<span class="far fa-thumbs-down" id="unlike_hand" @if($like==2) style="color:#437ab2"@endif></span>
 							<span id="unlikeAuction"  @if($like==2) style="color:#437ab2"@endif>{{$auction->auction_dislike}}</span>
 						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="fas fa-bullhorn"></span> Report
-						</button>
+						<a  data-popup-reportAuction-open="popup-1" type="button" class="btn btn-default btn-sm" id="reportA"><span class="reportAuctionButton fas fa-bullhorn"></span> Report</a>
+							<div class="popup-reportAuction" data-popup-reportAuction="popup-1">
+    							<div class="popup-inner-reportAuction">
+									 <div class="form-group" id="auctionForm">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+												<i class="fas fa-comment-alt" aria-hidden="true"></i>
+											</span>
+												<input type="text" class="form-control" id="reportAuctionText" name="reason" placeholder="Reason" />
+											</div>
+									</div>
+									<div class="row" id="reportButton">
+											<div class="col-lg-5 col-sm-6 " id="buttonReport">
+												<div class="text-center">
+													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+												</div>
+											</div>
+										</div>
+      								<a class="popup-close-reportAuction" data-popup-close-reportAuction="popup-1">X</a>
+    							</div>
+  							</div>
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="fas fa-shopping-cart"></span> Wish List
 						</button>
@@ -140,8 +158,8 @@
 											<div class="col-sm-8">
 												<div class="panel panel-white post panel-shadow">
 													<div class="status-upload">
-															<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
-															<button class="btn" type="submit">Send</button>
+														<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
+														<button class="btn" type="submit">Send</button>
 													</div>
 												</div>
 											</div>

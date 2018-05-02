@@ -58,3 +58,6 @@ Route::get('contact_us', 'FooterController@showContactUs')->name('contact_us');
 
 //Search Bar
 Route::get("search/{name?}",'AuctionController@search')->name('search');
+
+//Report Auction
+Route::post('reportAuction/{id}', 'ReportAuctionController@create')->name('reportAuction');

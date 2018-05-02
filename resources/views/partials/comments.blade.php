@@ -45,10 +45,27 @@
                                     <span  id ="unlikeComment">{{$comment->dislike}}</span>
                                 @endif
                                 </a>
-                                <a id="commentReport" class="btn btn-sm stat-item" style="padding:6px;">
-                                    <span id ="reportComment" class="fas fa-bullhorn"></span>
-                                    <span>&nbsp; Report</span>
-                                </a>
+                                <a  data-popup-reportUser-open="popup-1" type="button" class="btn btn-default btn-sm" id="reportA"><span class="reportAuctionButton fas fa-bullhorn"></span> Report</a>
+							<div class="popup-reportUser" data-popup-reportUser="popup-1">
+    							<div class="popup-inner-reportUser">
+									 <div class="form-group" id="auctionForm">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+												<i class="fas fa-comment-alt" aria-hidden="true"></i>
+											</span>
+												<input type="text" class="form-control" id="reportUserText" name="reason" placeholder="Reason" />
+											</div>
+									</div>
+									<div class="row" id="reportButton">
+											<div class="col-lg-5 col-sm-6 " id="buttonReport">
+												<div class="text-center">
+													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+												</div>
+											</div>
+										</div>
+      								<a class="popup-close-reportUser" data-popup-close-reportUser="popup-1">X</a>
+    							</div>
+  							</div>
                             </div>
                         </div>
                     </div>

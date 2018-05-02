@@ -71,6 +71,11 @@ function addEventListeners(){
   if(buyNow){
     buyNow.addEventListener('click',sendBuyNowRequest);
   }
+
+  let reportAuction = document.querySelector("#reportButton #btn");
+  if(reportAuction){
+    reportAuction.addEventListener('click',reportAuctionRequest)
+  }
 };
 
 function sendCommentRequest(){
@@ -359,6 +364,39 @@ let item_info = document.querySelector("#item_information");
 let info = document.querySelector("#info");
 
 item_info.insertBefore(message,info);
+}
+
+function reportAuctionRequest(){
+
+  let reason = document.querySelector("#reportAuctionText").value;
+  console.log(reason);
+  let id = this.closest('section#item').getAttribute('data-id');
+
+  sendAjaxRequest('post','/reportAuction/' + id,{reason:reason}, reportAuctionHandler);
+}
+
+function reportAuctionHandler(){
+
+  console.log(this.responseText);
+/*
+if(this.status!=200) window.location = '/';
+let reportAuction = JSON.parse(this.responseText);
+
+
+let message = document.createElement('div');
+message.setAttribute('class','row');
+                
+message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+<a class="panel-close close" data-dismiss="alert">x</a>
+<i class="far fa-check-circle"></i>
+The Auction has been sucessfully reported!
+</div>`;
+
+let item_info = document.querySelector("#reportAuction");
+
+let info = document.querySelector("#auctionForm");
+
+item_info.insertBefore(message,info);*/
 }
 
 addEventListeners();
