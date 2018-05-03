@@ -23,6 +23,10 @@ Route::post('editProfile', 'UserController@update');
 Route::get('administration', 'AdminController@show')->name('administration');
 Route::get('owner/{id}', 'OwnerController@show')->name('ownerProfile');
 
+// WishList
+
+Route::get('wishList ','WishListController@list')->name("wishList");
+Route::get('listAuction ','WishListController@show')->name("listAuction");
 
 // Authentication
 
