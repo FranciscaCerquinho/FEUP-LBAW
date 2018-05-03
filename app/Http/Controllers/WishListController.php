@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Auction;
 use App\Admin;
-use App\wishList;
+use App\WishList;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

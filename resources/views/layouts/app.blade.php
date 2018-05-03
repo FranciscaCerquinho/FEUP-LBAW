@@ -123,7 +123,7 @@
 					<a class="nav-link" href="">Add Auction</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" title="Wish List" href="{{url ('WishList') }}" style="text-decoration:none; color:#597ca0ff;">
+					<a class="nav-link" title="Wish List" href="{{url ('wishList') }}" style="text-decoration:none; color:#597ca0ff;">
 						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
 					</a>
 				</li>
