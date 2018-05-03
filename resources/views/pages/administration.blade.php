@@ -37,19 +37,19 @@
 			<h2 class="users">Auctions Reported </h2>
 			<hr class="style17" style="color:grey;">
 			<div class="row">
-				<div class="col-md-2 col-sm-3">
+				<div class="col-md-2 col-sm-2">
 					<p>User</p>
 				</div>
-				<div class="col-md-2 col-sm-3">
+				<div class="col-md-2 col-sm-2">
 					<p>Reported by</p>
 				</div>
-				<div class="col-md-5 col-sm-3">
+				<div class="col-md-5 col-sm-6">
 					<p>Reason</p>
 				</div>
-				<div class="col-md-1 col-sm-3">
+				<div class="col-md-1 col-sm-1">
 					<p>Date</p>
 				</div>
-				<div class="col-md-1 col-sm-3">
+				<div class="col-md-1 col-sm-1">
 					<p>Action</p>
 				</div>
 			</div>

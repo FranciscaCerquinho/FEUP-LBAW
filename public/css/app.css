@@ -456,6 +456,14 @@ section#item h2.item_name{
     margin-top: 30px;
   }
 
+  .user_report .row {
+    flex-wrap: nowrap;
+  }
+
+  .auctions_report .row {
+    flex-wrap: nowrap;
+  }
+
   #item hr{
     display: none;
   }
