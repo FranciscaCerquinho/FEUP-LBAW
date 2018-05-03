@@ -11,7 +11,7 @@ use App\BanUser;
 class BanUserController extends Controller
 {
 
-    protected function banUser($id_user)
+    protected function banUser(Request $request,$id_user)
     {
       $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         return BanUser::create([
@@ -19,6 +19,16 @@ class BanUserController extends Controller
             'id_admin' => $user_admin->id,
             'date' => date('Y-m-d H:i:s'),
         ]);
+    }
+
+
+    protected function unbanUser(Request $request,$id_user)
+    {
+        $unbanUser = BanUser::where('id_user',$id_user);
+
+        $unbanUser->delete();
+  
+        return $unbanUser;
     }
 
 

@@ -50,13 +50,6 @@ Route::post('buyNow/{id}', 'BuyNowController@buyNow')->name('buyNow');
 
 //Search
 Route::get('category/{id}', 'AuctionController@searchByCategory')->name('searchByCategory');
-
-//Footer
-Route::get('about', 'FooterController@showAbout')->name('about');
-Route::get('faq', 'FooterController@showFAQ')->name('faq');
-Route::get('contact_us', 'FooterController@showContactUs')->name('contact_us');
-
-//Search Bar
 Route::get("search/{name?}",'AuctionController@search')->name('search');
 
 //Report Auction
@@ -64,3 +57,16 @@ Route::post('reportAuction/{id}', 'ReportAuctionController@create')->name('repor
 
 //Report User
 Route::post('reportUser/{id}', 'ReportUserController@create')->name('reportUser');
+
+//Ban User
+Route::post('banUser/{id}', 'BanUserController@banUser')->name('banUser');
+Route::delete('unbanUser/{id}', 'BanUserController@unbanUser')->name('unbanUser');
+
+//Ban Auction
+Route::post('banAuction/{id}', 'BanAuctionController@banAuction')->name('banAuction');
+Route::delete('unbanAuction/{id}', 'BanAuctionController@unbanAuction')->name('unbanAuction');
+
+//Footer
+Route::get('about', 'FooterController@showAbout')->name('about');
+Route::get('faq', 'FooterController@showFAQ')->name('faq');
+Route::get('contact_us', 'FooterController@showContactUs')->name('contact_us');
