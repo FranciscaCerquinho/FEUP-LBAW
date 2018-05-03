@@ -79,7 +79,7 @@ function addEventListeners(){
 
   let reportUser = document.querySelectorAll("#reportUserButton #btn");
   if(reportUser){
-    for(var i=0; i < addCommentUnlike.length;i++)
+    for(var i=0; i < reportUser.length;i++)
       reportUser[i].addEventListener('click',reportUserRequest);
   }
 };
@@ -429,21 +429,26 @@ function reportAuctionHandler(){
 }
 
 function reportUserRequest(){
-
-  let reason = document.querySelector(".reportUserText").value;
-  console.log(reason);
+  let parent = this.closest(".buttonsComments");
+  let reason = parent.querySelector(".reportUserText").value;
+ 
   let id = this.closest('.popup-reportUser').getAttribute('data-id');
+  let commentID = this.closest('.popup-inner-reportUser').getAttribute('data-id');
 
-//  sendAjaxRequest('post','/reportUser/' + id,{reason:reason}, reportUserHandler);
+  sendAjaxRequest('post','/reportUser/' + id,{reason:reason, commentID:commentID}, reportUserHandler);
 }
 
 function reportUserHandler(){
 
-  console.log(this.responseText);
-/*
-if(this.status!=200) window.location = '/';
-let reportAuction = JSON.parse(this.responseText);
+if(this.status!=200){
+  message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+  <a class="panel-close close" data-dismiss="alert">x</a>
+  <i class="fas fa-bell"></i>
+  Did not report! Try again! 
+  </div>`;
+}
 
+let reportAuction = JSON.parse(this.responseText);
 
 let message = document.createElement('div');
 message.setAttribute('class','row');
@@ -453,11 +458,11 @@ message.innerHTML = `<div class="alert alert-success alert-dismissable" role="al
 <i class="far fa-check-circle"></i>
 The User has been sucessfully reported!
 </div>`;
+console.log(reportAuction);
+let item_info = document.querySelector('.popup-inner-reportUser[data-id="'+reportAuction.commentID+'"]');
+console.log(item_info);
+let info = item_info.querySelector("#userForm");
 
-let item_info = document.querySelector(".popup-inner-reportUser");
-
-let info = document.querySelector("#userForm");
-
-item_info.insertBefore(message,info);*/
+item_info.insertBefore(message,info);
 }
 addEventListeners();

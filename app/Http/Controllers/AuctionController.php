@@ -43,6 +43,8 @@ class AuctionController extends Controller
       $like=0;
       $commentsLikes = array();
       $comment_likes = array();
+      $auctionReported=0;
+
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)

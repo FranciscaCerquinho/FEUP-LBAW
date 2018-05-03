@@ -93,30 +93,29 @@ CREATE TABLE reportUser(
   id SERIAL NOT NULL,
   reason text NOT NULL,
   id_userReporting INTEGER NOT NULL,
-  id_userReported INTEGER NOT NULL
+  id_userReported INTEGER NOT NULL,
+  date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE reportAuction(
   id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
-  reason text NOT NULL
+  reason text NOT NULL,
+  date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE banUser(
   id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_admin  INTEGER NOT NULL,
-  isBanned BOOLEAN NOT NULL,
-  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now()
+  date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE banAuction(
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
-  isBanned BOOLEAN NOT NULL,
-  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
+  date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "owner"(
@@ -597,32 +596,32 @@ INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (2
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (4,2,'2018-03-28 07:58:37','a, auctor non, feugiat nec, diam. Duis',21,48);
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (9,1,'2018-03-27 02:29:06','placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante,',2,29);
 
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('mattis. Integer eu lacus. Quisque',11,12);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('turpis vitae purus gravida sagittis.',9,24);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('pede. Cras vulputate velit eu',7,9);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('auctor velit. Aliquam nisl. Nulla',30,29);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('Nunc lectus pede, ultrices a,',5,16);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('mollis nec, cursus a, enim.',4,10);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('Etiam imperdiet dictum magna. Ut',20,26);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('vitae nibh. Donec est mauris,',24,17);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('convallis erat, eget tincidunt dui',8,6);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('fermentum vel, mauris. Integer sem',22,15);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('Quisque porttitor eros nec tellus.',5,21);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('consequat dolor vitae dolor. Donec',13,23);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('dictum augue malesuada malesuada. Integer',19,3);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('nibh. Aliquam ornare, libero at',14,5);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('feugiat non, lobortis quis, pede.',21,24);
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('mattis. Integer eu lacus. Quisque',11,12,'2018-03-20 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('turpis vitae purus gravida sagittis.',9,24,'2018-03-21 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('pede. Cras vulputate velit eu',7,9,'2018-03-22 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('auctor velit. Aliquam nisl. Nulla',30,29,'2018-03-21 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('Nunc lectus pede, ultrices a,',5,16,'2018-03-06 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('mollis nec, cursus a, enim.',4,10,'2018-03-30 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('Etiam imperdiet dictum magna. Ut',20,26,'2018-04-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('vitae nibh. Donec est mauris,',24,17,'2018-01-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('convallis erat, eget tincidunt dui',8,6,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('fermentum vel, mauris. Integer sem',22,15,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('Quisque porttitor eros nec tellus.',5,21,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('consequat dolor vitae dolor. Donec',13,23,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('dictum augue malesuada malesuada. Integer',19,3,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('nibh. Aliquam ornare, libero at',14,5,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('feugiat non, lobortis quis, pede.',21,24,'2018-03-26 00:46:15');
 
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (2,26,'ornare. Fusce mollis. Duis sit');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (12,24,'leo, in lobortis tellus justo');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (13,37,'ac mi eleifend egestas. Sed');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (26,29,'accumsan neque et nunc. Quisque');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (5,43,'Integer in magna. Phasellus dolor');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (30,27,'lacinia. Sed congue, elit sed');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (11,2,'tellus eu augue porttitor interdum.');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (5,35,'tincidunt, nunc ac mattis ornare,');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (7,29,'lectus. Nullam suscipit, est ac');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (7,36,'mi eleifend egestas. Sed pharetra,');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (2,26,'ornare. Fusce mollis. Duis sit','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (12,24,'leo, in lobortis tellus justo','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (13,37,'ac mi eleifend egestas. Sed','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (26,29,'accumsan neque et nunc. Quisque','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (5,43,'Integer in magna. Phasellus dolor','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (30,27,'lacinia. Sed congue, elit sed','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (11,2,'tellus eu augue porttitor interdum.','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (5,35,'tincidunt, nunc ac mattis ornare,','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (7,29,'lectus. Nullam suscipit, est ac','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (7,36,'mi eleifend egestas. Sed pharetra,','2018-03-20 00:46:15');
 
 INSERT INTO owner (id_user,id_auction) VALUES (1,1);
 INSERT INTO owner (id_user,id_auction) VALUES (17,2);
@@ -675,25 +674,24 @@ INSERT INTO owner (id_user,id_auction) VALUES (2,48);
 INSERT INTO owner (id_user,id_auction) VALUES (4,49);
 INSERT INTO owner (id_user,id_auction) VALUES (10,50);
 
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (12,2,'0','2018-04-08 15:57:21','2018-04-19 01:43:11');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (24,1,'1','2018-04-05 22:52:02','2018-04-13 11:43:42');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (9,1,'1','2018-04-08 03:06:47','2018-04-14 07:45:18');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (29,2,'1','2018-04-05 12:55:51','2018-04-13 14:19:08');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (16,4,'0','2018-04-06 20:56:35','2018-04-20 09:14:28');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (6,2,'1','2018-04-06 15:32:07','2018-04-15 13:05:22');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (26,2,'1','2018-04-07 14:54:50','2018-04-14 20:00:00');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (15,1,'1','2018-04-08 00:27:59','2018-04-14 21:24:49');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (21,2,'0','2018-04-08 20:40:54','2018-04-12 17:53:11');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (5,3,'1','2018-04-10 12:25:58','2018-04-12 07:38:01');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (12,2,'2018-04-19 01:43:11');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (24,1,'2018-04-13 11:43:42');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (9,1,'2018-04-14 07:45:18');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (29,2,'2018-04-13 14:19:08');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (16,4,'2018-04-20 09:14:28');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (6,2,'2018-04-15 13:05:22');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (26,2,'2018-04-14 20:00:00');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (15,1,'2018-04-14 21:24:49');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (21,2,'2018-04-12 17:53:11');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (5,3,'2018-04-12 07:38:01');
 
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (2,26,'0','2018-04-07 12:30:37');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (12,24,'1','2018-04-07 23:54:50');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (13,37,'0','2018-04-08 17:25:38');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (26,29,'1','2018-04-08 06:36:13');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (5,43,'1','2018-04-05 11:43:16');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (30,27,'1','2018-04-09 10:33:17');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (11,2,'0','2018-04-05 22:49:11');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (5,35,'0','2018-04-07 02:59:54');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (2,26,'2018-04-07 12:30:37');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (12,24,'2018-04-07 23:54:50');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (13,37,'2018-04-08 17:25:38');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (26,29,'2018-04-08 06:36:13');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (5,43,'2018-04-05 11:43:16');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (30,27,'2018-04-09 10:33:17');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (11,2,'2018-04-05 22:49:11');
 
 INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (29,1,'2018-04-03 23:43:54','1');
 INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (12,48,'2018-04-02 16:41:23','1');

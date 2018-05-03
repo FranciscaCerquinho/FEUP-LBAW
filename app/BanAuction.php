@@ -18,7 +18,7 @@ class BanUser extends Model
      * @var array
      */
     protected $fillable = [
-        'id_user', 'id_admin', 'date',
+        'id_user', 'id_auction', 'date',
     ];
 
 
