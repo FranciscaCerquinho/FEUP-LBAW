@@ -22,14 +22,11 @@ Route::post('editProfile', 'UserController@update');
 Route::get('administration', 'AdminController@show')->name('administration');
 Route::get('owner/{id}', 'OwnerController@show')->name('ownerProfile');
 
-<<<<<<< HEAD
 // WishList
 
 Route::get('wishList ','WishListController@list')->name("wishList");
 Route::get('listAuction ','WishListController@show')->name("listAuction");
 
-=======
->>>>>>> 48aebe8bd39369ca8a91c769c56e2f581f4bfcef
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
