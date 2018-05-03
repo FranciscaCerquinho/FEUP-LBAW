@@ -33,7 +33,7 @@
 	    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   </head>
   <body>
-    
+
 	<nav class="navbar navbar-expand-lg" id="myTopNav">
 		<a href="{{route('auction')}}" class="link_logo">
 			<img class="topnavLogo" src="/images/icon.png"></img>
@@ -123,7 +123,7 @@
 					<a class="nav-link" href="">Add Auction</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
+					<a class="nav-link" title="Wish List" href="{{url ('wishList') }}" style="text-decoration:none; color:#597ca0ff;">
 						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
 					</a>
 				</li>
