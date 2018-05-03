@@ -45,16 +45,34 @@
 							<span class="far fa-thumbs-down" id="unlike_hand" @if($like==2) style="color:#437ab2"@endif></span>
 							<span id="unlikeAuction"  @if($like==2) style="color:#437ab2"@endif>{{$auction->auction_dislike}}</span>
 						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="fas fa-bullhorn"></span> Report
-						</button>
+						<a  data-popup-reportAuction-open="popup-1" type="button" class="btn btn-default btn-sm" id="reportA" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif><span class="reportAuctionButton fas fa-bullhorn" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif></span> Report</a>
+							<div class="popup-reportAuction" data-popup-reportAuction="popup-1">
+    							<div class="popup-inner-reportAuction">
+									<div class="form-group" id="auctionForm">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+												<i class="fas fa-comment-alt" aria-hidden="true"></i>
+											</span>
+												<input type="text" class="form-control" id="reportAuctionText" name="reason" placeholder="Reason" />
+										</div>
+									</div>
+									<div class="row" id="reportButton">
+											<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
+												<div class="text-center">
+													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+												</div>
+											</div>
+										</div>
+      								<a class="popup-close-reportAuction" data-popup-close-reportAuction="popup-1">X</a>
+    							</div>
+  							</div>
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="fas fa-shopping-cart"></span> Wish List
 						</button>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="row">
+				<div class="col-lg-6" id ="item_information">
+					<div class="row" id="info">
 						<h2 class="information">Information</h2>
 					</div>
 					<div class="row">
@@ -79,7 +97,7 @@
 								<p class="time" id="description">Time:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<p class="time_left"><script>SplitDate("{{$auction->dateend}}");</script> left</p>
+								<p class="time_left"><script>SplitDate("{{$auction->dateend}}",1);</script> left</p>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="object_description">
@@ -95,7 +113,7 @@
 								<p class="object_actualprice" id="description">Actual Price:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<p class="object_actualprice">EUR {{$auction->actualprice}}</p>
+								<p class="object_actualprice" id ="item_price">EUR {{$auction->actualprice}}</p>
 							</div>
 						</div>
 					</div>
@@ -119,9 +137,18 @@
 		<div class="row" id="first">
 			<div class="row"> 
 				<div id="comments">
-					<?php foreach($comments as $comment) {?>
-						@include('partials.comments',['comment'=>$comment])
-					<?php } ?>
+					<?php foreach($comments as $comment) {
+						$j = -1;
+						for($i = 0; $i < count($commentsLikes); $i++){
+						
+							if($id_comment_likes[$i]->id_comment == $comment->id)
+								$j = $i;
+						 } 
+						if($j != -1)  { ?> 
+						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j]])	<?php }
+						else { ?>
+						@include('partials.comments',['comment'=>$comment])	
+					<?php }} ?>
 					@if (Auth::check())
 						@if($type==1)
 							<div class="row" id="addComment">
@@ -131,8 +158,8 @@
 											<div class="col-sm-8">
 												<div class="panel panel-white post panel-shadow">
 													<div class="status-upload">
-															<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
-															<button class="btn" type="submit">Send</button>
+														<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
+														<button class="btn" type="submit">Send</button>
 													</div>
 												</div>
 											</div>

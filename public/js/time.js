@@ -1,6 +1,4 @@
-
-
-function SplitDate(dateTime){
+function SplitDate(dateTime,value){
   var currentDate= new Date();
   var timeLeft;
   var stringToReturn;
@@ -22,14 +20,16 @@ function SplitDate(dateTime){
   var splitSecond = second_aux.split("+");
   var second = parseInt(splitSecond[0]) 
   var hour = hour + parseInt(splitSecond[1]);
-  console.log(year+' '+month+' '+day+' ');
-  console.log(hour+' '+minute+' '+second);
+
   if(currentDate.getFullYear()==year){
     if(currentDate.getMonth()+1==month){
-      if(currentDate.getDay()==day){
+      if(currentDate.getDate()==day){
         if(currentDate.getHours()==hour){
           if(currentDate.getMinutes()==minute){
-            timeLeft= second-currentDate.getSeconds();
+            if(value==1)
+              timeLeft= second-currentDate.getSeconds();
+            else
+              timeLeft= currentDate.getSeconds()-second;
             if(parseInt(timeLeft)!=1){
             stringToReturn= timeLeft.toString()+" seconds";
             }
@@ -38,7 +38,10 @@ function SplitDate(dateTime){
             document.write(stringToReturn);
           }
           else{
-            timeLeft= minute-currentDate.getMinutes();
+            if(value==1)
+              timeLeft= currentDate.getMinutes()-minute;
+            else
+              timeLeft= currentDate.getMinutes()-minute;
             if(parseInt(timeLeft)!=1){
             stringToReturn= timeLeft.toString()+" minutes";
             }
@@ -47,7 +50,10 @@ function SplitDate(dateTime){
           }
         }
         else{
-          timeLeft= hour-currentDate.getHours();
+          if(value==1)
+            timeLeft= hour-currentDate.getHours();
+          else
+            timeLeft= currentDate.getHours()-hour;
           if(parseInt(timeLeft)!=1){
           stringToReturn= timeLeft.toString()+" hours";
           }
@@ -56,7 +62,10 @@ function SplitDate(dateTime){
         }
       }
       else{
-        timeLeft= day-currentDate.getDate();
+        if(value==1)
+          timeLeft= day-currentDate.getDate();
+        else
+          timeLeft= currentDate.getDate()-day;
         if(parseInt(timeLeft)!=1){
         stringToReturn= timeLeft.toString()+" days";
         }
@@ -65,7 +74,10 @@ function SplitDate(dateTime){
       }
     }
     else{
-      timeLeft= month-currentDate.getMonth();
+      if(value==1)
+        timeLeft= month-currentDate.getMonth();
+      else
+        timeLeft= currentDate.getMonth()-month;
       if(parseInt(timeLeft)!=1){
       stringToReturn= timeLeft.toString()+" months";
       }
@@ -74,7 +86,10 @@ function SplitDate(dateTime){
     }
   }
   else{
-    timeLeft= year-currentDate.getFullYear();
+    if(value==1)
+      timeLeft= year-currentDate.getFullYear();
+    else
+      timeLeft= currentDate.getFullYear()-year;
     if(parseInt(timeLeft)!=1){
     stringToReturn= timeLeft.toString()+" years";
     }
@@ -82,7 +97,6 @@ function SplitDate(dateTime){
     document.write(stringToReturn);
   }
 }
-
 
 
 
@@ -102,19 +116,19 @@ function SplitDateReturn(dateTime){
   var day= parseInt(aux_date[2]);
 
   var time = hours.split(":");
-  var hour = parseInt(time[0]);
+  var hour = parseInt(time[0])+1;
   var minute = parseInt(time[1]);
-  var second_aux = time[2];
-  var splitSecond = second_aux.split("+");
-  var second = parseInt(splitSecond[0]) 
-  var hour = hour + parseInt(splitSecond[1]);
+  var second = parseInt(time[2]);
+
+
 
   if(currentDate.getFullYear()==year){
     if(currentDate.getMonth()+1==month){
-      if(currentDate.getDay()==day){
+
+      if(currentDate.getDate()==day){
         if(currentDate.getHours()==hour){
           if(currentDate.getMinutes()==minute){
-            timeLeft= second-currentDate.getSeconds();
+            timeLeft= currentDate.getSeconds()-second;
             if(parseInt(timeLeft)!=1){
             stringToReturn= timeLeft.toString()+" seconds";
             }
@@ -123,7 +137,7 @@ function SplitDateReturn(dateTime){
             return stringToReturn;
           }
           else{
-            timeLeft= minute-currentDate.getMinutes();
+            timeLeft= currentDate.getMinutes()-minute;
             if(parseInt(timeLeft)!=1){
             stringToReturn= timeLeft.toString()+" minutes";
             }
@@ -132,7 +146,7 @@ function SplitDateReturn(dateTime){
           }
         }
         else{
-          timeLeft= hour-currentDate.getHours();
+          timeLeft= currentDate.getHours()-hour;
           if(parseInt(timeLeft)!=1){
           stringToReturn= timeLeft.toString()+" hours";
           }
@@ -141,7 +155,7 @@ function SplitDateReturn(dateTime){
         }
       }
       else{
-        timeLeft= day-currentDate.getDate();
+        timeLeft= currentDate.getDate()-day;
         if(parseInt(timeLeft)!=1){
         stringToReturn= timeLeft.toString()+" days";
         }
@@ -150,7 +164,7 @@ function SplitDateReturn(dateTime){
       }
     }
     else{
-      timeLeft= month-currentDate.getMonth();
+      timeLeft= currentDate.getMonth()-month;
       if(parseInt(timeLeft)!=1){
       stringToReturn= timeLeft.toString()+" months";
       }
@@ -159,7 +173,7 @@ function SplitDateReturn(dateTime){
     }
   }
   else{
-    timeLeft= year-currentDate.getFullYear();
+    timeLeft= currentDate.getFullYear()-year;
     if(parseInt(timeLeft)!=1){
     stringToReturn= timeLeft.toString()+" years";
     }

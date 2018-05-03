@@ -37,43 +37,69 @@ class CommentController extends Controller
       return $comment;
     }
 
-    /**
+         /**
      * Updates the state of an individual item.
      *
-     * @param  int  $comment_id
+     * @param  int  $auction id
      * @param  Request request containing the new state
      * @return Response
      */
     public function updateLike(Request $request, $comment_id)
     {
-      $comment = Auction::find($comment_id);
+      $comment = Comment::find($comment_id);
+      if(Auth::check()){
+      $user_like= DB::table('usercommentlike')->where([['id_comment','=', $comment_id],['id_user','=',Auth::user()->user_id]])->first();
 
-      $this->authorize('update', $comment);
+      if($user_like==null){
+        DB::table('usercommentlike')->insert(['id_user'=> Auth::user()->user_id, 'id_comment'=> $comment_id, 'islike'=>true]);
+        $comment->like = $request->input('like');
+        $comment->save();
+      }
+      else {
+        if($user_like->islike == false){
+          $comment->dislike=$comment->dislike-1;
+          $comment->like=$comment->like+1;
+          $comment->save();
+          DB::table('usercommentlike')->where([['id_comment','=', $comment_id],['id_user','=',Auth::user()->user_id]])->update(['islike'=> true]);
+        }
 
-      $comment->like = $request->input('done');
-      $comment->save();
-
+      }
+    } 
       return $comment;
+    
     }
 
-      /**
+            /**
      * Updates the state of an individual item.
      *
-     * @param  int  $comment_id
+     * @param  int  $auction id
      * @param  Request request containing the new state
      * @return Response
      */
-    public function updateDislike(Request $request, $comment_id)
+    public function updateUnlike(Request $request, $comment_id)
     {
-      $comment = Auction::find($comment_id);
+      $comment = Comment::find($comment_id);
+      if(Auth::check()){
+      $user_like= DB::table('usercommentlike')->where([['id_comment','=', $comment_id],['id_user','=',Auth::user()->user_id]])->first();
 
-      $this->authorize('update', $comment);
+      if($user_like==null){
+        DB::table('usercommentlike')->insert(['id_user'=> Auth::user()->user_id, 'id_comment'=> $comment_id, 'islike'=>true]);
+        $comment->dislike = $request->input('unlike');
+        $comment->save();
 
-      $comment->dislike = $request->input('done');
-      $comment->save();
+      }
+      else {
+        if($user_like->islike == true){
+          $comment->like=$comment->like-1;
+          $comment->dislike=$comment->dislike+1;
+          $comment->save();
+          DB::table('usercommentlike')->where([['id_comment','=', $comment_id],['id_user','=',Auth::user()->user_id]])->update(['islike'=> false]);
+        }
 
+      }
+    }
       return $comment;
     }
-
+    
 }
 ?>

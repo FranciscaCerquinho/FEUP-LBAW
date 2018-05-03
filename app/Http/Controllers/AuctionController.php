@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Auction;
 use App\Comment;
 use App\Admin;
+use App\Owner;
+use App\ReportAuction;
 
 class AuctionController extends Controller
 {
@@ -16,6 +18,7 @@ class AuctionController extends Controller
     public function list()
     {
   
+      
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
@@ -27,12 +30,21 @@ class AuctionController extends Controller
       else
         $type=0;
       
-      $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
-      return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
+        $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
+        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
+    }
+
+    public function search($name = null) {
+      
+      return view('pages.search');
     }
 
     public function show($id){
       $like=0;
+      $commentsLikes = array();
+      $comment_likes = array();
+      $auctionReported=0;
+
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
@@ -47,7 +59,24 @@ class AuctionController extends Controller
           else
             $like=2;
         }
-      }
+
+        $comment_likes = DB::table('usercommentlike')
+        ->join('comment', 'comment.id', '=', 'usercommentlike.id_comment')->where('usercommentlike.id_user','=',Auth::user()->user_id)
+        ->join('auction','auction.auction_id','=','comment.id_auction')->where('auction_id', '=', $id)
+        ->orderBy('comment.date','asc')
+        ->get();
+        
+        if($comment_likes!=null){
+          for($i=0; $i< count($comment_likes);$i++){
+          if($comment_likes[$i]->islike==true)
+            array_push($commentsLikes,1);
+          else
+            array_push($commentsLikes,2);
+          }
+        }
+        $auctionReported = ReportAuction::where([['id_auction','=',$id],['id_user','=',Auth::user()->user_id]])
+        ->first();
+        }
       else
         $type=0;
 
@@ -64,10 +93,37 @@ class AuctionController extends Controller
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->orderBy('date','asc')
       ->get();
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like]);
+
+   
+      if($auctionReported!=null){
+        $reported=1;
+      }
+      else{
+        $reported=0;
+      }
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes, 'auctionReported'=>$reported]);
     }
 
+    public function myAuctions(){
+            
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      
+      }
+      else
+        $type=0;
+      
+        $auctions = DB::table('owner')->where('id_user',Auth::user()->user_id)
+        ->join('users', 'users.user_id', '=', 'owner.id_user')
+        ->join('auction','auction_id','=','owner.id_auction')
+        ->where('auction.active',1)->orderBy('dateend','asc')->get();
 
+        return view('pages.userAuctions', [ 'auctions' => $auctions, 'type' => $type]);
+    }
     /**
      * Creates a new auction.
      *
@@ -107,7 +163,7 @@ class AuctionController extends Controller
     public function updateLike(Request $request, $auction_id)
     {
       $auction = Auction::find($auction_id);
-
+      if(Auth::check()){
       $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
 
       if($user_like==null){
@@ -124,7 +180,7 @@ class AuctionController extends Controller
         }
 
       }
-     
+    }
       return $auction;
     }
 
@@ -139,6 +195,7 @@ class AuctionController extends Controller
     {
       $auction = Auction::find($auction_id);
 
+      if(Auth::check()){
       $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
 
       if($user_like==null){
@@ -156,9 +213,29 @@ class AuctionController extends Controller
         }
 
       }
+    }      
       return $auction;
     }
-    
 
+
+     public function searchByCategory($category)  {
+       $type=0;
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+  
+     $auctions =DB::table('category')->where('category', $category)
+      ->join('auction','auction.auction_id','=', 'category.id_auction')->where('active',1)
+      ->join('owner', 'owner.id_auction', '=', 'auction_id')
+      ->join('users', 'users.user_id', '=', 'owner.id_user')->get();
+
+      
+      return view('pages.search', [ 'auctions' => $auctions, 'type' => $type]);
+  
+    }
 }
 ?>

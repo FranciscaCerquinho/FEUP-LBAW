@@ -145,6 +145,7 @@ body {
         align-content: center;
     }
     .auctionCardImage {
+        z-index: 0;
         width: 160px;
     }
     
@@ -263,7 +264,7 @@ body {
 
 /*Shop by category -dropdown*/
 #myTopNav .shop_by_category {
-
+    z-index: 1;
     float: left; }
 
 .shop_by_category ul {
@@ -353,6 +354,25 @@ li a, .dropbtn {
   padding-bottom: 100px;
 }
 
+#item .reportAuctionButton{
+  color:black;
+  font-size: 18px;
+}
+
+#item a#reportA::hover{
+  background-color: white;
+}
+@media only screen and (max-width:576px) {
+#buttonReport {
+  margin-left:15px;
+}
+}
+#item #reportA{
+  color:black;
+  font-size: 17px;
+  background-color: transparent;
+  border: none;
+}
 section#item h2.item_name{
   color: #444444;
   font-size: 26px;
@@ -434,6 +454,14 @@ section#item h2.item_name{
   #item{
     padding-top: 0;
     margin-top: 30px;
+  }
+
+  .user_report .row {
+    flex-wrap: nowrap;
+  }
+
+  .auctions_report .row {
+    flex-wrap: nowrap;
   }
 
   #item hr{
@@ -561,6 +589,37 @@ section#item h2.item_name{
   }
   .post .post-description .stats {
     margin-top: 20px;
+  }
+
+  #commentLike{
+    border: none;
+    color: black;
+  }
+
+  #commentUnlike{
+    border: none;
+    color: black;
+  }
+
+  #commentReport{
+    border: none;
+    color:black;
+  }
+
+  .buttonsComments a:hover #likeCommentHand{
+    color:#437ab2;
+  }
+
+  .buttonsComments a:hover span{
+    color:#437ab2;
+  }
+
+  .buttonsComments a:hover #unlikeCommentHand{
+    color:#437ab2;
+  }
+
+  .buttonsComments a:hover #reportComment{
+    color:#437ab2;
   }
 
 
@@ -767,6 +826,7 @@ hr.style17 {
     text-decoration: none;
     font-size: 18px;
     letter-spacing: 0.3px;
+    width: 10em;
 }
 
 .username .dropdown button img{
@@ -2473,3 +2533,60 @@ iframe {
   font-size:15px;
   height: auto;
 }
+
+#usersPag .active a{
+  color:white;
+}
+.sale-box{
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+	height: 130px;
+	width: 143px;
+	text-align: center;
+	z-index: 1;
+	right:0;
+	border-top-right-radius: 0.7em;
+	-o-border-top-right-radius: 0.7em;
+	-moz-border-top-right-radius: 0.7em;
+	-webkit-border-top-right-radius: 0.7em;
+}
+.sale-box span.on_sale{
+font-size: 15px;
+color:white;
+font-weight: bold;
+background: rgb(130,178,110);
+text-transform: uppercase;
+padding: 58px 5px 17px 5px;
+width: 281px;
+text-align: center;
+display: block;
+position: absolute;
+left: -30px;
+top: -30px;
+-moz-transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+transition: all 0.5s ease;
+-webkit-transform: rotate(-44deg);
+-ms-transform: rotate(-44deg);
+transform: rotate(40deg);
+box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
+}
+
+.shop_by_category  .dropdown-content {
+  z-index: 1;
+}
+
+#reportButton #buttonReport a#btn{
+  background-color:#437ab2;
+  z-index: 1;
+  font-size: 16px;
+}
+
+#reportUserButton #buttonReport a#btn{
+  background-color:#437ab2;
+  z-index: 1;
+  font-size: 16px;
+}
+
+
