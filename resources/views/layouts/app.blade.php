@@ -120,7 +120,7 @@
 				@endif
 				@if($type==1)
 				<li class="nav-item">
-					<a class="nav-link" href="">Add Auction</a>
+					<a class="nav-link" href="{{ url ('addAuction') }}">Add Auction</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" title="Wish List" href="{{url ('wishList') }}" style="text-decoration:none; color:#597ca0ff;">

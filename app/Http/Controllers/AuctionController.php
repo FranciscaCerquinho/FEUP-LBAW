@@ -124,6 +124,22 @@ class AuctionController extends Controller
 
         return view('pages.userAuctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
+
+    public function showAddAuction(){
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      
+      }
+      else
+        $type=0;
+      
+      return view('pages.addAuction',['type' => $type]);
+    }
+    
     /**
      * Creates a new auction.
      *
@@ -131,6 +147,7 @@ class AuctionController extends Controller
      */
     public function create(Request $request)
     {
+               
       $auction = new Auction();
       $owner = new Owner();
 
@@ -150,7 +167,7 @@ class AuctionController extends Controller
       $owner->id_auction = $auction->auction_id;
       $owner->save();
 
-      return $auction;
+     return $auction;
     }
 
         /**

@@ -137,6 +137,7 @@ CREATE TABLE category(
     CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 'Toys'::text, 'Daily Deals'::text, 'Sporting'::text, 'Others'::text]))));
 
 CREATE TABLE buyNow(
+  id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL
 );
@@ -176,6 +177,7 @@ ALTER TABLE ONLY banUser
 
 ALTER TABLE ONLY banAuction
   ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id);
+  
 ALTER TABLE ONLY owner
   ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
 
@@ -183,7 +185,7 @@ ALTER TABLE ONLY wishList
   ADD CONSTRAINT wishList_pkey PRIMARY KEY (id_user, id_auction);
 
 ALTER TABLE ONLY buyNow
-  ADD CONSTRAINT buynow_pkey PRIMARY KEY (id_user, id_auction);
+  ADD CONSTRAINT buynow_pkey PRIMARY KEY (id);
 
 
 -- Foreign Keys

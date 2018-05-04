@@ -8,7 +8,7 @@ class BuyNow extends Model
 {
     public $timestamps  = false;
     public $table='buynow';
-    protected $primaryKey= [ 'id_user', 'id_auction'];
+    protected $primaryKey= 'id';
     
   /**
    * The auction owner

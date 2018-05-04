@@ -353,6 +353,10 @@ li a, .dropbtn {
   padding-top: 80px;
   padding-bottom: 100px;
 }
+#item #reportA{
+  background-color: transparent;
+  border: none;
+}
 
 #item .reportAuctionButton{
   color:black;
@@ -703,7 +707,7 @@ section#item h2.item_name{
     padding: 0 100px 0 100px;
     font-size: 18px;
     margin-top:100px;
-    margin-bottom: 200px;
+    margin-bottom: 280px;
 }
 .add_auction h1{
     color: #444444;
