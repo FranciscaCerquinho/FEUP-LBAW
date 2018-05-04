@@ -23,11 +23,11 @@ class ReportAuctionController extends Controller
     {
       
       $reportAuction = new ReportAuction();
-        
+
       $reportAuction->reason = $request->input('reason');
       $reportAuction->id_auction = $auction_id;
       $reportAuction->id_user = Auth::user()->user_id;
-      $reportUser->date= date('Y-m-d H:i:s');
+      $reportAuction->date= date('Y-m-d H:i:s');
       $reportAuction->save();
 
       return $reportAuction;

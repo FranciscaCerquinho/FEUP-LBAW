@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\BanUser;
+use App\Admin;
 
 class BanUserController extends Controller
 {
@@ -24,9 +25,9 @@ class BanUserController extends Controller
 
     protected function unbanUser(Request $request,$id_user)
     {
-        $unbanUser = BanUser::where('id_user',$id_user);
-
-        $unbanUser->delete();
+        $unbanUser = BanUser::where('id_user',$id_user)->first();
+        if($unbanUser)
+            $unbanUser->delete();
   
         return $unbanUser;
     }

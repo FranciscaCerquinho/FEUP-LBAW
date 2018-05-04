@@ -1,6 +1,6 @@
 <?php $date= new DateTime($reported_users->date);
 $date_string = $date->format('Y-m-d');?>
-<div class="row usersReported" id="usersReported" data-id="{{$reported_users->id_userreporting}}">
+<div class="row usersReported" id="usersReported" data-id="{{$reported_users->id_userreported}}">
     <div class="col-md-2 col-sm-3">
         <span style="color:#0c59cf">{{$reported_users->firstname}} {{$reported_users->lastname}}</span>
     </div>

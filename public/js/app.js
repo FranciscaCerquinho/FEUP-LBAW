@@ -410,7 +410,7 @@ function reportAuctionRequest(){
 }
 
 function reportAuctionHandler(){
-
+  console.log(this.responseText);
   let message = document.createElement('div');
   message.setAttribute('class','row');
   if(this.status!=200) {
@@ -484,7 +484,7 @@ function banUserRequest(){
   let checkBox = parent.querySelector(".banUser");
 
   let id = this.closest('.usersReported').getAttribute('data-id');
-  console.log(id);
+
   if(checkBox.checked==true)
     sendAjaxRequest('post','/banUser/' + id,null, banUserHandler);
   else
@@ -492,7 +492,7 @@ function banUserRequest(){
 } 
 
 function banUserHandler(){
-
+ 
   let message = document.createElement('div');
   message.setAttribute('class','row');
 
@@ -500,13 +500,49 @@ function banUserHandler(){
     message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
     <a class="panel-close close" data-dismiss="alert">x</a>
     <i class="fas fa-bell"></i>
-    Did not report! Try again! 
+    Did not ban! Try again! 
     </div>`;
   }
+  else{
+    let reportAuction = JSON.parse(this.responseText);
+   
+    message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+      <a class="panel-close close" data-dismiss="alert">x</a>
+      <i class="far fa-check-circle"></i>
+      The User has been sucessfully banned!
+      </div>`; 
+  }
+  
+  let item_info = document.querySelector(".user_report");
+  let info = item_info.querySelector(".style17");
+  item_info.insertBefore(message,info);
   
 }
 
 function unbanUserHandler(){
+  let message = document.createElement('div');
+  message.setAttribute('class','row');
+
+  if(this.status!=200){
+    message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="fas fa-bell"></i>
+    Did not unban! Try again! 
+    </div>`;
+  }
+  else{
+    let reportAuction = JSON.parse(this.responseText);
+   
+    message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+      <a class="panel-close close" data-dismiss="alert">x</a>
+      <i class="far fa-check-circle"></i>
+      The User has been sucessfully unbanned!
+      </div>`; 
+  }
+  
+  let item_info = document.querySelector(".user_report");
+  let info = item_info.querySelector(".style17");
+  item_info.insertBefore(message,info);
 }
 
 function banAuctionRequest(){
@@ -514,7 +550,7 @@ function banAuctionRequest(){
   let checkBox = parent.querySelector(".banAuction");
 
   let id = this.closest('.auctionsReported').getAttribute('data-id');
-  console.log(id);
+ 
   if(checkBox.checked==true){
     console.log("entrei aqui");
     sendAjaxRequest('post','/banAuction/' + id,null, banAuctionHandler);
@@ -528,35 +564,53 @@ function banAuctionRequest(){
 }
 
 function banAuctionHandler(){
-  console.log(this.responseText);
-/*
+
   let message = document.createElement('div');
   message.setAttribute('class','row');
-
+  
   if(this.status!=200){
     message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
     <a class="panel-close close" data-dismiss="alert">x</a>
     <i class="fas fa-bell"></i>
-    Did not report! Try again! 
+    Did not ban! Try again! 
     </div>`;
   }
   else{
     let reportAuction = JSON.parse(this.responseText);
-    let item_info = document.querySelector('#auctions_report[data-id="'+reportAuction.id_auction+'"]');
-    
+   
     message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
       <a class="panel-close close" data-dismiss="alert">x</a>
       <i class="far fa-check-circle"></i>
-      The User has been sucessfully banned!
-      </div>`;
+      The Auction has been sucessfully banned!
+      </div>`; 
   }
-
-  let info = item_info.querySelector(".auctionsReported");
-
-  item_info.insertBefore(message,info);*/
-
+  let item_info = document.querySelector(".auctions_report");
+  let info = item_info.querySelector(".style17");
+  item_info.insertBefore(message,info);
 }
 
 function unbanAuctionHandler(){
+  let message = document.createElement('div');
+  message.setAttribute('class','row');
+  
+  if(this.status!=200){
+    message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="fas fa-bell"></i>
+    Did not unban! Try again! 
+    </div>`;
+  }
+  else{
+    let reportAuction = JSON.parse(this.responseText);
+   
+    message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+      <a class="panel-close close" data-dismiss="alert">x</a>
+      <i class="far fa-check-circle"></i>
+      The Auction has been sucessfully unbanned!
+      </div>`; 
+  }
+  let item_info = document.querySelector(".auctions_report");
+  let info = item_info.querySelector(".style17");
+  item_info.insertBefore(message,info);
 }
 addEventListeners();

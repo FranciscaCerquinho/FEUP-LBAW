@@ -113,6 +113,7 @@ CREATE TABLE banUser(
 );
 
 CREATE TABLE banAuction(
+  id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
   date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
@@ -171,10 +172,10 @@ ALTER TABLE ONLY reportAuction
   ADD CONSTRAINT reportAuction_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY banUser
-  ADD CONSTRAINT banUser_pkey PRIMARY KEY (id_user);
+  ADD CONSTRAINT banUser_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY banAuction
-  ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id_user,id_auction);
+  ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY owner
   ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
 
