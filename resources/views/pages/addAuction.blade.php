@@ -5,6 +5,11 @@
     <div class="add_auction">
         <h1>Add Auction</h1>
         <hr class="style17" style="color:grey;">
+        <div class="form-group" id="add_auction_buttons">
+                <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn addAuction">Add another auction &nbsp; &nbsp;
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
         <form id="taskForm" method="post" class="form-horizontal">
             <div class="form-group row">
                 <div class="col-lg-4">
@@ -66,9 +71,6 @@
                 </div>
             </div>
             <div class="form-group" id="add_auction_buttons">
-                <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn">Add another auction &nbsp; &nbsp;
-                    <i class="fa fa-plus"></i>
-                </button>
                 <button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
             </div>
     </div>
