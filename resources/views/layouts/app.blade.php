@@ -13,6 +13,8 @@
     <!-- Styles -->
 	<script type="text/javascript" src={{ asset('js/app.js') }} defer></script>
 	<script type="text/javascript" src={{ asset('js/time.js') }}></script>
+	<script type="text/javascript" src={{ asset('js/pagination.js') }} defer></script>
+	<script type="text/javascript" src={{ asset('js/popup.js') }} defer></script>
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	      crossorigin="anonymous">
 	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -25,6 +27,7 @@
 	    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	      crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="/css/app.css">
+	  <link rel="stylesheet" type="text/css" href="/css/popups.css">
 	    <script defer src="/js/fontawesome-all.js"></script>
 	    <link rel="icon" type="image/png" href="/images/icon.png">
 	    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -34,7 +37,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css" />
   </head>
   <body>
-    
+
 	<nav class="navbar navbar-expand-lg" id="myTopNav">
 		<a href="{{route('auction')}}" class="link_logo">
 			<img class="topnavLogo" src="/images/icon.png"></img>
@@ -46,28 +49,28 @@
 				<div class="dropdown-content">
 					<div class="row">
 						<div class="d-block d-sm-none">
-							<a class="dropdown-item" href="#electronics">Electronics</a>
-							<a class="dropdown-item" href="#fashion">Fashion</a>
-							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-							<a class="dropdown-item" href="#motors">Motors</a>
-							<a class="dropdown-item" href="#music">Music</a>
-							<a class="dropdown-item" href="#toys">Toys</a>
-							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-							<a class="dropdown-item" href="#sporting">Sporting</a>
-							<a class="dropdown-item" href="#others">Others</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Electronics'])}}">Electronics</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Fashion'])}}">Fashion</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Home & Garden'])}}">Home & Garden</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Motors'])}}">Motors</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Music'])}}">Music</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Toys'])}}">Toys</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Daily Deals'])}}">Daily Deals</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Sporting'])}}">Sporting</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Others'])}}">Others</a>
 						</div>
 						<div class="col-md-2 d-none d-sm-block">
-							<a class="dropdown-item" href="#electronics">Electronics</a>
-							<a class="dropdown-item" href="#fashion">Fashion</a>
-							<a class="dropdown-item" href="#home_garden">Home & Garden</a>
-							<a class="dropdown-item" href="#motors">Motors</a>
-							<a class="dropdown-item" href="#music">Music</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Electronics'])}}">Electronics</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Fashion'])}}">Fashion</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Home & Garden'])}}">Home & Garden</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Motors'])}}">Motors</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Music'])}}">Music</a>
 						</div>
 						<div class="col-md-2 d-none d-sm-block" style="padding-left:180px">
-							<a class="dropdown-item" href="#toys">Toys</a>
-							<a class="dropdown-item" href="#daily_deals">Daily Deals</a>
-							<a class="dropdown-item" href="#sporting">Sporting</a>
-							<a class="dropdown-item" href="#others">Others</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Toys'])}}">Toys</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Daily Deals'])}}">Daily Deals</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Sporting'])}}">Sporting</a>
+							<a class="dropdown-item" href="{{route('searchByCategory', ['id'=>'Others'])}}">Others</a>
 						</div>
 					</div>
 				</div>
@@ -100,10 +103,12 @@
 					<div class="username">
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-								<img class="img-circle" src="/images/{{Auth::user()->photo}}" style="margin-right:10px; width: 31px;height: 30px;"></img>
+								<img class="img-circle" src="/images/{{Auth::user()->photo}}" ></img>
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
+								<a href="{{ url ('myAuctions') }}">My Auctions</a>
+								<a href="{{ url ('myBids') }}">My Bids</a>
 								<a href="{{url ('editProfile') }}">Edit Profile</a>
 								<a href="{{ url ('logout') }}">Logout</a>
 							</ul>
@@ -119,11 +124,11 @@
 				@endif
 				@if($type==1)
 				<li class="nav-item">
-					<a class="nav-link" href="{{url ('add_auction')}}">Add Auction</a>
+					<a class="nav-link" href="{{ url ('addAuction') }}">Add Auction</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">
-						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
+					<a class="nav-link" title="Wish List" href="{{url ('wishList') }}" style="text-decoration:none; color:#597ca0ff;">
+						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 					</a>
 				</li>
 				@endif

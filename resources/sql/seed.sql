@@ -50,8 +50,8 @@ CREATE TABLE bid(
   status BOOLEAN NOT NULL,
   price FLOAT,
   date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  id_auction INTEGER NOT NULL,
-  id_user INTEGER NOT NULL
+  bid_id_auction INTEGER NOT NULL,
+  bid_id_user INTEGER NOT NULL
 );
 
 CREATE TABLE auction (
@@ -93,29 +93,30 @@ CREATE TABLE reportUser(
   id SERIAL NOT NULL,
   reason text NOT NULL,
   id_userReporting INTEGER NOT NULL,
-  id_userReported INTEGER NOT NULL
+  id_userReported INTEGER NOT NULL,
+  date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE reportAuction(
+  id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
-  reason text NOT NULL
+  reason text NOT NULL,
+  date TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE banUser(
   id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_admin  INTEGER NOT NULL,
-  isBanned BOOLEAN NOT NULL,
-  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  dateEnd  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
+  date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE banAuction(
+  id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
-  isBanned BOOLEAN NOT NULL,
-  dateBegin  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
+  date  TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE "owner"(
@@ -136,6 +137,7 @@ CREATE TABLE category(
     CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 'Toys'::text, 'Daily Deals'::text, 'Sporting'::text, 'Others'::text]))));
 
 CREATE TABLE buyNow(
+  id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL
 );
@@ -168,13 +170,14 @@ ALTER TABLE ONLY reportUser
   ADD CONSTRAINT reportUser_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY reportAuction
-  ADD CONSTRAINT reportAuction_pkey PRIMARY KEY (id_user,id_auction);
+  ADD CONSTRAINT reportAuction_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY banUser
-  ADD CONSTRAINT banUser_pkey PRIMARY KEY (id_user);
+  ADD CONSTRAINT banUser_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY banAuction
-  ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id_user,id_auction);
+  ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id);
+  
 ALTER TABLE ONLY owner
   ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
 
@@ -182,7 +185,7 @@ ALTER TABLE ONLY wishList
   ADD CONSTRAINT wishList_pkey PRIMARY KEY (id_user, id_auction);
 
 ALTER TABLE ONLY buyNow
-  ADD CONSTRAINT buynow_pkey PRIMARY KEY (id_user, id_auction);
+  ADD CONSTRAINT buynow_pkey PRIMARY KEY (id);
 
 
 -- Foreign Keys
@@ -206,10 +209,10 @@ ALTER TABLE ONLY banuser
     ADD CONSTRAINT banuser_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
 
 ALTER TABLE ONLY bid
-    ADD CONSTRAINT bid_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
+    ADD CONSTRAINT bid_id_auction_fkey FOREIGN KEY (bid_id_auction) REFERENCES auction(auction_id);
 
 ALTER TABLE ONLY bid
-    ADD CONSTRAINT bid_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
+    ADD CONSTRAINT bid_id_user_fkey FOREIGN KEY (bid_id_user) REFERENCES users(user_id);
 
 ALTER TABLE ONLY category
     ADD CONSTRAINT category_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
@@ -269,7 +272,7 @@ CREATE FUNCTION "CheckAuctionDate"() RETURNS trigger
 DECLARE
    auctionDateEnd date;
 BEGIN
-   SELECT auction.dateEnd INTO auctionDateEnd FROM auction WHERE auction.auction_id = NEW.id_auction;
+   SELECT auction.dateEnd INTO auctionDateEnd FROM auction WHERE auction.auction_id = NEW.bid_id_auction;
    IF auctionDateEnd < NEW.date THEN
        RAISE EXCEPTION 'Cannot bid on closed auction!';
    END IF;
@@ -288,9 +291,9 @@ CREATE FUNCTION "CheckUserBid"() RETURNS trigger
 DECLARE
    sellerId integer;
 BEGIN
-   SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.id_auction;
+   SELECT owner.id_user INTO sellerId FROM owner WHERE owner.id_auction = NEW.bid_id_auction;
 
-   IF NEW.id_user = sellerId THEN
+   IF NEW.bid_id_user = sellerId THEN
        RAISE EXCEPTION 'Cannot have the same buyer as its seller!';
    END IF;
    RETURN NEW;
@@ -402,32 +405,32 @@ INSERT INTO admin (id_user) VALUES (31);
 INSERT INTO admin (id_user) VALUES (32);
 INSERT INTO admin (id_user) VALUES (33);
 
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-13 00:00:00','2018-05-17 13:25:25','PS4 Controllers','Two Sony PS4 controllers that were only used once.',50.99,'play.jpg',70,'1',12,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-26 00:00:00','2018-05-03 00:00:00','Phone','The new one! Two good to be true! Buy now!',280.00,'phone.jpg',350.50,'1',10,0);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-05-02 00:00:00','MacbookPro','The new MacbookPro, 13 polg.',1000.99,'macbook.jpg',1500.10,'1',8,2);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-05-01 00:00:00','Iphone7','The new iphone 7 with 64GB.',700.50,'iphone.jpg',750.60,'1',15,0);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-13 00:00:00','2018-05-02 00:00:00','New Album David Bowie','The new album from david bowie. Good conditions',20.90,'music.jpg',25.50,'1',12,3);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-05 00:00:00','2018-05-01 00:00:00','Vinyl Mike Evans','The album from Mike Evans.',25.90,'music2.jpg',27.00,'1',14,3);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-08 00:00:00','2018-05-03 00:00:00','Vinyl','The new Vynil! Buy now.',30.22,'music3.jpg',36.84,'1',13,2);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-05-03 00:00:00','Camera Nikon D7500','The new Nikon camera!',468.41,'camera.jpg',500.62,'1',2,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-04 00:00:00','2018-05-02 00:00:00','New Camera','The new one.Buy now!',26.00,'camera2.jpg',30.66,'1',6,2);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-01 00:00:00','2018-05-02 00:00:00','Tennis Nike','The new Tennis from nike!',96.00,'sport.jpg',100.00,'1',2,3);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-15 00:00:00','2018-05-01 00:00:00','QUAY AUSTRALIA Sunglasses','The new blue sunglasses!',90.92,'sunglasses.jpg',92.40,'1',16,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-03 00:00:00','2018-05-02 00:00:00','Prada Cameo Saffiano','The new fashion!',500.49,'prada.jpg',520.05,'1',5,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-05-03 00:00:00','Vases','Very good price',15.51,'garden.jpg',12.50,'1',12,3);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-04 00:00:00','2018-05-03 00:00:00','Toy for boys','Very nice',20.59,'toy.jpg',25.13,'1',12,4);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-24 00:00:00','2018-05-01 00:00:00','Toy for little boys','Very cool',19.58,'toy2.jpeg',22.81,'1',12,2);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-05-02 00:00:00','Kitchen design','Very cool',8.31,'garden2.jpeg',10.81,'1',12,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-01 00:00:00','2018-06-01 00:00:00','Gisela','urna. Vivamus molestie dapibus ligula. Aliquam',17.00,'natoquepenatibusetmagnisdisparturient',23.07,'0',9,4);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-07 00:00:00','2018-06-03 00:00:00','Dorian','Proin nisl sem, consequat nec, mollis vitae, posuere at,',11.63,'etlaciniavitaesodalesatvelit',18.53,'0',7,5);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-03 00:00:00','Ivory','nulla magna, malesuada vel, convallis in, cursus et, eros.',10.53,'tiamgravidamolestiearcuedeu',18.86,'0',17,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-06 00:00:00','2018-06-01 00:00:00','Aline','ligula elit, pretium',2.62,'doloregestasrhoncusroinnislsem,',7.31,'0',13,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-08 00:00:00','2018-06-03 00:00:00','Mary','venenatis vel, faucibus  libero. Donec consectetuer mauris id sapien.',9.47,'imperdietullamcorperuiatlacusuisque',17.13,'0',13,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-01 00:00:00','2018-06-01 00:00:00','Maryam','augue id ante dictum cursus. Nunc mauris elit,',13.58,'onecatarcuestibulumanteipsum',18.12,'0',18,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-06 00:00:00','2018-06-03 00:00:00','Nadine','tempus eu, ligula. Aenean euismod mauris eu',18.57,'eunullaatsemolestiesodales.',24.66,'0',8,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-06-03 00:00:00','Jackson','penatibus',14.65,'sapiengravidanonsollicitudinamalesuada',18.30,'0',4,0);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-12 00:00:00','2018-06-02 00:00:00','Ima','Aliquam tincidunt, nunc',16.69,'etlacinia vitaesodalesatvelit',22.06,'0',6,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-06-02 00:00:00','Quin','tellus. Suspendisse sed dolor. Fusce mi lorem,',10.46,'liquamrutrumloremacrisusMorbi',13.53,'0',0,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-13 00:00:00','2018-06-17 13:25:25','PS4 Controllers','Two Sony PS4 controllers that were only used once.',50.99,'play.jpg',70,'1',12,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-26 00:00:00','2018-06-05 13:55:00','Phone','The new one! Two good to be true! Buy now!',280.00,'phone.jpg',350.50,'1',10,0);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-02 00:00:00','MacbookPro','The new MacbookPro, 13 polg.',1000.99,'macbook.jpg',1500.10,'1',8,2);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-06-01 00:00:00','Iphone7','The new iphone 7 with 64GB.',700.50,'iphone.jpg',750.60,'1',15,0);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-13 00:00:00','2018-06-02 00:00:00','New Album David Bowie','The new album from david bowie. Good conditions',20.90,'music.jpg',25.50,'1',12,3);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-05 00:00:00','2018-06-01 00:00:00','Vinyl Mike Evans','The album from Mike Evans.',25.90,'music2.jpg',27.00,'1',14,3);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-08 00:00:00','2018-06-03 00:00:00','Vinyl','The new Vynil! Buy now.',30.22,'music3.jpg',36.84,'1',13,2);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-08 00:00:00','Camera Nikon D7500','The new Nikon camera!',468.41,'camera.jpg',500.62,'1',2,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-04 00:00:00','2018-06-02 00:00:00','New Camera','The new one.Buy now!',26.00,'camera2.jpg',30.66,'1',6,2);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-01 00:00:00','2018-06-02 00:00:00','Tennis Nike','The new Tennis from nike!',96.00,'sport.jpg',100.00,'1',2,3);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-15 00:00:00','2018-06-01 00:00:00','QUAY AUSTRALIA Sunglasses','The new blue sunglasses!',90.92,'sunglasses.jpg',92.40,'1',16,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-03 00:00:00','2018-06-02 00:00:00','Prada Cameo Saffiano','The new fashion!',500.49,'prada.jpg',520.05,'1',5,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-06-03 00:00:00','Vases','Very good price',15.51,'garden.jpg',12.50,'1',12,3);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-04 00:00:00','2018-06-03 00:00:00','Toy for boys','Very nice',20.59,'toy.jpg',25.13,'1',12,4);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-24 00:00:00','2018-06-01 00:00:00','Toy for little boys','Very cool',19.58,'toy2.jpeg',22.81,'1',12,2);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-06-02 00:00:00','Kitchen design','Very cool',8.31,'garden2.jpeg',10.81,'1',12,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-01 00:00:00','2018-06-01 00:00:00','Water pump motors','The new one in the market!',60.00,'motor.jpg',100.07,'1',9,4);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-07 00:00:00','2018-06-03 00:00:00','Servo motors','Best worldwide servo motors',65.63,'motor2.jpg',120.53,'1',7,5);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-03 00:00:00','Lit motors','New in the marker',35523.53,'motor3.jpg',55000.86,'1',17,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-06 00:00:00','2018-06-01 00:00:00','Baldor electric motors','Best conditions',32.62,'motor4.jpg',65.31,'1',13,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-08 00:00:00','2018-06-03 00:00:00','Mac Burguer','Delicious and tasty',3.47,'hamburguer.jpg',5.13,'1',13,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-01 00:00:00','2018-06-01 00:00:00','Best Perfume','The best perfume',80.58,'perfum.jpg',100.12,'1',18,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-06 00:00:00','2018-06-03 00:00:00','Bike 320','Fury Pro Mountain bike',260.57,'bike.jpeg',500.66,'1',8,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-06-03 00:00:00','Raquet','The new one!',80.65,'tenis.jpg',100.30,'1',4,0);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-12 00:00:00','2018-06-02 00:00:00','Weights for the gym','Good conditions, with the best price.',15.69,'gym.jpeg',30.06,'1',6,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-06-02 00:00:00','Books English collection','Really good',65.46,'book.jpg',80.53,'1',0,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-01 00:00:00','Kane','mi. Duis risus odio, auctor vitae,',4.61,'faucibusorciluctusetultricesposuere',9.23,'0',7,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-05 00:00:00','2018-06-03 00:00:00','Hope','Proin sed',7.53,'diamroindolorullasempertellus',10.14,'0',15,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-24 00:00:00','2018-06-01 00:00:00','Abbot','ultricies sem',14.07,'enimmitemporloremegetmollis',17.97,'0',6,1);
@@ -454,106 +457,12 @@ INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-02 00:00:00','2018-06-01 00:00:00','Keaton','magnis',1.78,'gravidanuncsedpedeumsociis',6.61,'0',12,1);
 
 
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',0.80,DEFAULT,7,12);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',3.85,DEFAULT,16,26);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',1.59,DEFAULT,13,21);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',14.06,DEFAULT,32,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',5.86,DEFAULT,14,1);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',18.51,DEFAULT,8,17);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',6.27,DEFAULT,38,29);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',8.26,DEFAULT,23,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',8.46,DEFAULT,29,18);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',1.17,DEFAULT,48,12);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',3.22,DEFAULT,7,16);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',17.36,DEFAULT,35,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',14.38,DEFAULT,34,5);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',5.45,DEFAULT,21,29);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',12.86,DEFAULT,25,24);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',11.43,DEFAULT,2,15);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',14.65,DEFAULT,24,7);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',6.86,DEFAULT,32,26);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',16.48,DEFAULT,42,19);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',17.18,DEFAULT,41,4);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',1.79,DEFAULT,36,20);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',8.23,DEFAULT,1,29);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',12.29,DEFAULT,4,8);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',19.49,DEFAULT,12,19);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',18.43,DEFAULT,15,14);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',16.96,DEFAULT,2,30);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',6.40,DEFAULT,40,15);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',0.65,DEFAULT,36,19);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',13.58,DEFAULT,22,3);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',2.10,DEFAULT,40,9);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',8.51,DEFAULT,44,5);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',0.88,DEFAULT,6,9);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',11.01,DEFAULT,18,12);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',1.23,DEFAULT,13,14);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',2.67,DEFAULT,11,8);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',18.74,DEFAULT,32,3);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('0',2.30,DEFAULT,7,2);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',11.00,DEFAULT,38,9);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',16.69,DEFAULT,25,11);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',9.47,DEFAULT,21,3);
-INSERT INTO bid (status,price,date,id_auction,id_user) VALUES ('1',8.31,DEFAULT,16,15);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',13.27,DEFAULT,39,20);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',12.81,DEFAULT,1,14);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.52,DEFAULT,29,11);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',2.44,DEFAULT,7,4);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.50,DEFAULT,35,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',25.41,DEFAULT,8,18);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',22.12,DEFAULT,42,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',4.51,DEFAULT,13,11);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',8.75,DEFAULT,10,29);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.87,DEFAULT,33,26);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',21.16,DEFAULT,33,27);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',12.44,DEFAULT,3,11);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',15.62,DEFAULT,23,4);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',11.63,DEFAULT,18,5);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.78,DEFAULT,13,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',7.53,DEFAULT,28,29);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',8.30,DEFAULT,32,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.57,DEFAULT,25,7);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.52,DEFAULT,4,8);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',18.25,DEFAULT,37,19);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.31,DEFAULT,24,6);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.56,DEFAULT,7,17);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',19.04,DEFAULT,42,16);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',11.59,DEFAULT,14,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.34,DEFAULT,9,28);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',18.57,DEFAULT,23,24);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',0.80,DEFAULT,20,17);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.69,DEFAULT,20,10);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',15.87,DEFAULT,45,22);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',9.69,DEFAULT,24,2);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',3.08,DEFAULT,49,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.78,DEFAULT,50,2);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',5.80,DEFAULT,5,7);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',14.07,DEFAULT,29,6);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',10.53,DEFAULT,19,19);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',16.92,DEFAULT,11,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',14.34,DEFAULT,10,23);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.89,DEFAULT,37,29);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',6.17,DEFAULT,5,5);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',19.58,DEFAULT,15,23);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',3.34,DEFAULT,32,26);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',4.61,DEFAULT,27,12);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.45,DEFAULT,48,23);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',9.02,DEFAULT,45,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',9.39,DEFAULT,18,20);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.56,DEFAULT,50,7);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.94,DEFAULT,49,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',16.29,DEFAULT,17,30);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',7.95,DEFAULT,45,9);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',17.00,DEFAULT,17,1);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',10.81,DEFAULT,41,22);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',15.61,DEFAULT,47,16);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',18.31,DEFAULT,33,24);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',3.65,DEFAULT,49,28);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',1.22,DEFAULT,6,21);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',2.62,DEFAULT,20,22);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',0.52,DEFAULT,36,4);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('0',1.19,DEFAULT,20,13);
-INSERT INTO bid (status,price,date,id_auction,id_user)  VALUES ('1',17.85,DEFAULT,1,19);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',0.80,DEFAULT,7,12);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',3.85,DEFAULT,16,26);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',1.59,DEFAULT,13,21);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',14.06,DEFAULT,32,24);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',5.86,DEFAULT,14,1);
+INSERT INTO bid (status,price,date,bid_id_auction,bid_id_user) VALUES ('0',18.51,DEFAULT,8,17);
 
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (4,3,'2018-03-26 00:46:15','in, hendrerit consectetuer, cursus et, magna. Praesent',19,1);
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (14,3,'2018-03-28 02:28:40','Proin nisl sem, consequat nec,',30,4);
@@ -596,32 +505,32 @@ INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (2
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (4,2,'2018-03-28 07:58:37','a, auctor non, feugiat nec, diam. Duis',21,48);
 INSERT INTO comment ("like",dislike,"date",comment,id_user,id_auction) VALUES (9,1,'2018-03-27 02:29:06','placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante,',2,29);
 
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('mattis. Integer eu lacus. Quisque',11,12);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('turpis vitae purus gravida sagittis.',9,24);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('pede. Cras vulputate velit eu',7,9);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('auctor velit. Aliquam nisl. Nulla',30,29);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('Nunc lectus pede, ultrices a,',5,16);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('mollis nec, cursus a, enim.',4,10);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('Etiam imperdiet dictum magna. Ut',20,26);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('vitae nibh. Donec est mauris,',24,17);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('convallis erat, eget tincidunt dui',8,6);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('fermentum vel, mauris. Integer sem',22,15);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('Quisque porttitor eros nec tellus.',5,21);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('consequat dolor vitae dolor. Donec',13,23);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('dictum augue malesuada malesuada. Integer',19,3);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('nibh. Aliquam ornare, libero at',14,5);
-INSERT INTO reportUser (reason,id_userReporting,id_userReported) VALUES ('feugiat non, lobortis quis, pede.',21,24);
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('mattis. Integer eu lacus. Quisque',11,12,'2018-03-20 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('turpis vitae purus gravida sagittis.',9,24,'2018-03-21 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('pede. Cras vulputate velit eu',7,9,'2018-03-22 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('auctor velit. Aliquam nisl. Nulla',30,29,'2018-03-21 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('Nunc lectus pede, ultrices a,',5,16,'2018-03-06 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('mollis nec, cursus a, enim.',4,10,'2018-03-30 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('Etiam imperdiet dictum magna. Ut',20,26,'2018-04-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('vitae nibh. Donec est mauris,',24,17,'2018-01-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('convallis erat, eget tincidunt dui',8,6,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('fermentum vel, mauris. Integer sem',22,15,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('Quisque porttitor eros nec tellus.',5,21,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('consequat dolor vitae dolor. Donec',13,23,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('dictum augue malesuada malesuada. Integer',19,3,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('nibh. Aliquam ornare, libero at',14,5,'2018-03-26 00:46:15');
+INSERT INTO reportUser (reason,id_userReporting,id_userReported,date) VALUES ('feugiat non, lobortis quis, pede.',21,24,'2018-03-26 00:46:15');
 
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (2,26,'ornare. Fusce mollis. Duis sit');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (12,24,'leo, in lobortis tellus justo');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (13,37,'ac mi eleifend egestas. Sed');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (26,29,'accumsan neque et nunc. Quisque');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (5,43,'Integer in magna. Phasellus dolor');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (30,27,'lacinia. Sed congue, elit sed');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (11,2,'tellus eu augue porttitor interdum.');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (5,35,'tincidunt, nunc ac mattis ornare,');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (7,29,'lectus. Nullam suscipit, est ac');
-INSERT INTO reportAuction (id_user,id_auction,reason) VALUES (7,36,'mi eleifend egestas. Sed pharetra,');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (2,26,'ornare. Fusce mollis. Duis sit','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (12,24,'leo, in lobortis tellus justo','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (13,37,'ac mi eleifend egestas. Sed','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (26,29,'accumsan neque et nunc. Quisque','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (5,43,'Integer in magna. Phasellus dolor','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (30,27,'lacinia. Sed congue, elit sed','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (11,2,'tellus eu augue porttitor interdum.','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (5,35,'tincidunt, nunc ac mattis ornare,','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (7,29,'lectus. Nullam suscipit, est ac','2018-03-20 00:46:15');
+INSERT INTO reportAuction (id_user,id_auction,reason,date) VALUES (7,36,'mi eleifend egestas. Sed pharetra,','2018-03-20 00:46:15');
 
 INSERT INTO owner (id_user,id_auction) VALUES (1,1);
 INSERT INTO owner (id_user,id_auction) VALUES (17,2);
@@ -674,25 +583,24 @@ INSERT INTO owner (id_user,id_auction) VALUES (2,48);
 INSERT INTO owner (id_user,id_auction) VALUES (4,49);
 INSERT INTO owner (id_user,id_auction) VALUES (10,50);
 
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (12,2,'0','2018-04-08 15:57:21','2018-04-19 01:43:11');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (24,1,'1','2018-04-05 22:52:02','2018-04-13 11:43:42');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (9,1,'1','2018-04-08 03:06:47','2018-04-14 07:45:18');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (29,2,'1','2018-04-05 12:55:51','2018-04-13 14:19:08');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (16,4,'0','2018-04-06 20:56:35','2018-04-20 09:14:28');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (6,2,'1','2018-04-06 15:32:07','2018-04-15 13:05:22');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (26,2,'1','2018-04-07 14:54:50','2018-04-14 20:00:00');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (15,1,'1','2018-04-08 00:27:59','2018-04-14 21:24:49');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (21,2,'0','2018-04-08 20:40:54','2018-04-12 17:53:11');
-INSERT INTO banUser (id_user,id_admin,isBanned,dateBegin,dateEnd) VALUES (5,3,'1','2018-04-10 12:25:58','2018-04-12 07:38:01');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (12,2,'2018-04-19 01:43:11');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (24,1,'2018-04-13 11:43:42');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (9,1,'2018-04-14 07:45:18');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (29,2,'2018-04-13 14:19:08');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (16,4,'2018-04-20 09:14:28');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (6,2,'2018-04-15 13:05:22');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (26,2,'2018-04-14 20:00:00');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (15,1,'2018-04-14 21:24:49');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (21,2,'2018-04-12 17:53:11');
+INSERT INTO banUser (id_user,id_admin,date) VALUES (5,3,'2018-04-12 07:38:01');
 
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (2,26,'0','2018-04-07 12:30:37');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (12,24,'1','2018-04-07 23:54:50');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (13,37,'0','2018-04-08 17:25:38');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (26,29,'1','2018-04-08 06:36:13');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (5,43,'1','2018-04-05 11:43:16');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (30,27,'1','2018-04-09 10:33:17');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (11,2,'0','2018-04-05 22:49:11');
-INSERT INTO banAuction (id_user,id_auction,isBanned,dateBegin) VALUES (5,35,'0','2018-04-07 02:59:54');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (2,26,'2018-04-07 12:30:37');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (12,24,'2018-04-07 23:54:50');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (13,37,'2018-04-08 17:25:38');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (26,29,'2018-04-08 06:36:13');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (5,43,'2018-04-05 11:43:16');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (30,27,'2018-04-09 10:33:17');
+INSERT INTO banAuction (id_user,id_auction,date) VALUES (11,2,'2018-04-05 22:49:11');
 
 INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (29,1,'2018-04-03 23:43:54','1');
 INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (12,48,'2018-04-02 16:41:23','1');
@@ -762,16 +670,16 @@ INSERT INTO category (id_auction,Category) VALUES (13,'Home & Garden');
 INSERT INTO category (id_auction,Category) VALUES (14,'Toys');
 INSERT INTO category (id_auction,Category) VALUES (15,'Toys');
 INSERT INTO category (id_auction,Category) VALUES (16,'Home & Garden');
-INSERT INTO category (id_auction,Category) VALUES (17,'Music');
-INSERT INTO category (id_auction,Category) VALUES (18,'Others');
+INSERT INTO category (id_auction,Category) VALUES (17,'Motors');
+INSERT INTO category (id_auction,Category) VALUES (18,'Motors');
 INSERT INTO category (id_auction,Category) VALUES (19,'Motors');
-INSERT INTO category (id_auction,Category) VALUES (20,'Toys');
-INSERT INTO category (id_auction,Category) VALUES (21,'Music');
-INSERT INTO category (id_auction,Category) VALUES (22,'Home & Garden');
-INSERT INTO category (id_auction,Category) VALUES (23,'Daily Deals');
-INSERT INTO category (id_auction,Category) VALUES (24,'Electronics');
-INSERT INTO category (id_auction,Category) VALUES (25,'Fashion');
-INSERT INTO category (id_auction,Category) VALUES (26,'Music');
+INSERT INTO category (id_auction,Category) VALUES (20,'Motors');
+INSERT INTO category (id_auction,Category) VALUES (21,'Daily Deals');
+INSERT INTO category (id_auction,Category) VALUES (22,'Daily Deals');
+INSERT INTO category (id_auction,Category) VALUES (23,'Sporting');
+INSERT INTO category (id_auction,Category) VALUES (24,'Sporting');
+INSERT INTO category (id_auction,Category) VALUES (25,'Sporting');
+INSERT INTO category (id_auction,Category) VALUES (26,'Others');
 INSERT INTO category (id_auction,Category) VALUES (27,'Motors');
 INSERT INTO category (id_auction,Category) VALUES (28,'Sporting');
 INSERT INTO category (id_auction,Category) VALUES (29,'Toys');

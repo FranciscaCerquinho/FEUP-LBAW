@@ -11,6 +11,7 @@ use App\Auction;
 use App\Comment;
 use App\Admin;
 use App\Owner;
+use App\ReportAuction;
 
 class AuctionController extends Controller
 {
@@ -34,9 +35,16 @@ class AuctionController extends Controller
         return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
+    public function search($name = null) {
+      
+      return view('pages.search');
+    }
+
     public function show($id){
       $like=0;
       $commentsLikes = array();
+      $comment_likes = array();
+      $auctionReported=0;
 
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
@@ -67,6 +75,8 @@ class AuctionController extends Controller
             array_push($commentsLikes,2);
           }
         }
+        $auctionReported = ReportAuction::where([['id_auction','=',$id],['id_user','=',Auth::user()->user_id]])
+        ->first();
         }
       else
         $type=0;
@@ -84,18 +94,61 @@ class AuctionController extends Controller
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->orderBy('date','asc')
       ->get();
-      
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes]);
+
+   
+      if($auctionReported!=null){
+        $reported=1;
+      }
+      else{
+        $reported=0;
+      }
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes, 'auctionReported'=>$reported]);
     }
 
+    public function myAuctions(){
+            
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      
+      }
+      else
+        $type=0;
+      
+        $auctions = DB::table('owner')->where('id_user',Auth::user()->user_id)
+        ->join('users', 'users.user_id', '=', 'owner.id_user')
+        ->join('auction','auction_id','=','owner.id_auction')
+        ->where('auction.active',1)->orderBy('dateend','asc')->get();
 
-     /**
+        return view('pages.userAuctions', [ 'auctions' => $auctions, 'type' => $type]);
+    }
+
+    public function showAddAuction(){
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      
+      }
+      else
+        $type=0;
+      
+      return view('pages.addAuction',['type' => $type]);
+    }
+    
+    /**
      * Creates a new auction.
      *
      * @return Auction The auction created.
      */
     public function create(Request $request)
     {
+               
       $auction = new Auction();
       $owner = new Owner();
       //$category = new Category();
@@ -137,10 +190,6 @@ class AuctionController extends Controller
         'buyNow' => 'required|regex:/^\d*(\.\d{2})?$/',
         'category' => ['required', Rule::in(['Electronics', 'Fashion', 'Home & Garden', 'Motors', 'Music', 'Toys', 'Daily Deals', 'Sporting', 'Others'])]
       ]);
-    }
-
-    public function showAddAuction(){
-      return view('pages.add_auction');
     }
 
 
@@ -207,7 +256,26 @@ class AuctionController extends Controller
     }      
       return $auction;
     }
-    
 
+
+     public function searchByCategory($category)  {
+       $type=0;
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+  
+     $auctions =DB::table('category')->where('category', $category)
+      ->join('auction','auction.auction_id','=', 'category.id_auction')->where('active',1)
+      ->join('owner', 'owner.id_auction', '=', 'auction_id')
+      ->join('users', 'users.user_id', '=', 'owner.id_user')->get();
+
+      
+      return view('pages.search', [ 'auctions' => $auctions, 'type' => $type]);
+  
+    }
 }
 ?>

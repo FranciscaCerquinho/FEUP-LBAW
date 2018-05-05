@@ -1,0 +1,241 @@
+  .reportAuction{
+    width: 50em;
+    height: 50em;
+  }
+
+  .popup-reportAuction {
+    font: 20px Montserrat, sans-serif;
+    width:100%;
+    height:100%;
+    display:none;
+    position:fixed;
+    top:0px;
+    left:0px;
+    background:rgba(0,0,0,0.75);
+    z-index: 1;
+  }
+  
+  .popup-reportAuction #submit {
+    font: 20px Montserrat, sans-serif;
+    font-size: 1em;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-top: 2px;
+    vertical-align: middle;
+    height: 50px;
+    width: 120px;
+    color: 	#000000;
+    opacity:0.9;
+    border-radius: 10px;
+  
+  }
+  
+  .popup-inner-reportAuction {
+    font: 20px Montserrat, sans-serif;
+    width:30%;
+    padding:60px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+    box-shadow:0px 2px 6px rgba(0,0,0,1);
+    border-radius:3px;
+    background:#fff;
+  
+  }
+  
+  .popup-inner-reportAuction .inputField-reportAuction {
+    font: 20px Montserrat, sans-serif;
+    border-radius: 5px;
+      width: 98%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 5px;
+    font-size: 1.5em;
+  }
+  
+  .popup-inner-reportAuction fieldset{
+      width: 75%;
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  .popup-close-reportAuction {
+    font: 20px Montserrat, sans-serif;
+    width:30px;
+    height:30px;
+    padding-top:4px;
+    display:inline-block;
+    position:absolute;
+    top:0px;
+    right:0px;
+    transition:ease 0.35s all;
+    -webkit-transform:translate(50%, -50%);
+    transform:translate(50%, -50%);
+    border-radius:1000px;
+    background:#597ca0ff;
+    font-size:10px;
+    text-align:center;
+    line-height:100%;
+    color:#597ca0ff;
+    font-size:15px;
+    text-align: center;
+  }
+  
+  .popup-close-reportAuction:hover {
+      background:#597ca0ff;
+  }
+  
+  .inputField-reportAuction {
+    font: 20px Montserrat, sans-serif;
+    margin: 10px;
+    padding-left: 10px;
+    border: solid 1px #597ca0ff;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  @media only screen and (max-width:1024px) {
+    .reportAuction{
+      width: 80em;
+      height: 80em;
+    }
+    .popup-inner-reportAuction {
+        width: 0%;
+        width: 600px;
+    }
+    }
+
+@media only screen and (max-width:576px) {
+    .reportAuction{
+        width: 80em;
+        height: 80em;
+    }
+    .popup-inner-reportAuction {
+        width: 0%;
+        width: 300px;
+    }
+    }
+      
+  .reportUser{
+    width: 50em;
+    height: 50em;
+  }
+
+  .popup-reportUser {
+    font: 20px Montserrat, sans-serif;
+    width:100%;
+    height:100%;
+    display:none;
+    position:fixed;
+    top:0px;
+    left:0px;
+    background:rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+  
+  .popup-reportUser #submit {
+    font: 20px Montserrat, sans-serif;
+    font-size: 1em;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-top: 2px;
+    vertical-align: middle;
+    height: 50px;
+    width: 120px;
+    color: 	#000000;
+    opacity:0.9;
+    border-radius: 10px;
+  
+  }
+  
+  .popup-inner-reportUser {
+    font: 20px Montserrat, sans-serif;
+    width:30%;
+    padding:60px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+    box-shadow:0px 2px 6px rgba(0,0,0,1);
+    border-radius:3px;
+    background:#fff;
+  
+  }
+  
+  .popup-inner-reportUser .inputField-reportUser {
+    font: 20px Montserrat, sans-serif;
+    border-radius: 5px;
+      width: 98%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 5px;
+    font-size: 1.5em;
+  }
+  
+  .popup-inner-reportUser fieldset{
+      width: 75%;
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  .popup-close-reportUser {
+    font: 20px Montserrat, sans-serif;
+    width:30px;
+    height:30px;
+    padding-top:4px;
+    display:inline-block;
+    position:absolute;
+    top:0px;
+    right:0px;
+    transition:ease 0.35s all;
+    -webkit-transform:translate(50%, -50%);
+    transform:translate(50%, -50%);
+    border-radius:1000px;
+    background:#597ca0ff;
+    font-size:10px;
+    text-align:center;
+    line-height:100%;
+    color:#597ca0ff;
+    font-size:15px;
+    text-align: center;
+  }
+  
+  .popup-close-reportUser:hover {
+      background:#597ca0ff;
+  }
+  
+  .inputField-reportUser {
+    font: 20px Montserrat, sans-serif;
+    margin: 10px;
+    padding-left: 10px;
+    border: solid 1px #597ca0ff;
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  @media only screen and (max-width:1024px) {
+    .reportUser{
+      width: 80em;
+      height: 80em;
+    }
+    .popup-inner-reportUser {
+        width: 0%;
+        width: 600px;
+    }
+    }
+
+@media only screen and (max-width:576px) {
+    .reportUser{
+        width: 80em;
+        height: 80em;
+    }
+    .popup-inner-reportUser {
+        width: 0%;
+        width: 300px;
+    }
+    }
