@@ -45,7 +45,7 @@ function getPageList(totalPages, page, maxLength) {
     // Number of items and limits the number of items per page
     var numberOfItems = $(".new_auctions #auctions-list").length;
    
-    var limitPerPage = 8;
+    var limitPerPage = 12;
     // Total pages rounded upwards
     var totalPages = Math.ceil(numberOfItems / limitPerPage);
     // Number of buttons at the top, not counting prev/next,

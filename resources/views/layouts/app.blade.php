@@ -99,7 +99,7 @@
 					<div class="username">
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-								<img class="img-circle" src="/images/{{Auth::user()->photo}}" style="margin-right:10px; width: 31px;height: 30px;"></img>
+								<img class="img-circle" src="/images/{{Auth::user()->photo}}" ></img>
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
@@ -124,7 +124,7 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" title="Wish List" href="{{url ('wishList') }}" style="text-decoration:none; color:#597ca0ff;">
-						<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;"></i>
+						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 					</a>
 				</li>
 				@endif

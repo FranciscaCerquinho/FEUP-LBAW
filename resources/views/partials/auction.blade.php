@@ -1,6 +1,6 @@
-<div class="col-8 col-lg-3 col-md-3 col-sm-6 mb-4" id="auctions-list">
+<div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-4 " id="auctions-list">
 
-<div class="card-deck">
+<div class="card-deck align-items-center">
   <div class="card auctionCard">
   @if(isset($auction->price))
         <div class="sale-box">

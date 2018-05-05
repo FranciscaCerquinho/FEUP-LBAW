@@ -26,63 +26,63 @@
 				<form action="" mathod="GET">
 						<div class="padding-v-xs" data-toggle="buttons">
 							<label class="btn btn-default btn-xs ico">
-								<input type="checkbox" name="" value="" autocomplete="off" />
+								<input type="checkbox" name="" value="" autocomplete="off"  @if($auctions[0]->category=='Electronics')checked @endif>
 								<span class="icon glyphicon glyphicon-ok"></span>
 							</label>
 							<span>Electronics</span>
 						</div>
 						<div class="padding-v-xs" data-toggle="buttons">
 							<label class="btn btn-default btn-xs ico">
-								<input type="checkbox" name="" value="" autocomplete="off" />
+								<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Fashion')checked @endif />
 								<span class="icon glyphicon glyphicon-ok"></span>
 							</label>
 							<span>Fashion</span>
 						</div>
 						<div class="padding-v-xs" data-toggle="buttons">
 							<label class="btn btn-default btn-xs ico">
-								<input type="checkbox" name="" value="" autocomplete="off" />
+								<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Home & Garden')checked @endif/>
 								<span class="icon glyphicon glyphicon-ok"></span>
 							</label>
 							<span>Home & Garden</span>
 						</div>
 						<div class="padding-v-xs" data-toggle="buttons">
 							<label class="btn btn-default btn-xs ico">
-								<input type="checkbox" name="" value="" autocomplete="off" />
+								<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Motors')checked @endif/>
 								<span class="icon glyphicon glyphicon-ok"></span>
 							</label>
 							<span>Motors</span>
 						</div>
 						<div class="padding-v-xs" data-toggle="buttons">
 							<label class="btn btn-default btn-xs ico">
-								<input type="checkbox" name="" value="" autocomplete="off" />
+								<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Music')checked @endif/>
 								<span class="icon glyphicon glyphicon-ok"></span>
 							</label>
 							<span>Music</span>
 						</div>
 						<div class="padding-v-xs" data-toggle="buttons">
 							<label class="btn btn-default btn-xs ico">
-								<input type="checkbox" name="" value="" autocomplete="off" />
+								<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Toys')checked @endif/>
 								<span class="icon glyphicon glyphicon-ok"></span>
 							</label>
 							<span>Toys</span>
 						</div>
 					<div class="padding-v-xs" data-toggle="buttons">
 						<label class="btn btn-default btn-xs ico">
-							<input type="checkbox" name="" value="" autocomplete="off" />
+							<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Daily Deals')checked @endif/>
 							<span class="icon glyphicon glyphicon-ok"></span>
 						</label>
 						<span>Daily Deals</span>
 					</div>
 					<div class="padding-v-xs" data-toggle="buttons">
 						<label class="btn btn-default btn-xs ico">
-							<input type="checkbox" name="" value="" autocomplete="off" />
+							<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Sporting')checked @endif />
 							<span class="icon glyphicon glyphicon-ok"></span>
 						</label>
 						<span>Sporting</span>
 					</div>
 					<div class="padding-v-xs" data-toggle="buttons">
 						<label class="btn btn-default btn-xs ico">
-							<input type="checkbox" name="" value="" autocomplete="off" />
+							<input type="checkbox" name="" value="" autocomplete="off" @if($auctions[0]->category=='Others')checked @endif/>
 							<span class="icon glyphicon glyphicon-ok"></span>
 						</label>
 						<span>Others</span>
