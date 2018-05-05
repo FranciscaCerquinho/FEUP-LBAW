@@ -141,16 +141,16 @@ body {
       padding: 30px 60px 10px 60px;
     }
     .auctionCard {
-        padding: 15px;
+        padding: 0px;
         align-content: center;
     }
     .auctionCardImage {
         z-index: 0;
-        width: 160px;
+        width: 100%;
     }
     
     .auctionCard {
-      padding: 20px;
+      padding: 0px;
       height: 380px;
       width: 200px;
       background-color: white;
@@ -191,24 +191,25 @@ body {
 @media only screen and (min-width: 782px) {
 .auctionCardImage {
     width: 100%;
+  
 }
 .auctionCard {
-    padding: 10px;
+    padding: 0px;
 }
 
 .auctionCard{
-  padding: 15px;
-  height: 515px;
+  padding: 0px;
+  height: 415px;
   background-color: white;
 }
 
 .auctionCardTitle a{
-  font-size: 22px;
+  font-size: 18px;
   color:#0c59cf;
 
 }
 .auctionCardBody h5{
-  font-size: 22px;
+  font-size: 20px;
   color:black;
   font-weight: bold;
 }
@@ -242,7 +243,7 @@ body {
 
 @media only screen and (max-width: 360px) {
   .auctionCard {
-      padding: 5px;
+      padding: 0px;
       height: 340px;
       background-color: white;
       align-content: center;
@@ -251,11 +252,26 @@ body {
 
 @media only screen and (max-width: 414px) {
   .auctionCard{
-    padding: 5px;
-    height: 345px;
+    padding: 0px;
+    height: 265px;
     background-color: white;
     align-content: center;
   }  
+  .auctionCardTitle a{
+    font-size: 10px;
+  }
+  .auctionCardText{
+    font-size: 11px;
+  }
+  .auctionCardBody h5{
+    font-size: 12px;
+  }
+  .auctionCardBody p{
+    font-size: 10px;
+  }
+  .auctionCardBody{
+    padding:10px;
+  }
 
   #search_bar{
     width:150px;
@@ -358,10 +374,6 @@ li a, .dropbtn {
   border: none;
 }
 
-#item .reportAuctionButton{
-  color:black;
-  font-size: 18px;
-}
 
 #item a#reportA::hover{
   background-color: white;
@@ -371,12 +383,7 @@ li a, .dropbtn {
   margin-left:15px;
 }
 }
-#item #reportA{
-  color:black;
-  font-size: 17px;
-  background-color: transparent;
-  border: none;
-}
+
 section#item h2.item_name{
   color: #444444;
   font-size: 26px;
@@ -445,8 +452,8 @@ section#item h2.item_name{
   }
   @media only screen and (min-width:576px) {
   .product_image{
-    width:400px;
-    height: 400px;
+    width:95%;
+    
   }
 }
 
@@ -2424,6 +2431,10 @@ iframe {
   padding: 12px;
 }
 
+#category_filter label{
+  font-weight: bold;  
+}
+
 .searchResultImage:hover{
   opacity: 0.5;
   filter: alpha(opacity=100); /* For IE8 and earlier */
@@ -2445,6 +2456,35 @@ iframe {
   #searchPage{
     padding:30px;
   }
+  #searchTitle h1{
+    font-size: 20px;
+  }
+  #category_filter {
+    border-radius: 15px;
+    background-color: white;
+    padding: 8px;
+  }
+  #category_filter label{
+    font-size: 12px;
+  }
+  #category_filter form{
+    font-size: 12px;
+    padding: 0px;
+  }
+  #category_filter .padding-v-xs {
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    height: 20px;
+}
+  #category_filter .padding-v-xs label{
+    height: 10px;
+    padding: 0px;
+    margin-right: 8px;
+  }
+  #category_filter .padding-v-xs:last-child{
+    padding-bottom: 15px;
+  }
+
 }
 @media only screen and (max-width: 576px) {
 
@@ -2453,13 +2493,13 @@ iframe {
   }
 
   #searchPage img{
-    width: 250px;
+    width: 100%;
     align-content: center;
     
   }
 
   #searchPage .card {
-    width: 280px;
+    width: 250px;
     left: 15%;
   }
 }
@@ -2524,6 +2564,10 @@ iframe {
 
   #button_login{
     margin-left: 100px;
+  }
+  .breadcrumb{
+    font-size: 10px;
+    padding: 2px;
   }
 }
 
