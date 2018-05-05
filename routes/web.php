@@ -38,6 +38,8 @@ Route::get('auctions', 'AuctionController@list')->name('auction');
 Route::get('auction/{id}', 'AuctionController@show')->name('item');
 Route::post('likeAuction/{id}', 'AuctionController@updateLike');
 Route::post('unlikeAuction/{id}', 'AuctionController@updateUnlike');
+Route::get('add_auction', 'AuctionController@showAddAuction')->name('add_auction');
+Route::post('add_auction', 'AuctionController@create');
 
 //Auctions comments
 

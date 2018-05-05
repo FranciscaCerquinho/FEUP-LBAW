@@ -28,6 +28,10 @@
 	    <script defer src="/js/fontawesome-all.js"></script>
 	    <link rel="icon" type="image/png" href="/images/icon.png">
 	    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/js/tempusdominus-bootstrap-4.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css" />
   </head>
   <body>
     
@@ -115,7 +119,7 @@
 				@endif
 				@if($type==1)
 				<li class="nav-item">
-					<a class="nav-link" href="">Add Auction</a>
+					<a class="nav-link" href="{{url ('add_auction')}}">Add Auction</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" title="Wish List" href="wishlist.html" style="text-decoration:none; color:#597ca0ff;">

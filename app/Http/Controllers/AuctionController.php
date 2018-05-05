@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 use App\Auction;
 use App\Comment;
 use App\Admin;
+use App\Owner;
 
 class AuctionController extends Controller
 {
@@ -87,7 +89,7 @@ class AuctionController extends Controller
     }
 
 
-    /**
+     /**
      * Creates a new auction.
      *
      * @return Auction The auction created.
@@ -96,25 +98,51 @@ class AuctionController extends Controller
     {
       $auction = new Auction();
       $owner = new Owner();
+      //$category = new Category();
 
-      $this->authorize('create', $auction);
-      $this->authorize('create', $owner);
+      //$this->authorize('create', $auction);
+      //$this->authorize('create', $owner);
+      //$this->authorize('create', $category);
 
       $auction->name = $request->input('name');
-      $auction->dateEnd = $request->input('dateEnd');
+      //$auction->dateBegin = date('Y-m-d H:i:s');
+      //$auction->dateEnd = $request->input('dateEnd');
       $auction->description = $request->input('description');
-      $auction->actualPrice = $request->input('actualPrice');
+      $auction->actualPrice = 800.00;//doubleval($request->input('actualPrice'));
       $auction->photo = $request->input('photo');
       $auction->buyNow = $request->input('buyNow');
-      $auction->active = 1;
+      $auction->active = '1';
+      $auction->auction_like = 0;
+      $auction->auction_dislike = 0;
       $auction->save();
 
       $owner->id_user = Auth::user()->user_id;
       $owner->id_auction = $auction->auction_id;
       $owner->save();
 
+      /*$category->id_auction = $auction->auction_id;
+      $category->category = $request->input('category');
+      $category->save();*/
+
       return $auction;
     }
+    
+    protected function validator(array $data){
+      return Validator::make($data, [
+        'name' => 'required|string|max:255',
+        'dateEnd' => 'required|date_format:d/m/Y H:i|after:now',
+        'description' => 'required|string|max:255',
+        'actualPrice' => 'required|regex:/^\d*(\.\d{2})?$/',
+        'photo' => 'required|image',
+        'buyNow' => 'required|regex:/^\d*(\.\d{2})?$/',
+        'category' => ['required', Rule::in(['Electronics', 'Fashion', 'Home & Garden', 'Motors', 'Music', 'Toys', 'Daily Deals', 'Sporting', 'Others'])]
+      ]);
+    }
+
+    public function showAddAuction(){
+      return view('pages.add_auction');
+    }
+
 
         /**
      * Updates the state of an individual item.
