@@ -33,7 +33,7 @@ class CommentController extends Controller
       $comment->date= date('Y-m-d H:i:s');
       $comment->save();
       $comment->load('user');
-      $comment->url= '/images/'.($comment->user->photo=='perfil_blue.png'?'perfil-icon_grey.png' : $comment->user->photo);
+      $comment->url= '/images/'.($comment->user->photo=='perfil_blue.png'?'commentImage.jpg' : $comment->user->photo);
       return $comment;
     }
 

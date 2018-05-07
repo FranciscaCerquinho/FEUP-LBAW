@@ -51,13 +51,13 @@ function addEventListeners() {
       addUnlike.addEventListener('click', sendAuctionUnlikeRequest);
   }
 
-  let addCommentLike = document.querySelectorAll("#comments #commentLike");
+  let addCommentLike = document.querySelectorAll(".comment #commentLike");
   if (addCommentLike) {
       for (var i = 0; i < addCommentLike.length; i++)
           addCommentLike[i].addEventListener('click', sendCommentLikeRequest);
   }
 
-  let addCommentUnlike = document.querySelectorAll("#comments #commentUnlike");
+  let addCommentUnlike = document.querySelectorAll(".comment #commentUnlike");
   if (addCommentUnlike) {
       for (var i = 0; i < addCommentUnlike.length; i++)
           addCommentUnlike[i].addEventListener('click', sendCommentUnlikeRequest);
@@ -78,7 +78,7 @@ function addEventListeners() {
       reportAuction.addEventListener('click', reportAuctionRequest);
   }
 
-  let reportUser = document.querySelectorAll("#reportUserButton #btn");
+  let reportUser = document.querySelectorAll(".comment .popup-reportUser #reportUserButton");
   if (reportUser) {
       for (var i = 0; i < reportUser.length; i++)
           reportUser[i].addEventListener('click', reportUserRequest);
@@ -118,50 +118,49 @@ function addCommentHandler() {
   let newComment = JSON.parse(this.responseText);
 
   let comment = document.createElement('div');
-  comment.setAttribute('class', 'row');
+  comment.setAttribute('class', 'col-sm-12 comment');
+  comment.setAttribute('data-id', newComment.id);
   let date = SplitDateReturn(newComment.date);
 
   comment.innerHTML = `
-<div id="comments">
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="comment_owner">
-                            <a href="#">
-                                <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
-                            </a>
-                        </div>
-                        <h6 class="text-muted time"> ${date} ago</h6>
-                    </div>
-                </div>
-                <div class="post-description">
-                    <p>${newComment.comment}</p>
-                    <div class="stats">
-                        <a href="#" class="btn stat-item">
-                            <i class="far fa-thumbs-up"></i>${newComment.like}
-                        </a>
-                        <a href="#" class="btn stat-item">
-                            <i class="far fa-thumbs-down"></i>${newComment.dislike}
-                        </a>
-                        <a href="#" class="btn btn-sm stat-item" style="padding:6px;">
-                            <i class="fas fa-bullhorn"></i>Report
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="panel panel-white post panel-shadow">
+  <div class="post-heading">
+      <div class="pull-left image">
+          <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
+      </div>
+      <div class="pull-left meta">
+          <div class="title h5">
+              <a href="#">
+                  <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
+              </a>
+          </div>
+          <h6 class="text-muted time"> ${date} ago</h6>
+      </div>
+  </div>
+  <div class="post-description">
+      <p>${newComment.comment}</p>
+      <div class="stats">
+            <a id="commentLike" class="btn stat-item">
+                <span  id ="likeCommentHand" class="fa fa-thumbs-up icon"></span>
+                <span  id ="likeComment">${newComment.like}</span>
+            </a>
+            <a id="commentUnlike" class="btn stat-item">
+                <span  id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
+                <span  id ="unlikeComment">${newComment.dislike}</span>
+            </a>
+          <a class="btn btn-sm stat-item" style="padding:6px;">
+              <i class="fas fa-bullhorn"></i>Report
+          </a>
+      </div>
+  </div>
 </div>`;
-  let comments = document.querySelector("#first .row #comments");
+
+  let comments = document.querySelector(".comments .row");
 
   let commentBox = document.querySelector("#addComment");
-
+console.log(comments);
+console.log(commentBox);
+console.log(comment);
   comments.insertBefore(comment, commentBox);
 }
 
@@ -241,7 +240,7 @@ function sendCommentLikeRequest() {
   let like = document.querySelector("#commentLike").textContent;
   like = parseInt(like) + 1;
 
-  let id = this.closest('div.buttonsComments').getAttribute('data-id');
+  let id = this.closest('div.comment').getAttribute('data-id');
 
   if (like != '')
       sendAjaxRequest('post', '/likeComment/' + id, {
@@ -254,7 +253,7 @@ function addCommentLikeHandler() {
   if (this.status != 200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
-  let stats = document.querySelector('div.buttonsComments[data-id="' + newLike.id + '"]');
+  let stats = document.querySelector('div.comment[data-id="' + newLike.id + '"]');
   let like = stats.querySelector("#likeComment");
 
   like.innerHTML = newLike.like;
@@ -278,7 +277,7 @@ function sendCommentUnlikeRequest() {
   let unlike = document.querySelector("#commentUnlike").textContent;
   unlike = parseInt(unlike) + 1;
 
-  let id = this.closest('div.buttonsComments').getAttribute('data-id');
+  let id = this.closest('div.comment').getAttribute('data-id');
 
   if (unlike != '')
       sendAjaxRequest('post', '/unlikeComment/' + id, {
@@ -290,7 +289,7 @@ function addCommentUnlikeHandler() {
   if (this.status != 200) window.location = '/';
   let newUnlike = JSON.parse(this.responseText);
 
-  let stats = document.querySelector('div.buttonsComments[data-id="' + newUnlike.id + '"]');
+  let stats = document.querySelector('div.comment[data-id="' + newUnlike.id + '"]');
   let unlike = stats.querySelector("#unlikeComment");
 
   unlike.innerHTML = newUnlike.dislike;
@@ -458,10 +457,13 @@ function reportAuctionHandler() {
 }
 
 function reportUserRequest() {
-  let parent = this.closest(".buttonsComments");
+  let parent = this.closest(".comment");
   let reason = parent.querySelector(".reportUserText").value;
 
+  console.log(reason);
+  
   let id = this.closest('.popup-reportUser').getAttribute('data-id');
+  console.log(id);
   let commentID = this.closest('.popup-inner-reportUser').getAttribute('data-id');
 
   sendAjaxRequest('post', '/reportUser/' + id, {

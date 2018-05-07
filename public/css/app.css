@@ -25,11 +25,15 @@ body {
     }
 
     #myTopNav:first-child {
-        padding-left: 1rem;
+        padding-left: 0!important;
     }
 
     #myTopNav:last-child {
         padding-right: 1rem;
+    }
+
+    #myTopNav a {
+      padding-left: 1rem;
     }
 }
 
@@ -165,14 +169,10 @@ body {
     .navbar-collapse{
         z-index: 99;
         padding: 20px 0px 20px 0px;
-        margin: 0 0 0 130px;
+        margin:0;
     }
     #myTopNav {
         padding: 0.5rem 0;
-    }
-
-    #myTopNav:first-child {
-        padding-left: 1rem;
     }
 
     #myTopNav:last-child {
@@ -577,9 +577,6 @@ section#item h2.item_name{
       left: 0;
   }
 
-  #item div#buy_now_button{
-    padding-top: 50px;
-  }
   #item div#buttons{
     background-color:#dfe5eb;
     padding-top: 5px;
@@ -611,7 +608,7 @@ section#item h2.item_name{
 
 @media only screen and (max-width:576px) {
   .product_image{
-    width:250px;
+    width: 100%;
     height: 250px;
   }
   #item{
@@ -723,143 +720,158 @@ section#item h2.item_name{
     flex: 3;
   }
 }
-  /*comment*/
-  .panel-shadow {
-      box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
-      background-color: white;
-  }
-  .post .post-heading {
-    height: 95px;
-    padding: 20px 15px;
-  }
-  .post .post-heading .avatar {
-    width: 60px;
-    height: 60px;
-    display: block;
-    margin-right: 15px;
-  }
 
+/*comments*/
+.comments {
+  margin-top: 2.5em; 
+  padding-left: 0;
+  padding-right: 0; 
+}
+.comments .row .col-sm-12 {
+  margin-bottom: 2em;
+}
 
-  .post .post-heading .meta .title a:hover {
-    color: #aaaaaa;
-  }
-  .post .post-description {
-    padding: 15px;
-  }
-  .post .post-description p {
-    font-size: 14px;
-    color: #444444;
-  }
-  .post .post-description .stats {
-    margin-top: 20px;
-  }
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.panel-white {
+  border: 1px solid: white;
+  background-color: white;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
 
-  #commentLike{
-    border: none;
-    color: black;
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+  color: black;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+  color: black;
+}
+
+.post .post-description .stats .stat-item-blue {
+  display: inline-block;
+  margin-right: 15px;
+  color: #437ab2;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+
+.status-upload {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-upload .btn {
+  margin: 1em 1em 1em 0;
+  float: right; 
+}
+.status-upload textarea {
+  padding: 1em;
+}
+
+@media (max-width: 768px){
+
+  .status-upload .row {
+    flex-direction: row;
+    margin-right: 0.25em;
+
   }
-
-  #commentUnlike{
-    border: none;
-    color: black;
+  .status-upload .col-sm-10 {
+    flex: 2;
   }
-
-  #commentReport{
-    border: none;
-    color:black;
+  .status-upload .col-sm-1 {
+    flex: 1;
   }
+}
 
-  .buttonsComments a:hover #likeCommentHand{
-    color:#437ab2;
-  }
-
-  .buttonsComments a:hover span{
-    color:#437ab2;
-  }
-
-  .buttonsComments a:hover #unlikeCommentHand{
-    color:#437ab2;
-  }
-
-  .buttonsComments a:hover #reportComment{
-    color:#437ab2;
-  }
-
-
-  #item div#comments div.container{
-    width: 1000px;
-    height: 200px;
-  }
-
-  #item div#comments{
-    padding-left: 20px;
-    padding-top: 40px;
-  }
-
-  #item div.leave_comment{
-    padding-top: 30px;
-    padding-left: 15px;
-  }
-  #item div.leave_comment button{
-    margin-left: 10px;
-    margin-bottom: 10px;
-  }
-  #item div.leave_comment textarea{
-    margin-left: 5px;
-    margin-top: 5px;
-    color: #000000;
-    font-size: 19px;
-  }
-
-  .stats a{
-    color:#444444;
-  }
-
-  .comment_owner a{
-      color:#437ab2;
-  }
-
-  .stat-item {
-    border-color:#888888;
-  }
-
-  .stat-item {
-    border-color:#888888;
-  }
-  .stats a:hover{
-    border-color:#888888;
-  }
-
-  .status-upload textarea{
-      border-color:transparent;
-  }
-
-  .status-upload button{
-      background-color:#437ab2;
-      color:white;
-  }
-
-  @media only screen and (max-width:576px) {
-
-    #item .container{
-      margin-right:0 !important;
-    }
-    #item div#comments div.container {
-      width: 100%;
-      margin-left: 0;
-      margin-bottom: 50px;
-
-    }
-
-    #item div#comments div.row {
-      padding-right: 0.9em;
-    }
-
-    #item div#comments div.row .leave_comment .container .row .panel-white form textarea {
-      width: 95%;
-    }
-
-  }
 /**Add auction page*/
 
 .add_auction{
@@ -1629,6 +1641,9 @@ hr.style17 {
 
 #edit_profile label{
     color: #597ca0ff;
+}
+#edit_profile .row .col-md-3 .text-center{
+  padding-left: 15px;
 }
 #edit_profile img {
   width: 170px;
@@ -2698,12 +2713,7 @@ iframe {
     margin-bottom: 30px;
   }
 }
-@media only screen and (max-width: 576px) {
-#searchPage .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto{
-  padding-left:0px !important;
-  padding-right:20px !important;
-}
-}
+
 /* Breacrumb */
 .breadcrumb li{
   color: #437ab2;
@@ -2817,6 +2827,7 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   background-color:#437ab2;
   z-index: 1;
   font-size: 16px;
+  color:white;
 }
 
 
