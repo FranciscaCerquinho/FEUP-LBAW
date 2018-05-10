@@ -50,11 +50,9 @@ class SearchController extends Controller
             ->join('auction','auction.auction_id','=', 'category.id_auction')->where('active',1)
             ->join('owner', 'owner.id_auction', '=', 'auction_id')
             ->join('users', 'users.user_id', '=', 'owner.id_user')->get()->toArray();
-          
             $auctions = array_merge($auctions, $array);
         }
         
-      
        return $auctions;
    
      }

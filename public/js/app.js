@@ -753,6 +753,7 @@ function searchCategoryRequest(){
 }
 
 function showCategoryHandler(){
+    console.log(this.responseText);
 
     if (this.status != 200) window.location = '/';
 
@@ -780,12 +781,12 @@ function showCategoryHandler(){
                 auctionDiv.setAttribute('class','col-lg-4 col-md-6 mb-4');
 
                 auctionDiv.innerHTML=`<div class="card h-100 auctionCard searchCard">
-                    <a href="{{route('item', ['id'=>${auctionsArray[actual_elem].auction_id}])}}">
+                    <a href="/auction/${auctionsArray[actual_elem].auction_id}">
                         <img class="card-img-top searchResultImage" src="/images/${auctionsArray[actual_elem].auctionphoto}" alt="">
                     </a>
                     <div class="card-body searchResultBody">
                         <h5 class="card-title searchResultTitle">
-                            <a href="{{route('item', ['id'=>${auctionsArray[actual_elem].auction_id}])}}">${auctionsArray[actual_elem].name}</a>
+                            <a href="/auction/${auctionsArray[actual_elem].auction_id}">${auctionsArray[actual_elem].name}</a>
                         </h5>
                         <h4 class="auctionPrice">EUR ${auctionsArray[actual_elem].price}</h5>
                         <h6 class="auctionTimeLeft">  ${date} left</h1>
