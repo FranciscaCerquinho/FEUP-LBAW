@@ -55,8 +55,9 @@ Route::post('makeBid/{id}', 'BidController@makeBid')->name('makeBid');
 Route::post('buyNow/{id}', 'BuyNowController@buyNow')->name('buyNow');
 
 //Search
-Route::get('category/{id}', 'AuctionController@searchByCategory')->name('searchByCategory');
-Route::get("search/{name?}",'AuctionController@search')->name('search');
+Route::get('category/{id}', 'SearchController@searchByCategory')->name('searchByCategory');
+Route::get('search/{name?}','SearchController@search')->name('search');
+Route::post('showCategory','SearchController@showCategory')->name('showCategory');
 
 //Report Auction
 Route::post('reportAuction/{id}', 'ReportAuctionController@create')->name('reportAuction');

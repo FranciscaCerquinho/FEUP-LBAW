@@ -699,7 +699,7 @@ section#item h2.item_name{
   }
 
   #buttons button{
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .object_actualprice{
@@ -735,7 +735,7 @@ section#item h2.item_name{
     box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
 }
 .panel-white {
-  border: 1px solid: white;
+  border: 1px solid white;
   background-color: white;
 }
 .panel-white  .panel-heading {
@@ -1191,7 +1191,7 @@ hr.style17 {
  }
 
  #wish_list button{
-   font-size: 12px;
+   font-size: 14px;
  }
 
  #wish_list img{
@@ -2628,7 +2628,7 @@ iframe {
   padding: 12px;
 }
 
-#category_filter label{
+#category_filter .title{
   font-weight: bold;  
 }
 
@@ -2664,10 +2664,7 @@ iframe {
   #category_filter label{
     font-size: 12px;
   }
-  #category_filter form{
-    font-size: 12px;
-    padding: 0px;
-  }
+
   #category_filter .padding-v-xs {
     padding-top: 0px; 
     padding-bottom: 0px; 

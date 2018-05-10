@@ -100,6 +100,13 @@ function addEventListeners() {
   if (addFormAddAuction) {
       addFormAddAuction.addEventListener('click', addFormAddAuctionRequest);
   }
+
+  let searchCategory = document.querySelectorAll("#searchPage .form-check");
+
+  if (searchCategory) {
+    for (var i = 0; i < searchCategory.length; i++)
+        searchCategory[i].addEventListener('click', searchCategoryRequest);
+  }
 };
 
 function sendCommentRequest() {
@@ -148,9 +155,27 @@ function addCommentHandler() {
                 <span  id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
                 <span  id ="unlikeComment">${newComment.dislike}</span>
             </a>
-          <a class="btn btn-sm stat-item" style="padding:6px;">
-              <i class="fas fa-bullhorn"></i>Report
-          </a>
+            <a  data-popup-reportUser-open="popup-1" type="button" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</a>
+            <div class="popup-reportUser" data-popup-reportUser="popup-1" data-id="{{$comment->user_id}}">
+                <div class="popup-inner-reportUser" data-id="{{$comment->id}}">
+                    <div class="form-group" id="userForm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-comment-alt" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control reportUserText" name="reason" placeholder="Reason" />
+                        </div>
+                    </div>
+                    <div class="row" id="reportUserButton">
+                            <div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
+                                <div class="text-center">
+                                    <a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+                                </div>
+                            </div>
+                        </div>
+                    <a class="popup-close-reportUser" data-popup-close-reportUser="popup-1">X</a>
+                </div>
+            </div>
       </div>
   </div>
 </div>`;
@@ -158,9 +183,7 @@ function addCommentHandler() {
   let comments = document.querySelector(".comments .row");
 
   let commentBox = document.querySelector("#addComment");
-console.log(comments);
-console.log(commentBox);
-console.log(comment);
+
   comments.insertBefore(comment, commentBox);
 }
 
@@ -182,9 +205,8 @@ function addAuctionLikeHandler() {
   if (this.status != 200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
-  console.log(newLike);
   let like = document.querySelector("#item #likeAuction");
-  console.log('aqui' + like);
+
   like.innerHTML = newLike.auction_like;
 
   let unlike = document.querySelector("#item #unlikeAuction");
@@ -393,8 +415,6 @@ function sendBuyNowRequest() {
 
 function buyNowHandler() {
 
-  console.log(this.responseText);
-
   if (this.status != 200) window.location = '/';
   let buyNow = JSON.parse(this.responseText);
 
@@ -418,7 +438,7 @@ The auction is yours! Congratulations! The owner will contact you.
 function reportAuctionRequest() {
 
   let reason = document.querySelector("#reportAuctionText").value;
-  console.log(reason);
+
   let id = this.closest('section#item').getAttribute('data-id');
 
   sendAjaxRequest('post', '/reportAuction/' + id, {
@@ -427,7 +447,7 @@ function reportAuctionRequest() {
 }
 
 function reportAuctionHandler() {
-  console.log(this.responseText);
+ 
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
   if (this.status != 200) {
@@ -459,11 +479,7 @@ function reportAuctionHandler() {
 function reportUserRequest() {
   let parent = this.closest(".comment");
   let reason = parent.querySelector(".reportUserText").value;
-
-  console.log(reason);
-  
   let id = this.closest('.popup-reportUser').getAttribute('data-id');
-  console.log(id);
   let commentID = this.closest('.popup-inner-reportUser').getAttribute('data-id');
 
   sendAjaxRequest('post', '/reportUser/' + id, {
@@ -572,10 +588,8 @@ function banAuctionRequest() {
   let id = this.closest('.auctionsReported').getAttribute('data-id');
 
   if (checkBox.checked == true) {
-      console.log("entrei aqui");
       sendAjaxRequest('post', '/banAuction/' + id, null, banAuctionHandler);
   } else {
-      console.log("entrei ali");
       sendAjaxRequest('delete', '/unbanAuction/' + id, null, unbanAuctionHandler);
   }
 
@@ -720,4 +734,74 @@ function deleteForm() {
 
   parent.remove();
 }
+
+function searchCategoryRequest(){
+
+    let categoryChecked=[];
+    
+    let inputs= document.querySelectorAll("#category_filter .form-check label input");
+    let categories= document.querySelectorAll("#category_filter .form-check label span");
+
+    for(var i=0; i < inputs.length;i++){
+        if(inputs[i].checked==true){
+            categoryChecked.push(categories[i].textContent);
+        }
+    }
+
+    sendAjaxRequest('post', '/showCategory', {categoryChecked: categoryChecked}, showCategoryHandler);
+
+}
+
+function showCategoryHandler(){
+
+    if (this.status != 200) window.location = '/';
+
+    var auctions = document.querySelector(".searchResults");
+    auctions.remove();
+    
+    var auctionsArray =JSON.parse(this.responseText);
+
+    let div = document.createElement("div");
+    div.setAttribute('class', 'col-lg-9 col-md-8 searchResults');
+	let elems_per_row = 3;
+	let num_elems = auctionsArray.length;
+	let num_rows = Math.ceil(num_elems / elems_per_row);
+
+	for(var i = 0; i < num_rows; i++) {
+        let newDiv = document.createElement("div");
+        newDiv.setAttribute('class','row');
+
+        	for(var j = 0; j < elems_per_row && num_elems > 0; j++, num_elems--){
+       
+                actual_elem = i*elems_per_row + j; 
+         
+                let date = SplitDateReturn(auctionsArray[actual_elem].dateend);
+                let auctionDiv = document.createElement("div");
+                auctionDiv.setAttribute('class','col-lg-4 col-md-6 mb-4');
+
+                auctionDiv.innerHTML=`<div class="card h-100 auctionCard searchCard">
+                    <a href="{{route('item', ['id'=>${auctionsArray[actual_elem].auction_id}])}}">
+                        <img class="card-img-top searchResultImage" src="/images/${auctionsArray[actual_elem].auctionphoto}" alt="">
+                    </a>
+                    <div class="card-body searchResultBody">
+                        <h5 class="card-title searchResultTitle">
+                            <a href="{{route('item', ['id'=>${auctionsArray[actual_elem].auction_id}])}}">${auctionsArray[actual_elem].name}</a>
+                        </h5>
+                        <h4 class="auctionPrice">EUR ${auctionsArray[actual_elem].price}</h5>
+                        <h6 class="auctionTimeLeft">  ${date} left</h1>
+                        <p class="card-text searchResultText">
+                        ${auctionsArray[actual_elem].firstname} ${auctionsArray[actual_elem].lastname}
+                        </p>
+                    </div>
+                </div>`;
+
+                newDiv.appendChild(auctionDiv);
+            }
+            div.appendChild(newDiv);
+    }
+
+    let append = document.querySelector("#searchPage .row");
+    append.appendChild(div);
+}
+
 addEventListeners();
