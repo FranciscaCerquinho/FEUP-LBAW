@@ -602,11 +602,11 @@ INSERT INTO banAuction (id_user,id_auction,date) VALUES (5,43,'2018-04-05 11:43:
 INSERT INTO banAuction (id_user,id_auction,date) VALUES (30,27,'2018-04-09 10:33:17');
 INSERT INTO banAuction (id_user,id_auction,date) VALUES (11,2,'2018-04-05 22:49:11');
 
-INSERT INTO wishList (user_id,auction_id,date) VALUES (1,1,'2018-04-03 23:43:54');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (1,14,'2018-04-03 23:43:54');
 INSERT INTO wishList (user_id,auction_id,date) VALUES (2,18,'2018-04-02 16:41:23');
-INSERT INTO wishList (user_id,auction_id,date) VALUES (12,20,'2018-04-02 11:22:29');
-INSERT INTO wishList (user_id,auction_id,date) VALUES (17,15,'2018-04-02 17:35:58');
-INSERT INTO wishList (user_id,auction_id,date) VALUES (13,19,'2018-04-01 10:49:53');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (34,20,'2018-04-02 11:22:29');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (34,15,'2018-04-02 17:35:58');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (13,1,'2018-04-01 10:49:53');
 INSERT INTO wishList (user_id,auction_id,date) VALUES (8,9,'2018-04-01 11:17:49');
 
 
