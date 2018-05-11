@@ -99,7 +99,7 @@
 								<p class="time" id="description">Time:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<p class="time_left"><script>SplitDate("{{$auction->dateend}}",1);</script> left</p>
+								<p class="time_left" ><script>SplitDate("{{$auction->dateend}}",1);</script> left</p>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="object_description">

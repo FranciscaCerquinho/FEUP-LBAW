@@ -229,5 +229,22 @@ class AuctionController extends Controller
       return $auction;
     }
 
+    public function auctionTime(Request $request, $auction_id){
+    
+      $auction = Auction::where('auction_id','=',$auction_id)->where('active','=',1)->first();
+
+      return $auction;
+    }
+
+    public function inactiveAuction(Request $request, $auction_id)
+    {
+      $auction = Auction::find($auction_id);
+
+      $auction->active=0;
+      $auction->save();
+
+      return $auction;
+    }
+
 }
 ?>

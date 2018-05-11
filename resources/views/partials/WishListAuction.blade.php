@@ -15,10 +15,17 @@
     </p>
     </div>
     <div class="row">
+<<<<<<< HEAD
       <p class="actualprice_wishList">EUR {{$wishlist->actualprice}}</p>
     </div>
     <div class="row">
       <p class="status_winning"> @if($wishlist->active==1)
+=======
+      <p class="actualprice_wishList">EUR {{$wishList->actualprice}}</p>
+    </div>
+    <div class="row">
+      <p class="status_winning"> @if($wishList->active==1)
+>>>>>>> 086599b12dae97395f2b4d7dc80d61229cac579d
                                     Winning
                                     @endif
                                     @if($wishlist->active==0)
