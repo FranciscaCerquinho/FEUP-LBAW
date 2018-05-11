@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class WishList extends Model
 {
     public $timestamps  = false;
-    public $table='wishList';
+    public $table='wishlist';
     protected $primaryKey= [ 'id_user', 'id_auction'];
 
   /**

@@ -34,6 +34,81 @@ function sendAjaxRequest(method, url, data, handler) {
   request.send(encodeForAjax(data));
 }
 
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+    let timers = document.querySelectorAll("#item .time_left");
+    let i = 0;
+    for(i = 0; i < timers.length; i++) {
+        let id = timers[i].closest("section#item").getAttribute("data-id");
+        sendAjaxRequest('post', '/auctionTime/' + id, null, auctionTimeHandler);
+    }
+}
+
+function auctionTimeHandler(){
+  
+    if (this.status != 200) window.location = '/';
+
+    var auction = JSON.parse(this.responseText);
+    var date = SplitDateReturn(auction.dateend,1);
+
+    let id = document.querySelector('section#item[data-id="' + auction.auction_id + '"]');  
+
+    let timer = id.querySelector(".time_left");
+
+    timer.innerHTML = date + " left";
+}
+/*
+var myVar = setInterval(myTimerHomePage, 1000);
+
+function myTimerHomePage() {
+    let timers = document.querySelectorAll(".new_auctions .time_left");
+    let i = 0;
+    for(i = 0; i < timers.length; i++) {
+        let id = timers[i].closest("div#auctions-list").getAttribute("data-id");
+        sendAjaxRequest('post', '/auctionTime/' + id, null, auctionsHomePageHandler);
+    }
+}
+
+function auctionsHomePageHandler(){
+  
+    if (this.status != 200) window.location = '/';
+    
+    var auction = JSON.parse(this.responseText);
+    var date = SplitDateReturn(auction.dateend,1);
+
+    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
+
+    let timer = id.querySelector(".time_left");
+
+    let timer_split = timer.textContent.split(";");
+
+
+    if(!timer_split[1]){
+        let split = timer_split[0].split(" ");
+        var int = parseInt(split[0]);
+
+        if(int<=0){
+            console.log("aquo");
+            sendAjaxRequest('post', '/inactiveAuction/' + auction.auction_id, null, inactiveAuctionHandler);
+        }
+
+    }
+    timer.innerHTML = date + " left";
+}
+
+function inactiveAuctionHandler(){
+
+    let auction = JSON.parse(this.responseText);
+
+    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
+    
+    id.remove();
+    
+    clearInterval(myVar);
+    myVar = setInterval(myTimerHomePage, 1000);
+}
+*/
 function addEventListeners() {
 
   let addComment = document.querySelector(".leave_comment .status-upload button");
@@ -127,7 +202,7 @@ function addCommentHandler() {
   let comment = document.createElement('div');
   comment.setAttribute('class', 'col-sm-12 comment');
   comment.setAttribute('data-id', newComment.id);
-  let date = SplitDateReturn(newComment.date);
+  let date = SplitDateReturn(newComment.date,0);
 
   comment.innerHTML = `
   <div class="panel panel-white post panel-shadow">
@@ -776,7 +851,7 @@ function showCategoryHandler(){
        
                 actual_elem = i*elems_per_row + j; 
          
-                let date = SplitDateReturn(auctionsArray[actual_elem].dateend);
+                let date = SplitDateReturn(auctionsArray[actual_elem].dateend,1);
                 let auctionDiv = document.createElement("div");
                 auctionDiv.setAttribute('class','col-lg-4 col-md-6 mb-4');
 

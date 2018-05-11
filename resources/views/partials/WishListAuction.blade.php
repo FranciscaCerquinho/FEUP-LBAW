@@ -15,10 +15,10 @@
     </p>
     </div>
     <div class="row">
-      <p class="actualprice_wishList">EUR {{$auction_id->actualprice}}</p>
+      <p class="actualprice_wishList">EUR {{$wishList->actualprice}}</p>
     </div>
     <div class="row">
-      <p class="status_winning"> @if($auction_id->active==1)
+      <p class="status_winning"> @if($wishList->active==1)
                                     Winning
                                     @endif
                                     @if($auction_id->active==0)
