@@ -125,6 +125,7 @@ CREATE TABLE "owner"(
 );
 
 CREATE TABLE wishList(
+  id SERIAL NOT NULL,
   user_id INTEGER NOT NULL,
   auction_id INTEGER NOT NULL,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
@@ -182,7 +183,7 @@ ALTER TABLE ONLY owner
   ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
 
 ALTER TABLE ONLY wishList
-  ADD CONSTRAINT wishList_pkey PRIMARY KEY (user_id, auction_id);
+  ADD CONSTRAINT wishList_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY buyNow
   ADD CONSTRAINT buynow_pkey PRIMARY KEY (id);
@@ -602,56 +603,13 @@ INSERT INTO banAuction (id_user,id_auction,date) VALUES (5,43,'2018-04-05 11:43:
 INSERT INTO banAuction (id_user,id_auction,date) VALUES (30,27,'2018-04-09 10:33:17');
 INSERT INTO banAuction (id_user,id_auction,date) VALUES (11,2,'2018-04-05 22:49:11');
 
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (29,1,'2018-04-03 23:43:54','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (12,48,'2018-04-02 16:41:23','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (22,20,'2018-04-02 11:22:29','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (29,15,'2018-04-02 14:29:08','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (17,35,'2018-04-02 17:35:58','1');
+INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (1,1,'2018-04-03 23:43:54','1');
+INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (2,18,'2018-04-02 16:41:23','1');
+INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (12,20,'2018-04-02 11:22:29','1');
+INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (17,15,'2018-04-02 17:35:58','1');
 INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (13,19,'2018-04-01 10:49:53','1');
 INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (8,9,'2018-04-01 11:17:49','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (20,19,'2018-04-05 15:46:02','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (26,3,'2018-04-05 07:26:10','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (15,29,'2018-04-02 12:40:30','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (8,37,'2018-04-05 10:17:28','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (10,40,'2018-04-03 21:50:36','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (26,23,'2018-04-04 02:18:45','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (14,40,'2018-04-05 10:14:02','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (25,35,'2018-04-01 22:04:56','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (19,50,'2018-04-03 17:26:02','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (2,13,'2018-04-03 20:09:09','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (26,50,'2018-04-01 06:12:26','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (6,13,'2018-04-03 14:07:56','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (5,21,'2018-04-03 06:40:31','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (9,43,'2018-04-04 18:16:36','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (8,6,'2018-04-01 01:05:29','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (4,5,'2018-04-03 19:14:45','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (16,19,'2018-04-01 05:49:35','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (30,29,'2018-04-05 09:54:17','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (11,23,'2018-04-04 20:09:04','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (17,29,'2018-04-04 17:30:05','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (30,8,'2018-04-02 04:18:23','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (4,12,'2018-04-04 11:05:49','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (26,46,'2018-04-05 15:14:34','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (13,26,'2018-04-01 14:46:19','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (9,21,'2018-04-04 08:30:03','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (7,31,'2018-04-04 05:26:27','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (2,29,'2018-04-01 18:38:10','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (27,44,'2018-04-03 14:30:58','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (17,49,'2018-04-02 15:41:37','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (4,26,'2018-04-01 18:22:40','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (7,19,'2018-04-02 05:43:08','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (5,7,'2018-04-04 04:54:59','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (20,33,'2018-04-02 16:53:54','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (17,37,'2018-04-03 15:54:49','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (8,14,'2018-04-05 09:55:52','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (13,11,'2018-04-03 09:49:36','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (11,44,'2018-04-04 05:28:51','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (11,30,'2018-04-01 10:13:33','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (25,17,'2018-04-03 17:00:54','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (19,16,'2018-04-02 20:19:14','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (20,18,'2018-04-01 14:15:51','1');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (14,36,'2018-04-03 07:43:27','0');
-INSERT INTO wishList (user_id,auction_id,date,follow) VALUES (13,2,'2018-04-04 10:06:58','0');
+
 
 
 INSERT INTO category (id_auction,Category) VALUES (1,'Electronics');

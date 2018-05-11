@@ -26,7 +26,7 @@ class WishListController extends Controller
     else
       $type=0;
 
-    $wishList = WishList::orderBy('dateend','asc')->join('auction', 'auction.auction_id', '=','wishlist.id_auction')
+    $wishList = WishList::orderBy('dateend','asc')->join('auction', 'auction.auction_id', '=','wishlist.auction_id')
     ->join('owner', 'owner.id_auction', '=', 'auction.auction_id')
     ->join('users', 'users.user_id', '=', 'owner.id_user')->get();
     return view('pages.WishList', [ 'wishList' => $wishList, 'type' => $type]);

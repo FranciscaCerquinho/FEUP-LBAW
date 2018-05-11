@@ -540,7 +540,7 @@ function reportAuctionHandler() {
   The Auction has been sucessfully reported!
   </div>`;
 
-      document.querySelector('#reportA').style = 'color: rgb(204,68,74);';
+      document.querySelector('.buttonReport').style = 'color: rgb(204,68,74);';
       document.querySelector('.reportAuctionButton').style = 'color: rgb(204,68,74);';
 
   }
@@ -851,7 +851,9 @@ function showCategoryHandler(){
        
                 actual_elem = i*elems_per_row + j; 
          
+        
                 let date = SplitDateReturn(auctionsArray[actual_elem].dateend,1);
+
                 let auctionDiv = document.createElement("div");
                 auctionDiv.setAttribute('class','col-lg-4 col-md-6 mb-4');
 
@@ -863,7 +865,7 @@ function showCategoryHandler(){
                         <h5 class="card-title searchResultTitle">
                             <a href="/auction/${auctionsArray[actual_elem].auction_id}">${auctionsArray[actual_elem].name}</a>
                         </h5>
-                        <h4 class="auctionPrice">EUR ${auctionsArray[actual_elem].price}</h5>
+                        <h4 class="auctionPrice">EUR ${auctionsArray[actual_elem].actualprice}</h5>
                         <h6 class="auctionTimeLeft">  ${date} left</h1>
                         <p class="card-text searchResultText">
                         ${auctionsArray[actual_elem].firstname} ${auctionsArray[actual_elem].lastname}

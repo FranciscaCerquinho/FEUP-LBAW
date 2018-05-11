@@ -46,7 +46,7 @@
 							<span id="unlikeAuction"  @if($like==2) style="color:#437ab2"@endif>{{$auction->auction_dislike}}</span>
 						</button>
 						<button>
-						<a  data-popup-reportAuction-open="popup-1" type="button"  @if($auctionReported==1) style="color:rgb(204,68,74)"@endif><span class="reportAuctionButton fas fa-bullhorn" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif></span> &nbsp; Report</a>
+						<a  data-popup-reportAuction-open="popup-1" type="button"  class="buttonReport" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif><span class="reportAuctionButton fas fa-bullhorn" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif></span> &nbsp; Report</a>
 						</button>	
 							<div class="popup-reportAuction" data-popup-reportAuction="popup-1">
     							<div class="popup-inner-reportAuction">

@@ -1,60 +1,21 @@
-<div class="row" id="item_wish_list">
-  <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-    <a href="{{route('listAuction', ['id'=>$wishlist])}}"  class="text-center" ><img class="card-img-top auctionCardImage" src="/images/{{$wishlist->auctionphoto}}" alt="" width="230px" height="230px"></a>
+<div class="row product align-items-center">
+  <div class="col-sm-2">
+        <img src="/images/{{$wishList->auctionphoto}}" alt="" class="img-fluid z-depth-0">
   </div>
-  <div class="col-lg-4 col-md-4 col-sm-6 mb-4" id="information">
-    <div class="row">
-      <a href="{{route('listAuction', ['id'=>$wishlist])}}">{{$wishlist->name}} </a>
-    </div>
-    <div class="row">
-      <a class="owner_name" href="{{route('ownerProfile', ['id'=>$wishlist])}}">{{$wishlist->firstname}} {{$wishlist->lastname}}</a>
-    </div>
-    <div class="row">
-      <p class="time">
-      <script>SplitDate("{{$wishlist->dateend}}");</script> left
-    </p>
-    </div>
-    <div class="row">
-<<<<<<< HEAD
-      <p class="actualprice_wishList">EUR {{$wishlist->actualprice}}</p>
-    </div>
-    <div class="row">
-      <p class="status_winning"> @if($wishlist->active==1)
-=======
-      <p class="actualprice_wishList">EUR {{$wishList->actualprice}}</p>
-    </div>
-    <div class="row">
-      <p class="status_winning"> @if($wishList->active==1)
->>>>>>> 086599b12dae97395f2b4d7dc80d61229cac579d
-                                    Winning
-                                    @endif
-                                    @if($wishlist->active==0)
-                                    Losing
-                                    @endif
-      </p>
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-danger" style="background-color:#cb5b54">
-        <span class="fas fa-trash-alt"></span> Wish List
+  <div class="col-sm-3">
+      <h5 class="mt-3">
+          <strong>{{$wishList->name}}</strong>
+      </h5>
+  </div>
+  <div class="col-sm-2">{{$wishList->firstname}} {{$wishList->lastname}}</div>
+  <div class="col-sm-2">
+      <strong>EUR {{$wishList->actualprice}}</strong>
+  </div>
+  <div class="col-sm-2" > <script>SplitDate("{{$wishList->dateend}}",1);</script> left</div>
+  <div class="col-sm-1">
+      <button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Remove item">
+        <i class="fas fa-trash-alt"></i>
       </button>
-    </div>
-  </div>
-  <div class="col-md-3 col-sm-6 mb-4" id="auction_buttons">
-    <div class="row" id="bid_buttons">
-      <div class="col-lg-8 col-md-8 col-sm-8 col-5" id="price">
-        <?php $bid = $wishlist->actualprice + 0.01; ?>
-        <input class="form-control" type="number" value="{{$bid}}" id="price_button" step="0.01">
-      </div>
-      <div class="col-lg-2" id="bid">
-        <button class="btn btn-primary" type="submit" style="background-color:#437ab2; color:white">Make Bid</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <button class="btn btn-success" type="submit" style="background-color:#73b566;color:white ">
-          <i class="fas fa-shopping-cart"></i>
-          Buy Now ({{$wishlist->buynow}}€)</button>
-      </div>
-    </div>
   </div>
 </div>
+<hr class="style17" style="color:grey;">
