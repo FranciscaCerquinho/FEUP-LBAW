@@ -2775,6 +2775,15 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   color:black;
   margin-bottom: 20px;
 }
+
+.wishListCard .product img:hover{
+  opacity: 0.5;
+  filter: alpha(opacity=100); 
+}
 .wishListCard .wishListTotal{
   color:black;
+}
+
+.wishListCard .product .owner_name{
+  color: black;
 }

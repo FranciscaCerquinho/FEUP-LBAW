@@ -1,13 +1,17 @@
 <div class="row product align-items-center">
   <div class="col-sm-2">
+    <a href="{{route('item', ['id'=>$wishList->auction_id])}}">
         <img src="/images/{{$wishList->auctionphoto}}" alt="" class="img-fluid z-depth-0">
+    </a>
   </div>
   <div class="col-sm-3">
       <h5 class="mt-3">
           <strong>{{$wishList->name}}</strong>
       </h5>
   </div>
-  <div class="col-sm-2">{{$wishList->firstname}} {{$wishList->lastname}}</div>
+  <div class="col-sm-2">
+    <a class="owner_name" href="{{route('ownerProfile', ['id'=>$wishList->user_id])}}">{{$wishList->firstname}} {{$wishList->lastname}}</a>
+  </div>
   <div class="col-sm-2">
       <strong>EUR {{$wishList->actualprice}}</strong>
   </div>
