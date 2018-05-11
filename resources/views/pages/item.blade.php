@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="item" data-id="{{$auction->auction_id}}">
+<section class="container" id="item" data-id="{{$auction->auction_id}}">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -46,7 +46,7 @@
 							<span id="unlikeAuction"  @if($like==2) style="color:#437ab2"@endif>{{$auction->auction_dislike}}</span>
 						</button>
 						<button>
-						<a  data-popup-reportAuction-open="popup-1" type="button" id="reportA" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif><span class="reportAuctionButton fas fa-bullhorn" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif></span> &nbsp; Report</a>
+						<button  data-popup-reportAuction-open="popup-1" type="button"  class="buttonReport" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif><span class="reportAuctionButton fas fa-bullhorn" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif></span> &nbsp; Report</button>
 						</button>	
 							<div class="popup-reportAuction" data-popup-reportAuction="popup-1">
     							<div class="popup-inner-reportAuction">
@@ -83,7 +83,7 @@
 								<p class="owner" id="description">Owner:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->auction_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
+								<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->user_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="category">
@@ -99,7 +99,7 @@
 								<p class="time" id="description">Time:</p>
 							</div>
 							<div class="col-sm-8" id="user_information">
-								<p class="time_left"><script>SplitDate("{{$auction->dateend}}",1);</script> left</p>
+								<p class="time_left" ><script>SplitDate("{{$auction->dateend}}",1);</script> left</p>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="object_description">
@@ -120,32 +120,32 @@
 						</div>
 					</div>
 					<div class="row justify-content-start" id="bid_buttons">
-						<div class="col-lg-3" id="price">
+						<div class="col-lg-3 col-sm-1" id="price">
                             <?php $bid = $auction->actualprice + 0.01; ?>
 							<input class="form-control" type="number" value="{{$bid}}" id="price_button" step="0.01">
 						</div>
-						<div class="col-12 col-md-auto" id="bid">
+						<div class="col-sm-2 col-md-auto" id="bid">
 							<button class="btn" type="submit" style="background-color:#437ab2; color:white">Make Bid</button>
 						</div>
-					</div>
-					<div class="row justify-content-start" id="buy_now_button">
+						<div id="buy_now_button">
 						<div class="col-4">
 							<button class="btn btn-success" type="submit" style="font-size:17px;background-color:#73b566;color:white ">Buy Now ({{$auction->buynow}}€)</button>
 						</div>
 					</div>
+					</div>
+				
 				</div>
 			</div>
-		
-		<div class="row" id="first">
-			<div class="row"> 
-				<div id="comments">
+
+			<div class="container comments">
+				<div class="row">
 					<?php foreach($comments as $comment) {
 						$j = -1;
 						for($i = 0; $i < count($commentsLikes); $i++){
 						
 							if($id_comment_likes[$i]->id_comment == $comment->id)
 								$j = $i;
-						 } 
+							} 
 						if($j != -1)  { ?> 
 						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j]])	<?php }
 						else { ?>
@@ -153,18 +153,13 @@
 					<?php }} ?>
 					@if (Auth::check())
 						@if($type==1)
-							<div class="row" id="addComment">
-								<div class="leave_comment">
-									<div class="container">
+							<div class="leave_comment col-sm-12" id="addComment">
+								<div class="panel panel-white post panel-shadow">
+									<div class="status-upload">
+										<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
 										<div class="row">
-											<div class="col-sm-8">
-												<div class="panel panel-white post panel-shadow">
-													<div class="status-upload">
-														<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
-														<button class="btn" type="submit">Send</button>
-													</div>
-												</div>
-											</div>
+											<span class="col-sm-10"></span>
+											<button class="btn col-sm-1" style="background-color:#437ab2; color:white" type="submit">Send</button>
 										</div>
 									</div>
 								</div>
@@ -173,7 +168,5 @@
 					@endif
 				</div>
 			</div>
-		</div>
-	</div>
 </section>
 @endsection

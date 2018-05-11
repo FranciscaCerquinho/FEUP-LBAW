@@ -43,6 +43,8 @@ Route::post('unlikeAuction/{id}', 'AuctionController@updateUnlike');
 Route::get('myAuctions', 'AuctionController@myAuctions')->name('myAuctions');
 Route::get('addAuction','AuctionController@showAddAuction')->name('addAuction');
 Route::post('addAuction', 'AuctionController@create');
+Route::post('auctionTime/{id}', 'AuctionController@auctionTime')->name('auctionTime');
+Route::post('inactiveAuction/{id}', 'AuctionController@inactiveAuction')->name('inactiveAuction');
 
 //Auctions comments
 Route::post('comment/{id}', 'CommentController@create');
@@ -57,8 +59,9 @@ Route::post('makeBid/{id}', 'BidController@makeBid')->name('makeBid');
 Route::post('buyNow/{id}', 'BuyNowController@buyNow')->name('buyNow');
 
 //Search
-Route::get('category/{id}', 'AuctionController@searchByCategory')->name('searchByCategory');
-Route::get("search/{name?}",'AuctionController@search')->name('search');
+Route::get('category/{id}', 'SearchController@searchByCategory')->name('searchByCategory');
+Route::get('search/{name?}','SearchController@search')->name('search');
+Route::post('showCategory','SearchController@showCategory')->name('showCategory');
 
 //Report Auction
 Route::post('reportAuction/{id}', 'ReportAuctionController@create')->name('reportAuction');

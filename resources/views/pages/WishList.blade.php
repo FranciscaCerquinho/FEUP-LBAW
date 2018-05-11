@@ -20,23 +20,54 @@
       </nav>
     </div>
   </div>
-  <!--Auctions cards-->
 
+  <!--Auctions cards-->
   <?php
+  
   $num_elems = count($wishList);
   ?>
-  <div class="next_auctions">
+
+<div class="card container-md-4 wishListCard" @if($num_elems==0)style="margin-bottom: 210px"@endif>
+    <div class="card-body">
+        <!-- Shopping Cart table -->
+        <div class="table-responsive">
+            <div class="row" id="wishListHeader">
+              <div class="col-sm-2">
+              </div>
+              <div class="col-sm-3">
+                <h3>Auction</h3>
+              </div>
+              <div class="col-sm-2">
+                <h3>Owner</h3>
+              </div>
+              <div class="col-sm-2">
+                <h3>Price</h3>
+              </div>
+              <div class="col-sm-2">
+                <h3>Time Left</h3>
+              </div>
+              <div class="col-sm-1">
+              </div>
+            </div>
+ 
   <?php for($i = 0; $i < $num_elems; $i++) {?>
-          <div class="row">
           @include('partials.WishListAuction',['wishList'=>$wishList[$i]])
-          </div>
       <?php } ?>
-  </div>
-
-
-  <ul id="pag" class="pagination col-lg-12"></ul>
-
-
+    <div class="row wishListTotal">
+      <div class="col-sm-8">  </div> 
+      <div class="col-sm-2">            
+        <h4 class="mt-2">
+            <strong>Total</strong>
+        </h4>
+      </div> 
+      <div class="col-sm-2">     
+        <h4 class="mt-2">
+            <strong>EUR 2600</strong>
+        </h4>
+      </div>
+    </div>
+        <!-- /.Shopping Cart table -->
+    </div>
 </div>
-
+</div>
 @endsection

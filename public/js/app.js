@@ -34,6 +34,81 @@ function sendAjaxRequest(method, url, data, handler) {
   request.send(encodeForAjax(data));
 }
 
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+    let timers = document.querySelectorAll("#item .time_left");
+    let i = 0;
+    for(i = 0; i < timers.length; i++) {
+        let id = timers[i].closest("section#item").getAttribute("data-id");
+        sendAjaxRequest('post', '/auctionTime/' + id, null, auctionTimeHandler);
+    }
+}
+
+function auctionTimeHandler(){
+  
+    if (this.status != 200) window.location = '/';
+
+    var auction = JSON.parse(this.responseText);
+    var date = SplitDateReturn(auction.dateend,1);
+
+    let id = document.querySelector('section#item[data-id="' + auction.auction_id + '"]');  
+
+    let timer = id.querySelector(".time_left");
+
+    timer.innerHTML = date + " left";
+}
+/*
+var myVar = setInterval(myTimerHomePage, 1000);
+
+function myTimerHomePage() {
+    let timers = document.querySelectorAll(".new_auctions .time_left");
+    let i = 0;
+    for(i = 0; i < timers.length; i++) {
+        let id = timers[i].closest("div#auctions-list").getAttribute("data-id");
+        sendAjaxRequest('post', '/auctionTime/' + id, null, auctionsHomePageHandler);
+    }
+}
+
+function auctionsHomePageHandler(){
+  
+    if (this.status != 200) window.location = '/';
+    
+    var auction = JSON.parse(this.responseText);
+    var date = SplitDateReturn(auction.dateend,1);
+
+    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
+
+    let timer = id.querySelector(".time_left");
+
+    let timer_split = timer.textContent.split(";");
+
+
+    if(!timer_split[1]){
+        let split = timer_split[0].split(" ");
+        var int = parseInt(split[0]);
+
+        if(int<=0){
+            console.log("aquo");
+            sendAjaxRequest('post', '/inactiveAuction/' + auction.auction_id, null, inactiveAuctionHandler);
+        }
+
+    }
+    timer.innerHTML = date + " left";
+}
+
+function inactiveAuctionHandler(){
+
+    let auction = JSON.parse(this.responseText);
+
+    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
+    
+    id.remove();
+    
+    clearInterval(myVar);
+    myVar = setInterval(myTimerHomePage, 1000);
+}
+*/
 function addEventListeners() {
 
   let addComment = document.querySelector(".leave_comment .status-upload button");
@@ -51,13 +126,13 @@ function addEventListeners() {
       addUnlike.addEventListener('click', sendAuctionUnlikeRequest);
   }
 
-  let addCommentLike = document.querySelectorAll("#comments #commentLike");
+  let addCommentLike = document.querySelectorAll(".comment #commentLike");
   if (addCommentLike) {
       for (var i = 0; i < addCommentLike.length; i++)
           addCommentLike[i].addEventListener('click', sendCommentLikeRequest);
   }
 
-  let addCommentUnlike = document.querySelectorAll("#comments #commentUnlike");
+  let addCommentUnlike = document.querySelectorAll(".comment #commentUnlike");
   if (addCommentUnlike) {
       for (var i = 0; i < addCommentUnlike.length; i++)
           addCommentUnlike[i].addEventListener('click', sendCommentUnlikeRequest);
@@ -78,7 +153,7 @@ function addEventListeners() {
       reportAuction.addEventListener('click', reportAuctionRequest);
   }
 
-  let reportUser = document.querySelectorAll("#reportUserButton #btn");
+  let reportUser = document.querySelectorAll(".comment .popup-reportUser #reportUserButton");
   if (reportUser) {
       for (var i = 0; i < reportUser.length; i++)
           reportUser[i].addEventListener('click', reportUserRequest);
@@ -100,6 +175,13 @@ function addEventListeners() {
   if (addFormAddAuction) {
       addFormAddAuction.addEventListener('click', addFormAddAuctionRequest);
   }
+
+  let searchCategory = document.querySelectorAll("#searchPage .form-check");
+
+  if (searchCategory) {
+    for (var i = 0; i < searchCategory.length; i++)
+        searchCategory[i].addEventListener('click', searchCategoryRequest);
+  }
 };
 
 function sendCommentRequest() {
@@ -118,47 +200,62 @@ function addCommentHandler() {
   let newComment = JSON.parse(this.responseText);
 
   let comment = document.createElement('div');
-  comment.setAttribute('class', 'row');
-  let date = SplitDateReturn(newComment.date);
+  comment.setAttribute('class', 'col-sm-12 comment');
+  comment.setAttribute('data-id', newComment.id);
+  let date = SplitDateReturn(newComment.date,0);
 
   comment.innerHTML = `
-<div id="comments">
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="comment_owner">
-                            <a href="#">
-                                <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
-                            </a>
+  <div class="panel panel-white post panel-shadow">
+  <div class="post-heading">
+      <div class="pull-left image">
+          <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
+      </div>
+      <div class="pull-left meta">
+          <div class="title h5">
+              <a href="#">
+                  <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
+              </a>
+          </div>
+          <h6 class="text-muted time"> ${date} ago</h6>
+      </div>
+  </div>
+  <div class="post-description">
+      <p>${newComment.comment}</p>
+      <div class="stats">
+            <a id="commentLike" class="btn stat-item">
+                <span  id ="likeCommentHand" class="fa fa-thumbs-up icon"></span>
+                <span  id ="likeComment">${newComment.like}</span>
+            </a>
+            <a id="commentUnlike" class="btn stat-item">
+                <span  id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
+                <span  id ="unlikeComment">${newComment.dislike}</span>
+            </a>
+            <a  data-popup-reportUser-open="popup-1" type="button" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</a>
+            <div class="popup-reportUser" data-popup-reportUser="popup-1" data-id="{{$comment->user_id}}">
+                <div class="popup-inner-reportUser" data-id="{{$comment->id}}">
+                    <div class="form-group" id="userForm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-comment-alt" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control reportUserText" name="reason" placeholder="Reason" />
                         </div>
-                        <h6 class="text-muted time"> ${date} ago</h6>
                     </div>
-                </div>
-                <div class="post-description">
-                    <p>${newComment.comment}</p>
-                    <div class="stats">
-                        <a href="#" class="btn stat-item">
-                            <i class="far fa-thumbs-up"></i>${newComment.like}
-                        </a>
-                        <a href="#" class="btn stat-item">
-                            <i class="far fa-thumbs-down"></i>${newComment.dislike}
-                        </a>
-                        <a href="#" class="btn btn-sm stat-item" style="padding:6px;">
-                            <i class="fas fa-bullhorn"></i>Report
-                        </a>
-                    </div>
+                    <div class="row" id="reportUserButton">
+                            <div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
+                                <div class="text-center">
+                                    <a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+                                </div>
+                            </div>
+                        </div>
+                    <a class="popup-close-reportUser" data-popup-close-reportUser="popup-1">X</a>
                 </div>
             </div>
-        </div>
-    </div>
+      </div>
+  </div>
 </div>`;
-  let comments = document.querySelector("#first .row #comments");
+
+  let comments = document.querySelector(".comments .row");
 
   let commentBox = document.querySelector("#addComment");
 
@@ -183,9 +280,8 @@ function addAuctionLikeHandler() {
   if (this.status != 200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
-  console.log(newLike);
   let like = document.querySelector("#item #likeAuction");
-  console.log('aqui' + like);
+
   like.innerHTML = newLike.auction_like;
 
   let unlike = document.querySelector("#item #unlikeAuction");
@@ -241,7 +337,7 @@ function sendCommentLikeRequest() {
   let like = document.querySelector("#commentLike").textContent;
   like = parseInt(like) + 1;
 
-  let id = this.closest('div.buttonsComments').getAttribute('data-id');
+  let id = this.closest('div.comment').getAttribute('data-id');
 
   if (like != '')
       sendAjaxRequest('post', '/likeComment/' + id, {
@@ -254,7 +350,7 @@ function addCommentLikeHandler() {
   if (this.status != 200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
-  let stats = document.querySelector('div.buttonsComments[data-id="' + newLike.id + '"]');
+  let stats = document.querySelector('div.comment[data-id="' + newLike.id + '"]');
   let like = stats.querySelector("#likeComment");
 
   like.innerHTML = newLike.like;
@@ -278,7 +374,7 @@ function sendCommentUnlikeRequest() {
   let unlike = document.querySelector("#commentUnlike").textContent;
   unlike = parseInt(unlike) + 1;
 
-  let id = this.closest('div.buttonsComments').getAttribute('data-id');
+  let id = this.closest('div.comment').getAttribute('data-id');
 
   if (unlike != '')
       sendAjaxRequest('post', '/unlikeComment/' + id, {
@@ -290,7 +386,7 @@ function addCommentUnlikeHandler() {
   if (this.status != 200) window.location = '/';
   let newUnlike = JSON.parse(this.responseText);
 
-  let stats = document.querySelector('div.buttonsComments[data-id="' + newUnlike.id + '"]');
+  let stats = document.querySelector('div.comment[data-id="' + newUnlike.id + '"]');
   let unlike = stats.querySelector("#unlikeComment");
 
   unlike.innerHTML = newUnlike.dislike;
@@ -394,8 +490,6 @@ function sendBuyNowRequest() {
 
 function buyNowHandler() {
 
-  console.log(this.responseText);
-
   if (this.status != 200) window.location = '/';
   let buyNow = JSON.parse(this.responseText);
 
@@ -419,7 +513,7 @@ The auction is yours! Congratulations! The owner will contact you.
 function reportAuctionRequest() {
 
   let reason = document.querySelector("#reportAuctionText").value;
-  console.log(reason);
+
   let id = this.closest('section#item').getAttribute('data-id');
 
   sendAjaxRequest('post', '/reportAuction/' + id, {
@@ -428,7 +522,7 @@ function reportAuctionRequest() {
 }
 
 function reportAuctionHandler() {
-  console.log(this.responseText);
+ 
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
   if (this.status != 200) {
@@ -446,7 +540,7 @@ function reportAuctionHandler() {
   The Auction has been sucessfully reported!
   </div>`;
 
-      document.querySelector('#reportA').style = 'color: rgb(204,68,74);';
+      document.querySelector('.buttonReport').style = 'color: rgb(204,68,74);';
       document.querySelector('.reportAuctionButton').style = 'color: rgb(204,68,74);';
 
   }
@@ -458,9 +552,8 @@ function reportAuctionHandler() {
 }
 
 function reportUserRequest() {
-  let parent = this.closest(".buttonsComments");
+  let parent = this.closest(".comment");
   let reason = parent.querySelector(".reportUserText").value;
-
   let id = this.closest('.popup-reportUser').getAttribute('data-id');
   let commentID = this.closest('.popup-inner-reportUser').getAttribute('data-id');
 
@@ -570,10 +663,8 @@ function banAuctionRequest() {
   let id = this.closest('.auctionsReported').getAttribute('data-id');
 
   if (checkBox.checked == true) {
-      console.log("entrei aqui");
       sendAjaxRequest('post', '/banAuction/' + id, null, banAuctionHandler);
   } else {
-      console.log("entrei ali");
       sendAjaxRequest('delete', '/unbanAuction/' + id, null, unbanAuctionHandler);
   }
 
@@ -718,4 +809,77 @@ function deleteForm() {
 
   parent.remove();
 }
+
+function searchCategoryRequest(){
+
+    let categoryChecked=[];
+    
+    let inputs= document.querySelectorAll("#category_filter .form-check label input");
+    let categories= document.querySelectorAll("#category_filter .form-check label span");
+
+    for(var i=0; i < inputs.length;i++){
+        if(inputs[i].checked==true){
+            categoryChecked.push(categories[i].textContent);
+        }
+    }
+
+    sendAjaxRequest('post', '/showCategory', {categoryChecked: categoryChecked}, showCategoryHandler);
+
+}
+
+function showCategoryHandler(){
+    console.log(this.responseText);
+
+    if (this.status != 200) window.location = '/';
+
+    var auctions = document.querySelector(".searchResults");
+    auctions.remove();
+    
+    var auctionsArray =JSON.parse(this.responseText);
+
+    let div = document.createElement("div");
+    div.setAttribute('class', 'col-lg-9 col-md-8 searchResults');
+	let elems_per_row = 3;
+	let num_elems = auctionsArray.length;
+	let num_rows = Math.ceil(num_elems / elems_per_row);
+
+	for(var i = 0; i < num_rows; i++) {
+        let newDiv = document.createElement("div");
+        newDiv.setAttribute('class','row');
+
+        	for(var j = 0; j < elems_per_row && num_elems > 0; j++, num_elems--){
+       
+                actual_elem = i*elems_per_row + j; 
+         
+        
+                let date = SplitDateReturn(auctionsArray[actual_elem].dateend,1);
+
+                let auctionDiv = document.createElement("div");
+                auctionDiv.setAttribute('class','col-lg-4 col-md-6 mb-4');
+
+                auctionDiv.innerHTML=`<div class="card h-100 auctionCard searchCard">
+                    <a href="/auction/${auctionsArray[actual_elem].auction_id}">
+                        <img class="card-img-top searchResultImage" src="/images/${auctionsArray[actual_elem].auctionphoto}" alt="">
+                    </a>
+                    <div class="card-body searchResultBody">
+                        <h5 class="card-title searchResultTitle">
+                            <a href="/auction/${auctionsArray[actual_elem].auction_id}">${auctionsArray[actual_elem].name}</a>
+                        </h5>
+                        <h4 class="auctionPrice">EUR ${auctionsArray[actual_elem].actualprice}</h5>
+                        <h6 class="auctionTimeLeft">  ${date} left</h1>
+                        <p class="card-text searchResultText">
+                        ${auctionsArray[actual_elem].firstname} ${auctionsArray[actual_elem].lastname}
+                        </p>
+                    </div>
+                </div>`;
+
+                newDiv.appendChild(auctionDiv);
+            }
+            div.appendChild(newDiv);
+    }
+
+    let append = document.querySelector("#searchPage .row");
+    append.appendChild(div);
+}
+
 addEventListeners();

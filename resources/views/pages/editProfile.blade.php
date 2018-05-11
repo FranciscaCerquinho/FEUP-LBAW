@@ -84,50 +84,50 @@
 						<div class="form-group row">
 							<label for="example-text-input" class="col-lg-2 col-control-label">First name:</label>
 							<div class="col-lg-8">
-								<input class="form-control" type="text" name="firstName" value="{{Auth::user()->firstname}}" id="example-text-input">
+								<input class="form-control" type="text" name="firstName" value="{{Auth::user()->firstname}}" >
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="example-text-input" class="col-lg-2 control-label">Last name:</label>
 							<div class="col-lg-8">
-								<input class="form-control" type="text" name="lastName" value="{{Auth::user()->lastname}}" id="example-text-input">
+								<input class="form-control" type="text" name="lastName" value="{{Auth::user()->lastname}}" >
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-lg-2 control-label">Email:</label>
 							<div class="col-lg-8">
-								<input class="form-control" type="text" name="email" value="{{Auth::user()->email}}" id="example-text-input" disabled>
+								<input class="form-control" type="text" name="email" value="{{Auth::user()->email}}"  disabled>
 							</div>
 						</div>
                         <div class="form-group row">
 							<label class="col-lg-2 control-label">Contact:</label>
 							<div class="col-lg-8">
-								<input class="form-control" type="number" name="contact" value="{{Auth::user()->contact}}" id="example-text-input">
+								<input class="form-control" type="number" name="contact" value="{{Auth::user()->contact}}" >
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-md-2 control-label">Address:</label>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="address" value="{{Auth::user()->address}}" id="example-text-input">
+								<input class="form-control" type="text" name="address" value="{{Auth::user()->address}}" >
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-md-2 control-label">City,Country:</label>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="country" value="{{Auth::user()->country}}" id="example-text-input">
+								<input class="form-control" type="text" name="country" value="{{Auth::user()->country}}" >
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-md-2 control-label">Password:</label>
 							<div class="col-md-8">
-								<input class="form-control" type="password" name="password" value="11111122333" id="example-text-input">
+								<input class="form-control" type="password" name="password" value="11111122333" >
 							</div>
 						</div>
 					
 						<div class="form-group row">
 							<label class="col-md-2 control-label">Confirm password:</label>
 							<div class="col-md-8">
-								<input class="form-control" type="password" name="confirmPassword" value="11111122333" id="example-text-input">
+								<input class="form-control" type="password" name="confirmPassword" value="11111122333" >
 							</div>
 						</div>
 						<div class="form-group row">

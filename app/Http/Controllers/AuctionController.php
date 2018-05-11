@@ -39,11 +39,6 @@ class AuctionController extends Controller
         return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
-    public function search($name = null) {
-      
-      return view('pages.search');
-    }
-
     public function show($id){
       $like=0;
       $commentsLikes = array();
@@ -269,25 +264,22 @@ class AuctionController extends Controller
       return $auction;
     }
 
+    public function auctionTime(Request $request, $auction_id){
+    
+      $auction = Auction::where('auction_id','=',$auction_id)->where('active','=',1)->first();
 
-     public function searchByCategory($category)  {
-       $type=0;
-      if(Auth::check()){
-        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
-        if($user_admin==null)
-          $type=1;
-        else
-          $type=2;
-      }
-  
-     $auctions =DB::table('category')->where('category', $category)
-      ->join('auction','auction.auction_id','=', 'category.id_auction')->where('active',1)
-      ->join('owner', 'owner.id_auction', '=', 'auction_id')
-      ->join('users', 'users.user_id', '=', 'owner.id_user')->get();
-
-      
-      return view('pages.search', [ 'auctions' => $auctions, 'type' => $type]);
-  
+      return $auction;
     }
+
+    public function inactiveAuction(Request $request, $auction_id)
+    {
+      $auction = Auction::find($auction_id);
+
+      $auction->active=0;
+      $auction->save();
+
+      return $auction;
+    }
+
 }
 ?>

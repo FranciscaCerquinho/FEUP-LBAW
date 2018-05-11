@@ -126,10 +126,10 @@ CREATE TABLE "owner"(
 );
 
 CREATE TABLE wishList(
-  id_user INTEGER NOT NULL,
-  id_auction INTEGER NOT NULL,
-  "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
-  follow BOOLEAN NOT NULL
+  id SERIAL NOT NULL,
+  user_id INTEGER NOT NULL,
+  auction_id INTEGER NOT NULL,
+  "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE category(
@@ -179,12 +179,12 @@ ALTER TABLE ONLY banUser
 
 ALTER TABLE ONLY banAuction
   ADD CONSTRAINT banAuction_pkey PRIMARY KEY (id);
-  
+
 ALTER TABLE ONLY owner
   ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
 
 ALTER TABLE ONLY wishList
-  ADD CONSTRAINT wishList_pkey PRIMARY KEY (id_user, id_auction);
+  ADD CONSTRAINT wishList_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY buyNow
   ADD CONSTRAINT buynow_pkey PRIMARY KEY (id);
@@ -250,10 +250,10 @@ ALTER TABLE ONLY reportuser
     ADD CONSTRAINT reporteduser_id_user_fkey FOREIGN KEY (id_userReported) REFERENCES users(user_id);
 
 ALTER TABLE ONLY wishlist
-    ADD CONSTRAINT wishlist_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
+    ADD CONSTRAINT wishlist_id_auction_fkey FOREIGN KEY (auction_id) REFERENCES auction(auction_id);
 
 ALTER TABLE ONLY wishlist
-    ADD CONSTRAINT wishlist_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
+    ADD CONSTRAINT wishlist_id_user_fkey FOREIGN KEY (user_id) REFERENCES users(user_id);
 
 ALTER TABLE ONLY buynow
     ADD CONSTRAINT buynow_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
@@ -264,7 +264,7 @@ ALTER TABLE ONLY buynow
 -- INDEXES
 CREATE INDEX email_user ON "users" USING hash (email);
 CREATE INDEX auctions ON auction USING hash (auction_id);
-CREATE INDEX wishList_auction ON wishList USING hash (id_auction);
+CREATE INDEX wishList_auction ON wishList USING hash (auction_id);
 CREATE INDEX auction_comments ON comment USING hash (id_auction);
 
 -- TRIGGERS and UDFs
@@ -407,8 +407,8 @@ INSERT INTO admin (id_user) VALUES (31);
 INSERT INTO admin (id_user) VALUES (32);
 INSERT INTO admin (id_user) VALUES (33);
 
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-13 00:00:00','2018-06-17 13:25:25','PS4 Controllers','Two Sony PS4 controllers that were only used once.',50.99,'play.jpg',70,'1',12,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-26 00:00:00','2018-06-05 13:55:00','Phone','The new one! Two good to be true! Buy now!',280.00,'phone.jpg',350.50,'1',10,0);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-13 00:00:00','2018-06-11 10:51:25','PS4 Controllers','Two Sony PS4 controllers that were only used once.',50.99,'play.jpg',70,'1',12,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-26 00:00:00','2018-06-11 10:17:00','Phone','The new one! Two good to be true! Buy now!',280.00,'phone.jpg',350.50,'1',10,0);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-02 00:00:00','MacbookPro','The new MacbookPro, 13 polg.',1000.99,'macbook.jpg',1500.10,'1',8,2);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-06-01 00:00:00','Iphone7','The new iphone 7 with 64GB.',700.50,'iphone.jpg',750.60,'1',15,0);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-13 00:00:00','2018-06-02 00:00:00','New Album David Bowie','The new album from david bowie. Good conditions',20.90,'music.jpg',25.50,'1',12,3);
@@ -433,16 +433,16 @@ INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-14 00:00:00','2018-06-03 00:00:00','Raquet','The new one!',80.65,'tenis.jpg',100.30,'1',4,0);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-12 00:00:00','2018-06-02 00:00:00','Weights for the gym','Good conditions, with the best price.',15.69,'gym.jpeg',30.06,'1',6,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-06-02 00:00:00','Books English collection','Really good',65.46,'book.jpg',80.53,'1',0,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-01 00:00:00','Kane','mi. Duis risus odio, auctor vitae,',4.61,'faucibusorciluctusetultricesposuere',9.23,'0',7,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-05 00:00:00','2018-06-03 00:00:00','Hope','Proin sed',7.53,'diamroindolorullasempertellus',10.14,'0',15,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-24 00:00:00','2018-06-01 00:00:00','Abbot','ultricies sem',14.07,'enimmitemporloremegetmollis',17.97,'0',6,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-03 00:00:00','2018-06-02 00:00:00','McKenzie','ante dictum',9.14,'arcuetpedeuncsedorci',14.42,'0',3,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-31 00:00:00','2018-06-01 00:00:00','Dolan','dolor. Fusce feugiat. Lorem ipsum dolor',1.10,'augueidantedictumcursusunc',5.67,'0',8,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-02 00:00:00','Robert','Etiam vestibulum massa rutrum magna. Cras',18.74,'egetipsumuspendisseagittisllamvitae',23.01,'0',9,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-31 00:00:00','2018-06-02 00:00:00','Dominic','Donec est mauris, rhoncus  mollis nec, cursus a,',21.16,'augueacipsumhasellusitaemauris',25.91,'0',7,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-06-03 00:00:00','Kendall','elit elit fermentum risus,',14.38,'Suspendisseeddoloruscemiorem,',18.69,'0',12,0);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-15 00:00:00','2018-06-01 00:00:00','Travis','Etiam vestibulum',19.50,'necmaurisblanditmattisraseget',24.60,'0',12,0);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-09 00:00:00','2018-06-01 00:00:00','Winifred','et',1.79,'adipiscingelittiamlaoreetliberoet',5.75,'0',12,0);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-01 00:00:00','Ipad Pro 12.9-inch','The new one in good conditions',600.61,'ipad.jpg',1000.23,'1',7,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-05 00:00:00','2018-06-03 00:00:00','Huawei 69GB','In good condition with one year warranty',260.53,'huawei.jpg',380.14,'1',15,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-24 00:00:00','2018-06-01 00:00:00','Mackbook Pro - grey','It was only used 2 months, like new',1200.07,'mackbook2.jpg',2000.97,'1',6,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-03 00:00:00','2018-06-02 00:00:00','Bathroom furniture','In good condition, we ride in your house',1800.14,'bathroom.jpg',2300.42,'1',3,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-31 00:00:00','2018-06-01 00:00:00','Office','New office! Relaxed and clean environment',2100.10,'office.jpg',3100.67,'1',8,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-02 00:00:00','Dog Elipsy','Dog with two years old',600.74,'dog.jpg',803.01,'1',9,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-31 00:00:00','2018-06-02 00:00:00','ONE Zen Silver Watch','ONE Zen Silver Watch. Choose your color',90.16,'one.jpg',180.91,'1',7,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-06-03 00:00:00','Soft toys','Disney Soft toys',54.38,'toys.jpg',70.69,'1',12,0);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-15 00:00:00','2018-06-01 00:00:00','Skate','The new one in the market',80.50,'skate.jpg',140.60,'1',12,0);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-09 00:00:00','2018-06-01 00:00:00','Car','VW Polo 2018',1500.79,'car.jpg',2000.75,'1',12,0);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-11 00:00:00','2018-06-01 00:00:00','Hammett','arcu. Aliquam ultrices iaculis odio. Nam',19.89,'ligulaonecluctusaliquetodiotiam',27.86,'0',12,0);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-05 00:00:00','2018-06-03 00:00:00','Chase','lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit',11.00,'nonlobortisquispedeuspendissedui.',16.36,'0',2,0);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-16 00:00:00','2018-06-01 00:00:00','Rudyard','elit elit fermentum risus, at',13.27,'adipiscinglobortisrisusnmipede,',18.50,'0',12,0);
@@ -604,56 +604,13 @@ INSERT INTO banAuction (id_user,id_auction,date) VALUES (5,43,'2018-04-05 11:43:
 INSERT INTO banAuction (id_user,id_auction,date) VALUES (30,27,'2018-04-09 10:33:17');
 INSERT INTO banAuction (id_user,id_auction,date) VALUES (11,2,'2018-04-05 22:49:11');
 
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (29,1,'2018-04-03 23:43:54','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (12,48,'2018-04-02 16:41:23','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (22,20,'2018-04-02 11:22:29','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (29,15,'2018-04-02 14:29:08','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (17,35,'2018-04-02 17:35:58','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (13,19,'2018-04-01 10:49:53','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (8,9,'2018-04-01 11:17:49','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (20,19,'2018-04-05 15:46:02','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (26,3,'2018-04-05 07:26:10','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (15,29,'2018-04-02 12:40:30','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (8,37,'2018-04-05 10:17:28','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (10,40,'2018-04-03 21:50:36','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (26,23,'2018-04-04 02:18:45','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (14,40,'2018-04-05 10:14:02','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (25,35,'2018-04-01 22:04:56','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (19,50,'2018-04-03 17:26:02','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (2,13,'2018-04-03 20:09:09','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (26,50,'2018-04-01 06:12:26','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (6,13,'2018-04-03 14:07:56','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (5,21,'2018-04-03 06:40:31','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (9,43,'2018-04-04 18:16:36','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (8,6,'2018-04-01 01:05:29','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (4,5,'2018-04-03 19:14:45','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (16,19,'2018-04-01 05:49:35','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (30,29,'2018-04-05 09:54:17','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (11,23,'2018-04-04 20:09:04','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (17,29,'2018-04-04 17:30:05','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (30,8,'2018-04-02 04:18:23','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (4,12,'2018-04-04 11:05:49','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (26,46,'2018-04-05 15:14:34','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (13,26,'2018-04-01 14:46:19','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (9,21,'2018-04-04 08:30:03','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (7,31,'2018-04-04 05:26:27','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (2,29,'2018-04-01 18:38:10','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (27,44,'2018-04-03 14:30:58','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (17,49,'2018-04-02 15:41:37','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (4,26,'2018-04-01 18:22:40','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (7,19,'2018-04-02 05:43:08','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (5,7,'2018-04-04 04:54:59','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (20,33,'2018-04-02 16:53:54','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (17,37,'2018-04-03 15:54:49','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (8,14,'2018-04-05 09:55:52','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (13,11,'2018-04-03 09:49:36','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (11,44,'2018-04-04 05:28:51','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (11,30,'2018-04-01 10:13:33','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (25,17,'2018-04-03 17:00:54','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (19,16,'2018-04-02 20:19:14','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (20,18,'2018-04-01 14:15:51','1');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (14,36,'2018-04-03 07:43:27','0');
-INSERT INTO wishList (id_user,id_auction,date,follow) VALUES (13,2,'2018-04-04 10:06:58','0');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (1,14,'2018-04-03 23:43:54');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (2,18,'2018-04-02 16:41:23');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (34,20,'2018-04-02 11:22:29');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (34,15,'2018-04-02 17:35:58');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (13,1,'2018-04-01 10:49:53');
+INSERT INTO wishList (user_id,auction_id,date) VALUES (8,9,'2018-04-01 11:17:49');
+
 
 
 INSERT INTO category (id_auction,Category) VALUES (1,'Electronics');
@@ -682,24 +639,24 @@ INSERT INTO category (id_auction,Category) VALUES (23,'Sporting');
 INSERT INTO category (id_auction,Category) VALUES (24,'Sporting');
 INSERT INTO category (id_auction,Category) VALUES (25,'Sporting');
 INSERT INTO category (id_auction,Category) VALUES (26,'Others');
-INSERT INTO category (id_auction,Category) VALUES (27,'Motors');
-INSERT INTO category (id_auction,Category) VALUES (28,'Sporting');
-INSERT INTO category (id_auction,Category) VALUES (29,'Toys');
-INSERT INTO category (id_auction,Category) VALUES (30,'Motors');
-INSERT INTO category (id_auction,Category) VALUES (31,'Daily Deals');
-INSERT INTO category (id_auction,Category) VALUES (32,'Electronics');
-INSERT INTO category (id_auction,Category) VALUES (33,'Home & Garden');
-INSERT INTO category (id_auction,Category) VALUES (34,'Fashion');
-INSERT INTO category (id_auction,Category) VALUES (35,'Others');
-INSERT INTO category (id_auction,Category) VALUES (36,'Music');
-INSERT INTO category (id_auction,Category) VALUES (37,'Sporting');
-INSERT INTO category (id_auction,Category) VALUES (38,'Motors');
-INSERT INTO category (id_auction,Category) VALUES (39,'Electronics');
-INSERT INTO category (id_auction,Category) VALUES (40,'Toys');
-INSERT INTO category (id_auction,Category) VALUES (41,'Toys');
+INSERT INTO category (id_auction,Category) VALUES (27,'Electronics');
+INSERT INTO category (id_auction,Category) VALUES (28,'Electronics');
+INSERT INTO category (id_auction,Category) VALUES (29,'Electronics');
+INSERT INTO category (id_auction,Category) VALUES (30,'Home & Garden');
+INSERT INTO category (id_auction,Category) VALUES (31,'Home & Garden');
+INSERT INTO category (id_auction,Category) VALUES (32,'Others');
+INSERT INTO category (id_auction,Category) VALUES (33,'Fashion');
+INSERT INTO category (id_auction,Category) VALUES (34,'Toys');
+INSERT INTO category (id_auction,Category) VALUES (35,'Sporting');
+INSERT INTO category (id_auction,Category) VALUES (36,'Others');
+INSERT INTO category (id_auction,Category) VALUES (37,'Electronics');
+INSERT INTO category (id_auction,Category) VALUES (38,'Electronics');
+INSERT INTO category (id_auction,Category) VALUES (39,'Home & Garden');
+INSERT INTO category (id_auction,Category) VALUES (40,'Home & Garden');
+INSERT INTO category (id_auction,Category) VALUES (41,'Others');
 INSERT INTO category (id_auction,Category) VALUES (42,'Fashion');
-INSERT INTO category (id_auction,Category) VALUES (43,'Daily Deals');
-INSERT INTO category (id_auction,Category) VALUES (44,'Home & Garden');
+INSERT INTO category (id_auction,Category) VALUES (43,'Toys');
+INSERT INTO category (id_auction,Category) VALUES (44,'Sporting');
 INSERT INTO category (id_auction,Category) VALUES (45,'Others');
 INSERT INTO category (id_auction,Category) VALUES (46,'Motors');
 INSERT INTO category (id_auction,Category) VALUES (47,'Sporting');
