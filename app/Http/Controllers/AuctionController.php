@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rule;
+use DateTime;
 
 use App\Auction;
 use App\Comment;
 use App\Admin;
 use App\Owner;
 use App\ReportAuction;
+use App\Category;
 
 class AuctionController extends Controller
 {
@@ -148,48 +152,56 @@ class AuctionController extends Controller
      */
     public function create(Request $request)
     {
+
+      $rules = array (
+        'name' => 'required|string|max:255',
+        'dateEnd' => 'required|date_format:d/m/Y H:i|after:now',
+        'description' => 'required|string|max:255',
+        'actualPrice' => 'required|regex:/^\d*(\.\d{2})?$/',
+        'photo' => 'required|mimes:jpg,png,jpeg,gif,svg',
+        'buyNow' => 'required|regex:/^\d*(\.\d{2})?$/',
+        'category' => ['required', Rule::in(['Electronics', 'Fashion', 'Home & Garden', 'Motors', 'Music', 'Toys', 'Daily Deals', 'Sporting', 'Others'])]
+      );
+
+      $validator = Validator::make(Input::all(), $rules);
+
+      if ($validator->fails()){
+        return view('pages.addAuction')->withErrors($validator);
+      }
                
       $auction = new Auction();
       $owner = new Owner();
-      //$category = new Category();
+      $category = new Category();
 
       //$this->authorize('create', $auction);
       //$this->authorize('create', $owner);
       //$this->authorize('create', $category);
 
       $auction->name = $request->input('name');
-      //$auction->dateBegin = date('Y-m-d H:i:s');
-      //$auction->dateEnd = $request->input('dateEnd');
+      $auction->datebegin = date('Y-m-d H:i:s');
+      $auction->dateend = date("Y-m-d H:i:s", DateTime::createFromFormat("d/m/Y H:i", $request->input('dateEnd'))->getTimestamp());
       $auction->description = $request->input('description');
-      $auction->actualPrice = 800.00;//doubleval($request->input('actualPrice'));
-      $auction->photo = $request->input('photo');
-      $auction->buyNow = $request->input('buyNow');
+      $auction->actualprice = doubleval($request->input('actualPrice'));
+
+      $imageName= $request->file('photo')->getClientOriginalName();
+      $request->file('photo')->move(public_path('images/'),$imageName);
+      $auction->auctionphoto = $imageName;
+      //$auction->auctionphoto = $request->input('photo');
+      $auction->buynow = $request->input('buyNow');
       $auction->active = '1';
       $auction->auction_like = 0;
       $auction->auction_dislike = 0;
       $auction->save();
-
+      
       $owner->id_user = Auth::user()->user_id;
       $owner->id_auction = $auction->auction_id;
       $owner->save();
 
-      /*$category->id_auction = $auction->auction_id;
+      $category->id_auction = $auction->auction_id;
       $category->category = $request->input('category');
-      $category->save();*/
+      $category->save();
 
-      return $auction;
-    }
-    
-    protected function validator(array $data){
-      return Validator::make($data, [
-        'name' => 'required|string|max:255',
-        'dateEnd' => 'required|date_format:d/m/Y H:i|after:now',
-        'description' => 'required|string|max:255',
-        'actualPrice' => 'required|regex:/^\d*(\.\d{2})?$/',
-        'photo' => 'required|image',
-        'buyNow' => 'required|regex:/^\d*(\.\d{2})?$/',
-        'category' => ['required', Rule::in(['Electronics', 'Fashion', 'Home & Garden', 'Motors', 'Music', 'Toys', 'Daily Deals', 'Sporting', 'Others'])]
-      ]);
+      return redirect()->action('AuctionController@show', $auction->auction_id);
     }
 
 
