@@ -43,7 +43,7 @@
                         <span  id ="unlikeComment">{{$comment->dislike}}</span>
                     </a>
                 @endif
-                <a  data-popup-reportUser-open="popup-1" type="button" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</a>
+                <button  data-popup-reportUser-open="popup-1" type="button" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</button>
                 <div class="popup-reportUser" data-popup-reportUser="popup-1" data-id="{{$comment->user_id}}">
                     <div class="popup-inner-reportUser" data-id="{{$comment->id}}">
                         <div class="form-group" id="userForm">

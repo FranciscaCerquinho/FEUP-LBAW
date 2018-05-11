@@ -22,8 +22,12 @@
   </div>
 
   <!--Auctions cards-->
+  <?php
+  
+  $num_elems = count($wishList);
+  ?>
 
-<div class="card container-md-4 wishListCard">
+<div class="card container-md-4 wishListCard" @if($num_elems==0)style="margin-bottom: 210px"@endif>
     <div class="card-body">
         <!-- Shopping Cart table -->
         <div class="table-responsive">
@@ -45,10 +49,7 @@
               <div class="col-sm-1">
               </div>
             </div>
-  <?php
-  
-  $num_elems = count($wishList);
-  ?>
+ 
   <?php for($i = 0; $i < $num_elems; $i++) {?>
           @include('partials.WishListAuction',['wishList'=>$wishList[$i]])
       <?php } ?>
