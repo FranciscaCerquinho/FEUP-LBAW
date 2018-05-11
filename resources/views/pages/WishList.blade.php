@@ -28,7 +28,7 @@
   <div class="next_auctions">
   <?php for($i = 0; $i < $num_elems; $i++) {?>
           <div class="row">
-          @include('partials.WishListAuction',['wishList'=>$wishList[$i]])
+          @include('partials.WishListAuction',['wishlist'=>$wishlist[$i]])
           </div>
       <?php } ?>
   </div>
