@@ -5,19 +5,67 @@
     <div class="add_auction">
         <h1>Add Auction</h1>
         <hr class="style17" style="color:grey;">
-        <div class="form-group" id="add_auction_buttons">
-                <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn addAuction">Add another auction &nbsp; &nbsp;
-                    <i class="fa fa-plus"></i>
-                </button>
+        @if(isset($alert))
+            @if ($alert!="")
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fas fa-bell"></i>
+                {!!$alert!!}
             </div>
+            @endif
+        @endif
+        @if ($errors->has('category'))
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fas fa-bell"></i>
+                {{ $errors->first('category') }}
+            </div>
+        @endif
+        @if ($errors->has('name'))
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fas fa-bell"></i>
+                {{ $errors->first('name') }}
+            </div>
+        @endif
+        @if ($errors->has('photo'))
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fas fa-bell"></i>
+                {{ $errors->first('photo') }}
+            </div>
+        @endif 
+        @if ($errors->has('dateEnd'))
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fas fa-bell"></i>
+                {{ $errors->first('dateEnd') }}
+            </div>
+        @endif 
+        @if ($errors->has('description'))
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fas fa-bell"></i>
+                {{ $errors->first('description') }}
+            </div>
+        @endif
+        @if ($errors->has('buyNow'))
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <a class="panel-close close" data-dismiss="alert">x</a>
+                <i class="fas fa-bell"></i>
+                {{ $errors->first('buyNow') }}
+            </div>
+        @endif
+        <div class="form-group" id="add_auction_buttons">
+            <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn addAuction">Add another auction &nbsp; &nbsp;
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
         <form id="taskForm" action="{{ route('addAuction') }}" enctype="multipart/form-data" method="post" class="form-horizontal">
             {{ csrf_field() }}
             <div class="form-group row">
                 <div class="col-lg-4">
                     <input for="example-text-input" type="text" class="form-control" name="name" placeholder="Auction name" />
-                    @if ($errors->has('name'))
-                        <div class="alert alert-danger alert-dismissable">{{ $errors->first('name') }}</div>
-                    @endif
                 </div>
                 <div class="col-lg-2">
                     <select for="example-text-input" class="form-control" name="category" id="sel1">
@@ -31,15 +79,9 @@
                         <option>Sporting</option>
                         <option>Others</option>
                     </select>
-                    @if ($errors->has('category'))
-                        <div class="alert alert-danger alert-dismissable">{{ $errors->first('category') }}</div>
-                    @endif 
                 </div>
                 <div class="col-lg-2">
-                    <input for="example-text-input" type="text" class="form-control" name="actualPrice" placeholder="Initial price (in Eur)" />
-                    @if ($errors->has('actualPrice'))
-                        <div class="alert alert-danger alert-dismissable">{{ $errors->first('actualPrice') }}</div>
-                    @endif 
+                    <input for="example-text-input" type="number" step="0.01" class="form-control" name="actualPrice" placeholder="Initial price (in Eur)" />
                 </div>
                 <div class="col-lg-2">
 					<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
@@ -55,18 +97,12 @@
 							})
 						});
 					</script>
-                   @if ($errors->has('dateEnd'))
-                        <div class="alert alert-danger alert-dismissable">{{ $errors->first('dateEnd') }}</div>
-                    @endif 
 				</div>
                 
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <textarea for="example-text-input" class="form-control" id="exampleTextarea" rows="3" name="description" placeholder="Description"></textarea>
-                    @if ($errors->has('description'))
-                        <div class="alert alert-danger alert-dismissable">{{ $errors->first('description') }}</div>
-                    @endif
                 </div>
                 <div class="col-lg-4">
                     <!-- image-preview-filename input [CUT FROM HERE]-->
@@ -101,15 +137,9 @@
                         </span>
                     </div>
                     <!-- /input-group image-preview [TO HERE]-->
-                    @if ($errors->has('category'))
-                        <div class="alert alert-danger alert-dismissable">{{ $errors->first('category') }}</div>
-                    @endif
                 </div>
                 <div class="col-lg-2">
-					<input for="example-text-input" type="text" class="form-control" name="buyNow" placeHolder="Buy-Now price (in EUR)" />
-                    @if ($errors->has('buyNow'))
-                        <div class="alert alert-danger alert-dismissable">{{ $errors->first('buyNow') }}</div>
-                    @endif
+					<input for="example-text-input" type="number" step="0.01" class="form-control" name="buyNow" placeHolder="Buy-Now price (in EUR)" />
 				</div>
             </div>
             <div class="form-group" id="add_auction_buttons">

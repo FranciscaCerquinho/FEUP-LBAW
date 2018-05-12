@@ -148,13 +148,23 @@ class AuctionController extends Controller
     public function create(Request $request)
     {
 
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      
+      }
+      else
+        $type=0;
+      
+
       $rules = array (
         'name' => 'required|string|max:255',
         'dateEnd' => 'required|date_format:d/m/Y H:i|after:now',
         'description' => 'required|string|max:255',
-        'actualPrice' => 'required|regex:/^\d*(\.\d{2})?$/',
         'photo' => 'required|mimes:jpg,png,jpeg,gif,svg',
-        'buyNow' => 'required|regex:/^\d*(\.\d{2})?$/',
         'category' => ['required', Rule::in(['Electronics', 'Fashion', 'Home & Garden', 'Motors', 'Music', 'Toys', 'Daily Deals', 'Sporting', 'Others'])]
       );
 
@@ -168,21 +178,24 @@ class AuctionController extends Controller
       $owner = new Owner();
       $category = new Category();
 
-      //$this->authorize('create', $auction);
-      //$this->authorize('create', $owner);
-      //$this->authorize('create', $category);
+      $actualPrice = doubleval($request->input('actualPrice'));
+      $buyNow = $request->input('buyNow');
 
+      if($buyNow < $actualPrice){
+        return view('pages.addAuction',['alert' => 'The <strong>Buy Now</strong> price is lower than <strong>Actual Price</strong>. Try again.','type'=>$type])->withErrors($validator);
+      }
+      
       $auction->name = $request->input('name');
       $auction->datebegin = date('Y-m-d H:i:s');
       $auction->dateend = date("Y-m-d H:i:s", DateTime::createFromFormat("d/m/Y H:i", $request->input('dateEnd'))->getTimestamp());
       $auction->description = $request->input('description');
-      $auction->actualprice = doubleval($request->input('actualPrice'));
+      $auction->actualprice = $actualPrice;
 
       $imageName= $request->file('photo')->getClientOriginalName();
       $request->file('photo')->move(public_path('images/'),$imageName);
       $auction->auctionphoto = $imageName;
       //$auction->auctionphoto = $request->input('photo');
-      $auction->buynow = $request->input('buyNow');
+      $auction->buynow = $buyNow;
       $auction->active = '1';
       $auction->auction_like = 0;
       $auction->auction_dislike = 0;
@@ -196,7 +209,7 @@ class AuctionController extends Controller
       $category->category = $request->input('category');
       $category->save();
 
-      return redirect()->action('AuctionController@show', $auction->auction_id);
+      return redirect()->action('AuctionController@show', [$auction->auction_id]);
     }
 
 
