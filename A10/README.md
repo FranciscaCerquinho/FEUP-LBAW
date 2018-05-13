@@ -12,11 +12,11 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 
 ## 2. Usage
  
-> URL to the product: http://lbaw1756.lbaw-prod.fe.up.pt/administration
+> URL to the product: http://lbaw1756.lbaw-prod.fe.up.pt
 
 ### 2.1. Administration Credentials
 
-> Administration URL: URL
+> Administration URL: http://lbaw1756.lbaw-prod.fe.up.pt/administration
  
 | Username             | Password |
 | -------------------- | -------- |
