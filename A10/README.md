@@ -3,7 +3,7 @@
 # A10: Product
 
 We developed an online auctions platform, where the visitors can see the auctions and the last bid done. The visitors can also search for auctions and search by category. The users can make bids and if they want to buy the product imediately they can use the button "Buy Now" and buy for the highest price set by the owner. The users can report auctions by clicking on an auction and clicking on "Report" button, under the auction image. They can also report other users simply by clicking on the report button in each user comment or by clicking on Report on the owner's page. The administrator can ban and unban auctions and users.
-As a user you can edit your profile, see the auctions created by you and the bids you've made. 
+As a user you can add auctions to the wish list, edit your profile, see the auctions created by you and the bids you've made.  
 
 ## 1. Installation
  
