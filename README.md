@@ -24,3 +24,8 @@
 * A7: [Web Resources Architecture](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A7)
 * A8: [Vertical Prototype](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A8)
 * A9: [Database Accesses](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A9)
+
+
+### Product and Presentation
+
+* A10: [Product](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10)
