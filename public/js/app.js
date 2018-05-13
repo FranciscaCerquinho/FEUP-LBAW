@@ -182,6 +182,11 @@ function addEventListeners() {
     for (var i = 0; i < searchCategory.length; i++)
         searchCategory[i].addEventListener('click', searchCategoryRequest);
   }
+
+  let reportOwner = document.querySelector(".user_infomation .popup-reportUser #reportUserButton");
+
+  if(reportOwner)
+    reportOwner.addEventListener('click', reportOwnerRequest);
 };
 
 function sendCommentRequest() {
@@ -525,6 +530,7 @@ function reportAuctionHandler() {
  
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
+
   if (this.status != 200) {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
@@ -565,32 +571,68 @@ function reportUserRequest() {
 
 function reportUserHandler() {
 
-  if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="fas fa-bell"></i>
-Did not report! Try again! 
-</div>`;
-  }
+    let message = document.createElement('div');
+    message.setAttribute('class', 'row');
 
-  let reportAuction = JSON.parse(this.responseText);
+    if (this.status != 200) {
+        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="fas fa-bell"></i>
+        Did not report! Try again! 
+        </div>`;
+    }
+    else{
+        let reportAuction = JSON.parse(this.responseText);
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+        message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="far fa-check-circle"></i>
+        The User has been sucessfully reported!
+        </div>`;
+    }
+    let item_info = document.querySelector('.popup-inner-reportUser[data-id="' + reportAuction.commentID + '"]');
 
-  message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="far fa-check-circle"></i>
-The User has been sucessfully reported!
-</div>`;
+    let info = item_info.querySelector("#userForm");
 
-  let item_info = document.querySelector('.popup-inner-reportUser[data-id="' + reportAuction.commentID + '"]');
-
-  let info = item_info.querySelector("#userForm");
-
-  item_info.insertBefore(message, info);
+    item_info.insertBefore(message, info);
 }
 
+function reportOwnerRequest(){
+
+    let reason = document.querySelector(".user_infomation .reportUserText").value;
+    let id = this.closest('.popup-reportUser').getAttribute('data-id');
+
+  sendAjaxRequest('post', '/reportOwner/' + id, {
+      reason: reason
+  }, reportOwnerHandler);
+}
+
+function reportOwnerHandler(){
+    let message = document.createElement('div');
+    message.setAttribute('class', 'row');
+
+    if (this.status != 200) {
+        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="fas fa-bell"></i>
+        Did not report! Try again! 
+        </div>`;
+    }
+    else{
+        let reportAuction = JSON.parse(this.responseText);
+    
+        message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="far fa-check-circle"></i>
+        The User has been sucessfully reported!
+        </div>`;
+    }
+    let item_info = document.querySelector('.popup-inner-reportUser');
+  
+    let info = item_info.querySelector("#userForm");
+  
+    item_info.insertBefore(message, info);
+}
 function banUserRequest() {
 
   let parent = this.closest("#usersReported");

@@ -38,7 +38,7 @@
 			<hr class="style17" style="color:grey;">
 			<div class="row">
 				<div class="col-md-2 col-sm-2">
-					<p>User</p>
+					<p>Auctions</p>
 				</div>
 				<div class="col-md-2 col-sm-2">
 					<p>Reported by</p>

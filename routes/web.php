@@ -68,6 +68,7 @@ Route::post('reportAuction/{id}', 'ReportAuctionController@create')->name('repor
 
 //Report User
 Route::post('reportUser/{id}', 'ReportUserController@create')->name('reportUser');
+Route::post('reportOwner/{id}', 'ReportUserController@reportOwner')->name('reportOwner');
 
 //Ban User
 Route::post('banUser/{id}', 'BanUserController@banUser')->name('banUser');
