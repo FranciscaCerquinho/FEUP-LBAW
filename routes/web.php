@@ -24,8 +24,9 @@ Route::get('owner/{id}', 'OwnerController@show')->name('ownerProfile');
 
 // WishList
 
-Route::get('wishList ','WishListController@list')->name("wishList");
-Route::get('listAuction ','WishListController@show')->name("listAuction");
+Route::get('wishList','WishListController@list')->name("wishList");
+Route::get('listAuction','WishListController@show')->name("listAuction");
+Route::delete('deleteFromWishList/{id}','WishListController@deleteFromWishList')->name("deleteFromWishList");
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

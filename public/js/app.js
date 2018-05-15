@@ -46,13 +46,13 @@ function myTimer() {
 }
 
 function auctionTimeHandler(){
-  
+
     if (this.status != 200) window.location = '/';
 
     var auction = JSON.parse(this.responseText);
     var date = SplitDateReturn(auction.dateend,1);
 
-    let id = document.querySelector('section#item[data-id="' + auction.auction_id + '"]');  
+    let id = document.querySelector('section#item[data-id="' + auction.auction_id + '"]');
 
     let timer = id.querySelector(".time_left");
 
@@ -71,13 +71,13 @@ function myTimerHomePage() {
 }
 
 function auctionsHomePageHandler(){
-  
+
     if (this.status != 200) window.location = '/';
-    
+
     var auction = JSON.parse(this.responseText);
     var date = SplitDateReturn(auction.dateend,1);
 
-    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
+    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');
 
     let timer = id.querySelector(".time_left");
 
@@ -101,10 +101,10 @@ function inactiveAuctionHandler(){
 
     let auction = JSON.parse(this.responseText);
 
-    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
-    
+    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');
+
     id.remove();
-    
+
     clearInterval(myVar);
     myVar = setInterval(myTimerHomePage, 1000);
 }
@@ -182,11 +182,17 @@ function addEventListeners() {
     for (var i = 0; i < searchCategory.length; i++)
         searchCategory[i].addEventListener('click', searchCategoryRequest);
   }
+  let removeFromWishList = document.querySelectorAll("#remove_from_wishlist");
+  if (removeFromWishList) {
+    for(var n = 0; n < removeFromWishList.length;n++){
+      removeFromWishList[n].addEventListener('click', removeFromWishListAction);
+    }
+  }
 
   let reportOwner = document.querySelector(".user_infomation .popup-reportUser #reportUserButton");
-
   if(reportOwner)
     reportOwner.addEventListener('click', reportOwnerRequest);
+
 
   let endAuction = document.querySelectorAll(".endAuctions .endAuction");
 
@@ -194,7 +200,25 @@ function addEventListeners() {
     for (var i = 0; i < endAuction.length; i++)
         endAuction[i].addEventListener('click', endAuctionRequest);
   }
+
 };
+
+function removeFromWishListAction(){
+    let id = this.closest('#itemWishList').getAttribute('data-id');
+    sendAjaxRequest('delete', '/deleteFromWishList/' + id ,null,deleteFromWishListHandler);
+};
+
+function deleteFromWishListHandler(){
+
+  if (this.status != 200) window.location = '/';
+  let parent = document.querySelector('#itemWishList');
+  parent.remove();
+
+  let total= document.querySelector('#totalWishList');
+  let value = total.textContent;
+  total.innerHTML = value-1;
+
+}
 
 function sendCommentRequest() {
   let text = document.querySelector(".leave_comment .status-upload textarea").value;
@@ -534,7 +558,7 @@ function reportAuctionRequest() {
 }
 
 function reportAuctionHandler() {
- 
+
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
 
@@ -542,7 +566,7 @@ function reportAuctionHandler() {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="fas fa-bell"></i>
-  Did not report! Try again! 
+  Did not report! Try again!
   </div>`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
@@ -585,7 +609,7 @@ function reportUserHandler() {
         message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
         <a class="panel-close close" data-dismiss="alert">x</a>
         <i class="fas fa-bell"></i>
-        Did not report! Try again! 
+        Did not report! Try again!
         </div>`;
     }
     else{
@@ -622,12 +646,12 @@ function reportOwnerHandler(){
         message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
         <a class="panel-close close" data-dismiss="alert">x</a>
         <i class="fas fa-bell"></i>
-        Did not report! Try again! 
+        Did not report! Try again!
         </div>`;
     }
     else{
         let reportAuction = JSON.parse(this.responseText);
-    
+
         message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
         <a class="panel-close close" data-dismiss="alert">x</a>
         <i class="far fa-check-circle"></i>
@@ -635,9 +659,9 @@ function reportOwnerHandler(){
         </div>`;
     }
     let item_info = document.querySelector('.popup-inner-reportUser');
-  
+
     let info = item_info.querySelector("#userForm");
-  
+
     item_info.insertBefore(message, info);
 }
 function banUserRequest() {
@@ -662,7 +686,7 @@ function banUserHandler() {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="fas fa-bell"></i>
-  Did not ban! Try again! 
+  Did not ban! Try again!
   </div>`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
@@ -688,7 +712,7 @@ function unbanUserHandler() {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="fas fa-bell"></i>
-  Did not unban! Try again! 
+  Did not unban! Try again!
   </div>`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
@@ -728,7 +752,7 @@ function banAuctionHandler() {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="fas fa-bell"></i>
-  Did not ban! Try again! 
+  Did not ban! Try again!
   </div>`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
@@ -752,7 +776,7 @@ function unbanAuctionHandler() {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="fas fa-bell"></i>
-  Did not unban! Try again! 
+  Did not unban! Try again!
   </div>`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
@@ -812,7 +836,7 @@ function addFormAddAuctionRequest() {
               });
           </script>
       </div>
-      
+
   </div>
   <div class="form-group row">
       <div class="col-lg-4">
@@ -880,7 +904,7 @@ function deleteForm() {
 function searchCategoryRequest(){
 
     let categoryChecked=[];
-    
+
     let inputs= document.querySelectorAll("#category_filter .form-check label input");
     let categories= document.querySelectorAll("#category_filter .form-check label span");
 
@@ -901,7 +925,7 @@ function showCategoryHandler(){
 
     var auctions = document.querySelector(".searchResults");
     auctions.remove();
-    
+
     var auctionsArray =JSON.parse(this.responseText);
 
     let div = document.createElement("div");
@@ -915,10 +939,10 @@ function showCategoryHandler(){
         newDiv.setAttribute('class','row');
 
         	for(var j = 0; j < elems_per_row && num_elems > 0; j++, num_elems--){
-       
-                actual_elem = i*elems_per_row + j; 
-         
-        
+
+                actual_elem = i*elems_per_row + j;
+
+
                 let date = SplitDateReturn(auctionsArray[actual_elem].dateend,1);
 
                 let auctionDiv = document.createElement("div");
