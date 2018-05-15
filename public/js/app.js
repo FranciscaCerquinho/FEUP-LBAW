@@ -188,6 +188,11 @@ function addEventListeners() {
       removeFromWishList[n].addEventListener('click', removeFromWishListAction);
     }
   }
+
+  let reportOwner = document.querySelector(".user_infomation .popup-reportUser #reportUserButton");
+  if(reportOwner)
+    reportOwner.addEventListener('click', reportOwnerRequest);
+    
 };
 
 function removeFromWishListAction(){
@@ -549,6 +554,7 @@ function reportAuctionHandler() {
 
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
+
   if (this.status != 200) {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
@@ -589,6 +595,7 @@ function reportUserRequest() {
 
 function reportUserHandler() {
 
+<<<<<<< HEAD
   if (this.status != 200) {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
 <a class="panel-close close" data-dismiss="alert">x</a>
@@ -596,25 +603,70 @@ function reportUserHandler() {
 Did not report! Try again!
 </div>`;
   }
+=======
+    let message = document.createElement('div');
+    message.setAttribute('class', 'row');
+>>>>>>> b152bcd4c482fbffc25782582a1d39d445cb4509
 
-  let reportAuction = JSON.parse(this.responseText);
+    if (this.status != 200) {
+        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="fas fa-bell"></i>
+        Did not report! Try again!
+        </div>`;
+    }
+    else{
+        let reportAuction = JSON.parse(this.responseText);
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+        message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="far fa-check-circle"></i>
+        The User has been sucessfully reported!
+        </div>`;
+    }
+    let item_info = document.querySelector('.popup-inner-reportUser[data-id="' + reportAuction.commentID + '"]');
 
-  message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="far fa-check-circle"></i>
-The User has been sucessfully reported!
-</div>`;
+    let info = item_info.querySelector("#userForm");
 
-  let item_info = document.querySelector('.popup-inner-reportUser[data-id="' + reportAuction.commentID + '"]');
-
-  let info = item_info.querySelector("#userForm");
-
-  item_info.insertBefore(message, info);
+    item_info.insertBefore(message, info);
 }
 
+function reportOwnerRequest(){
+
+    let reason = document.querySelector(".user_infomation .reportUserText").value;
+    let id = this.closest('.popup-reportUser').getAttribute('data-id');
+
+  sendAjaxRequest('post', '/reportOwner/' + id, {
+      reason: reason
+  }, reportOwnerHandler);
+}
+
+function reportOwnerHandler(){
+    let message = document.createElement('div');
+    message.setAttribute('class', 'row');
+
+    if (this.status != 200) {
+        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="fas fa-bell"></i>
+        Did not report! Try again!
+        </div>`;
+    }
+    else{
+        let reportAuction = JSON.parse(this.responseText);
+
+        message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="far fa-check-circle"></i>
+        The User has been sucessfully reported!
+        </div>`;
+    }
+    let item_info = document.querySelector('.popup-inner-reportUser');
+
+    let info = item_info.querySelector("#userForm");
+
+    item_info.insertBefore(message, info);
+}
 function banUserRequest() {
 
   let parent = this.closest("#usersReported");
@@ -753,75 +805,93 @@ function addFormAddAuctionRequest() {
   newForm.setAttribute('method', 'post');
 
   newForm.innerHTML = `<div class="form-group row">
-<div class="col-lg-4">
-    <input for="example-text-input" type="text" class="form-control" name="task[]" placeholder="Auction name" />
-</div>
-<div class="col-lg-2">
-    <select for="example-text-input" class="form-control" id="sel1">
-        <option>Electronics</option>
-        <option>Fashion</option>
-        <option>Home & Garden</option>
-        <option>Motors</option>
-        <option>Music</option>
-        <option>Toys</option>
-        <option>Daily Deals</option>
-        <option>Sporting</option>
-        <option>Others</option>
-    </select>
-</div>
-<div class="col-lg-2">
-    <input for="example-text-input" type="text" class="form-control" name="task[]" placeholder="Initial price" />
-</div>
-<div class="col-lg-2 dateContainer" id="add_auction_calendar">
-    <div class="input-group-prepend">
-        <span class="input-group-text add-on">
-            <i class="fas fa-calendar-alt"></i>
-        </span>
-        <input class="form-control" type="date" id="example-date-input" style="font-size:15px;">
-    </div>
-</div>
-</div>
-<div class="form-group row">
-<div class="col-lg-4">
-    <textarea for="example-text-input" class="form-control" id="exampleTextarea" rows="3" placeholder="Description"></textarea>
-</div>
-<div class="col-lg-4">
-    <!-- image-preview-filename input [CUT FROM HERE]-->
-    <div class="input-group image-preview">
-        <input type="text" class="form-control image-preview-filename" disabled="disabled">
-        <!-- don't give a name === doesn't send on POST/GET -->
-        <span class="input-group-btn">
-            <!-- image-preview-clear button -->
-            <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                <span class="glyphicon glyphicon-remove"></span> Clear
-            </button>
-            <!-- image-preview-input -->
-            <div class="btn btn-default image-preview-input">
-                <div class="input-group-prepend">
-                    <span>
-                        <i class="fas fa-folder-open"></i>
-                    </span>
-                    <span class="image-preview-input-title">Add an image</span>
-                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" />
-                    <!-- rename it -->
-                </div>
-            </div>
-        </span>
-    </div>
-    <!-- /input-group image-preview [TO HERE]-->
-</div>
-</div>
-<div class="form-group" id="add_auction_buttons">
-<button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
-<button class="btn minus" style="font-size:16px;background-color:#437ab2; color:white">
-<i class="fas fa-minus"></i>
-</button>
-</div>
-</div>
-</div>
-</div>
+      <div class="col-lg-4">
+          <input for="example-text-input" type="text" class="form-control" name="name" placeholder="Auction name" />
+      </div>
+      <div class="col-lg-2">
+          <select for="example-text-input" class="form-control" name="category" id="sel1">
+              <option>Electronics</option>
+              <option>Fashion</option>
+              <option>Home & Garden</option>
+              <option>Motors</option>
+              <option>Music</option>
+              <option>Toys</option>
+              <option>Daily Deals</option>
+              <option>Sporting</option>
+              <option>Others</option>
+          </select>
+      </div>
+      <div class="col-lg-2">
+          <input for="example-text-input" type="number" step="0.01" class="form-control" name="actualPrice" placeholder="Initial price (in Eur)" />
+      </div>
+      <div class="col-lg-2">
+          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+              <input type="text" class="form-control datetimepicker-input" name="dateEnd" data-target="#datetimepicker1" placeholder="End Date"/>
+              <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+          </div>
+          <script type="text/javascript">
+              $(function () {
+                  $('#datetimepicker1').datetimepicker({
+                      format: "DD/MM/YYYY HH:mm"
+                  })
+              });
+          </script>
+      </div>
 
-`;
+  </div>
+  <div class="form-group row">
+      <div class="col-lg-4">
+          <textarea for="example-text-input" class="form-control" id="exampleTextarea" rows="3" name="description" placeholder="Description"></textarea>
+      </div>
+      <div class="col-lg-4">
+          <!-- image-preview-filename input [CUT FROM HERE]-->
+          <div class="input-group image-preview">
+              <input type="text" class="form-control image-preview-filename" id="imageName" disabled="disabled">
+              <!-- don't give a name === doesn't send on POST/GET -->
+              <span class="input-group-btn">
+                  <!-- image-preview-clear button -->
+                  <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                      <span class="glyphicon glyphicon-remove"></span> Clear
+                  </button>
+                  <!-- image-preview-input -->
+                  <div class="btn btn-default image-preview-input">
+                      <div class="input-group-prepend">
+                          <span>
+                              <i class="fas fa-folder-open"></i>
+                          </span>
+                          <span class="image-preview-input-title">Add an image</span>
+                          <input type="file" name="photo" id="photo" accept="image/*" />
+                          <script type="text/javascript">
+                              /*$("#photo").on('change',function(){
+                                  $("#photo").next('.form-control image-preview-filename').addClass("selected").html(($this).val());
+                              })*/
+                              $("#photo").on('change', function(){
+                                  document.getElementById("imageName").value=document.getElementById("photo").value;
+                              })
+                          </script>
+                          <!-- <input type="file" name="photo" accept="image/png, image/jpeg, image/gif"/> -->
+                          <!-- rename it -->
+                      </div>
+                  </div>
+              </span>
+          </div>
+          <!-- /input-group image-preview [TO HERE]-->
+      </div>
+      <div class="col-lg-2">
+          <input for="example-text-input" type="number" step="0.01" class="form-control" name="buyNow" placeHolder="Buy-Now price (in EUR)" />
+      </div>
+  </div>
+  <div class="form-group" id="add_auction_buttons">
+    <button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
+    <button class="btn minus" style="font-size:16px;background-color:#437ab2; color:white">
+    <i class="fas fa-minus"></i>
+    </button>
+   </div>
+</div>
+</div>
+</div>`;
 
   addAuctionForm.appendChild(newForm);
   let minus = newForm.querySelector(".minus");

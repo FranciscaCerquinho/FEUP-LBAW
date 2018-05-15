@@ -121,7 +121,7 @@
 					</div>
 					<div class="row justify-content-start" id="bid_buttons">
 						<div class="col-lg-3 col-sm-1" id="price">
-                            <?php $bid = $auction->actualprice + 0.01; ?>
+                            <?php $bid = $auction->actualprice + 1; ?>
 							<input class="form-control" type="number" value="{{$bid}}" id="price_button" step="0.01">
 						</div>
 						<div class="col-sm-2 col-md-auto" id="bid">

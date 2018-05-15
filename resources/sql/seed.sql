@@ -120,6 +120,7 @@ CREATE TABLE banAuction(
 );
 
 CREATE TABLE "owner"(
+  id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL
 );
@@ -132,6 +133,7 @@ CREATE TABLE wishList(
 );
 
 CREATE TABLE category(
+    id SERIAL NOT NULL,
     id_auction INTEGER NOT NULL,
     CATEGORY text NOT NULL,
     CONSTRAINT TYPE CHECK ((CATEGORY = ANY (ARRAY['Electronics'::text, 'Fashion'::text, 'Home & Garden'::text, 'Motors'::text, 'Music'::text, 'Toys'::text, 'Daily Deals'::text, 'Sporting'::text, 'Others'::text]))));

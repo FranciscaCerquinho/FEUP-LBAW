@@ -40,8 +40,10 @@ Route::get('auctions', 'AuctionController@list')->name('auction');
 Route::get('auction/{id}', 'AuctionController@show')->name('item');
 Route::post('likeAuction/{id}', 'AuctionController@updateLike');
 Route::post('unlikeAuction/{id}', 'AuctionController@updateUnlike');
+
 Route::get('myAuctions', 'AuctionController@myAuctions')->name('myAuctions');
 Route::get('addAuction','AuctionController@showAddAuction')->name('addAuction');
+Route::post('addAuction', 'AuctionController@create');
 Route::post('auctionTime/{id}', 'AuctionController@auctionTime')->name('auctionTime');
 Route::post('inactiveAuction/{id}', 'AuctionController@inactiveAuction')->name('inactiveAuction');
 
@@ -67,6 +69,7 @@ Route::post('reportAuction/{id}', 'ReportAuctionController@create')->name('repor
 
 //Report User
 Route::post('reportUser/{id}', 'ReportUserController@create')->name('reportUser');
+Route::post('reportOwner/{id}', 'ReportUserController@reportOwner')->name('reportOwner');
 
 //Ban User
 Route::post('banUser/{id}', 'BanUserController@banUser')->name('banUser');
