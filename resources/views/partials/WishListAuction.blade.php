@@ -22,4 +22,4 @@
       </button>
   </div>
 </div>
-<hr class="style17" style="color:grey;">
+<hr class="style17 wishListHr" style="color:grey;">

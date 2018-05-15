@@ -231,12 +231,14 @@ function addToWishListHandler(){
   The Item has been had to the wishlist!
   </div>`;
 
-      document.querySelector('#addToWishList').style = 'color: rgb(204,68,74);';
+      document.querySelector('#addToWishList').style = 'color: #437ab2;';
 
   }
-  let item_info = document.querySelector(".popup-inner-addToWishList");
+  let item_info = document.querySelector("#item_information");
 
-  item_info.insertBefore(message);
+  let info = document.querySelector("#info");
+
+  item_info.insertBefore(message, info);
 
 
 }
@@ -248,13 +250,16 @@ function removeFromWishListAction(){
 
 function deleteFromWishListHandler(){
 
-  if (this.status != 200) window.location = '/';
-  let parent = document.querySelector('#itemWishList');
-  parent.remove();
+    console.log(this.responseText);
+    if (this.status != 200) window.location = '/';
+    let parent = document.querySelector('#itemWishList');
+    let hr = document.querySelector(".wishListHr");
+    parent.remove();
+    hr.remove();
 
-  let total= document.querySelector('#totalWishList');
-  let value = total.textContent;
-  total.innerHTML = value-1;
+    let total= document.querySelector('#totalWishList');
+    let value = total.textContent;
+    total.innerHTML = value-1;
 
 }
 

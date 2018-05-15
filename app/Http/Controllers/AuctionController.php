@@ -17,6 +17,7 @@ use App\Owner;
 use App\ReportAuction;
 use App\Category;
 use App\EndAuction;
+use App\WishList;
 
 class AuctionController extends Controller
 {
@@ -51,6 +52,7 @@ class AuctionController extends Controller
       $commentsLikes = array();
       $comment_likes = array();
       $auctionReported=0;
+      $wishList=0;
 
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
@@ -83,6 +85,10 @@ class AuctionController extends Controller
         }
         $auctionReported = ReportAuction::where([['id_auction','=',$id],['id_user','=',Auth::user()->user_id]])
         ->first();
+
+        $wishList = WishList::where('user_id',(Auth::user()->user_id))->where('auction_id',$id)->first();
+        if($wishList!=null)
+          $wishList=1;
         }
       else
         $type=0;
@@ -108,7 +114,7 @@ class AuctionController extends Controller
       else{
         $reported=0;
       }
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes, 'auctionReported'=>$reported]);
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes, 'auctionReported'=>$reported,'wishList'=>$wishList]);
     }
 
     public function myAuctions(){

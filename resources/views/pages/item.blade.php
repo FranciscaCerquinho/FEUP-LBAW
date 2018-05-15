@@ -61,21 +61,16 @@
 									<div class="row" id="reportButton">
 											<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
 												<div class="text-center">
-													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block"><strong>Report</strong></a>
 												</div>
 											</div>
 										</div>
       								<a class="popup-close-reportAuction" data-popup-close-reportAuction="popup-1">X</a>
     							</div>
 							  </div>
-						<button type="button" class="btn btn-default btn-sm" id="addToWishList">
-							<span class="fas fa-shopping-cart"></span>&nbsp;  Wish List
+						<button type="button" class="btn btn-default btn-sm" id="addToWishList" @if($wishList==1) style="color:#437ab2"@endif>
+							<span class="fas fa-shopping-cart" @if($wishList==1) style="color:#437ab2"@endif ></span>&nbsp;  <strong>Wish List</strong>
 						</button>
-						<div class="popup-addToWishList" data-popup-addToWishList="popup-1">
-								<div class="popup-inner-addToWishList">
-										<a class="popup-close-addToWishList" data-popup-close-addToWishList="popup-1">X</a>
-								</div>
-							</div>
 					</div>
 				</div>
 				<div class="col-lg-6" id ="item_information">
