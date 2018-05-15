@@ -46,6 +46,8 @@ Route::post('addAuction', 'AuctionController@create');
 Route::post('auctionTime/{id}', 'AuctionController@auctionTime')->name('auctionTime');
 Route::post('inactiveAuction/{id}', 'AuctionController@inactiveAuction')->name('inactiveAuction');
 
+Route::post('endAuction/{id}', 'EndAuctionController@endAuction')->name('endAuction');
+
 //Auctions comments
 Route::post('comment/{id}', 'CommentController@create');
 Route::post('likeComment/{id}', 'CommentController@updateLike');

@@ -57,8 +57,7 @@
 										</div>
 										<div class="col-12">
 											<div class="form-group text-center" id="rememberMe">
-												<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-												<label for="remember"> Remember Me</label>
+												<a class="recoverPassword"> Forgot your password? </a>
 											</div>
 										</div>
 										<div class="col-5" id="button_login">	

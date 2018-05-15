@@ -187,6 +187,13 @@ function addEventListeners() {
 
   if(reportOwner)
     reportOwner.addEventListener('click', reportOwnerRequest);
+
+  let endAuction = document.querySelectorAll(".endAuctions .endAuction");
+
+  if(endAuction){
+    for (var i = 0; i < endAuction.length; i++)
+        endAuction[i].addEventListener('click', endAuctionRequest);
+  }
 };
 
 function sendCommentRequest() {
@@ -942,4 +949,15 @@ function showCategoryHandler(){
     append.appendChild(div);
 }
 
+function endAuctionRequest(){
+
+    let id = this.closest('.endAuctionAlert').getAttribute('data-id');
+
+    console.log(id);
+    sendAjaxRequest('post', '/endAuction/' + id ,null, endAuctionHandler);
+}
+
+function endAuctionHandler(){
+    console.log(this.responseText);
+}
 addEventListeners();

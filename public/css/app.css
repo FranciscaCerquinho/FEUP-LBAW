@@ -197,6 +197,10 @@ body {
     justify-content: center;
   }
 
+#endAuction{
+  padding: 6px;
+  margin: 5px;
+}
 
 @media only screen and (min-width: 1025px) {
 .auctionCardImage {
@@ -2232,6 +2236,13 @@ iframe {
   margin-left: 120px;
 }
 
+.recoverPassword{
+  color: #437ab2 !important;
+  z-index: 1;
+}
+.recoverPassword:hover{
+  text-decoration: underline!important;
+}
 @media only screen and (min-width: 576px) {
 #button_login{
   margin-left: 180px;
