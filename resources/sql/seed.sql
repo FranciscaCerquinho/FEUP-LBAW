@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS cards CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS userAuctionLike CASCADE;
 DROP TABLE IF EXISTS userCommentLike CASCADE;
+DROP TABLE IF EXISTS endAuction CASCADE;
 
 DROP FUNCTION IF EXISTS "CheckAuctionDate"() CASCADE;
 DROP TRIGGER IF EXISTS "CheckAuctionDate" ON bid CASCADE;
@@ -144,6 +145,13 @@ CREATE TABLE buyNow(
   id_auction INTEGER NOT NULL
 );
 
+CREATE TABLE endAuction(
+  id SERIAL NOT NULL,
+  id_user INTEGER NOT NULL,
+  id_auction INTEGER NOT NULL,
+  "status" boolean NOT NULL
+);
+
 
 -- Primary Keys and Uniques
 
@@ -188,6 +196,9 @@ ALTER TABLE ONLY wishList
 
 ALTER TABLE ONLY buyNow
   ADD CONSTRAINT buynow_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY endAuction
+  ADD CONSTRAINT endAuction_pkey PRIMARY KEY (id);
 
 
 -- Foreign Keys
@@ -260,6 +271,12 @@ ALTER TABLE ONLY buynow
 
 ALTER TABLE ONLY buynow
     ADD CONSTRAINT buynow_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
+
+ALTER TABLE ONLY endAuction
+    ADD CONSTRAINT endAuction_id_auction_fkey FOREIGN KEY (id_auction) REFERENCES auction(auction_id);
+
+ALTER TABLE ONLY endAuction
+    ADD CONSTRAINT endAuction_id_user_fkey FOREIGN KEY (id_user) REFERENCES users(user_id);
 
 -- INDEXES
 CREATE INDEX email_user ON "users" USING hash (email);
@@ -669,3 +686,10 @@ INSERT INTO buyNow (id_user,id_auction) VALUES (2,30);
 INSERT INTO buyNow (id_user,id_auction) VALUES (30,43);
 INSERT INTO buyNow (id_user,id_auction) VALUES (1,31);
 INSERT INTO buyNow (id_user,id_auction) VALUES (12,46);
+
+
+INSERT INTO endAuction (id_user,id_auction,status) VALUES (17,26,'1');
+INSERT INTO endAuction (id_user,id_auction,status) VALUES (2,30,'0');
+INSERT INTO endAuction (id_user,id_auction,status) VALUES (30,43,'1');
+INSERT INTO endAuction (id_user,id_auction,status) VALUES (1,31,'0');
+INSERT INTO endAuction (id_user,id_auction,status) VALUES (12,46,'1');

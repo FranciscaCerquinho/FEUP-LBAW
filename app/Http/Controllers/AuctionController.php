@@ -16,6 +16,7 @@ use App\Admin;
 use App\Owner;
 use App\ReportAuction;
 use App\Category;
+use App\EndAuction;
 
 class AuctionController extends Controller
 {
@@ -23,7 +24,8 @@ class AuctionController extends Controller
     public function list()
     {
   
-      
+      $endAuctions = array();
+
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
@@ -31,12 +33,17 @@ class AuctionController extends Controller
         else
           $type=2;
       
+        $endAuctions = EndAuction::where('status',1)
+        ->join('owner','owner.id_auction','=', 'endauction.id_auction')
+        ->join('users','users.user_id','=','owner.id_user')->where('users.user_id','=', Auth::user()->user_id)
+        ->join('auction','auction.auction_id','=','owner.id_auction')->get();
       }
       else
         $type=0;
-      
+        
         $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
-        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
+        
+        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type, 'endAuctions' => $endAuctions]);
     }
 
     public function show($id){

@@ -195,7 +195,15 @@ function addEventListeners() {
 
   let addToWishList = document.querySelector("#addToWishList");
   if(addToWishList)
-    addToWishList.addEventListener('click',addToWishListAction);
+      addToWishList.addEventListener('click',addToWishListAction);
+      
+  let endAuction = document.querySelectorAll(".endAuctions .endAuction");
+
+  if(endAuction){
+    for (var i = 0; i < endAuction.length; i++)
+        endAuction[i].addEventListener('click', endAuctionRequest);
+  }
+
 };
 
 function addToWishListAction(){
@@ -236,7 +244,6 @@ function addToWishListHandler(){
 function removeFromWishListAction(){
     let id = this.closest('#itemWishList').getAttribute('data-id');
     sendAjaxRequest('delete', '/deleteFromWishList/' + id ,null,deleteFromWishListHandler);
-
 };
 
 function deleteFromWishListHandler(){
@@ -1004,4 +1011,15 @@ function showCategoryHandler(){
     append.appendChild(div);
 }
 
+function endAuctionRequest(){
+
+    let id = this.closest('.endAuctionAlert').getAttribute('data-id');
+
+    console.log(id);
+    sendAjaxRequest('post', '/endAuction/' + id ,null, endAuctionHandler);
+}
+
+function endAuctionHandler(){
+    console.log(this.responseText);
+}
 addEventListeners();

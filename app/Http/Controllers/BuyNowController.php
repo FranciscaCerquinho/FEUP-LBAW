@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\BuyNow;
 use App\Auction;
+use App\EndAuction;
 
 
 class BuyNowController extends Controller
@@ -17,6 +18,8 @@ class BuyNowController extends Controller
     protected function buyNow(Request $request,$auction_id)
     {
         $findBuyNow= BuyNow::where('id_auction',$auction_id);
+        $endAuction= new EndAuction();
+
         $buyNow;
         if($findBuyNow!=null){
         $buyNow = new BuyNow();
@@ -29,10 +32,16 @@ class BuyNowController extends Controller
 
         $auction->active = 0;
         $auction->save();
+
+        $endAuction->id_user = Auth::user()->user_id;
+        $endAuction->id_auction = $auction_id;
+        $endAuction->status='1';
+        $endAuction->save();
         }
 
         return $buyNow;
     }
+
 
 
 

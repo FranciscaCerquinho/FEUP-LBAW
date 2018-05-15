@@ -32,13 +32,13 @@
                     </a>
                 @endif
                 @if(isset($commentsLikes))
-                    <a id="commentUnlike" href="#" @if($commentsLikes==2) class="btn stat-item-blue" @endif @if($commentsLikes!=2) class="btn stat-item" @endif>
+                    <a id="commentUnlike" @if($commentsLikes==2) class="btn stat-item-blue" @endif @if($commentsLikes!=2) class="btn stat-item" @endif>
                         <span id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
                         <span id ="unlikeComment">{{$comment->dislike}}</span>
                     </a>        
                 @endif
                 @if(!isset($commentsLikes))
-                    <a id="commentUnlike" href="#" class="btn stat-item">
+                    <a id="commentUnlike"class="btn stat-item">
                         <span  id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
                         <span  id ="unlikeComment">{{$comment->dislike}}</span>
                     </a>
