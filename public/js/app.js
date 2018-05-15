@@ -192,7 +192,7 @@ function addEventListeners() {
   let reportOwner = document.querySelector(".user_infomation .popup-reportUser #reportUserButton");
   if(reportOwner)
     reportOwner.addEventListener('click', reportOwnerRequest);
-    
+
 };
 
 function removeFromWishListAction(){
@@ -595,18 +595,8 @@ function reportUserRequest() {
 
 function reportUserHandler() {
 
-<<<<<<< HEAD
-  if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="fas fa-bell"></i>
-Did not report! Try again!
-</div>`;
-  }
-=======
     let message = document.createElement('div');
     message.setAttribute('class', 'row');
->>>>>>> b152bcd4c482fbffc25782582a1d39d445cb4509
 
     if (this.status != 200) {
         message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
