@@ -23,7 +23,7 @@
 
   <!--Auctions cards-->
   <?php
-  
+
   $num_elems = count($wishList);
   ?>
 
@@ -49,20 +49,20 @@
               <div class="col-sm-1">
               </div>
             </div>
- 
+
   <?php for($i = 0; $i < $num_elems; $i++) {?>
           @include('partials.WishListAuction',['wishList'=>$wishList[$i]])
       <?php } ?>
     <div class="row wishListTotal">
-      <div class="col-sm-8">  </div> 
-      <div class="col-sm-2">            
+      <div class="col-sm-8">  </div>
+      <div class="col-sm-2">
         <h4 class="mt-2">
             <strong>Total</strong>
         </h4>
-      </div> 
-      <div class="col-sm-2">     
-        <h4 class="mt-2">
-            <strong>EUR 2600</strong>
+      </div>
+      <div class="col-sm-2">
+        <h4 class="mt-2" id="totalWishList">
+            <strong>{{$num_elems}}</strong>
         </h4>
       </div>
     </div>

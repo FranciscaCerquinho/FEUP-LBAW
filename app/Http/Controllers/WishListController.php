@@ -57,4 +57,16 @@ class WishListController extends Controller
 
     return view('pages.WishList',['listAuction' => $listAuction,'type' => $type]);
   }
+
+  public function deleteFromWishList(Request $request, $id){
+    $deleteAuction = WishList::where('id',$id)->first();
+
+    echo $deleteAuction;
+    if($deleteAuction){
+      $deleteAuction->delete();
+    }
+
+    return $deleteAuction;
+
+  }
 }
