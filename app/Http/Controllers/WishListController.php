@@ -61,12 +61,43 @@ class WishListController extends Controller
   public function deleteFromWishList(Request $request, $id){
     $deleteAuction = WishList::where('id',$id)->first();
 
-    echo $deleteAuction;
     if($deleteAuction){
       $deleteAuction->delete();
     }
 
     return $deleteAuction;
+
+  }
+
+  public function addToWishList(Request $request,$id_auction){
+    $wishList = new wishList();
+    $auction = Auction::find($id_auction);
+    if(Auth::check()){
+      $CountWishList = WishList::where('wishlist.user_id',Auth::user()->user_id)
+      ->orderBy('dateend','asc')->join('auction', 'auction.auction_id', '=','wishlist.auction_id')
+      ->join('owner', 'owner.id_auction', '=', 'auction.auction_id')
+      ->join('users', 'users.user_id', '=','owner.id_user')
+      ->where('auction.active','=',1)
+      ->get();
+      $num_elems = count($CountWishList);
+      for($i = 0;$i < $num_elems; $i++){
+        if($CountWishList[$i]->auction_id == $id_auction){
+          $wishList->message='Item already on the WishList! &nbsp';
+          return $wishList;
+        }
+      }
+
+      $wishList->user_id = Auth::user()->user_id;
+      $wishList->auction_id = $id_auction;
+      $wishList->date = date('Y-m-d H:i:s');
+      $wishList->save();
+
+  }else{
+    $wishList->message='You have to login! &nbsp';
+  }
+
+  return $wishList;
+
 
   }
 }

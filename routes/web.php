@@ -27,6 +27,7 @@ Route::get('owner/{id}', 'OwnerController@show')->name('ownerProfile');
 Route::get('wishList','WishListController@list')->name("wishList");
 Route::get('listAuction','WishListController@show')->name("listAuction");
 Route::delete('deleteFromWishList/{id}','WishListController@deleteFromWishList')->name("deleteFromWishList");
+Route::post('addToWishList/{id_auction}','WishListController@addToWishList')->name("addToWishList");
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

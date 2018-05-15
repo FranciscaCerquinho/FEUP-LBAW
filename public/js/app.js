@@ -193,7 +193,45 @@ function addEventListeners() {
   if(reportOwner)
     reportOwner.addEventListener('click', reportOwnerRequest);
 
+  let addToWishList = document.querySelector("#addToWishList");
+  if(addToWishList)
+    addToWishList.addEventListener('click',addToWishListAction);
 };
+
+function addToWishListAction(){
+  let id_auction = this.closest('section#item').getAttribute('data-id');
+  sendAjaxRequest('post','/addToWishList/' + id_auction,null,addToWishListHandler);
+
+}
+
+function addToWishListHandler(){
+  let message = document.createElement('div');
+  message.setAttribute('class', 'row');
+
+  if (this.status != 200) {
+      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+  <a class="panel-close close" data-dismiss="alert">x</a>
+  <i class="fas fa-bell"></i>
+  Failed to add the item to wishlist! Try again!
+  </div>`;
+  } else {
+      let addToWishList = JSON.parse(this.responseText);
+
+      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+  <a class="panel-close close" data-dismiss="alert">x</a>
+  <i class="far fa-check-circle"></i>
+  The Item has been had to the wishlist!
+  </div>`;
+
+      document.querySelector('#addToWishList').style = 'color: rgb(204,68,74);';
+
+  }
+  let item_info = document.querySelector(".popup-inner-addToWishList");
+
+  item_info.insertBefore(message);
+
+
+}
 
 function removeFromWishListAction(){
     let id = this.closest('#itemWishList').getAttribute('data-id');

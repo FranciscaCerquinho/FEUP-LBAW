@@ -47,7 +47,7 @@
 						</button>
 						<button>
 						<button  data-popup-reportAuction-open="popup-1" type="button"  class="buttonReport" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif><span class="reportAuctionButton fas fa-bullhorn" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif></span> &nbsp; Report</button>
-						</button>	
+						</button>
 							<div class="popup-reportAuction" data-popup-reportAuction="popup-1">
     							<div class="popup-inner-reportAuction">
 									<div class="form-group" id="auctionForm">
@@ -68,9 +68,14 @@
       								<a class="popup-close-reportAuction" data-popup-close-reportAuction="popup-1">X</a>
     							</div>
 							  </div>
-						<button type="button" class="btn btn-default btn-sm">
+						<button type="button" class="btn btn-default btn-sm" id="addToWishList">
 							<span class="fas fa-shopping-cart"></span>&nbsp;  Wish List
 						</button>
+						<div class="popup-addToWishList" data-popup-addToWishList="popup-1">
+								<div class="popup-inner-addToWishList">
+										<a class="popup-close-addToWishList" data-popup-close-addToWishList="popup-1">X</a>
+								</div>
+							</div>
 					</div>
 				</div>
 				<div class="col-lg-6" id ="item_information">
@@ -133,7 +138,7 @@
 						</div>
 					</div>
 					</div>
-				
+
 				</div>
 			</div>
 
@@ -142,14 +147,14 @@
 					<?php foreach($comments as $comment) {
 						$j = -1;
 						for($i = 0; $i < count($commentsLikes); $i++){
-						
+
 							if($id_comment_likes[$i]->id_comment == $comment->id)
 								$j = $i;
-							} 
-						if($j != -1)  { ?> 
+							}
+						if($j != -1)  { ?>
 						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j]])	<?php }
 						else { ?>
-						@include('partials.comments',['comment'=>$comment])	
+						@include('partials.comments',['comment'=>$comment])
 					<?php }} ?>
 					@if (Auth::check())
 						@if($type==1)
