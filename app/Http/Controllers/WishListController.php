@@ -60,7 +60,7 @@ class WishListController extends Controller
 
   public function deleteFromWishList(Request $request, $id){
 
-    $deleteAuction = WishList::where('id',$id)->first();
+    $deleteAuction = WishList::where('wishlist_id',$id)->first();
     echo $deleteAuction;
 
     if($deleteAuction!=null){

@@ -245,6 +245,7 @@ function addToWishListHandler(){
 
 function removeFromWishListAction(){
     let id = this.closest('#itemWishList').getAttribute('data-id');
+    console.log(id);
     sendAjaxRequest('delete', '/deleteFromWishList/' + id ,null,deleteFromWishListHandler);
 };
 
@@ -261,7 +262,7 @@ function deleteFromWishListHandler(){
     let value = total.textContent;
     total.innerHTML = value-1;
 
-}
+};
 
 function sendCommentRequest() {
   let text = document.querySelector(".leave_comment .status-upload textarea").value;

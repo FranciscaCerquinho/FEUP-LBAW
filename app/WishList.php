@@ -8,6 +8,7 @@ class WishList extends Model
 {
     public $timestamps  = false;
     public $table='wishlist';
+    protected $primaryKey = 'wishlist_id';
 
   /**
    * The auction owner

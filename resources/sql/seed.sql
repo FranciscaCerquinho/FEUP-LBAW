@@ -127,7 +127,7 @@ CREATE TABLE "owner"(
 );
 
 CREATE TABLE wishList(
-  id SERIAL NOT NULL,
+  wishlist_id SERIAL NOT NULL,
   user_id INTEGER NOT NULL,
   auction_id INTEGER NOT NULL,
   "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL
@@ -192,7 +192,7 @@ ALTER TABLE ONLY owner
   ADD CONSTRAINT owner_pkey PRIMARY KEY (id_user, id_auction);
 
 ALTER TABLE ONLY wishList
-  ADD CONSTRAINT wishList_pkey PRIMARY KEY (id);
+  ADD CONSTRAINT wishList_pkey PRIMARY KEY (wishlist_id);
 
 ALTER TABLE ONLY buyNow
   ADD CONSTRAINT buynow_pkey PRIMARY KEY (id);
