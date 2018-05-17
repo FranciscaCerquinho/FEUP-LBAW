@@ -254,6 +254,9 @@ class AuctionController extends Controller
 
       }
     }
+    else{
+      $auction->message='You have to login! &nbsp';
+    }
       return $auction;
     }
 
@@ -286,7 +289,10 @@ class AuctionController extends Controller
         }
 
       }
-    }      
+     }     
+     else{
+      $auction->message='You have to login! &nbsp';
+    } 
       return $auction;
     }
 

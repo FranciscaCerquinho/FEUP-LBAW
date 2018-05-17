@@ -16,7 +16,7 @@ class EndAuctionController extends Controller
 
     public function endAuction(Request $request,$id)
     {
-        $endAuction = EndAuction::where('id',$id)->first();
+        $endAuction = EndAuction::where('endauction_id',$id)->first();
 
         if($endAuction!=null){
             $endAuction->status='0';

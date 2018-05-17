@@ -24,7 +24,7 @@
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item">
-								<a href="./index.html">
+								<a href="/auctions">
 									<i class="fas fa-home"></i>
 									Home
 								</a>

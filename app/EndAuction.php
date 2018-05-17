@@ -8,7 +8,7 @@ class EndAuction extends Model
 {
     public $timestamps  = false;
     public $table='endauction';
-    protected $primaryKey= 'id';
+    protected $primaryKey= 'endauction_id';
     
     protected $fillable = [
         'status', 'id_auction','id_user',

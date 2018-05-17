@@ -33,7 +33,7 @@ function sendAjaxRequest(method, url, data, handler) {
   request.addEventListener('load', handler);
   request.send(encodeForAjax(data));
 }
-
+/*
 var myVar = setInterval(myTimer, 1000);
 
 function myTimer() {
@@ -58,7 +58,7 @@ function auctionTimeHandler(){
 
     timer.innerHTML = date + " left";
 }
-/*
+
 var myVar = setInterval(myTimerHomePage, 1000);
 
 function myTimerHomePage() {
@@ -225,13 +225,22 @@ function addToWishListHandler(){
   } else {
       let addToWishList = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="far fa-check-circle"></i>
-  The Item has been had to the wishlist!
-  </div>`;
+      if(addToWishList.message=='You have to login! &nbsp'){
+            message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="fas fa-bell"></i>
+        ${addToWishList.message}
+        </div>`;
+       }
+       else{
+        message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="far fa-check-circle"></i>
+        The Item has been had to the wishlist!
+        </div>`;
 
-      document.querySelector('#addToWishList').style = 'color: #437ab2;';
+        document.querySelector('#addToWishList').style = 'color: #437ab2;';
+       }
 
   }
   let item_info = document.querySelector("#item_information");
@@ -360,6 +369,8 @@ function addAuctionLikeHandler() {
   if (this.status != 200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
+  if(newLike.message!='You have to login! &nbsp'){
+
   let like = document.querySelector("#item #likeAuction");
 
   like.innerHTML = newLike.auction_like;
@@ -374,7 +385,7 @@ function addAuctionLikeHandler() {
 
   document.getElementById('unlike_hand').style = 'color: black;';
   unlike.style = 'color: black;';
-
+}
 }
 
 
@@ -395,6 +406,8 @@ function addAuctionUnlikeHandler() {
   if (this.status != 200) window.location = '/';
   let newUnlike = JSON.parse(this.responseText);
 
+  if(newUnLike.message!='You have to login! &nbsp'){
+
   let unlike = document.querySelector("#item #unlikeAuction");
 
   unlike.innerHTML = newUnlike.auction_dislike;
@@ -411,6 +424,7 @@ function addAuctionUnlikeHandler() {
 
   document.getElementById('like_hand').style = 'color: black;';
   like.style = 'color: black;';
+  }
 }
 
 function sendCommentLikeRequest() {
@@ -570,24 +584,39 @@ function sendBuyNowRequest() {
 
 function buyNowHandler() {
 
-  if (this.status != 200) window.location = '/';
-  let buyNow = JSON.parse(this.responseText);
+    let message = document.createElement('div');
+    message.setAttribute('class', 'row');
+    console.log(this.responseText);
+    if (this.status != 200){
+        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="fas fa-bell"></i>
+        The product isn't yours! Try again
+      </div>`
+    }
+    else if(JSON.parse(this.responseText).message=='You have to login! &nbsp'){
+        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        <i class="fas fa-bell"></i>
+        You have to login! &nbsp
+        </div>`
+    }
+    else{
+
+    let buyNow = JSON.parse(this.responseText);
 
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+    message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
+    <a class="panel-close close" data-dismiss="alert">x</a>
+    <i class="far fa-check-circle"></i>
+    The auction is yours! Congratulations! The owner will contact you.
+    </div>`;
+    }
+    let item_info = document.querySelector("#item_information");
 
-  message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="far fa-check-circle"></i>
-The auction is yours! Congratulations! The owner will contact you.
-</div>`;
+    let info = document.querySelector("#info");
 
-  let item_info = document.querySelector("#item_information");
-
-  let info = document.querySelector("#info");
-
-  item_info.insertBefore(message, info);
+    item_info.insertBefore(message, info);
 }
 
 function reportAuctionRequest() {
@@ -1026,6 +1055,12 @@ function endAuctionRequest(){
 }
 
 function endAuctionHandler(){
-    console.log(this.responseText);
+   
+    if (this.status != 200) window.location = '/';
+    
+    let endAuction = JSON.parse(this.responseText);
+    let alert = document.querySelector('div.endAuctionAlert[data-id="' + endAuction.endauction_id + '"]');
+
+    alert.remove();
 }
 addEventListeners();

@@ -21,24 +21,29 @@ class BuyNowController extends Controller
         $endAuction= new EndAuction();
 
         $buyNow;
-        if($findBuyNow!=null){
-        $buyNow = new BuyNow();
-        $auction = Auction::find($auction_id);
+        if(Auth::check()){
+
+            if($findBuyNow!=null){
+            $buyNow = new BuyNow();
+            $auction = Auction::find($auction_id);
 
 
-        $buyNow->id_user = Auth::user()->user_id;
-        $buyNow->id_auction = $auction_id;
-        $buyNow->save();
+            $buyNow->id_user = Auth::user()->user_id;
+            $buyNow->id_auction = $auction_id;
+            $buyNow->save();
 
-        $auction->active = 0;
-        $auction->save();
+            $auction->active = 0;
+            $auction->save();
 
-        $endAuction->id_user = Auth::user()->user_id;
-        $endAuction->id_auction = $auction_id;
-        $endAuction->status='1';
-        $endAuction->save();
+            $endAuction->id_user = Auth::user()->user_id;
+            $endAuction->id_auction = $auction_id;
+            $endAuction->status='1';
+            $endAuction->save();
+            }
         }
-
+        else{
+            $buyNow->message='You have to login! &nbsp';
+        }
         return $buyNow;
     }
 

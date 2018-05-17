@@ -146,7 +146,7 @@ CREATE TABLE buyNow(
 );
 
 CREATE TABLE endAuction(
-  id SERIAL NOT NULL,
+  endAuction_id SERIAL NOT NULL,
   id_user INTEGER NOT NULL,
   id_auction INTEGER NOT NULL,
   "status" boolean NOT NULL
@@ -198,7 +198,7 @@ ALTER TABLE ONLY buyNow
   ADD CONSTRAINT buynow_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY endAuction
-  ADD CONSTRAINT endAuction_pkey PRIMARY KEY (id);
+  ADD CONSTRAINT endAuction_pkey PRIMARY KEY (endAuction_id);
 
 
 -- Foreign Keys
