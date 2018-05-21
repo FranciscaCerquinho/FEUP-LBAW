@@ -74,8 +74,25 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
  
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
-| US 1          | US Name | Mandatory; Important; Optional | John Silva, Ana Sousa ...  |  100%  |
-| US 2          | US Name | Mandatory; Important; Optional | John Silva                 |   75%  | 
+| US01         | Sign-in | high | Francisca Cerquinho  |  25%  |
+| US02          | Sign-up | high | Francisca Cerquinho                 |   25%  | 
+| US03          | 	Sign-up using external API | high |                 |     | 
+| US04          | 	Sign-in using external API| high |                 |     | 
+| US21         | Wish list add | high |  Pedro Miranda             |   25%  | 
+| US22         | Wish list remove | high |  Pedro Miranda             |   25%  | 
+| US23         | Comment | high |  Francisca Cerquinho             |   25%  | 
+| US24         | Rate | high |  Francisca Cerquinho             |   25%  |
+| US25         | Profile | high |  Francisca Cerquinho             |   25%  | 
+| US26         | Report | high |  Francisca Cerquinho             |   25%  | 
+| US27         |  Make a bid  | high |  Francisca Cerquinho           |   25%  | 
+| US28         | Buy Now  | high |    Francisca Cerquinho           |   25%  |
+| US29         | Private Message | high |              |   25%  |
+| US32         | Sell item | high |   José Azevedo           |   25%  |
+| US41         | Remove comments | high |          |   25%  |
+| US42         | Ban User| high |   Francisca Cerquinho           |   25%  |
+| US43         | Unban User| high |   Francisca Cerquinho           |   25%  |
+| US44         | Ban Auction| high |   Francisca Cerquinho           |   25%  |
+| US45         | Unban Auction| high |   Francisca Cerquinho           |   25%  |
 
 ## Members
 
