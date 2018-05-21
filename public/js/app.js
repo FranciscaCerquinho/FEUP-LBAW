@@ -292,38 +292,36 @@ function addCommentHandler() {
   let comment = document.createElement('div');
   comment.setAttribute('class', 'col-sm-12 comment');
   comment.setAttribute('data-id', newComment.id);
+  console.log(newComment);
   let date = SplitDateReturn(newComment.date,0);
 
-  comment.innerHTML = `
-  <div class="panel panel-white post panel-shadow">
-  <div class="post-heading">
-      <div class="pull-left image">
-          <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
-      </div>
-      <div class="pull-left meta">
-          <div class="title h5">
-              <a href="#">
-                  <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
-              </a>
-          </div>
-          <h6 class="text-muted time"> ${date} ago</h6>
-      </div>
-  </div>
-  <div class="post-description">
-      <p>${newComment.comment}</p>
-      <div class="stats">
-            <a id="commentLike" class="btn stat-item">
-                <span  class="fa fa-thumbs-up icon likeCommentHand"></span>
-                <span  class ="likeComment">${newComment.like}</span>
-            </a>
-            <a id="commentUnlike" class="btn stat-item">
-                <span  class="fa fa-thumbs-down icon unlikeCommentHand"></span>
-                <span  class ="unlikeComment">${newComment.dislike}</span>
-            </a>
-            <button  data-popup-reportUser-open="popup-1" type="button" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</button>
+  comment.innerHTML = `<div class="panel panel-white post panel-shadow">
+    <div class="post-heading">
+        <div class="pull-left image">
+                <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
+        </div>
+        <div class="pull-left meta">
+            <div class="title h5">
+                <a href="#"><b>${newComment.user.firstname} ${newComment.user.lastname}</b></a>
+            </div>
+            <h6 class="text-muted time"> ${date} ago</h6>
+        </div>
+    </div> 
+    <div class="post-description"> 
+        <p>${newComment.comment}</p>
+        <div class="stats">
+                <a class="btn stat-item commentLike">
+                    <span  class="fa fa-thumbs-up icon likeCommentHand"></span>
+                    <span  class ="likeComment">${newComment.like}</span>
+                </a>
+                <a class="btn stat-item commentUnlike">
+                    <span class="fa fa-thumbs-down icon unlikeCommentHand"></span>
+                    <span  class ="unlikeComment">${newComment.dislike}</span>
+                </a>
+            <button  data-popup-reportUser-open="popup-1" type="button" class="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</button>
             <div class="popup-reportUser" data-popup-reportUser="popup-1" data-id="{{$comment->user_id}}">
                 <div class="popup-inner-reportUser" data-id="{{$comment->id}}">
-                    <div class="form-group userForm">
+                    <div class="form-group userForm" >
                         <div class="input-group-prepend">
                             <span class="input-group-text">
                                 <i class="fas fa-comment-alt" aria-hidden="true"></i>
@@ -331,25 +329,33 @@ function addCommentHandler() {
                             <input type="text" class="form-control reportUserText" name="reason" placeholder="Reason" />
                         </div>
                     </div>
-                    <div class="row reportUserButton">
+                    <div class="row reportUserButton" >
                             <div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8 buttonReport" >
                                 <div class="text-center">
-                                    <a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+                                    <a role="button" target="_blank"  class="btn btn-primary btn-lg btn-block">Report</a>
                                 </div>
                             </div>
                         </div>
                     <a class="popup-close-reportUser" data-popup-close-reportUser="popup-1">X</a>
                 </div>
             </div>
-      </div>
-  </div>
-</div>`;
+        </div>
+    </div>
+    </div>`;
 
   let comments = document.querySelector(".comments .row");
 
   let commentBox = document.querySelector("#addComment");
 
   comments.insertBefore(comment, commentBox);
+
+  let text = document.querySelector(".leave_comment .status-upload textarea");
+
+  text.value= "";
+
+  comment.querySelector(".commentLike").addEventListener('click',sendCommentLikeRequest);
+  comment.querySelector(".commentUnlike").addEventListener('click',sendCommentUnlikeRequest);
+  //comment.querySelector(".popup-reportUser .reportUserButton").addEventListener('click',reportUserRequest);
 }
 
 
@@ -429,7 +435,7 @@ function addAuctionUnlikeHandler() {
 }
 
 function sendCommentLikeRequest() {
-  let like = document.querySelector(".commentLike").textContent;
+  let like = this.closest(".commentLike").textContent;
   like = parseInt(like) + 1;
 
   let id = this.closest('div.comment').getAttribute('data-id');
@@ -467,7 +473,7 @@ function addCommentLikeHandler() {
 
 function sendCommentUnlikeRequest() {
  
-  let unlike = document.querySelector(".commentUnlike").textContent;
+  let unlike = this.closest(".commentUnlike").textContent;
   unlike = parseInt(unlike) + 1;
 
   let id = this.closest('div.comment').getAttribute('data-id');
@@ -479,7 +485,7 @@ function sendCommentUnlikeRequest() {
 }
 
 function addCommentUnlikeHandler() {
-    console.log("aquiii");
+   
   if (this.status != 200) window.location = '/';
   let newUnlike = JSON.parse(this.responseText);
 

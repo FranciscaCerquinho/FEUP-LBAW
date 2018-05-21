@@ -29,11 +29,13 @@ function SplitDate(dateTime, value) {
   var second = parseInt(splitSecond[0])
   var hour = hour + parseInt(splitSecond[1]);
   let currentMonth = currentDate.getMonth() + 1;
+  let currentHour = currentDate.getHours() - 1;
+
   
   if (currentDate.getFullYear() == year) {
       if (currentMonth == month) {
           if (currentDate.getDate() == day) {
-              if (currentDate.getHours() == hour) {
+              if (currentHour == hour) {
                   if (currentDate.getMinutes() == minute) {
                       if (value == 1)
                           timeLeft = second - currentDate.getSeconds();
@@ -56,18 +58,18 @@ function SplitDate(dateTime, value) {
                   }
               } else if (hour == 0) {
                   if (value == 1)
-                      timeLeft = 24 - currentDate.getHours();
+                      timeLeft = 24 - currentHour;
                   else
-                      timeLeft = currentDate.getHours() - 24;
+                      timeLeft = currentHour - 24;
                   if (parseInt(timeLeft) != 1) {
                       stringToReturn = timeLeft.toString() + " hours";
                   } else stringToReturn = timeLeft.toString() + " hour";
                   document.write(stringToReturn);
               } else {
                   if (value == 1)
-                      timeLeft = hour - currentDate.getHours();
+                      timeLeft = hour - currentHour;
                   else
-                      timeLeft = currentDate.getHours() - hour;
+                      timeLeft = currentHour - hour;
                   if (parseInt(timeLeft) != 1) {
                       stringToReturn = timeLeft.toString() + " hours";
                   } else stringToReturn = timeLeft.toString() + " hour";
@@ -145,16 +147,16 @@ function SplitDateReturn(dateTime, value) {
     var time = hours.split(":");
     var hour = parseInt(time[0]);
     var minute = parseInt(time[1]);
-    var second_aux = time[2];
-    var splitSecond = second_aux.split("+");
-    var second = parseInt(splitSecond[0])
-    var hour = hour + parseInt(splitSecond[1]);
+    var second = time[2];
     let currentMonth = currentDate.getMonth() + 1;
-    
+    let currentHour = currentDate.getHours() - 1;
+
+
     if (currentDate.getFullYear() == year) {
         if (currentMonth == month) {
             if (currentDate.getDate() == day) {
-                if (currentDate.getHours() == hour) {
+                if (currentHour == hour) {
+                    console.log("estou aqui");
                     if (currentDate.getMinutes() == minute) {
                         if (value == 1)
                             timeLeft = second - currentDate.getSeconds();
@@ -177,18 +179,18 @@ function SplitDateReturn(dateTime, value) {
                     }
                 } else if (hour == 0) {
                     if (value == 1)
-                        timeLeft = 24 - currentDate.getHours();
+                        timeLeft = 24 - currentHour;
                     else
-                        timeLeft = currentDate.getHours() - 24;
+                        timeLeft = currentHour - 24;
                     if (parseInt(timeLeft) != 1) {
                         stringToReturn = timeLeft.toString() + " hours";
                     } else stringToReturn = timeLeft.toString() + " hour";
                     return stringToReturn;
                 } else {
                     if (value == 1)
-                        timeLeft = hour - currentDate.getHours();
+                        timeLeft = hour - currentHour;
                     else
-                        timeLeft = currentDate.getHours() - hour;
+                        timeLeft = currentHour - hour;
                     if (parseInt(timeLeft) != 1) {
                         stringToReturn = timeLeft.toString() + " hours";
                     } else stringToReturn = timeLeft.toString() + " hour";

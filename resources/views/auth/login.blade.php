@@ -60,7 +60,7 @@
 												<a class="recoverPassword" href="{{route('password.reset')}}"> Forgot your password? </a>
 											</div>
 										</div>
-										<div class="col-5" id="button_login">	
+										<div class="col-5 button_login">	
 											<div class="form-group">
 												<div class="text-center">
 													<button type="submit"  class="btn btn-primary btn-lg btn-block login-button">Login</button>
@@ -72,7 +72,7 @@
 												<a class='btn btn-danger'>
 													<i class="fab fa-google-plus-g"></i>
 												</a>
-												<a class='btn btn-danger' href='#' id="loginGoogle"> Sign in with Google</a>
+												<a class='btn btn-danger' href="{{ route('login') }}" id="loginGoogle"> Sign in with Google</a>
 											</div>
 										</div>
 									</div>
@@ -211,7 +211,7 @@
 									<div class="form-group ">
 										<div class="row">
 											<div class="col-lg-5 " style="width: 150px" >
-												<div class="text-center">
+												<div class="text-center button_login">
 													<button  type="submit"  class="btn btn-primary btn-lg btn-block login-button">Register</button>
 												</div>
 											</div>
