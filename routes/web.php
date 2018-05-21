@@ -35,13 +35,12 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
-Route::get('resetPassword', 'Auth\LoginController@resetPassword')->name('resetPassword');
 
 // Password Reset Routes...
 Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
 Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
-Route::post('password/reset', 'ResetPasswordController@reset');
+Route::post('password/reset', 'ResetPasswordController@reset')->name('resetPassword');
 
 //Auctions
 Route::get('auctions', 'AuctionController@list')->name('auction');

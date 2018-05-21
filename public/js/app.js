@@ -750,6 +750,7 @@ function banUserRequest() {
 
 function banUserHandler() {
 
+console.log(this.responseText);
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
 

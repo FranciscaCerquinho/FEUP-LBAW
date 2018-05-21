@@ -15,8 +15,9 @@
 					<div class="card-block">
 						<div class="card-body">
 							<div class="container-fluid">
-								<form id="resetPassword-form" action="{{ route('login') }}" method="post" role="form" style="display: block;">
+								<form id="resetPassword-form" action="{{ route('resetPassword') }}" method="post" role="form" style="display: block;">
 									{{ csrf_field() }}
+									<input type="hidden" name="token" value="{{Request::segment(3)}}"></input>
                                     <div class="row">
 										<div class="col-sm-12">
 											<div class="form-group">

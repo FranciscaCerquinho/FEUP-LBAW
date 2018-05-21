@@ -2364,3 +2364,36 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   }
   }
 
+.helpButton{
+  float:right; 
+  margin-right:20px; 
+  margin-top:10px;
+  background-color:rgb(89,124,160);
+  border-color: transparent;
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+
+}
+
+#exampleModalCenter .modal-title{
+  color: #437ab2;
+  font-weight: bold;
+}
+
+#exampleModalCenter .title{
+  color: #437ab2;
+}
+
+#exampleModalCenter .modal-body{
+  color: black;
+  font-size: 17px;
+}
+
+#exampleModalCenter .modal-body hr{
+  color:#437ab2;
+}

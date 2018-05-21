@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\BanUser;
 use App\Admin;
+use App\User;
 
 class BanUserController extends Controller
 {
@@ -15,6 +16,11 @@ class BanUserController extends Controller
     protected function banUser(Request $request,$id_user)
     {
       $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+      $ban_user = User::where('user_id',$id_user)->first();
+
+      $ban_user->isbanned=true;
+      $ban_user->save();
+
         return BanUser::create([
             'id_user' => $id_user,
             'id_admin' => $user_admin->id,
@@ -26,8 +32,16 @@ class BanUserController extends Controller
     protected function unbanUser(Request $request,$id_user)
     {
         $unbanUser = BanUser::where('id_user',$id_user)->first();
-        if($unbanUser)
+
+        
+        if($unbanUser){
             $unbanUser->delete();
+            
+            $ban_user = User::where('user_id',$id_user)->first();
+
+            $ban_user->isbanned=false;
+            $ban_user->save();
+        }
   
         return $unbanUser;
     }

@@ -38,7 +38,7 @@
 										<div class="col-5" id="button_login">	
 											<div class="form-group">
 												<div class="text-center">
-													<button target="_blank" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Continue</button>
+													<button target="_blank" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Send Email</button>
 												</div>
 											</div>
 										</div>

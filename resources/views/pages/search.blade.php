@@ -1,6 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">
+    ?
+  </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Online Help </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Search Page</p>
+        <p class="title">Search for auctions?</p>
+        <p>You can search for auctions using the navbar.</p>
+        <hr>
+        <p class="title">Want to search by category?</p>
+        <p>If you want to search for another auction category you can select them using the checklist on the left.</p>
+        <p class="title">Want to search for an auction by the owner ?</p>
+		<p>On the left, you can write the owner name under the title <b>"Owner"</b>. </p>
+		<p class="title">Want to go to the home page?</p>
+		<p>You have to click on <b>Home</b>.</p>  
+      </div>
+    </div>
+  </div>
+</div>
 <div  id="searchPage">
 	<div class="row">
 		<div class="col-12">

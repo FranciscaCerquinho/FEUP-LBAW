@@ -74,6 +74,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'country' => $data['country'],
             'photo'=> 'perfil_blue.png',
+            'isBanned'=> false,
         ]);
     }
 }

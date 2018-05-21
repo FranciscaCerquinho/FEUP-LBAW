@@ -1,6 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">
+    ?
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Online Help </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="title">Bid the auction?</p>
+		<p>You can bid the auction by writting the price and cliking on <b>"Make Bid"</b>.</p>
+		<p>If you want to see the bids that you made, you have to use the navbar button with your username, and then click on <b>"My Bids"</b>.</p>
+		<hr>	
+		<p class="title">Want to buy the item?</p>
+        <p>If you want to buy an auction, you have to click on <b> "Buy Now"</b> and then the auction is yours and the user will contact you.</p>
+		<hr>
+		<p class="title">Want to see the owner information?</p>
+        <p>You have to click on owner name. </p>
+		<p class="title">Report an auction?</p>
+        <p>If you want to report an auction you have to click on <b>"Report"</b> button (that is under the auction image), then write the reason and finally submit by clicking on <b>"Report"</b>. </p>
+		<hr>
+		<p class="title">Report an user?</p>
+        <p>If you want to report an user you have to click on <b>"Report"</b> button on user comments, then write the reason and finally submit by clicking on <b>"Report"</b>. </p>
+		<hr>
+		<p class="title">Add auction to your wish list?</p>
+        <p>You can add the auction to you wish list by clicking on <b>"Wish List"</b>. </p>
+		<hr>
+		<p class="title">Add a Comment to the auction?</p>
+        <p>If you want to add a comment to the auction, you have to write on <b> "Add a comment..."</b>, that is in the end of comments, and then click on <b>"Send"</b> to submit. </p>
+      </div>
+    </div>
+  </div>
+</div>
 <section class="container" id="item" data-id="{{$auction->auction_id}}">
 		<div class="container">
 			<div class="row">

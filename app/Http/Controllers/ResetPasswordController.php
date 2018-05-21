@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rule;
 
+use App\User;
 
 class ResetPasswordController extends Controller
 {
@@ -31,7 +32,25 @@ class ResetPasswordController extends Controller
         return view('auth.resetForm');
     }
 
-    public function  reset(){
-        
+    public function  reset(Request $request){
+        $this->validate($request, ['password' => 'required|confirmed|min:6']);
+
+        $credentials = $request->only('password', 'password_confirmation');
+
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        if($user) {
+          if($user->remember_token == $request->input('token')) {
+            $user->update(['password' => bcrypt($credentials['password'])]);
+            return view('auth.login');
+          }
+          else {
+            return view('auth.resetForm')->withErrors(['email' => 'INVALID TOKEN']);
+          }
+        }
+        else {
+          return view('auth.resetForm')->withErrors(['email' => 'We dont have this email in your DB!']);
+        }
     }
 }
