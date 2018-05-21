@@ -71,28 +71,42 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
  
 > Detail the status of the implementation of each user story.
 > Also include the new user stories that were created during the project.
+
+##### 8.2.1 Visitor
  
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
-| US01         | Sign-in | high | Francisca Cerquinho  |  25%  |
-| US02          | Sign-up | high | Francisca Cerquinho                 |   25%  | 
+| US01         | Sign-in | high | Francisca Cerquinho  |  100%  |
+| US02          | Sign-up | high | Francisca Cerquinho                 |   100%  | 
 | US03          | 	Sign-up using external API | high |                 |     | 
 | US04          | 	Sign-in using external API| high |                 |     | 
-| US21         | Wish list add | high |  Pedro Miranda             |   25%  | 
-| US22         | Wish list remove | high |  Pedro Miranda             |   25%  | 
-| US23         | Comment | high |  Francisca Cerquinho             |   25%  | 
-| US24         | Rate | high |  Francisca Cerquinho             |   25%  |
-| US25         | Profile | high |  Francisca Cerquinho             |   25%  | 
-| US26         | Report | high |  Francisca Cerquinho             |   25%  | 
-| US27         |  Make a bid  | high |  Francisca Cerquinho           |   25%  | 
-| US28         | Buy Now  | high |    Francisca Cerquinho           |   25%  |
-| US29         | Private Message | high |              |   25%  |
-| US32         | Sell item | high |   José Azevedo           |   25%  |
-| US41         | Remove comments | high |          |   25%  |
-| US42         | Ban User| high |   Francisca Cerquinho           |   25%  |
-| US43         | Unban User| high |   Francisca Cerquinho           |   25%  |
-| US44         | Ban Auction| high |   Francisca Cerquinho           |   25%  |
-| US45         | Unban Auction| high |   Francisca Cerquinho           |   25%  |
+| US21         | Wish list add | high |  Pedro Miranda             |   100%  | 
+
+##### 8.2.2 Customer
+| US Identifier | Name    | Priority                       | Team members               | State  |
+| ------------- | ------- | ------------------------------ | -------------------------- | ------ |
+| US22         | Wish list remove | high |  Pedro Miranda             |   100%  | 
+| US23         | Comment | high |  Francisca Cerquinho             |   100%  | 
+| US24         | Rate | high |  Francisca Cerquinho             |   100%  |
+| US25         | Profile | high |  Francisca Cerquinho             |   100%  | 
+| US26         | Report | high |  Francisca Cerquinho             |   100%  | 
+| US27         |  Make a bid  | high |  Francisca Cerquinho           |   100%  | 
+| US28         | Buy Now  | high |    Francisca Cerquinho           |   100%  |
+| US29         | Private Message | high |              |   100%  |
+
+##### 8.2.3 Owner
+| US Identifier | Name    | Priority                       | Team members               | State  |
+| ------------- | ------- | ------------------------------ | -------------------------- | ------ |
+| US32         | Sell item | high |   José Azevedo           |   100%  |
+
+##### 8.2.4 Administrator
+| US Identifier | Name    | Priority                       | Team members               | State  |
+| ------------- | ------- | ------------------------------ | -------------------------- | ------ |
+| US41         | Remove comments | high |          |   100%  |
+| US42         | Ban User| high |   Francisca Cerquinho           |   100%  |
+| US43         | Unban User| high |   Francisca Cerquinho           |   100%  |
+| US44         | Ban Auction| high |   Francisca Cerquinho           |   100%  |
+| US45         | Unban Auction| high |   Francisca Cerquinho           |   100%  |
 
 ## Members
 
