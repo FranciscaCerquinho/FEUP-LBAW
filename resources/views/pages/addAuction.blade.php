@@ -56,7 +56,7 @@
                 {{ $errors->first('buyNow') }}
             </div>
         @endif
-        <div class="form-group" id="add_auction_buttons">
+        <div class="form-group add_auction_buttons">
             <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn addAuction">Add another auction &nbsp; &nbsp;
                 <i class="fa fa-plus"></i>
             </button>
@@ -65,10 +65,10 @@
             {{ csrf_field() }}
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <input for="example-text-input" type="text" class="form-control" name="name" placeholder="Auction name" />
+                    <input type="text" class="form-control" name="name" placeholder="Auction name" />
                 </div>
                 <div class="col-lg-2">
-                    <select for="example-text-input" class="form-control" name="category" id="sel1">
+                    <select class="form-control" name="category" id="sel1">
                         <option>Electronics</option>
                         <option>Fashion</option>
                         <option>Home & Garden</option>
@@ -81,7 +81,7 @@
                     </select>
                 </div>
                 <div class="col-lg-2">
-                    <input for="example-text-input" type="number" step="0.01" class="form-control" name="actualPrice" placeholder="Initial price (in Eur)" />
+                    <input type="number" step="0.01" class="form-control" name="actualPrice" placeholder="Initial price (in Eur)" />
                 </div>
                 <div class="col-lg-2">
 					<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
@@ -90,7 +90,7 @@
 							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
 					</div>
-					<script type="text/javascript">
+					<script>
 						$(function () {
 							$('#datetimepicker1').datetimepicker({
 								format: "DD/MM/YYYY HH:mm"
@@ -102,14 +102,14 @@
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <textarea for="example-text-input" class="form-control" id="exampleTextarea" rows="3" name="description" placeholder="Description"></textarea>
+                    <textarea class="form-control" id="exampleTextarea" rows="3" name="description" placeholder="Description"></textarea>
                 </div>
                 <div class="col-lg-4">
                     <!-- image-preview-filename input [CUT FROM HERE]-->
                     <div class="input-group image-preview">
                         <input type="text" class="form-control image-preview-filename" id="imageName" disabled="disabled">
                         <!-- don't give a name === doesn't send on POST/GET -->
-                        <span class="input-group-btn">
+                        <div class="input-group-btn">
                             <!-- image-preview-clear button -->
                             <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
                                 <span class="glyphicon glyphicon-remove"></span> Clear
@@ -122,7 +122,7 @@
                                     </span>
                                     <span class="image-preview-input-title">Add an image</span>
                                     <input type="file" name="photo" id="photo" accept="image/*" />
-                                    <script type="text/javascript">
+                                    <script>
                                         /*$("#photo").on('change',function(){
                                             $("#photo").next('.form-control image-preview-filename').addClass("selected").html(($this).val());
                                         })*/
@@ -134,15 +134,15 @@
                                     <!-- rename it -->
                                 </div>
                             </div>
-                        </span>
+                        </div>
                     </div>
                     <!-- /input-group image-preview [TO HERE]-->
                 </div>
                 <div class="col-lg-2">
-					<input for="example-text-input" type="number" step="0.01" class="form-control" name="buyNow" placeHolder="Buy-Now price (in EUR)" />
+					<input type="number" step="0.01" class="form-control" name="buyNow" placeHolder="Buy-Now price (in EUR)" />
 				</div>
             </div>
-            <div class="form-group" id="add_auction_buttons">
+            <div class="form-group add_auction_buttons">
                 <button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
             </div>
     </div>

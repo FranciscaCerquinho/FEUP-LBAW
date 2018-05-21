@@ -43,7 +43,7 @@ function getPageList(totalPages, page, maxLength) {
 */
   $(function () {
     // Number of items and limits the number of items per page
-    var numberOfItems = $(".new_auctions #auctions-list").length;
+    var numberOfItems = $(".new_auctions .auctions-list").length;
    
     var limitPerPage = 12;
     // Total pages rounded upwards
@@ -57,7 +57,7 @@ function getPageList(totalPages, page, maxLength) {
     function showPage(whichPage) {
         if (whichPage < 1 || whichPage > totalPages) return false;
         currentPage = whichPage;
-        $(".new_auctions #auctions-list").hide()
+        $(".new_auctions .auctions-list").hide()
             .slice((currentPage-1) * limitPerPage, 
                     currentPage * limitPerPage).show();
         // Replace the navigation items (not prev/next):            

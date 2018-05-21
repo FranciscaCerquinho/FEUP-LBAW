@@ -11,7 +11,7 @@ body {
 
 /* Navigation */
 #myTopNav {
-    color: #597ca0ff;
+    color: rgb(89,124,160);
     background-color: white;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 .navbar-toggler-icon{
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#597ca0ff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(89,124,160)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 @media only screen and (min-width: 576px) {
     #myTopNav {
@@ -68,11 +68,10 @@ body {
 .nav-item a {
     display: inline-block;
     text-transform: uppercase;
-    color: #597ca0ff;
+    color: rgb(89,124,160);
     text-align: center;
     padding-top: 10px;
     padding-right:30px;
-    border-top: 1px solid #e4ece000;
     text-decoration: none;
     font-size: 18px;
     font-weight:normal;
@@ -434,12 +433,12 @@ body {
     z-index: 1;
     float: left; }
 
-.shop_by_category ul {
+.shop_by_category .navbar-collapse ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #597ca0ff;
+    background-color: rgb(89,124,160);
 }
 
 #myTopNav ul li:first-child {
@@ -455,12 +454,12 @@ body {
 }
 li a, .dropbtn {
     display: inline-block;
-    color: white;
+    color: rgb(89,124,160);
     text-align: center;
     text-decoration: none;
 }
 
-.shop_by_category  li.dropdown {
+.shop_by_category  ul li.dropdown {
     display: inline-block;
 }
 @media only screen and (min-width:360px) {
@@ -520,22 +519,22 @@ li a, .dropbtn {
   padding-top: 80px;
   padding-bottom: 100px;
 }
-#item #reportA{
+#item .reportA{
   background-color: transparent;
   border: none;
 }
 
-#item #reportA{
+#item .reportA{
   color:black;
   font-size: 17px;
   background-color: transparent;
   border: none;
 }
-#item a#reportA::hover{
+#item a.reportA:hover{
   background-color: white;
 }
 @media only screen and (max-width:576px) {
-#buttonReport {
+.buttonReport {
   margin-left:15px;
 }
 
@@ -558,23 +557,23 @@ section#item h2.item_name{
   font-size: 25px;
 }
 
-  #item #description{
+  #item .description{
     color:#000000;
     font-weight: bold;
   }
-  #item #user_information{
+  #item .user_information{
     color: #444444;
     font-weight: normal;
 
   }
 
-  #item div#user_information a{
+  #item div.user_information a{
       color: #444444;
       font-weight: normal;
 
     }
 
-  #item div#user_information div#category_name{
+  #item div.user_information div#category_name{
       margin-top: 10px;
   }
 
@@ -665,20 +664,20 @@ section#item h2.item_name{
     font-size: 16px;
 
   }
-  #item #user_information{
+  #item .user_information{
     color: #444444;
     font-weight: normal;
     font-size: 16px;
     flex: 2;
   }
 
-  #item #user_information a{
+  #item .user_information a{
       color: #444444;
       font-weight: normal;
       font-size: 16px;
     }
 
-  #item div#user_information div#category_name{
+  #item div.user_information div#category_name{
       margin-top: 10px;
   }
 
@@ -932,7 +931,7 @@ section#item h2.item_name{
 }
 
 @media (max-width: 576px){
-  #add_auction_buttons .btn{
+  .add_auction_buttons .btn{
     margin-top: 10px;
   }
 }
@@ -940,7 +939,7 @@ section#item h2.item_name{
 /*Profile*/
 .perfil_img{
     height: 180px;
-    width: 220;
+    width: 220px;
     padding-left: 40%;
 }
 #profile {
@@ -998,10 +997,9 @@ hr.style17 {
 .username .dropdown button{
     display: inline-block;
     text-transform: uppercase;
-    color: #597ca0ff;
+    color: rgb(89,124,160);
     text-align: center;
     padding-top: 12px;
-    border-top: 1px solid #e4ece000;
     text-decoration: none;
     font-size: 18px;
     letter-spacing: 0.3px;
@@ -1074,7 +1072,7 @@ hr.style17 {
     .username .dropdown .dropdown-menu a {
         float: right !important;
         padding-right: 0;
-        color:#597ca0ff;
+        color:rgb(89,124,160);
     }
 }
 
@@ -1132,7 +1130,7 @@ hr.style17 {
 }
 
 #edit_profile label{
-    color: #597ca0ff;
+    color: rgb(89,124,160);
 }
 #edit_profile .row .col-md-3 .text-center{
   padding-left: 15px;
@@ -1191,7 +1189,7 @@ hr.style17 {
   height: 50px;
   width: 300px;
   font-size: 20px;
-  background-color: #597ca0ff;
+  background-color: rgb(89,124,160);
   margin-left: 380px;
 
 }
@@ -1246,7 +1244,7 @@ color: #606060;
       height: 50px;
       width: 300px;
       font-size: 20px;
-      background-color: #597ca0ff;
+      background-color: rgb(89,124,160);
       margin-left:0;
       margin-bottom:150px;
 
@@ -1278,7 +1276,7 @@ color: #606060;
       height: 50px;
       width: 300px;
       font-size: 20px;
-      background-color: #597ca0ff;
+      background-color: rgb(89,124,160);
       margin-left:80px;
       margin-bottom:150px;
 
@@ -1310,7 +1308,7 @@ color: #606060;
       height: 50px;
       width: 300px;
       font-size: 20px;
-      background-color: #597ca0ff;
+      background-color: rgb(89,124,160);
       margin-left:60px;
       margin-bottom:150px;
 
@@ -1607,7 +1605,7 @@ footer li{
 }
 
 #orgInfo a:hover {
-    color: #597ca0ff;
+    color: rgb(89,124,160);
 }
 
 
@@ -1733,7 +1731,7 @@ footer li{
     width: 100%;
     height: 100%;
     box-shadow: 0px 0px 0px 0px;
-    color: #597ca0ff;
+    color: rgb(89,124,160);
   }
 
   .input1:focus + .shadow-input1 {
@@ -2314,13 +2312,13 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   z-index: 1;
 }
 
-#reportButton #buttonReport a#btn{
+#reportButton .buttonReport a.btn{
   background-color:#437ab2;
   z-index: 1;
   font-size: 16px;
 }
 
-#reportUserButton #buttonReport a#btn{
+.reportUserButton .buttonReport a.btn{
   background-color:#437ab2;
   z-index: 1;
   font-size: 16px;
@@ -2365,3 +2363,4 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
     display: none;
   }
   }
+

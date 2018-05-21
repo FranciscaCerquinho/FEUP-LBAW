@@ -38,6 +38,7 @@ $num_endAuctions = count($endAuctions);
 
 <ul id="pag" class="pagination col-lg-12"></ul>
 
+
 <!-- pagination -->  
 
 @endsection

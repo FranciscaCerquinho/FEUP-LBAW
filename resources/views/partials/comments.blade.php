@@ -20,33 +20,33 @@
             <p>{{$comment->comment}}</p>
             <div class="stats">
                 @if(isset($commentsLikes))
-                    <a  id="commentLike" @if($commentsLikes==1) class="btn stat-item-blue" @endif @if($commentsLikes!=1) class="btn stat-item" @endif>
-                        <span id ="likeCommentHand" class="fa fa-thumbs-up icon"></span>
-                        <span id ="likeComment">{{$comment->like}}</span>
+                    <a  @if($commentsLikes==1) class="btn stat-item-blue commentLike" @endif @if($commentsLikes!=1) class="btn stat-item commentLike" @endif>
+                        <span class="fa fa-thumbs-up icon likeCommentHand"></span>
+                        <span class="likeComment">{{$comment->like}}</span>
                     </a>    
                 @endif
                 @if(!isset($commentsLikes))
-                    <a id="commentLike" class="btn stat-item">
-                        <span  id ="likeCommentHand" class="fa fa-thumbs-up icon"></span>
-                        <span  id ="likeComment">{{$comment->like}}</span>
+                    <a class="btn stat-item commentLike">
+                        <span  class="fa fa-thumbs-up icon likeCommentHand"></span>
+                        <span  class ="likeComment">{{$comment->like}}</span>
                     </a>
                 @endif
                 @if(isset($commentsLikes))
-                    <a id="commentUnlike" @if($commentsLikes==2) class="btn stat-item-blue" @endif @if($commentsLikes!=2) class="btn stat-item" @endif>
-                        <span id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
-                        <span id ="unlikeComment">{{$comment->dislike}}</span>
+                    <a @if($commentsLikes==2) class="btn stat-item-blue commentUnlike" @endif @if($commentsLikes!=2) class="btn stat-item commentUnlike" @endif>
+                        <span class="fa fa-thumbs-down icon unlikeCommentHand"></span>
+                        <span class ="unlikeComment">{{$comment->dislike}}</span>
                     </a>        
                 @endif
                 @if(!isset($commentsLikes))
-                    <a id="commentUnlike"class="btn stat-item">
-                        <span  id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
-                        <span  id ="unlikeComment">{{$comment->dislike}}</span>
+                    <a class="btn stat-item commentUnlike">
+                        <span class="fa fa-thumbs-down icon unlikeCommentHand"></span>
+                        <span  class ="unlikeComment">{{$comment->dislike}}</span>
                     </a>
                 @endif
-                <button  data-popup-reportUser-open="popup-1" type="button" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</button>
+                <button  data-popup-reportUser-open="popup-1" type="button" class="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</button>
                 <div class="popup-reportUser" data-popup-reportUser="popup-1" data-id="{{$comment->user_id}}">
                     <div class="popup-inner-reportUser" data-id="{{$comment->id}}">
-                        <div class="form-group" id="userForm">
+                        <div class="form-group userForm" >
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="fas fa-comment-alt" aria-hidden="true"></i>
@@ -54,10 +54,10 @@
                                 <input type="text" class="form-control reportUserText" name="reason" placeholder="Reason" />
                             </div>
                         </div>
-                        <div class="row" id="reportUserButton">
-                                <div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
+                        <div class="row reportUserButton" >
+                                <div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8 buttonReport" >
                                     <div class="text-center">
-                                        <a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+                                        <a role="button" target="_blank"  class="btn btn-primary btn-lg btn-block">Report</a>
                                     </div>
                                 </div>
                             </div>

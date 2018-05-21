@@ -59,9 +59,9 @@
 										</div>
 									</div>
 									<div class="row" id="reportButton">
-											<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
+											<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8 buttonReport" >
 												<div class="text-center">
-													<a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block"><strong>Report</strong></a>
+													<a role="button" target="_blank"  class="btn btn-primary btn-lg btn-block"><strong>Report</strong></a>
 												</div>
 											</div>
 										</div>
@@ -79,42 +79,42 @@
 					</div>
 					<div class="row">
 						<div class="row col-lg-12" id="owner">
-							<div class="col-sm-4" id="title">
-								<p class="owner" id="description">Owner:</p>
+							<div class="col-sm-4" >
+								<p class="owner description" >Owner:</p>
 							</div>
-							<div class="col-sm-8" id="user_information">
+							<div class="col-sm-8 user_information" >
 								<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->user_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="category">
-							<div class="col-sm-4" id="title">
-								<p class="category" id="description">Category:</p>
+							<div class="col-sm-4" >
+								<p class="category description" >Category:</p>
 							</div>
-							<div class="col-sm-8" id="user_information">
+							<div class="col-sm-8 user_information">
 								<p class="category_name">{{$auction->category}}</p>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="time">
-							<div class="col-sm-4" id="title">
-								<p class="time" id="description">Time:</p>
+							<div class="col-sm-4" >
+								<p class="time description">Time:</p>
 							</div>
-							<div class="col-sm-8" id="user_information">
+							<div class="col-sm-8 user_information">
 								<p class="time_left" ><script>SplitDate("{{$auction->dateend}}",1);</script> left</p>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="object_description">
-							<div class="col-sm-4" id="title">
-								<p class="object_description" id="description">Description:</p>
+							<div class="col-sm-4" >
+								<p class="object_description description" >Description:</p>
 							</div>
-							<div class="col-sm-8" id="user_information">
+							<div class="col-sm-8 user_information" >
 								<p class="object_description_inf">{{$auction->description}}</p>
 							</div>
 						</div>
 						<div class="row col-lg-12" id="object_actualprice">
-							<div class="col-sm-4" id="title">
-								<p class="object_actualprice" id="description">Actual Price:</p>
+							<div class="col-sm-4" >
+								<p class="object_actualprice description">Actual Price:</p>
 							</div>
-							<div class="col-sm-8" id="user_information">
+							<div class="col-sm-8 user_information">
 								<p class="object_actualprice" id ="item_price">EUR {{$auction->actualprice}}</p>
 							</div>
 						</div>

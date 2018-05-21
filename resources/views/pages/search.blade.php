@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-lg-3 col-md-4">
 			<div  id="category_filter">
-				<label class="title" for="select_category">Category</label>
+				<label class="title">Category</label>
 				<div class="form-check">
 					<label class="form-check-label">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Electronics')checked @endif>
@@ -77,7 +77,7 @@
 						<span>Others</span>
 					</label>
 				</div>
-				<label class="title" for="owner_filter">Owner</label>
+				<label class="title" >Owner</label>
 				<input class="col-12" type="text" placeholder="User name">
 			
 			</div>

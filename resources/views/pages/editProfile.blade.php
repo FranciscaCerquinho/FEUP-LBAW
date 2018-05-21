@@ -5,7 +5,7 @@
 		<div class="container">
 			<h1>Edit Profile</h1>
 			<hr class="style17" style="color:grey;">
-			<form action="{{ route('editProfile') }}" enctype="multipart/form-data" method="post" class="form-horizontal" role="form">
+			<form action="{{ route('editProfile') }}" enctype="multipart/form-data" method="post" class="form-horizontal">
 			{{ csrf_field() }}
 			<div class="row">
 				<!-- left column -->
@@ -82,13 +82,13 @@
 					@endif
 				</div>
 						<div class="form-group row">
-							<label for="example-text-input" class="col-lg-2 col-control-label">First name:</label>
+							<label class="col-lg-2 col-control-label">First name:</label>
 							<div class="col-lg-8">
 								<input class="form-control" type="text" name="firstName" value="{{Auth::user()->firstname}}" >
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="example-text-input" class="col-lg-2 control-label">Last name:</label>
+							<label class="col-lg-2 control-label">Last name:</label>
 							<div class="col-lg-8">
 								<input class="form-control" type="text" name="lastName" value="{{Auth::user()->lastname}}" >
 							</div>

@@ -6,10 +6,10 @@
 			<div class="row col-12">
 				<div class="col-lg-3" id="profile_pic">
                 @if($owner->photo=='perfil_blue.png')
-                    <img src="http://placehold.it/300x290" alt="" class="img-rounded img-responsive img-fluid" id="profile_pic" />
+                    <img src="http://placehold.it/300x290" alt="" class="img-rounded img-responsive img-fluid" />
                 @endif
                 @if($owner->photo!='perfil_blue.png')
-                    <img src="/images/{{$owner->photo}}" alt="" class="img-rounded img-responsive img-fluid" id="profile_pic" />
+                    <img src="/images/{{$owner->photo}}" alt="" class="img-rounded img-responsive img-fluid" />
                 @endif
 				</div>
 				<div class="col-lg-5">

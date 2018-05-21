@@ -11,7 +11,6 @@ function SplitDate(dateTime, value) {
   var currentDate = new Date();
   var timeLeft;
   var stringToReturn;
-  //var h = document.querySelector("#newAuctions #auctions-list .card-body h1");
 
   var splitDate = dateTime.split(" ");
   var date = splitDate[0];
@@ -133,8 +132,7 @@ function SplitDateReturn(dateTime, value) {
     var currentDate = new Date();
     var timeLeft;
     var stringToReturn;
-    //var h = document.querySelector("#newAuctions #auctions-list .card-body h1");
-  
+
     var splitDate = dateTime.split(" ");
     var date = splitDate[0];
     var hours = splitDate[1];
