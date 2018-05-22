@@ -52,9 +52,12 @@
 				<div class="text-center">
 					@if(Auth::user()->photo=='perfil_blue.png')
 					<img src="images/perfil-icon_grey.png" class="avatar img-circle" alt="avatar">
-					@endif
-					@if(Auth::user()->photo!='perfil_blue.png')
-					<img src="images/{{Auth::user()->photo}}" class="avatar img-circle" alt="avatar">
+					@else
+						@if(preg_match('/https:\//',Auth::user()->photo, $matches, PREG_OFFSET_CAPTURE))
+						<img src="{{Auth::user()->photo}}" class="avatar img-circle" alt="avatar">
+						@else
+						<img src="images/{{Auth::user()->photo}}" class="avatar img-circle" alt="avatar">
+						@endif
 					@endif
 					<br>
 					<label class="btn btn-file" style="background-color:#437ab2; color:white; margin-top:20px">

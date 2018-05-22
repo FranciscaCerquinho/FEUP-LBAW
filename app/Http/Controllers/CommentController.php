@@ -33,7 +33,10 @@ class CommentController extends Controller
       $comment->date= date('Y-m-d H:i:s');
       $comment->save();
       $comment->load('user');
-      $comment->url= '/images/'.($comment->user->photo=='perfil_blue.png'?'commentImage.jpg' : $comment->user->photo);
+      if(preg_match('/https:\//',Auth::user()->photo, $matches, PREG_OFFSET_CAPTURE))
+        $comment->url= $comment->user->photo;
+      else
+        $comment->url= '/images/'.($comment->user->photo=='perfil_blue.png'?'commentImage.jpg' : $comment->user->photo);
       return $comment;
     }
 

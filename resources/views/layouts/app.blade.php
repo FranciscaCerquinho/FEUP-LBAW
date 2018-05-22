@@ -44,7 +44,7 @@
 
 	<nav class="navbar navbar-expand-lg" id="myTopNav">
 		<a href="{{route('auction')}}" class="link_logo">
-			<img class="topnavLogo" src="/images/icon.png" alt="TopBidLogo"></img>
+			<img class="topnavLogo" id="topnavLogo" src="/images/icon.png" alt="TopBidLogo"></img>
 		</a>
 		<div class="shop_by_category">
 			<ul>
@@ -109,7 +109,11 @@
 					<div class="username">
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+								@if(preg_match('/https:\//',Auth::user()->photo, $matches, PREG_OFFSET_CAPTURE))
+								<img class="img-circle" src="{{Auth::user()->photo}}"alt="userProfilePicture" ></img>
+								@else
 								<img class="img-circle" src="/images/{{Auth::user()->photo}}"alt="userProfilePicture" ></img>
+								@endif
 								{{Auth::user()->firstname}}
 							</button>
 							<ul class="dropdown-menu">
