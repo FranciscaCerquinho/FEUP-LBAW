@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -74,7 +75,25 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'country' => $data['country'],
             'photo'=> 'perfil_blue.png',
-            'isbanned'=> false,
+            'isbanned'=> '0',
         ]);
+    }
+
+    public function googleRegister(Request $request){
+
+        $user = User::where('email',$request->email)->first();
+
+        if($user==null){
+            $names = explode(" ", $request->input('name'));
+            return User::create([
+                'firstname' => $names[0],
+                'lastname' => $names[1],
+                'email' => $request->email,
+                'password' => bcrypt(rand(1,10000)),
+                'photo'=> $request->photo,
+                'isbanned'=> '0',
+            ]);
+        }
+        return $user;
     }
 }

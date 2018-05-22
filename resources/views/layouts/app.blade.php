@@ -33,6 +33,8 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 	<script src={{ asset('js/tempusdominus-bootstrap-4.min.js') }}> </script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="11137190996-6ss9a8v4ucn1l65qm7dmifljuv9jecvv.apps.googleusercontent.com">
 	<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/js/tempusdominus-bootstrap-4.min.js"></script>-->
 	<link rel="stylesheet" href="/css/tempusdominus-bootstrap-4.min.css">
 
@@ -121,7 +123,7 @@
 									<a href="{{url ('editProfile') }}">Edit Profile</a>
 								</li>
 								<li>
-									<a href="{{ url ('logout') }}">Logout</a>
+									<a href="{{ url ('logout') }}"  onclick="signOut()">Logout</a>
 								</li>
 							</ul>
 						</div>

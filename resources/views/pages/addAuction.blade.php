@@ -1,10 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="add_auction">
-    <div class="add_auction">
-        <h1>Add Auction</h1>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">
+    ?
+  </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Online Help </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="title">Want to add an auction?</p>
+        <p>You just have to change the field and click on <b>"Start Auction"</b>. </p>
+        <p class="title">What is the initial price?</p>
+        <p>Is the price that you want to start the auction.</p>
+        <p class="title">What is the Buy Now price?</p>
+        <p>The price that is given if a user wants to buy the auction on time.</p>
+        <p>Don't forget <b>"Buy Now" </b> price should be higher than <b>"Initial Price"</b> </p>
+        <p><b>Good Luck!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="add_auction container-fluid">
+    <div class="row">
+        <div class="col-sm-12 sb-4">
+        <h2 class="users">Add Auction</h2>
         <hr class="style17" style="color:grey;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/auctions">
+                <i class="fas fa-home"></i>
+                Home
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Add Auction</li>
+            </ol>
+        </nav>
+    </div>
+    </div>
         @if(isset($alert))
             @if ($alert!="")
             <div class="alert alert-danger alert-dismissable" role="alert">
@@ -150,6 +193,5 @@
 </div>
 
 </form>
-</div>
 </div>
 @endsection

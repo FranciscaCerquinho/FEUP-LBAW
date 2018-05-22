@@ -69,10 +69,7 @@
 										</div>
 										<div class="col-12">
 											<div class="btn-group">
-												<a class='btn btn-danger'>
-													<i class="fab fa-google-plus-g"></i>
-												</a>
-												<a class='btn btn-danger' href="{{ route('login') }}" id="loginGoogle"> Sign in with Google</a>
+												<div class="g-signin2" data-onsuccess="onSignIn"></div>
 											</div>
 										</div>
 									</div>

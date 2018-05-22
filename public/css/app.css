@@ -879,11 +879,15 @@ section#item h2.item_name{
 /**Add auction page*/
 
 .add_auction{
-    padding: 0 100px 0 100px;
+    padding: 70px 70px 10px 70px;
     font-size: 18px;
-    margin-top:100px;
-    margin-bottom: 280px;
+
 }
+
+.add_auction h2{
+  color: #444444;
+}
+
 .add_auction h1{
     color: #444444;
     font-size: 25px;
@@ -1121,7 +1125,7 @@ hr.style17 {
     margin-bottom: 100px;
     margin-top: 40px;
 }
-#edit_profile h1{
+#edit_profile h2{
     color: #444444;
 }
 
