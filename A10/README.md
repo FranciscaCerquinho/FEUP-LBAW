@@ -77,7 +77,7 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
 | US01         | Sign-in | high | Francisca Cerquinho  |  100%  |
-| US02          | Sign-up | high | Francisca Cerquinho     Francisca Cerquinho             |   100%  | 
+| US02          | Sign-up | high | Francisca Cerquinho              |   100%  | 
 | US03          | 	Sign-up using external API | high |    Francisca Cerquinho              |100%     | 
 | US04          | 	Sign-in using external API| high |     Francisca Cerquinho             |  100%   | 
 | US21         | Wish list add | high |  Pedro Miranda             |   100%  | 
