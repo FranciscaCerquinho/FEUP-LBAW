@@ -154,13 +154,12 @@
 	<div id="content">
 		@yield('content')
 	</div>
-  	<!-- Footer -->
 	<!-- Footer -->
 	<footer class="bg-4 text-center">
-		<div id="org">
+		<div class="col-sm-6 col-lg-4" id="org">
 			&nbsp; &nbsp; &nbsp; &copy; &nbsp;2018 &nbsp; TopBid - All Rights Reserved
 		</div>
-		<div id="orgInfo">
+		<div class="col-sm-6 col-lg-4" id="orgInfo">
 			<ul>
 				<li>
 					<a href="{{route('faq')}}">FAQ</a>
