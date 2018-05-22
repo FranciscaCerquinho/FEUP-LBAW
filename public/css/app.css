@@ -58,7 +58,7 @@ body {
 
 .nav-item:last-child a{
   margin-right: 20px;
-} 
+}
 @media only screen and (max-width: 576px) {
   .topnav .links {
     padding-top: 0px; }
@@ -204,7 +204,7 @@ body {
 @media only screen and (min-width: 1025px) {
 .auctionCardImage {
     width: 100%;
-  
+
 }
 .auctionCard {
     padding: 0px;
@@ -251,29 +251,29 @@ body {
 @media only screen and (max-width: 1024px) {
   .auctionCardImage {
       width: 100%;
-    
+
   }
   .auctionCard {
       padding: 0px;
   }
-  
+
   .auctionCard{
     padding: 0px;
     height: 280px;
     background-color: white;
   }
-  
+
   .auctionCardTitle a{
     font-size: 14px;
     color:#0c59cf;
-  
+
   }
   .auctionCardBody h5{
     font-size: 18px;
     color:black;
     font-weight: bold;
   }
-  
+
   .auctionCardText{
     font-weight:normal;
     color:black;
@@ -282,13 +282,13 @@ body {
   h4.card-title.auctionCardTitle{
     font-size: 15px;
   }
-  
+
 
   .auctionCardBody p{
     padding: 0;
     height: 10px;
   }
-  
+
   .pagination .pagination-centered{
       margin-left: 45%;
   }
@@ -296,7 +296,7 @@ body {
     margin-top:50px;
     margin-bottom: 90px;
   }
-  
+
   }
 .auctionCardImage:hover {
     opacity: 0.5;
@@ -319,7 +319,7 @@ body {
       z-index: 0;
       width: 100%;
   }
-  
+
   .auctionCard {
     padding: 0px;
     height: 205px;
@@ -372,7 +372,7 @@ body {
     height: 310px;
     background-color: white;
     align-content: center;
-  }  
+  }
   .auctionCardTitle a{
     font-size: 10px;
   }
@@ -606,7 +606,7 @@ section#item h2.item_name{
   @media only screen and (min-width:576px) {
   .product_image{
     width:95%;
-    
+
   }
 }
 
@@ -727,9 +727,9 @@ section#item h2.item_name{
 
 /*comments*/
 .comments {
-  margin-top: 2.5em; 
+  margin-top: 2.5em;
   padding-left: 0;
-  padding-right: 0; 
+  padding-right: 0;
 }
 .comments .row .col-sm-12 {
   margin-bottom: 2em;
@@ -855,7 +855,7 @@ section#item h2.item_name{
 
 .status-upload .btn {
   margin: 1em 1em 1em 0;
-  float: right; 
+  float: right;
 }
 .status-upload textarea {
   padding: 1em;
@@ -1324,7 +1324,7 @@ section#middle{
     color: #000000;
     margin-left: 100px;
     padding-bottom: 100px;
-    margin-top:0; 
+    margin-top:0;
   }
 
   #middle .style17{
@@ -1832,7 +1832,7 @@ footer li{
       margin: auto;
     }
 
-    
+
 
     .container-contact1 .col-8{
       margin: auto;
@@ -2124,7 +2124,7 @@ iframe {
 }
 
 #category_filter .title{
-  font-weight: bold;  
+  font-weight: bold;
 }
 
 .searchResultImage:hover{
@@ -2161,8 +2161,8 @@ iframe {
   }
 
   #category_filter .padding-v-xs {
-    padding-top: 0px; 
-    padding-bottom: 0px; 
+    padding-top: 0px;
+    padding-bottom: 0px;
     height: 20px;
 }
   #category_filter .padding-v-xs label{
@@ -2184,7 +2184,7 @@ iframe {
   #searchPage img{
     width: 100%;
     align-content: center;
-    
+
   }
 
   #searchPage .card {
@@ -2353,7 +2353,7 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 }
 .wishListCard .product img:hover{
   opacity: 0.5;
-  filter: alpha(opacity=100); 
+  filter: alpha(opacity=100);
 }
 .wishListCard .wishListTotal{
   color:black;
@@ -2369,8 +2369,8 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   }
 
 .helpButton{
-  float:right; 
-  margin-right:20px; 
+  float:right;
+  margin-right:20px;
   margin-top:10px;
   background-color:rgb(89,124,160);
   border-color: transparent;
@@ -2400,4 +2400,9 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 
 #exampleModalCenter .modal-body hr{
   color:#437ab2;
+}
+
+
+.auction_status{
+  text-align: right;
 }
