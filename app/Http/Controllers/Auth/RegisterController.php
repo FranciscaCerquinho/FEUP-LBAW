@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Google_Client;
+use GuzzleHttp;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -85,14 +88,36 @@ class RegisterController extends Controller
 
         if($user==null){
             $names = explode(" ", $request->input('name'));
-            return User::create([
+      
+
+            // Get $id_token via HTTPS POST.
+
+            $id_token = $request->id;
+            $CLIENT_ID ='11137190996-6ss9a8v4ucn1l65qm7dmifljuv9jecvv.apps.googleusercontent.com';
+            $client = new Google_Client(['client_id' => $CLIENT_ID]);  // Specify the CLIENT_ID of the app that accesses the backend
+            $client->setHttpClient(new GuzzleHttp\Client(['verify'=>false]));
+            $payload = $client->verifyIdToken($id_token);
+       
+            if ($payload) {
+            $userid = $payload['sub'];
+            // If request specified a G Suite domain:
+            //$domain = $payload['hd'];
+            } else {
+                return null;
+            }
+            $user = User::create([
                 'firstname' => $names[0],
                 'lastname' => $names[1],
                 'email' => $request->email,
-                'password' => bcrypt(rand(1,10000)),
+                'password' => $userid,
                 'photo'=> $request->photo,
                 'isbanned'=> '0',
             ]);
+            $user->save();
+            Auth::login($user);
+        }
+        else{
+            Auth::login($user); 
         }
         return $user;
     }

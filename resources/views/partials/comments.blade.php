@@ -4,9 +4,12 @@
             <div class="pull-left image">
                 @if($comment->photo=='perfil_blue.png')
                     <img src="/images/commentImage.jpg" class="img-circle avatar" alt="user profile image">
-                @endif
-                @if($comment->photo!='perfil_blue.png')
-                    <img src="/images/{{$comment->photo}}" class="img-circle avatar" alt="user profile image">
+                @else
+                    @if(preg_match('/https:\//',$comment->photo, $matches, PREG_OFFSET_CAPTURE))
+                        <img src="{{$comment->photo}}" class="img-circle avatar" alt="user profile image">
+                    @else
+                        <img src="/images/{{$comment->photo}}" class="img-circle avatar" alt="user profile image">
+                    @endif
                 @endif
             </div>
             <div class="pull-left meta">
