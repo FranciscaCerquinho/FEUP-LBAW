@@ -12,9 +12,21 @@ use App\Admin;
 class SearchController extends Controller
 {
 
-    public function search($name = null) {
-      
-        return view('pages.search');
+    public function search() {
+      $type=0;
+      if(Auth::check()){
+        $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
+        if($user_admin==null)
+          $type=1;
+        else
+          $type=2;
+      }
+
+      $name = Input::get('q');
+
+      $auctions = Self::searchByName($name);
+
+      return view('pages.searchName', [ 'auctions' => $auctions, 'type' => $type]);
     }
 
     public function searchByCategory($category)  {
@@ -57,6 +69,25 @@ class SearchController extends Controller
    
      }
 
+     public function searchResults(Request $request) {
+      $searchValue = $request->input('searchValue');
+
+      return Self::searchByName($searchValue);
+    }
+
+    public function searchByName($name) {
+      $resultsArray = DB::table('auction')
+      ->join('owner','owner.id_auction', '=', 'auction_id')
+      ->join('users','users.user_id', '=', 'owner.id_user')
+      ->whereRaw('to_tsvector(\'english\',auction.description) @@ plainto_tsquery(\'english\',?)',[$name])
+      ->orWhereRaw('to_tsvector(\'english\',auction.name) @@ plainto_tsquery(\'english\',?)',[$name])->get()->toArray();
+
+      return $resultsArray;
+    }
+
+    public function getSearchResults() {
+
+    }
 
 }
 
