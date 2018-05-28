@@ -244,7 +244,7 @@ function addToWishListHandler(){
         The Item has been had to the wishlist!
         </div>`;
 
-        document.querySelector('#addToWishList').style = 'color: #437ab2;';
+        document.querySelector('#addToWishList').style = 'background-color: white;';
        }
 
   }
@@ -303,7 +303,7 @@ function addCommentHandler() {
         </div>
         <div class="pull-left meta">
             <div class="title h5">
-                <a href="#"><b>${newComment.user.firstname} ${newComment.user.lastname}</b></a>
+                <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
             </div>
             <h6 class="text-muted time"> ${date} ago</h6>
         </div>
@@ -361,7 +361,7 @@ function addCommentHandler() {
 
 
 function sendAuctionLikeRequest() {
-  let like = document.querySelector("#buttons #likeAuction").textContent;
+  let like = document.querySelector(".cable-choose #likeAuction").textContent;
   like = parseInt(like) + 1;
 
   let id = this.closest('section#item').getAttribute('data-id');
@@ -387,18 +387,17 @@ function addAuctionLikeHandler() {
 
   unlike.innerHTML = newLike.auction_dislike;
 
-  document.getElementById('like_hand').style = 'color: #437ab2;';
-  like.style = 'color: #437ab2;';
+  document.getElementById('likeButton').style = 'border: 2px solid #86939E; outline: none;';
 
 
-  document.getElementById('unlike_hand').style = 'color: black;';
-  unlike.style = 'color: black;';
+  document.getElementById('unlikeButton').style = 'border:none';
+ 
 }
 }
 
 
 function sendAuctionUnlikeRequest() {
-  let unlike = document.querySelector("#buttons #unlikeAuction").textContent;
+  let unlike = document.querySelector(".cable-choose #unlikeAuction").textContent;
   unlike = parseInt(unlike) + 1;
 
   let id = this.closest('section#item').getAttribute('data-id');
@@ -425,13 +424,8 @@ function addAuctionUnlikeHandler() {
 
   like.innerHTML = newUnlike.auction_like;
 
-
-  document.getElementById('unlike_hand').style = 'color: #437ab2;';
-  unlike.style = 'color: #437ab2;';
-
-
-  document.getElementById('like_hand').style = 'color: black;';
-  like.style = 'color: black;';
+  document.getElementById('unlikeButton').style = 'border: 2px solid #86939E; outline: none;';
+  document.getElementById('likeButton').style = 'border:none';
   }
 }
 
@@ -465,7 +459,7 @@ function addCommentLikeHandler() {
   like.style = 'color: #437ab2;';
 
 
-  stats.querySelector('.unlikeCommentHand').style = 'color: black;';
+  stats.querySelector('.unlikeCommentHand').style = 'color: #5E6977;';
   unlike.style = 'color: black;';
 
 }
@@ -504,7 +498,7 @@ function addCommentUnlikeHandler() {
   unlike.style = 'color: #437ab2;';
 
 
-  stats.querySelector('.likeCommentHand').style = 'color: black;';
+  stats.querySelector('.likeCommentHand').style = 'color: #5E6977;';
   like.style = 'color: black;';
 }
 
@@ -532,9 +526,9 @@ function makeBidHandler() {
   Bid lower than the actual price! &nbsp;
 </div>`;
 
-      let item_info = document.querySelector("#item_information");
+      let item_info = document.querySelector(".product-description");
 
-      let info = document.querySelector("#info");
+      let info = document.querySelector(".info");
 
       item_info.insertBefore(message, info);
   }
@@ -552,9 +546,9 @@ function makeBidHandler() {
 Bet made! The auction has been added to your bids, you will receive a warning if you are the winner
 </div>`;
 
-          let item_info = document.querySelector("#item_information");
+          let item_info = document.querySelector(".product-description");
 
-          let info = document.querySelector("#info");
+          let info = document.querySelector(".info");
 
           item_info.insertBefore(message, info);
       } else {
@@ -564,9 +558,9 @@ Bet made! The auction has been added to your bids, you will receive a warning if
   ${newBid.message}
 </div>`;
 
-          let item_info = document.querySelector("#item_information");
+          let item_info = document.querySelector(".product-description");
 
-          let info = document.querySelector("#info");
+          let info = document.querySelector(".info");
 
           item_info.insertBefore(message, info);
       }
@@ -577,9 +571,9 @@ Bet made! The auction has been added to your bids, you will receive a warning if
   ${newBid.message}
 </div>`;
 
-      let item_info = document.querySelector("#item_information");
+      let item_info = document.querySelector(".product-description");
 
-      let info = document.querySelector("#info");
+      let info = document.querySelector(".info");
 
       item_info.insertBefore(message, info);
   }
@@ -622,9 +616,9 @@ function buyNowHandler() {
     The auction is yours! Congratulations! The owner will contact you.
     </div>`;
     }
-    let item_info = document.querySelector("#item_information");
+    let item_info = document.querySelector(".product-description");
 
-    let info = document.querySelector("#info");
+    let info = document.querySelector(".info");
 
     item_info.insertBefore(message, info);
 }
@@ -660,8 +654,7 @@ function reportAuctionHandler() {
   The Auction has been sucessfully reported!
   </div>`;
 
-      document.querySelector('.buttonReport').style = 'color: rgb(204,68,74);';
-      document.querySelector('.reportAuctionButton').style = 'color: rgb(204,68,74);';
+      document.querySelector('.buttonReport').style = 'background-color: white';
 
   }
   let item_info = document.querySelector(".popup-inner-reportAuction");

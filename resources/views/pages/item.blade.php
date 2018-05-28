@@ -41,171 +41,152 @@
     </div>
   </div>
 </div>
+
 <section class="container" id="item" data-id="{{$auction->auction_id}}">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="row">
-						<div class="col-6">
-							<h2 class="item_name">{{$auction->name}}</h2>
-						</div>
-						<div class="col-6">
-							<h3 class="auction_status">
-                            Available
-                            </h3>
-						</div>
-					</div>
-					<hr class="style17" style="color:grey;">
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item">
-								<a href="/auctions">
-									<i class="fas fa-home"></i>
-									Home
-								</a>
-							</li>
-							<li class="breadcrumb-item" aria-current="page">Item</li>
-							<li class="breadcrumb-item active" aria-current="page">{{$auction->name}}</li>
-						</ol>
-					</nav>
-				</div>
-				<div class="col-lg-6">
-					<img class="product_image" src="/images/{{$auction->auctionphoto}}" alt="Play">
-					@if($type==1)
-					<div id="buttons">
-						<button type="button" id="likeButton" class="btn btn-default btn-sm">
-							<span class="far fa-thumbs-up" id="like_hand" @if($like==1) style="color:#437ab2"@endif></span>
-							<span id="likeAuction" @if($like==1) style="color:#437ab2"@endif>{{$auction->auction_like}}</span>
-						</button>
-						<button type="button" id="unlikeButton" class="btn btn-default btn-sm">
-							<span class="far fa-thumbs-down" id="unlike_hand" @if($like==2) style="color:#437ab2"@endif></span>
-							<span id="unlikeAuction"  @if($like==2) style="color:#437ab2"@endif>{{$auction->auction_dislike}}</span>
-						</button>
-						<button>
-						<button  data-popup-reportAuction-open="popup-1" type="button"  class="buttonReport" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif><span class="reportAuctionButton fas fa-bullhorn" @if($auctionReported==1) style="color:rgb(204,68,74)"@endif></span> &nbsp; Report</button>
-						</button>
-							<div class="popup-reportAuction" data-popup-reportAuction="popup-1">
-    							<div class="popup-inner-reportAuction">
-									<div class="form-group" id="auctionForm">
-										<div class="input-group-prepend">
-											<span class="input-group-text">
-												<i class="fas fa-comment-alt" aria-hidden="true"></i>
-											</span>
-												<input type="text" class="form-control" id="reportAuctionText" name="reason" placeholder="Reason" />
-										</div>
-									</div>
-									<div class="row" id="reportButton">
-											<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8 buttonReport" >
-												<div class="text-center">
-													<a role="button" target="_blank"  class="btn btn-primary btn-lg btn-block"><strong>Report</strong></a>
-												</div>
-											</div>
-										</div>
-      								<a class="popup-close-reportAuction" data-popup-close-reportAuction="popup-1">X</a>
-    							</div>
-							  </div>
-						<button type="button" class="btn btn-default btn-sm" id="addToWishList" @if($wishList==1) style="color:#437ab2"@endif>
-							<span class="fas fa-shopping-cart" @if($wishList==1) style="color:#437ab2"@endif ></span>&nbsp;  <strong>Wish List</strong>
-						</button>
-					</div>
-					@endif
-				</div>
-				<div class="col-lg-6" id ="item_information">
-					<div class="row" id="info">
-						<h2 class="information">Information</h2>
-					</div>
-					<div class="row">
-						<div class="row col-12" id="owner">
-							<div class="col-sm-4" >
-								<p class="owner description" >Owner:</p>
-							</div>
-							<div class="col-sm-8 user_information" >
-								<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->user_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
+ 
+	<div class="row">
+		<div class="col-lg-12" style="margin-top:30px;">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="/auctions">
+							<i class="fas fa-home"></i>
+							Home
+						</a>
+					</li>
+					<li class="breadcrumb-item" aria-current="page">Item</li>
+					<li class="breadcrumb-item active" aria-current="page">{{$auction->name}}</li>
+				</ol>
+			</nav>
+		</div>
+	<!-- Left Column / Headphones Image -->
+	<div class="col-lg-6">
+		<img  class="active product_image" src="/images/{{$auction->auctionphoto}}" alt="Play" >
+		 <!-- Cable Configuration -->
+		 <div class="cable-config">
+			<div class="cable-choose">
+				<button  id="likeButton" @if($like==1) style="border: 2px solid #86939E; outline: none;" @endif>
+					<span class="far fa-thumbs-up" id="like_hand"></span>
+					<span id="likeAuction">{{$auction->auction_like}} </span>
+				</button>
+				<button  id="unlikeButton"  @if($like==2) style="border: 2px solid #86939E; outline: none;"@endif>
+					<span class="far fa-thumbs-down" id="unlike_hand" ></span>
+					<span id="unlikeAuction" >{{$auction->auction_dislike}}</span>
+				</button>
+				<button id="addToWishList" @if($wishList==1) style="border: 2px solid #86939E; outline: none;"@endif>
+					<span class="fas fa-shopping-cart"  ></span>&nbsp;  
+					<strong>Wish List</strong>
+				</button>
+				<button  data-popup-reportAuction-open="popup-1" type="button"  class="buttonReport" @if($auctionReported==1) style="border: 2px solid #86939E; outline: none;"@endif><span class="reportAuctionButton fas fa-bullhorn"></span> &nbsp; Report</button>
+				<div class="popup-reportAuction" data-popup-reportAuction="popup-1">
+					<div class="popup-inner-reportAuction">
+						<div class="form-group" id="auctionForm">
+							<div class="input-group-prepend">
+								<span class="input-group-text">
+									<i class="fas fa-comment-alt" aria-hidden="true"></i>
+								</span>
+									<input type="text" class="form-control" id="reportAuctionText" name="reason" placeholder="Reason" />
 							</div>
 						</div>
-						<div class="row col-12" id="category">
-							<div class="col-sm-4" >
-								<p class="category description" >Category:</p>
-							</div>
-							<div class="col-sm-8 user_information">
-								<p class="category_name">{{$auction->category}}</p>
-							</div>
-						</div>
-						<div class="row col-12" id="time">
-							<div class="col-sm-4" >
-								<p class="time description">Time:</p>
-							</div>
-							<div class="col-sm-8 user_information">
-								<p class="time_left" ><script>SplitDate("{{$auction->dateend}}",1);</script> left</p>
-							</div>
-						</div>
-						<div class="row col-12" id="object_description">
-							<div class="col-sm-4" >
-								<p class="object_description description" >Description:</p>
-							</div>
-							<div class="col-sm-8 user_information" >
-								<p class="object_description_inf">{{$auction->description}}</p>
-							</div>
-						</div>
-						<div class="row col-12" id="object_actualprice">
-							<div class="col-sm-4" >
-								<p class="object_actualprice description">Actual Price:</p>
-							</div>
-							<div class="col-sm-8 user_information">
-								<p class="object_actualprice" id ="item_price">EUR {{$auction->actualprice}}</p>
-							</div>
-						</div>
-					</div>
-					@if($type==1)
-					<div class="row justify-content-start" id="bid_buttons">
-						<div class="col-sm-3" id="price">
-                            <?php $bid = $auction->actualprice + 1; ?>
-							<input class="form-control" type="number" value="{{$bid}}" id="price_button" step="0.01">
-						</div>
-						<div class="col-sm-3" id="bid">
-							<button class="btn" type="submit" style="background-color:#437ab2; color:white">Make Bid</button>
-						</div>
-						<div id="buy_now_button" class="col-sm-3">
-						<div class="col-12">
-							<button class="btn btn-success" type="submit" style="font-size:17px;background-color:#73b566;color:white ">Buy Now ({{$auction->buynow}}€)</button>
-						</div>
-					</div>
-					</div>
-					@endif
-
-				</div>
-			</div>
-
-			<div class="container comments">
-				<div class="row">
-					<?php foreach($comments as $comment) {
-						$j = -1;
-						for($i = 0; $i < count($commentsLikes); $i++){
-
-							if($id_comment_likes[$i]->id_comment == $comment->id)
-								$j = $i;
-							}
-						if($j != -1)  { ?>
-						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j], 'type' => $type])	<?php }
-						else { ?>
-						@include('partials.comments',['comment'=>$comment])
-					<?php }} ?>
-					@if (Auth::check())
-						@if($type==1)
-							<div class="leave_comment col-sm-12" id="addComment">
-								<div class="panel panel-white post panel-shadow">
-									<div class="status-upload">
-										<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
-										<div class="row">
-											<span class="col-sm-10"></span>
-											<button class="btn col-sm-1" style="background-color:#437ab2; color:white" type="submit">Send</button>
-										</div>
+						<div class="row" id="reportButton">
+								<div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8 buttonReport" >
+									<div class="text-center">
+										<a role="button" target="_blank"  class="btn btn-primary btn-lg btn-block"><strong>Report</strong></a>
 									</div>
 								</div>
-							</div>
-						@endif
-					@endif
+						</div>
+						<a class="popup-close-reportAuction" data-popup-close-reportAuction="popup-1">X</a>
+					</div>
+					</div>
 				</div>
 			</div>
+		</div>
+ 
+ 
+  <!-- Right Column -->
+  <div  class="col-lg-6">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+      <span class="info">Available</span>
+      <h1>{{$auction->name}}</h1>
+	  <p>{{$auction->description}}</p>
+	  <span class="time_left" ><script>SplitDate("{{$auction->dateend}}",1);</script> left</span>
+    </div>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+ 
+      <!-- Product Color -->
+      <div class="product-style row col-12">
+	  	<div class="col-sm-4" >
+			<p class="owner description" >Owner</p>
+		</div>
+		<div class="col-sm-8 user_information" >
+			<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->user_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
+		</div>
+	  </div>
+	  
+	  <div class="product-style row col-12">
+	  	<div class="col-sm-4" >
+			<p class="owner description" >Category</p>
+		</div>
+		<div class="col-sm-8 user_information" >
+			<p class="category_name">{{$auction->category}}</p>
+		</div>
+	  </div>
+	 
+ 	  <hr>
+	  <div class="product-style" id="bid_buttons">
+		<div class="input-group mb-3">
+			<input type="number" class="form-control" id="price_button"  placeholder="Make a Bid" aria-label="Recipient's username" aria-describedby="basic-addon2">
+			<div class="input-group-append" id="bid">
+				<button class="btn btn-outline-secondary" type="button">Submit</button>
+			</div>
+		</div>
+	  </div>
+	  
+	  <hr>
+    <!-- Product Pricing -->
+    <div class="product-price" id="buy_now_button">
+	  <span  id ="item_price">EUR {{$auction->actualprice}}</span>
+	  <button class="cart-btn" id="buyNow" >Buy Now ({{$auction->buynow}}€)</button>
+	</div>
+
+  </div>
+
+
+  </div>
+
+  <div class="container comments">
+	<div class="row">
+		<?php foreach($comments as $comment) {
+			$j = -1;
+			for($i = 0; $i < count($commentsLikes); $i++){
+				if($id_comment_likes[$i]->id_comment == $comment->id)
+					$j = $i;
+				}
+			if($j != -1)  { ?>
+			@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j], 'type' => $type])	<?php }
+			else { ?>
+			@include('partials.comments',['comment'=>$comment])
+		<?php }} ?>
+		@if (Auth::check())
+			@if($type==1)
+				<div class="leave_comment col-sm-12" id="addComment">
+					<div class="panel panel-white post panel-shadow">
+						<div class="status-upload">
+							<textarea placeholder="Add a comment..." cols="60" rows="2" name="comment"></textarea>
+							<div class="row">
+								<span class="col-sm-10"></span>
+								<button class="btn col-sm-1" style="background-color:#437ab2; color:white" type="submit">Send</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			@endif
+		@endif
+	</div>
+</div>
 </section>
 @endsection

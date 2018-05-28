@@ -29,21 +29,8 @@ function SplitDate(dateTime, value) {
   var second = parseInt(splitSecond[0])
   var hour = hour + parseInt(splitSecond[1]);
   let currentMonth = currentDate.getMonth() + 1;
-  let currentHour = currentDate.getHours();
-  console.log("Hour"+hour);
-  console.log("minute"+minute);
-  console.log("second"+second);
-  console.log("Day"+day);
-  console.log("Month"+month);
-  console.log("Year"+year);
+  let currentHour = currentDate.getHours() -1;
 
-  console.log("CurrentHour"+currentHour);
-  console.log("CurrentMinute"+currentDate.getMinutes() );
-  console.log("CurrentSecond"+currentDate.getSeconds() );
-  console.log("CurrentDay"+currentDate.getDate() );
-  console.log("CurrentMonth"+currentMonth);
-  console.log("CurrentYear"+currentDate.getFullYear());
-  
   if (currentDate.getFullYear() == year) {
       if (currentMonth == month) {
           if (currentDate.getDate() == day) {
@@ -161,13 +148,27 @@ function SplitDateReturn(dateTime, value) {
     var minute = parseInt(time[1]);
     var second = time[2];
     let currentMonth = currentDate.getMonth() + 1;
+    let currentHour = currentDate.getHours() -1;
 
+    console.log("Hour"+hour);
+    console.log("minute"+minute);
+    console.log("second"+second);
+    console.log("Day"+day);
+    console.log("Month"+month);
+    console.log("Year"+year);
+  
+    console.log("CurrentHour"+currentHour);
+    console.log("CurrentMinute"+currentDate.getMinutes() );
+    console.log("CurrentSecond"+currentDate.getSeconds() );
+    console.log("CurrentDay"+currentDate.getDate() );
+    console.log("CurrentMonth"+currentMonth);
+    console.log("CurrentYear"+currentDate.getFullYear());
+    
 
     if (currentDate.getFullYear() == year) {
         if (currentMonth == month) {
             if (currentDate.getDate() == day) {
                 if (currentHour == hour) {
-                    console.log("estou aqui");
                     if (currentDate.getMinutes() == minute) {
                         if (value == 1)
                             timeLeft = second - currentDate.getSeconds();
