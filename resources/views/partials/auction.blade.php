@@ -1,4 +1,4 @@
-<div class="col-12 col-lg-4 col-md-3 col-sm-6 mb-4 auctions-list" data-id="{{$auction->auction_id}}">
+<div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-4 auctions-list" data-id="{{$auction->auction_id}}">
 
 <div class="card-deck align-items-center">
   <div class="card auctionCard" >
