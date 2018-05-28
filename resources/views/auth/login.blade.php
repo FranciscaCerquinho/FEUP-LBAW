@@ -69,7 +69,7 @@
 										</div>
 										<div class="col-12">
 											<div class="btn-group">
-												<div class="g-signin2" data-onsuccess="onSignIn"></div>
+												<div class="g-signin2" data-onsuccess="onSignIn" ></div>
 											</div>
 										</div>
 									</div>

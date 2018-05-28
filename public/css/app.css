@@ -765,11 +765,8 @@ section#item h2.item_name{
 .post .post-heading .meta .title {
   margin-bottom: 0;
 }
-.post .post-heading .meta .title a {
+.post .post-heading .meta .title  {
   color: black;
-}
-.post .post-heading .meta .title a:hover {
-  color: #aaaaaa;
 }
 .post .post-heading .meta .time {
   margin-top: 8px;

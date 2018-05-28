@@ -61,6 +61,7 @@ Route::post('endAuction/{id}', 'EndAuctionController@endAuction')->name('endAuct
 Route::post('comment/{id}', 'CommentController@create');
 Route::post('likeComment/{id}', 'CommentController@updateLike');
 Route::post('unlikeComment/{id}', 'CommentController@updateUnlike');
+Route::delete('deleteComment/{id}', 'CommentController@deleteComment');
 
 //User bids
 Route::get('myBids', 'BidController@show')->name('myBids');
