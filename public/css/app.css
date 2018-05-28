@@ -103,8 +103,7 @@ body {
 /*searchbar*/
 @media only screen and (min-width: 576px) {
 #search_bar{
-    max-width:420px;
-    padding-right:120px;
+    max-width:430px;
 }}
 @media only screen and (width: 1024px) {
   #search_bar{
@@ -2402,4 +2401,36 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 
 .auction_status{
   text-align: right;
+}
+
+#custom-search-input{
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+#custom-search-input input{
+  border: 0;
+  box-shadow: none;
+}
+
+#custom-search-input button{
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 8px 0 10px;
+  border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+  border: 0;
+  box-shadow: none;
+  border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+  font-size: 23px;
 }
