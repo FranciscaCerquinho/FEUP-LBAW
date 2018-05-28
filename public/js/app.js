@@ -134,7 +134,6 @@ function addEventListeners() {
 
   let addCommentUnlike = document.querySelectorAll(".comment .commentUnlike");
   if (addCommentUnlike) {
-      console.log(addCommentUnlike.length);
       for (var i = 0; i < addCommentUnlike.length; i++)
           addCommentUnlike[i].addEventListener('click', sendCommentUnlikeRequest);
   }
@@ -199,10 +198,15 @@ function addEventListeners() {
       addToWishList.addEventListener('click',addToWishListAction);
       
   let endAuction = document.querySelectorAll(".endAuctions .endAuction");
-
   if(endAuction){
     for (var i = 0; i < endAuction.length; i++)
         endAuction[i].addEventListener('click', endAuctionRequest);
+  }
+
+  let deleteComment = document.querySelectorAll(".deleteComment");
+  if(deleteComment){
+    for (var i = 0; i < deleteComment.length; i++)
+        deleteComment[i].addEventListener('click', deleteCommentRequest);
   }
 
 };
@@ -255,13 +259,11 @@ function addToWishListHandler(){
 
 function removeFromWishListAction(){
     let id = this.closest('.itemWishList').getAttribute('data-id');
-    console.log(id);
     sendAjaxRequest('delete', '/deleteFromWishList/' + id ,null,deleteFromWishListHandler);
 };
 
 function deleteFromWishListHandler(){
 
-    console.log(this.responseText);
     if (this.status != 200) window.location = '/';
     let parent = document.querySelector('.itemWishList');
     let hr = document.querySelector(".wishListHr");
@@ -292,7 +294,6 @@ function addCommentHandler() {
   let comment = document.createElement('div');
   comment.setAttribute('class', 'col-sm-12 comment');
   comment.setAttribute('data-id', newComment.id);
-  console.log(newComment);
   let date = SplitDateReturn(newComment.date,0);
 
   comment.innerHTML = `<div class="panel panel-white post panel-shadow">
@@ -413,7 +414,7 @@ function addAuctionUnlikeHandler() {
   if (this.status != 200) window.location = '/';
   let newUnlike = JSON.parse(this.responseText);
 
-  if(newUnLike.message!='You have to login! &nbsp'){
+  if(newUnlike.message!='You have to login! &nbsp'){
 
   let unlike = document.querySelector("#item #unlikeAuction");
 
@@ -595,7 +596,7 @@ function buyNowHandler() {
 
     let message = document.createElement('div');
     message.setAttribute('class', 'row');
-    console.log(this.responseText);
+
     if (this.status != 200){
         message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
         <a class="panel-close close" data-dismiss="alert">x</a>
@@ -756,7 +757,6 @@ function banUserRequest() {
 
 function banUserHandler() {
 
-console.log(this.responseText);
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
 
@@ -997,7 +997,6 @@ function searchCategoryRequest(){
 }
 
 function showCategoryHandler(){
-    console.log(this.responseText);
 
     if (this.status != 200) window.location = '/';
 
@@ -1055,7 +1054,6 @@ function endAuctionRequest(){
 
     let id = this.closest('.endAuctionAlert').getAttribute('data-id');
 
-    console.log(id);
     sendAjaxRequest('post', '/endAuction/' + id ,null, endAuctionHandler);
 }
 
@@ -1068,14 +1066,24 @@ function endAuctionHandler(){
 
     alert.remove();
 }
+
+function deleteCommentRequest(){
+
+    let id = this.closest('div.comment').getAttribute('data-id');
+
+    sendAjaxRequest('delete', '/deleteComment/' + id ,null, deleteCommentHandler);
+}
+
+function deleteCommentHandler(){
+    if (this.status != 200) window.location = '/';
+
+    let parent = document.querySelector('.comment');
+    parent.remove();
+}
 addEventListeners();
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     
     var id_token = googleUser.getAuthResponse().id_token;
     sendAjaxRequest('post', '/googleLogin' ,{id: id_token,name: profile.getName(), photo: profile.getImageUrl(), email: profile.getEmail()}, googleRegisterHandler);
@@ -1093,13 +1101,4 @@ function googleRegisterHandler(){
         });
     });
     
-   
-
-}
-
-function signOut() {
-var auth2 = gapi.auth2.getAuthInstance();
-auth2.signOut().then(function () {
-    console.log('User signed out.');
-});
 }

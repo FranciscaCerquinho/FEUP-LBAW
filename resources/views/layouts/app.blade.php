@@ -90,13 +90,21 @@
 		<div class="collapse navbar-collapse bg-white" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<div class="input-group stylish-input-group" id="search_bar">
-						<input type="text" class="form-control" placeholder="Search">
-						<span class="search_icon">
-							<button class="" type="submit">
-								<span class="fa fa-search" style="color:#666666"></span>
-							</button>
-						</span>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-xs-6">
+								<div id="custom-search-input">
+									<div class="input-group col-md-6" id="search_bar">
+										<input type="text" class="form-control input-lg" placeholder="Search" />
+										<span class="input-group-btn">
+											<button class="" type="submit">
+												<span class="fa fa-search" style="color:rgb(89,124,160);"></span>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
 				@if (!Auth::check())
@@ -127,7 +135,7 @@
 									<a href="{{url ('editProfile') }}">Edit Profile</a>
 								</li>
 								<li>
-									<a href="{{ url ('logout') }}"  onclick="signOut()">Logout</a>
+									<a href="{{ url ('logout') }}">Logout</a>
 								</li>
 							</ul>
 						</div>

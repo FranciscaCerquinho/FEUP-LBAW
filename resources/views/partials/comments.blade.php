@@ -14,10 +14,17 @@
             </div>
             <div class="pull-left meta">
                 <div class="title h5">
-                    <a href="#"><b>{{$comment->firstname}} {{$comment->lastname}}</b></a>
+                    <b>{{$comment->firstname}} {{$comment->lastname}}</b>
                 </div>
                 <h6 class="text-muted time"><script>SplitDate("{{$comment->date}}",0);</script> ago</h6>
             </div>
+            @if($type==2)
+            <div class="pull-right meta">
+                <div class="title h5 deleteComment">
+                    <i class="fas fa-times" style="color:black"></i>
+                </div>
+            </div>
+           @endif 
         </div> 
         <div class="post-description"> 
             <p>{{$comment->comment}}</p>

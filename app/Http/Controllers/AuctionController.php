@@ -275,7 +275,7 @@ class AuctionController extends Controller
       $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
 
       if($user_like==null){
-        DB::table('userauctionlike')->insert(['id_user'=> Auth::user()->user_id, 'id_auction'=> $auction_id, 'islike'=>true]);
+        DB::table('userauctionlike')->insert(['id_user'=> Auth::user()->user_id, 'id_auction'=> $auction_id, 'islike'=>false]);
         $auction->auction_dislike = $request->input('unlike');
         $auction->save();
 

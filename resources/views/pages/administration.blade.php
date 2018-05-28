@@ -12,10 +12,10 @@
 				<div class="col-md-2 col-sm-3">
 					<p>Reported by</p>
 				</div>
-				<div class="col-md-5 col-sm-3">
+				<div class="col-md-4 col-sm-3">
 					<p>Reason</p>
 				</div>
-				<div class="col-md-1 col-sm-3">
+				<div class="col-md-2 col-sm-3">
 					<p>Date</p>
 				</div>
 				<div class="col-md-1 col-sm-3">
@@ -43,10 +43,10 @@
 				<div class="col-md-2 col-sm-2">
 					<p>Reported by</p>
 				</div>
-				<div class="col-md-5 col-sm-6">
+				<div class="col-md-4 col-sm-6">
 					<p>Reason</p>
 				</div>
-				<div class="col-md-1 col-sm-1">
+				<div class="col-md-2 col-sm-1">
 					<p>Date</p>
 				</div>
 				<div class="col-md-1 col-sm-1">

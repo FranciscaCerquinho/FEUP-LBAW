@@ -51,12 +51,7 @@
 						</div>
 						<div class="col-6">
 							<h3 class="auction_status">
-                            @if($auction->active==1)
-                            Winning
-                            @endif
-                            @if($auction->active==0)
-                            Losing
-                            @endif
+                            Available
                             </h3>
 						</div>
 					</div>
@@ -76,6 +71,7 @@
 				</div>
 				<div class="col-lg-6">
 					<img class="product_image" src="/images/{{$auction->auctionphoto}}" alt="Play">
+					@if($type==1)
 					<div id="buttons">
 						<button type="button" id="likeButton" class="btn btn-default btn-sm">
 							<span class="far fa-thumbs-up" id="like_hand" @if($like==1) style="color:#437ab2"@endif></span>
@@ -112,6 +108,7 @@
 							<span class="fas fa-shopping-cart" @if($wishList==1) style="color:#437ab2"@endif ></span>&nbsp;  <strong>Wish List</strong>
 						</button>
 					</div>
+					@endif
 				</div>
 				<div class="col-lg-6" id ="item_information">
 					<div class="row" id="info">
@@ -159,6 +156,7 @@
 							</div>
 						</div>
 					</div>
+					@if($type==1)
 					<div class="row justify-content-start" id="bid_buttons">
 						<div class="col-sm-3" id="price">
                             <?php $bid = $auction->actualprice + 1; ?>
@@ -173,6 +171,7 @@
 						</div>
 					</div>
 					</div>
+					@endif
 
 				</div>
 			</div>
@@ -187,7 +186,7 @@
 								$j = $i;
 							}
 						if($j != -1)  { ?>
-						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j]])	<?php }
+						@include('partials.comments',['comment'=>$comment, 'commentsLikes'=>$commentsLikes[$j], 'type' => $type])	<?php }
 						else { ?>
 						@include('partials.comments',['comment'=>$comment])
 					<?php }} ?>
