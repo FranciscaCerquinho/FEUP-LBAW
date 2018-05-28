@@ -102,7 +102,7 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 ##### 8.2.4 Administrator
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
-| US41         | Remove comments | high |          |   100%  |
+| US41         | Remove comments | high |  Francisca Cerquinho         |   100%  |
 | US42         | Ban User| high |   Francisca Cerquinho           |   100%  |
 | US43         | Unban User| high |   Francisca Cerquinho           |   100%  |
 | US44         | Ban Auction| high |   Francisca Cerquinho           |   100%  |
