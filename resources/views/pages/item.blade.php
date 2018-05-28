@@ -63,6 +63,7 @@
 	<div class="col-lg-6">
 		<img  class="active product_image" src="/images/{{$auction->auctionphoto}}" alt="Play" >
 		 <!-- Cable Configuration -->
+		 
 		 <div class="cable-config">
 			<div class="cable-choose">
 				<button  id="likeButton" @if($like==1) style="border: 2px solid #86939E; outline: none;" @endif>
@@ -73,6 +74,7 @@
 					<span class="far fa-thumbs-down" id="unlike_hand" ></span>
 					<span id="unlikeAuction" >{{$auction->auction_dislike}}</span>
 				</button>
+				@if($type==1)
 				<button id="addToWishList" @if($wishList==1) style="border: 2px solid #86939E; outline: none;"@endif>
 					<span class="fas fa-shopping-cart"  ></span>&nbsp;  
 					<strong>Wish List</strong>
@@ -98,6 +100,7 @@
 						<a class="popup-close-reportAuction" data-popup-close-reportAuction="popup-1">X</a>
 					</div>
 					</div>
+					@endif
 				</div>
 			</div>
 		</div>
@@ -136,7 +139,8 @@
 		</div>
 	  </div>
 	 
- 	  <hr>
+	   <hr>
+	   @if($type==1)
 	  <div class="product-style" id="bid_buttons">
 		<div class="input-group mb-3">
 			<input type="number" class="form-control" id="price_button"  placeholder="Make a Bid" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -144,13 +148,15 @@
 				<button class="btn btn-outline-secondary" type="button">Submit</button>
 			</div>
 		</div>
-	  </div>
-	  
+	  </div>  
 	  <hr>
+	  @endif
     <!-- Product Pricing -->
     <div class="product-price" id="buy_now_button">
 	  <span  id ="item_price">EUR {{$auction->actualprice}}</span>
+	  @if($type==1)
 	  <button class="cart-btn" id="buyNow" >Buy Now ({{$auction->buynow}}€)</button>
+	  @endif
 	</div>
 
   </div>
