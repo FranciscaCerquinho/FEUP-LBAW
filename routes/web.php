@@ -77,7 +77,8 @@ Route::post('buyNow/{id}', 'BuyNowController@buyNow')->name('buyNow');
 
 //Search
 Route::get('category/{id}', 'SearchController@searchByCategory')->name('searchByCategory');
-Route::get('search/{name?}','SearchController@search')->name('search');
+Route::get('search',['uses' => 'SearchController@search','as' => 'search']);
+Route::post('search','SearchController@searchResults')->name('searchResults');
 Route::post('showCategory','SearchController@showCategory')->name('showCategory');
 
 //Report Auction

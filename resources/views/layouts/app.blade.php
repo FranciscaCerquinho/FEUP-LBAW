@@ -94,14 +94,14 @@
 						<div class="row">
 							<div class="col-md-12 col-xs-6">
 								<div id="custom-search-input">
-									<div class="input-group col-md-6" id="search_bar">
-										<input type="text" class="form-control input-lg" placeholder="Search" />
+									<form class="input-group col-md-6" action="/search" method="get" id="search_bar">
+										<input type="text" class="form-control input-lg" name="q" placeholder="Search" id="searchAutoComplete">
 										<span class="input-group-btn">
 											<button class="" type="submit">
 												<span class="fa fa-search" style="color:rgb(89,124,160);"></span>
 											</button>
 										</span>
-									</div>
+									</form>
 								</div>
 							</div>
 						</div>
