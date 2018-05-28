@@ -43,6 +43,11 @@ Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->na
 Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
 Route::post('password/reset', 'ResetPasswordController@reset')->name('resetPassword');
 
+// Send emails
+
+Route::post('emailUser{email}', 'EmailController@emailUser')->name('emailUser');
+Route::post('emailUs', 'EmailController@emailUs')->name('emailUs');
+
 //Auctions
 Route::get('auctions', 'AuctionController@list')->name('auction');
 Route::get('auction/{id}', 'AuctionController@show')->name('item');

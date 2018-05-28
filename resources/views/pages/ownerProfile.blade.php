@@ -78,7 +78,7 @@
 
 						<div class="container-contact1-form-btn">
 							<button class="contact1-form-btn">
-								<span>Send Email
+								<span href="{{route('emailUser',['email'=>$owner->email])}}">Send Email
 									<i class="fas fa-arrow-right"></i>
 								</span>
 							</button>
