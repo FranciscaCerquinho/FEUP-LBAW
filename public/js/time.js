@@ -29,8 +29,20 @@ function SplitDate(dateTime, value) {
   var second = parseInt(splitSecond[0])
   var hour = hour + parseInt(splitSecond[1]);
   let currentMonth = currentDate.getMonth() + 1;
-  let currentHour = currentDate.getHours() - 1;
+  let currentHour = currentDate.getHours();
+  console.log("Hour"+hour);
+  console.log("minute"+minute);
+  console.log("second"+second);
+  console.log("Day"+day);
+  console.log("Month"+month);
+  console.log("Year"+year);
 
+  console.log("CurrentHour"+currentHour);
+  console.log("CurrentMinute"+currentDate.getMinutes() );
+  console.log("CurrentSecond"+currentDate.getSeconds() );
+  console.log("CurrentDay"+currentDate.getDate() );
+  console.log("CurrentMonth"+currentMonth);
+  console.log("CurrentYear"+currentDate.getFullYear());
   
   if (currentDate.getFullYear() == year) {
       if (currentMonth == month) {
@@ -98,9 +110,9 @@ function SplitDate(dateTime, value) {
               document.write(stringToReturn);
           } else {
               let daysInMonth = getDaysInMonth(currentMonth, currentDate.getFullYear());
-
+              
               let days = currentDate.getDate() - day;
-              timeLeft = daysInMonth - currentDate.getDate() + days;
+              timeLeft = daysInMonth - days;
 
               if (parseInt(timeLeft) != 1) {
                   stringToReturn = timeLeft.toString() + " days";
@@ -149,7 +161,6 @@ function SplitDateReturn(dateTime, value) {
     var minute = parseInt(time[1]);
     var second = time[2];
     let currentMonth = currentDate.getMonth() + 1;
-    let currentHour = currentDate.getHours() - 1;
 
 
     if (currentDate.getFullYear() == year) {
@@ -221,7 +232,7 @@ function SplitDateReturn(dateTime, value) {
                 let daysInMonth = getDaysInMonth(currentMonth, currentDate.getFullYear());
   
                 let days = currentDate.getDate() - day;
-                timeLeft = daysInMonth - currentDate.getDate() + days;
+                timeLeft = daysInMonth - days;  
   
                 if (parseInt(timeLeft) != 1) {
                     stringToReturn = timeLeft.toString() + " days";
