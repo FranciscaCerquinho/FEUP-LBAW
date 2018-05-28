@@ -80,11 +80,11 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | US02          | Sign-up | high | Francisca Cerquinho              |   100%  | 
 | US03          | 	Sign-up using external API | high |    Francisca Cerquinho              |100%     | 
 | US04          | 	Sign-in using external API| high |     Francisca Cerquinho             |  100%   | 
-| US21         | Wish list add | high |  Pedro Miranda             |   100%  | 
 
 ##### 8.2.2 Customer
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
+| US21         | Wish list add | high |  Pedro Miranda             |   100%  | 
 | US22         | Wish list remove | high |  Pedro Miranda             |   100%  | 
 | US23         | Comment | high |  Francisca Cerquinho             |   100%  | 
 | US24         | Rate | high |  Francisca Cerquinho             |   100%  |
