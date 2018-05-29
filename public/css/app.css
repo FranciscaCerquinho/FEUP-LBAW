@@ -2052,6 +2052,19 @@ iframe {
 
   #category_filter{
     margin-bottom: 30px;
+    padding-left:20px;
+    padding-right:0;  
+  }
+
+  #searchPage div.row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #searchPage .searchResults {
+    padding-left: 0;
+    padding-right: 0;
+      
   }
 
   #searchPage img{
@@ -2061,8 +2074,7 @@ iframe {
   }
 
   #searchPage .card {
-    width: 250px;
-    left: 15%;
+    width: 100%;
   }
 }
 

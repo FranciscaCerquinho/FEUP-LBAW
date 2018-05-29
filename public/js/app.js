@@ -49,14 +49,14 @@ function sendAjaxRequest(method, url, data, handler) {
   request.addEventListener('load', handler);
   request.send(encodeForAjax(data));
 }
-/*
-var myVar = setInterval(myTimer, 1000);
+
+var myVar = setInterval(myTimer, 30000);
 
 function myTimer() {
     let timers = document.querySelectorAll("#item .time_left");
     let i = 0;
     for(i = 0; i < timers.length; i++) {
-        let id = timers[i].closest("section#item").getAttribute("data-id");
+        let id = timers[i].closest("div#item").getAttribute("data-id");
         sendAjaxRequest('post', '/auctionTime/' + id, null, auctionTimeHandler);
     }
 }
@@ -68,14 +68,14 @@ function auctionTimeHandler(){
     var auction = JSON.parse(this.responseText);
     var date = SplitDateReturn(auction.dateend,1);
 
-    let id = document.querySelector('section#item[data-id="' + auction.auction_id + '"]');
+    let id = document.querySelector('div#item[data-id="' + auction.auction_id + '"]');
 
     let timer = id.querySelector(".time_left");
 
     timer.innerHTML = date + " left";
 }
 
-var myVar = setInterval(myTimerHomePage, 1000);
+var myVar = setInterval(myTimerHomePage, 30000);
 
 function myTimerHomePage() {
     let timers = document.querySelectorAll(".new_auctions .time_left");
@@ -124,7 +124,7 @@ function inactiveAuctionHandler(){
     clearInterval(myVar);
     myVar = setInterval(myTimerHomePage, 1000);
 }
-*/
+
 function addEventListeners() {
 
   let addComment = document.querySelector(".leave_comment .status-upload button");
@@ -224,7 +224,7 @@ function addEventListeners() {
 };
 
 function addToWishListAction(){
-  let id_auction = this.closest('section#item').getAttribute('data-id');
+  let id_auction = this.closest('div#item').getAttribute('data-id');
   sendAjaxRequest('post','/addToWishList/' + id_auction,null,addToWishListHandler);
 
 }
@@ -287,7 +287,7 @@ function deleteFromWishListHandler(){
 
 function sendCommentRequest() {
   let text = document.querySelector(".leave_comment .status-upload textarea").value;
-  let id = this.closest('section#item').getAttribute('data-id');
+  let id = this.closest('div#item').getAttribute('data-id');
 
   if (text != '')
       sendAjaxRequest('post', '/comment/' + id, {
@@ -373,7 +373,7 @@ function sendAuctionLikeRequest() {
   let like = document.querySelector(".cable-choose #likeAuction").textContent;
   like = parseInt(like) + 1;
 
-  let id = this.closest('section#item').getAttribute('data-id');
+  let id = this.closest('div#item').getAttribute('data-id');
 
   if (like != '')
       sendAjaxRequest('post', '/likeAuction/' + id, {
@@ -409,7 +409,7 @@ function sendAuctionUnlikeRequest() {
   let unlike = document.querySelector(".cable-choose #unlikeAuction").textContent;
   unlike = parseInt(unlike) + 1;
 
-  let id = this.closest('section#item').getAttribute('data-id');
+  let id = this.closest('div#item').getAttribute('data-id');
 
   if (unlike != '')
       sendAjaxRequest('post', '/unlikeAuction/' + id, {
@@ -515,7 +515,7 @@ function addCommentUnlikeHandler() {
 function sendBidRequest() {
   let bid = document.querySelector("#bid_buttons #price_button").value;
 
-  let id = this.closest('section#item').getAttribute('data-id');
+  let id = this.closest('div#item').getAttribute('data-id');
 
   if (bid != '')
       sendAjaxRequest('post', '/makeBid/' + id, {
@@ -565,7 +565,7 @@ function makeBidHandler() {
 
 function sendBuyNowRequest() {
 
-  let id = this.closest('section#item').getAttribute('data-id');
+  let id = this.closest('div#item').getAttribute('data-id');
 
   sendAjaxRequest('post', '/buyNow/' + id, null, buyNowHandler);
 }
@@ -602,7 +602,7 @@ function reportAuctionRequest() {
 
   let reason = document.querySelector("#reportAuctionText").value;
 
-  let id = this.closest('section#item').getAttribute('data-id');
+  let id = this.closest('div#item').getAttribute('data-id');
 
   sendAjaxRequest('post', '/reportAuction/' + id, {
       reason: reason
