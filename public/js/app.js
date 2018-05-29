@@ -218,41 +218,35 @@ function addToWishListAction(){
 }
 
 function addToWishListHandler(){
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
 
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Failed to add the item to wishlist! Try again!
-  </div>`;
+    let modal = document.getElementById('messageModal');
+    modal.click();
+
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Failed to add the item to wishlist! Try again!`;
   } else {
       let addToWishList = JSON.parse(this.responseText);
 
       if(addToWishList.message=='You have to login! &nbsp'){
-            message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-        <a class="panel-close close" data-dismiss="alert">x</a>
-        <i class="fas fa-bell"></i>
-        ${addToWishList.message}
-        </div>`;
+        let modal = document.getElementById('messageModal');
+        modal.click();
+    
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${addToWishList.message}`;
+    
        }
        else{
-        message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-        <a class="panel-close close" data-dismiss="alert">x</a>
-        <i class="far fa-check-circle"></i>
-        The Item has been had to the wishlist!
-        </div>`;
-
-        document.querySelector('#addToWishList').style = 'background-color: white;';
+        let modal = document.getElementById('messageModal');
+        modal.click();
+    
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `The Item has been had to the wishlist!`;
+      
+        document.querySelector('#addToWishList').style = 'border: 2px solid #86939E; outline: none;';
        }
 
   }
-  let item_info = document.querySelector("#item_information");
-
-  let info = document.querySelector("#info");
-
-  item_info.insertBefore(message, info);
 
 
 }
@@ -516,22 +510,9 @@ function sendBidRequest() {
 
 function makeBidHandler() {
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+  if (this.status != 200) window.location = '/';
+    
 
-  if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Bid lower than the actual price! &nbsp;
-</div>`;
-
-      let item_info = document.querySelector(".product-description");
-
-      let info = document.querySelector(".info");
-
-      item_info.insertBefore(message, info);
-  }
   let newBid = JSON.parse(this.responseText);
 
   if (newBid.message != 'You have to login! &nbsp') {
@@ -540,42 +521,27 @@ function makeBidHandler() {
           let bid = document.querySelector("#item_price");
           bid.innerHTML = 'EUR ' + newBid.price;
 
-          message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="far fa-check-circle"></i>
-Bet made! The auction has been added to your bids, you will receive a warning if you are the winner
-</div>`;
+        let modal = document.getElementById('messageModal');
+        modal.click();
 
-          let item_info = document.querySelector(".product-description");
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "Bet made! The auction has been added to your bids, you will receive a warning if you are the winner";
 
-          let info = document.querySelector(".info");
-
-          item_info.insertBefore(message, info);
       } else {
-          message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  ${newBid.message}
-</div>`;
 
-          let item_info = document.querySelector(".product-description");
+        let modal = document.getElementById('messageModal');
+        modal.click();
 
-          let info = document.querySelector(".info");
-
-          item_info.insertBefore(message, info);
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${newBid.message}`;
       }
   } else {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  ${newBid.message}
-</div>`;
+      
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
-      let item_info = document.querySelector(".product-description");
-
-      let info = document.querySelector(".info");
-
-      item_info.insertBefore(message, info);
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${newBid.message}`;
   }
 }
 
@@ -588,39 +554,27 @@ function sendBuyNowRequest() {
 
 function buyNowHandler() {
 
-    let message = document.createElement('div');
-    message.setAttribute('class', 'row');
-
-    if (this.status != 200){
-        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-        <a class="panel-close close" data-dismiss="alert">x</a>
-        <i class="fas fa-bell"></i>
-        The product isn't yours! Try again
-      </div>`
-    }
+    if (this.status != 200)  window.location = '/';
+    
     else if(JSON.parse(this.responseText).message=='You have to login! &nbsp'){
-        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-        <a class="panel-close close" data-dismiss="alert">x</a>
-        <i class="fas fa-bell"></i>
-        You have to login! &nbsp
-        </div>`
+    
+        let modal = document.getElementById('messageModal');
+        modal.click();
+
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "You have to login!";
     }
     else{
 
     let buyNow = JSON.parse(this.responseText);
 
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
-    message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The auction is yours! Congratulations! The owner will contact you.
-    </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "The auction is yours! Congratulations! The owner will contact you.";
+
     }
-    let item_info = document.querySelector(".product-description");
-
-    let info = document.querySelector(".info");
-
-    item_info.insertBefore(message, info);
 }
 
 function reportAuctionRequest() {
@@ -645,6 +599,8 @@ function reportAuctionHandler() {
   <i class="fas fa-bell"></i>
   Did not report! Try again!
   </div>`;
+  
+    
   } else {
       let reportAuction = JSON.parse(this.responseText);
 
@@ -767,6 +723,7 @@ function banUserHandler() {
     <i class="far fa-check-circle"></i>
     The User has been sucessfully banned!
     </div>`;
+    
   }
 
   let item_info = document.querySelector(".user_report");

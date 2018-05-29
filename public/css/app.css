@@ -536,6 +536,7 @@ li a, .dropbtn {
       margin-top: 10px;
   }
 
+
   @media only screen and (min-width:576px) {
   .product_image{
     width:95%;
@@ -546,7 +547,6 @@ li a, .dropbtn {
 @media only screen and (max-width:576px) {
   .product_image{
     width: 100%;
-    height: 250px;
   }
   #item{
     padding-top: 0;
@@ -2185,6 +2185,13 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   color:white;
 }
 
+#reportButton .buttonReport a.btn{
+  background-color:#437ab2;
+  z-index: 1;
+  font-size: 16px;
+  color:white;
+}
+
 
 #wishListHeader{
   background-color:rgb(234, 236, 239);
@@ -2221,6 +2228,14 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 @media only screen and (max-width: 576px) {
   #wishListHeader{
     display: none;
+  }
+
+  .reportUserButton .buttonReport a.btn{
+    width: 150px;
+  }
+  
+  #reportButton .buttonReport a.btn{
+    width: 150px;
   }
   }
 
@@ -2356,28 +2371,6 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   margin-top: 16px;
 }
  
-.cable-config a {
-  color: #358ED7;
-  text-decoration: none;
-  font-size: 12px;
-  position: relative;
-  margin: 10px 0;
-  display: inline-block;
-}
-
-.cable-config a:before {
-
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  border: 2px solid rgba(53, 142, 215, 0.5);
-  display: inline-block;
-  text-align: center;
-  line-height: 16px;
-  opacity: 0.5;
-  margin-right: 5px;
-}
-
 /* Product Price */
 .product-price {
   display: flex;
@@ -2431,3 +2424,12 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   }
 }
 
+#messageModal{
+  display: none;
+}
+#exampleModal .modal-title{
+  color: #358ED7;
+}
+#exampleModal .modal-body{
+  color: #444444;
+}
