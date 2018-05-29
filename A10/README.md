@@ -105,7 +105,7 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | US26         | Report Users and Auctions | high |  Francisca Cerquinho             |   100%  | 
 | US27         |  Make a bid  | high |  Francisca Cerquinho           |   100%  | 
 | US28         | Buy Now  | high |    Francisca Cerquinho           |   100%  |
-| US29         | Private Message | high |              |   100%  |
+| US29         | Private Message | high |  Pedro Miranda            |   100%  |
 | US30         | Like and Unlike Auctions | high |  Francisca Cerquinho            |   100%  |
 | US30         | Like and Unlike Comments | high |  Francisca Cerquinho            |   100%  |
 
