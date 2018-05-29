@@ -884,7 +884,7 @@ function showCategoryHandler(){
 
                 auctionDiv.innerHTML=`<div class="card h-100 auctionCard searchCard">
                     <a href="/auction/${auctionsArray[actual_elem].auction_id}">
-                        <img class="card-img-top searchResultImage" src="/images/${auctionsArray[actual_elem].auctionphoto}" alt="">
+                        <img class="card-img-top searchResultImage" src="/images/${auctionsArray[actual_elem].auctionphoto}" alt="auctionPhoto">
                     </a>
                     <div class="card-body searchResultBody">
                         <h5 class="card-title searchResultTitle">

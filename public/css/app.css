@@ -2262,6 +2262,7 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 
 .wishListCard .product .owner_name{
   color: black;
+  text-decoration: underline !important;
 }
 @media only screen and (max-width: 576px) {
   #wishListHeader{

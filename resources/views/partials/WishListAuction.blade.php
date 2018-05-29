@@ -1,7 +1,7 @@
 <div class="row product align-items-center itemWishList" data-id="{{$wishList->wishlist_id}}">
   <div class="col-sm-2">
     <a href="{{route('item', ['id'=>$wishList->auction_id])}}">
-        <img src="/images/{{$wishList->auctionphoto}}" alt="" class="img-fluid z-depth-0">
+        <img src="/images/{{$wishList->auctionphoto}}" alt="auctionPhoto" class="img-fluid z-depth-0">
     </a>
   </div>
   <div class="col-sm-3">

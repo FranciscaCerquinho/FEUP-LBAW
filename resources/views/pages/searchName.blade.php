@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Owner Seach Page')
 @section('content')
 <div  id="searchPage">
 	<div class="row">

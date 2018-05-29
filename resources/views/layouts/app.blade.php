@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Top Bid</title>
+    <title>Top Bid - @yield('title')</title>
 
     <!-- Styles -->
 	<script src={{ asset('js/app.js') }} defer></script>
@@ -118,9 +118,9 @@
 						<div class="dropdown ">
 							<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
 								@if(preg_match('/https:\//',Auth::user()->photo, $matches, PREG_OFFSET_CAPTURE))
-								<img class="img-circle" src="{{Auth::user()->photo}}"alt="userProfilePicture" ></img>
+								<img class="img-circle" src="{{Auth::user()->photo}}"alt="photo" ></img>
 								@else
-								<img class="img-circle" src="/images/{{Auth::user()->photo}}"alt="userProfilePicture" ></img>
+								<img class="img-circle" src="/images/{{Auth::user()->photo}}"alt="photo" ></img>
 								@endif
 								{{Auth::user()->firstname}}
 							</button>
