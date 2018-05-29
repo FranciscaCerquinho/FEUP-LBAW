@@ -165,7 +165,7 @@
 	   @if($type==1)
 	  <div class="product-style" id="bid_buttons">
 		<div class="input-group mb-3">
-			<input type="number" class="form-control" id="price_button"  placeholder="Make a Bid" aria-label="Recipient's username" aria-describedby="basic-addon2">
+			<input type="number" class="form-control" id="price_button"  placeholder="Make a Bid" aria-describedby="basic-addon2">
 			<div class="input-group-append" id="bid">
 				<button class="btn btn-outline-secondary" type="button">Submit</button>
 			</div>

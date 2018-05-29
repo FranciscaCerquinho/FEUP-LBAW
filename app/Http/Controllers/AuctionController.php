@@ -18,6 +18,7 @@ use App\ReportAuction;
 use App\Category;
 use App\EndAuction;
 use App\WishList;
+use App\BanAuction;
 
 class AuctionController extends Controller
 {
@@ -38,11 +39,15 @@ class AuctionController extends Controller
         ->join('owner','owner.id_auction','=', 'endauction.id_auction')
         ->join('users','users.user_id','=','owner.id_user')->where('users.user_id','=', Auth::user()->user_id)
         ->join('auction','auction.auction_id','=','owner.id_auction')->get();
+     
       }
       else
         $type=0;
         
-        $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
+        $auctions = Auction::where('active', 1)
+        ->orderBy('dateend','asc')
+        ->join('owner', 'owner.id_auction', '=', 'auction_id')
+        ->join('users', 'users.user_id', '=', 'owner.id_user')->get();
         
         return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type, 'endAuctions' => $endAuctions]);
     }

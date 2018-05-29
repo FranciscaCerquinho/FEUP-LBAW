@@ -2428,7 +2428,7 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   display: none;
 }
 #exampleModal .modal-title{
-  color: #358ED7;
+  color: rgb(67,122,168);
 }
 #exampleModal .modal-body{
   color: #444444;

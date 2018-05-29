@@ -223,7 +223,8 @@ function addToWishListHandler(){
     let modal = document.getElementById('messageModal');
     modal.click();
 
-    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Failed to add the item to wishlist! Try again!`;
   } else {
       let addToWishList = JSON.parse(this.responseText);
@@ -232,7 +233,8 @@ function addToWishListHandler(){
         let modal = document.getElementById('messageModal');
         modal.click();
     
-        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i>  Sucess`;
+        document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
         let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${addToWishList.message}`;
     
        }
@@ -240,7 +242,8 @@ function addToWishListHandler(){
         let modal = document.getElementById('messageModal');
         modal.click();
     
-        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+        document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
         let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `The Item has been had to the wishlist!`;
       
         document.querySelector('#addToWishList').style = 'border: 2px solid #86939E; outline: none;';
@@ -524,24 +527,27 @@ function makeBidHandler() {
         let modal = document.getElementById('messageModal');
         modal.click();
 
-        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
-        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "Bet made! The auction has been added to your bids, you will receive a warning if you are the winner";
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+        document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML = "Bet made! The auction has been added to your bids, you will receive a warning if you are the winner";
 
       } else {
 
         let modal = document.getElementById('messageModal');
         modal.click();
 
-        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= ` <i class="fas fa-bell"></i> Unsucess`;
         let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${newBid.message}`;
+        document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
       }
   } else {
       
     let modal = document.getElementById('messageModal');
     modal.click();
 
-    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${newBid.message}`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
   }
 }
 
@@ -555,14 +561,16 @@ function sendBuyNowRequest() {
 function buyNowHandler() {
 
     if (this.status != 200)  window.location = '/';
-    
+
     else if(JSON.parse(this.responseText).message=='You have to login! &nbsp'){
     
         let modal = document.getElementById('messageModal');
         modal.click();
 
-        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Unsucess"
+
         let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "You have to login!";
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+        document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
     }
     else{
 
@@ -571,7 +579,8 @@ function buyNowHandler() {
     let modal = document.getElementById('messageModal');
     modal.click();
 
-    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= "Sucess"
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "The auction is yours! Congratulations! The owner will contact you.";
 
     }
@@ -706,55 +715,41 @@ function banUserRequest() {
 
 function banUserHandler() {
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
-
+    let modal = document.getElementById('messageModal');
+    modal.click();
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not ban! Try again!
-  </div>`;
+  
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not ban. Try again!`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The User has been sucessfully banned!
-    </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The User has been sucessfully banned!`;
     
   }
-
-  let item_info = document.querySelector(".user_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
 
 }
 
 function unbanUserHandler() {
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not unban! Try again!
-  </div>`;
+    
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not unban. Try again!`;
   } else {
-      let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The User has been sucessfully unbanned!
-    </div>`;
+    let reportAuction = JSON.parse(this.responseText);
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The User has been sucessfully unbanned!`;
   }
-
-  let item_info = document.querySelector(".user_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
 }
 
 function banAuctionRequest() {
@@ -773,51 +768,41 @@ function banAuctionRequest() {
 
 function banAuctionHandler() {
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not ban! Try again!
-  </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not ban. Try again!`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The Auction has been sucessfully banned!
-    </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The Auction has been sucessfully banned!`;
   }
-  let item_info = document.querySelector(".auctions_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
+
 }
 
 function unbanAuctionHandler() {
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
 
+    let modal = document.getElementById('messageModal');
+    modal.click();
+    
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not unban! Try again!
-  </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not unban. Try again!`;
   } else {
-      let reportAuction = JSON.parse(this.responseText);
+    let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The Auction has been sucessfully unbanned!
-    </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The Auction has been sucessfully unbanned!`;
   }
-  let item_info = document.querySelector(".auctions_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
+
 }
 
 function addFormAddAuctionRequest() {

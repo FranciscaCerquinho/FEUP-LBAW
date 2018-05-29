@@ -31,7 +31,7 @@
         	<?php for($j = 0; $j < $elems_per_row && $num_elems > 0; $j++, $num_elems--) {
               $actual_elem = $i*$elems_per_row + $j; 
               ?>
-        	@include('partials.auctionSearch',['auction'=>$auctions[$actual_elem]])
+        	@include('partials.auctionsFullSearch',['auction'=>$auctions[$actual_elem]])
         	<?php } ?>
           <!-- auction -->
         	</div>
