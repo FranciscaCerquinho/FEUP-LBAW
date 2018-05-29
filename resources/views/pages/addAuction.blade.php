@@ -99,11 +99,6 @@
                 {{ $errors->first('buyNow') }}
             </div>
         @endif
-        <div class="form-group add_auction_buttons">
-            <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn addAuction">Add another auction &nbsp; &nbsp;
-                <i class="fa fa-plus"></i>
-            </button>
-        </div>
         <form id="taskForm" action="{{ route('addAuction') }}" enctype="multipart/form-data" method="post" class="form-horizontal">
             {{ csrf_field() }}
             <div class="form-group row">
@@ -133,13 +128,6 @@
 							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
 					</div>
-					<script>
-						$(function () {
-							$('#datetimepicker1').datetimepicker({
-								format: "DD/MM/YYYY HH:mm"
-							})
-						});
-					</script>
 				</div>
                 
             </div>
@@ -164,15 +152,8 @@
                                         <i class="fas fa-folder-open"></i>
                                     </span>
                                     <span class="image-preview-input-title">Add an image</span>
-                                    <input type="file" name="photo" id="photo" accept="image/*" />
-                                    <script>
-                                        /*$("#photo").on('change',function(){
-                                            $("#photo").next('.form-control image-preview-filename').addClass("selected").html(($this).val());
-                                        })*/
-                                        $("#photo").on('change', function(){
-                                            document.getElementById("imageName").value=document.getElementById("photo").value;
-                                        })
-                                    </script>
+                                    <input type="file" name="photo" id="photo" class="addAuctionPhoto" accept="image/*" />
+                              
                                     <!-- <input type="file" name="photo" accept="image/png, image/jpeg, image/gif"/> -->
                                     <!-- rename it -->
                                 </div>

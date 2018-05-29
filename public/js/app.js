@@ -17,6 +17,22 @@ $(function() {
 
 });
 
+
+$(function () {
+    $('#datetimepicker1').datetimepicker({
+        format: "DD/MM/YYYY HH:mm"
+    })
+});
+
+$("#photo").on('change', function(){
+    document.getElementById("imageName").value=document.getElementById("photo").value;
+})
+
+$(function () {
+    $('#datetimepicker1').datetimepicker({
+        format: "DD/MM/YYYY HH:mm"
+    })
+});
 function encodeForAjax(data) {
   if (data == null) return null;
   return Object.keys(data).map(function(k) {
@@ -171,10 +187,6 @@ function addEventListeners() {
           banAuction[i].addEventListener('click', banAuctionRequest);
   }
 
-  let addFormAddAuction = document.querySelector(".add_auction_buttons .addAuction");
-  if (addFormAddAuction) {
-      addFormAddAuction.addEventListener('click', addFormAddAuctionRequest);
-  }
 
   let searchCategory = document.querySelectorAll("#searchPage .form-check");
 
@@ -806,114 +818,6 @@ function unbanAuctionHandler() {
 
 }
 
-function addFormAddAuctionRequest() {
-
-  let addAuctionForm = document.querySelector(".add_auction");
-
-  let newForm = document.createElement("form");
-  newForm.setAttribute('id', 'taskForm');
-  newForm.setAttribute('class', 'form-horizontal');
-  newForm.setAttribute('method', 'post');
-
-  newForm.innerHTML = `<div class="form-group row">
-      <div class="col-lg-4">
-          <input for="example-text-input" type="text" class="form-control" name="name" placeholder="Auction name" />
-      </div>
-      <div class="col-lg-2">
-          <select for="example-text-input" class="form-control" name="category" id="sel1">
-              <option>Electronics</option>
-              <option>Fashion</option>
-              <option>Home & Garden</option>
-              <option>Motors</option>
-              <option>Music</option>
-              <option>Toys</option>
-              <option>Daily Deals</option>
-              <option>Sporting</option>
-              <option>Others</option>
-          </select>
-      </div>
-      <div class="col-lg-2">
-          <input for="example-text-input" type="number" step="0.01" class="form-control" name="actualPrice" placeholder="Initial price (in Eur)" />
-      </div>
-      <div class="col-lg-2">
-          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-              <input type="text" class="form-control datetimepicker-input" name="dateEnd" data-target="#datetimepicker1" placeholder="End Date"/>
-              <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-              </div>
-          </div>
-          <script type="text/javascript">
-              $(function () {
-                  $('#datetimepicker1').datetimepicker({
-                      format: "DD/MM/YYYY HH:mm"
-                  })
-              });
-          </script>
-      </div>
-
-  </div>
-  <div class="form-group row">
-      <div class="col-lg-4">
-          <textarea for="example-text-input" class="form-control" id="exampleTextarea" rows="3" name="description" placeholder="Description"></textarea>
-      </div>
-      <div class="col-lg-4">
-          <!-- image-preview-filename input [CUT FROM HERE]-->
-          <div class="input-group image-preview">
-              <input type="text" class="form-control image-preview-filename" id="imageName" disabled="disabled">
-              <!-- don't give a name === doesn't send on POST/GET -->
-              <span class="input-group-btn">
-                  <!-- image-preview-clear button -->
-                  <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                      <span class="glyphicon glyphicon-remove"></span> Clear
-                  </button>
-                  <!-- image-preview-input -->
-                  <div class="btn btn-default image-preview-input">
-                      <div class="input-group-prepend">
-                          <span>
-                              <i class="fas fa-folder-open"></i>
-                          </span>
-                          <span class="image-preview-input-title">Add an image</span>
-                          <input type="file" name="photo" id="photo" accept="image/*" />
-                          <script type="text/javascript">
-                              /*$("#photo").on('change',function(){
-                                  $("#photo").next('.form-control image-preview-filename').addClass("selected").html(($this).val());
-                              })*/
-                              $("#photo").on('change', function(){
-                                  document.getElementById("imageName").value=document.getElementById("photo").value;
-                              })
-                          </script>
-                          <!-- <input type="file" name="photo" accept="image/png, image/jpeg, image/gif"/> -->
-                          <!-- rename it -->
-                      </div>
-                  </div>
-              </span>
-          </div>
-          <!-- /input-group image-preview [TO HERE]-->
-      </div>
-      <div class="col-lg-2">
-          <input for="example-text-input" type="number" step="0.01" class="form-control" name="buyNow" placeHolder="Buy-Now price (in EUR)" />
-      </div>
-  </div>
-  <div class="form-group .add_auction_buttons">
-    <button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
-    <button class="btn minus" style="font-size:16px;background-color:#437ab2; color:white">
-    <i class="fas fa-minus"></i>
-    </button>
-   </div>
-</div>
-</div>
-</div>`;
-
-  addAuctionForm.appendChild(newForm);
-  let minus = newForm.querySelector(".minus");
-  minus.addEventListener('click', deleteForm);
-}
-
-function deleteForm() {
-  let parent = this.closest("#taskForm");
-
-  parent.remove();
-}
 
 function searchCategoryRequest(){
 
@@ -1016,6 +920,7 @@ function deleteCommentHandler(){
     let parent = document.querySelector('.comment');
     parent.remove();
 }
+
 addEventListeners();
 
 function onSignIn(googleUser) {

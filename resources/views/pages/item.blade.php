@@ -142,7 +142,7 @@
     <!-- Product Configuration -->
     <div class="product-configuration">
  
-      <!-- Product Color -->
+			<!-- Product Color -->
       <div class="product-style row col-12">
 	  		<div class="col-sm-4" >
 				<p class="owner description" >Owner</p>
@@ -150,7 +150,7 @@
 		<div class="col-sm-8 user_information" >
 			<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->user_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
 		</div>
-	  </div>
+		</div>
 	  
 	  <div class="product-style row col-12">
 	  	<div class="col-sm-4" >
