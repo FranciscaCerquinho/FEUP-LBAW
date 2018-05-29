@@ -169,7 +169,6 @@ class AuctionController extends Controller
      */
     public function create(Request $request)
     {
-
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
@@ -186,7 +185,9 @@ class AuctionController extends Controller
         'name' => 'required|string|max:255',
         'dateEnd' => 'required|date_format:d/m/Y H:i|after:now',
         'description' => 'required|string|max:255',
+        'actualPrice' => 'required|regex:/^\d*(\.\d{2})?$/',
         'photo' => 'required|mimes:jpg,png,jpeg,gif,svg',
+        'buyNow' => 'required|regex:/^\d*(\.\d{2})?$/',
         'category' => ['required', Rule::in(['Electronics', 'Fashion', 'Home & Garden', 'Motors', 'Music', 'Toys', 'Daily Deals', 'Sporting', 'Others'])]
       );
 

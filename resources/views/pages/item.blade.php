@@ -14,7 +14,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Sucess</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<section class="container" id="item" data-id="{{$auction->auction_id}}">
+<div class="container" id="item" data-id="{{$auction->auction_id}}">
  
 	<div class="row">
 		<div class="col-lg-12" style="margin-top:30px;">
@@ -142,7 +142,7 @@
     <!-- Product Configuration -->
     <div class="product-configuration">
  
-      <!-- Product Color -->
+			<!-- Product Color -->
       <div class="product-style row col-12">
 	  		<div class="col-sm-4" >
 				<p class="owner description" >Owner</p>
@@ -150,7 +150,7 @@
 		<div class="col-sm-8 user_information" >
 			<a class="owner_name" href="{{route('ownerProfile', ['id'=>$auction->user_id])}}">{{$auction->firstname}} {{$auction->lastname}}</a>
 		</div>
-	  </div>
+		</div>
 	  
 	  <div class="product-style row col-12">
 	  	<div class="col-sm-4" >
@@ -216,5 +216,5 @@
 		@endif
 	</div>
 </div>
-</section>
+</div>
 @endsection
