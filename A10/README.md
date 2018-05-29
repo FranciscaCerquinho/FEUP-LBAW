@@ -26,8 +26,8 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
  
 | Type          | Username              | Password |
 | ------------- | ----------------------| -------- |
-| basic account | pedro21fcp@gmail.com  | 123456   |
-| news editor   | joaosilva@hotmail.com | 123456   |
+| user           | pedro21fcp@gmail.com  | 123456   |
+
  
 
 ## 3. Application Help
@@ -72,7 +72,7 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 > Detail the status of the implementation of each user story.
 > Also include the new user stories that were created during the project.
 
-##### 8.2.1 Visitor
+#### 8.2.1 Visitor
  
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
@@ -81,7 +81,7 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | US03          | 	Sign-up using external API | high |    Francisca Cerquinho              |100%     | 
 | US04          | 	Sign-in using external API| high |     Francisca Cerquinho             |  100%   | 
 
-##### 8.2.2 Customer
+#### 8.2.2 Customer
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
 | US21         | Wish list add | high |  Pedro Miranda             |   100%  | 
@@ -94,12 +94,12 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | US28         | Buy Now  | high |    Francisca Cerquinho           |   100%  |
 | US29         | Private Message | high |              |   100%  |
 
-##### 8.2.3 Owner
+#### 8.2.3 Owner
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
 | US32         | Sell item | high |   José Azevedo           |   100%  |
 
-##### 8.2.4 Administrator
+#### 8.2.4 Administrator
 | US Identifier | Name    | Priority                       | Team members               | State  |
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
 | US41         | Remove comments | high |  Francisca Cerquinho         |   100%  |
