@@ -72,10 +72,10 @@ The online help has been implemented on some pages to assist the user. This func
 ## 5. Check Accessibility and Usability
 
 ### 5.1 Accessibility
-URL result : 
+URL result : https://github.com/FranciscaCerquinho/LBAW-56/blob/artefacts/A10/accessibility.pdf
 
 ### 5.2 Usability
-URL result : https://github.com/xfontes42/lbaw1723/blob/artefacts/A10/usability.pdf
+URL result : https://github.com/FranciscaCerquinho/LBAW-56/blob/artefacts/A10/usability.pdf
  
  
 
@@ -84,7 +84,7 @@ URL result : https://github.com/xfontes42/lbaw1723/blob/artefacts/A10/usability.
 > HTML: https://validator.w3.org/nu/
 
 The pages have only 2 erros, one of them is because of google login and the other is because of bootstrap's modal.
-[Html Validator]()
+[Html Validator](https://github.com/FranciscaCerquinho/LBAW-56/blob/artefacts/A10/homePageValidator.pdf)
 > https://jigsaw.w3.org/css-validator/
  
  
