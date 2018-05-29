@@ -7,10 +7,10 @@ $date_string = $date->format('Y-m-d');?>
     <div class="col-md-2 col-sm-3">
         <span style="color:#0c59cf">{{$reporting_users->firstname}} {{$reporting_users->lastname}}</span>
     </div>
-    <div class="col-md-5 col-sm-3">
+    <div class="col-md-4 col-sm-3">
         <span span style="color:#0c59cf">{{$reported_users->reason}}</span>
     </div>
-    <div class="col-md-1 col-sm-3">
+    <div class="col-md-2 col-sm-3">
         <span style="color:#0c59cf">{{$date_string}} </span>
     </div>
     <div class="col-md-1 col-sm-3">

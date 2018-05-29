@@ -16,6 +16,9 @@ use App\Admin;
 use App\Owner;
 use App\ReportAuction;
 use App\Category;
+use App\EndAuction;
+use App\WishList;
+use App\BanAuction;
 
 class AuctionController extends Controller
 {
@@ -23,7 +26,8 @@ class AuctionController extends Controller
     public function list()
     {
   
-      
+      $endAuctions = array();
+
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
         if($user_admin==null)
@@ -31,12 +35,25 @@ class AuctionController extends Controller
         else
           $type=2;
       
+        $endAuctions = EndAuction::where('status',1)
+        ->join('owner','owner.id_auction','=', 'endauction.id_auction')
+        ->join('users','users.user_id','=','owner.id_user')->where('users.user_id','=', Auth::user()->user_id)
+        ->join('auction','auction.auction_id','=','owner.id_auction')->get();
+     
       }
       else
         $type=0;
-      
-        $auctions = Auction::where('active', 1)->orderBy('dateend','asc')->join('owner', 'owner.id_auction', '=', 'auction_id')->join('users', 'users.user_id', '=', 'owner.id_user')->get();
-        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type]);
+        
+        $auctions = Auction::where('active', 1)
+        ->orderBy('dateend','asc')
+        ->join('owner', 'owner.id_auction', '=', 'auction_id')
+        ->join('users', 'users.user_id', '=', 'owner.id_user')
+        ->whereNotIn('auction_id',function($query) {
+          $query->select('id_auction')
+                ->from('banauction');
+        })->get();
+        
+        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type, 'endAuctions' => $endAuctions]);
     }
 
     public function show($id){
@@ -44,6 +61,7 @@ class AuctionController extends Controller
       $commentsLikes = array();
       $comment_likes = array();
       $auctionReported=0;
+      $wishList=0;
 
       if(Auth::check()){
         $user_admin=Admin::where('id_user',(Auth::user()->user_id))->first();
@@ -76,9 +94,13 @@ class AuctionController extends Controller
         }
         $auctionReported = ReportAuction::where([['id_auction','=',$id],['id_user','=',Auth::user()->user_id]])
         ->first();
+
+        $wishList = WishList::where('user_id',(Auth::user()->user_id))->where('auction_id',$id)->first();
+        if($wishList!=null)
+          $wishList=1;
         }
-      else
-        $type=0;
+        else
+          $type=0;
 
       $auction = Auction::where('auction_id',$id)
       ->join('owner', 'owner.id_auction', '=', 'auction_id')
@@ -101,7 +123,7 @@ class AuctionController extends Controller
       else{
         $reported=0;
       }
-      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes, 'auctionReported'=>$reported]);
+      return view('pages.item',['auction' => $auction, 'comments'=> $comments,'type' => $type,'like'=>$like, 'commentsLikes'=> $commentsLikes, 'id_comment_likes' => $comment_likes, 'auctionReported'=>$reported,'wishList'=>$wishList]);
     }
 
     public function myAuctions(){
@@ -242,6 +264,9 @@ class AuctionController extends Controller
 
       }
     }
+    else{
+      $auction->message='You have to login! &nbsp';
+    }
       return $auction;
     }
 
@@ -260,7 +285,7 @@ class AuctionController extends Controller
       $user_like= DB::table('userauctionlike')->where([['id_auction','=', $auction_id],['id_user','=',Auth::user()->user_id]])->first();
 
       if($user_like==null){
-        DB::table('userauctionlike')->insert(['id_user'=> Auth::user()->user_id, 'id_auction'=> $auction_id, 'islike'=>true]);
+        DB::table('userauctionlike')->insert(['id_user'=> Auth::user()->user_id, 'id_auction'=> $auction_id, 'islike'=>false]);
         $auction->auction_dislike = $request->input('unlike');
         $auction->save();
 
@@ -274,7 +299,10 @@ class AuctionController extends Controller
         }
 
       }
-    }      
+     }     
+     else{
+      $auction->message='You have to login! &nbsp';
+    } 
       return $auction;
     }
 

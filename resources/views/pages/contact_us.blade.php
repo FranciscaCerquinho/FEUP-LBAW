@@ -24,7 +24,8 @@
 				</div>
 
 				<div class="col-xl-2 col-xs-10">
-					<form class="contact1-form validate-form">
+					<form class="contact1-form validate-form" action="{{route('emailUs')}}" method="post">
+						{{csrf_field()}}
 						<span class="contact1-form-title">
 							Get in touch
 						</span>

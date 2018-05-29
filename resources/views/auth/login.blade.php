@@ -18,7 +18,7 @@
 					<div class="card-block">
 						<div class="card-body">
 							<div class="container-fluid">
-								<form id="login-form" action="{{ route('login') }}" method="post" role="form" style="display: block;">
+								<form id="login-form" action="{{ route('login') }}" method="post" style="display: block;">
 									{{ csrf_field() }}
                                     <div class="row">
 										<div class="col-sm-12">
@@ -27,7 +27,7 @@
 													<span class="input-group-text">
 														<i class="fa fa-envelope fa" aria-hidden="true"></i>
 													</span>
-													<input type="text" class="form-control" name="email" id="email" @if(old('email'))value="{{old('email')}}"@endif placeholder="Enter your Email" />
+													<input type="text" class="form-control" name="email" @if(old('email'))value="{{old('email')}}"@endif placeholder="Enter your Email" />
 												</div>
 											</div>
 									@if ($errors->has('email'))
@@ -44,7 +44,7 @@
 													<span class="input-group-text">
 														<i class="fa fa-lock fa-lg" aria-hidden="true"></i>
 													</span>
-													<input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+													<input type="password" class="form-control" name="password"  placeholder="Enter your Password" />
 												</div>
 											</div>
 									@if ($errors->has('password'))
@@ -57,33 +57,29 @@
 										</div>
 										<div class="col-12">
 											<div class="form-group text-center" id="rememberMe">
-												<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-												<label for="remember"> Remember Me</label>
+												<a class="recoverPassword" href="{{route('password.reset')}}"> Forgot your password? </a>
 											</div>
 										</div>
-										<div class="col-5" id="button_login">	
+										<div class="col-5 button_login">	
 											<div class="form-group">
 												<div class="text-center">
-													<button target="_blank" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+													<button type="submit"  class="btn btn-primary btn-lg btn-block login-button">Login</button>
 												</div>
 											</div>
 										</div>
 										<div class="col-12">
 											<div class="btn-group">
-												<a class='btn btn-danger'>
-													<i class="fab fa-google-plus-g"></i>
-												</a>
-												<a class='btn btn-danger' href='#' id="loginGoogle"> Sign in with Google</a>
+												<div class="g-signin2" data-onsuccess="onSignIn" ></div>
 											</div>
 										</div>
 									</div>
 								</form>
-								<form id="register-form" action="{{ route('register') }}" method="post" role="form" style="display: none;">
+								<form id="register-form" action="{{ route('register') }}" method="post" style="display: none;">
 									{{ csrf_field() }}
                                     <div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text">
 													<i class="fa fa-user fa" aria-hidden="true"></i>
 												</span>
 												<input type="text" class="form-control" name="firstName" id="firstName" @if(old('firstName'))value="{{old('firstName')}}"@endif placeholder="First Name" />
@@ -100,7 +96,7 @@
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text">
 													<i class="fa fa-user fa" aria-hidden="true"></i>
 												</span>
 												<input type="text" class="form-control" name="lastName" id="lastName"  @if(old('lastName'))value="{{old('lastName')}}"@endif placeholder="Last Name" />
@@ -117,10 +113,10 @@
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text">
 													<i class="fa fa-envelope fa" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="email" id="email"  @if(old('email'))value="{{old('email')}}"@endif placeholder="Email" />
+												<input type="text" class="form-control" name="email"   @if(old('email'))value="{{old('email')}}"@endif placeholder="Email" />
 											</div>
 										</div>
 									</div>
@@ -134,10 +130,10 @@
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text">
 													<i class="fas fa-phone" aria-hidden="true"></i>
 												</span>
-												<input type="text" class="form-control" name="contact" id="email" @if(old('contact'))value="{{old('contact')}}"@endif placeholder="Contact" />
+												<input type="text" class="form-control" name="contact"  @if(old('contact'))value="{{old('contact')}}"@endif placeholder="Contact" />
 											</div>
 										</div>
 									</div>
@@ -151,7 +147,7 @@
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text" >
 													<i class="fas fa-address-card" aria-hidden="true"></i>
 												</span>
 												<input type="text" class="form-control" name="address" id="address" @if(old('address'))value="{{old('address')}}"@endif placeholder="Address" />
@@ -168,7 +164,7 @@
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text" >
 													<i class="fas fa-map-marker" aria-hidden="true"></i>
 												</span>
 												<input type="text" class="form-control" name="country" id="country" @if(old('country'))value="{{old('country')}}"@endif placeholder="City, Country" />
@@ -185,10 +181,10 @@
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text" >
 													<i class="fa fa-lock fa-lg" aria-hidden="true"></i>
 												</span>
-												<input type="password" class="form-control" name="password" id="password" placeholder="Password" />
+												<input type="password" class="form-control" name="password"  placeholder="Password" />
 											</div>
 										</div>
 									</div>
@@ -202,7 +198,7 @@
 									<div class="form-group">
 										<div class="cols-sm-10">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">
+												<span class="input-group-text" >
 													<i class="fa fa-lock fa-lg" aria-hidden="true"></i>
 												</span>
 												<input type="password" class="form-control" name="password_confirmation" id="confirm" placeholder="Confirm your Password" />
@@ -211,9 +207,9 @@
 									</div>
 									<div class="form-group ">
 										<div class="row">
-											<div class="col-lg-5 " style="width: 150px" id="button_login">
-												<div class="text-center">
-													<button target="_blank" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+											<div class="col-lg-5 " style="width: 150px" >
+												<div class="text-center button_login">
+													<button  type="submit"  class="btn btn-primary btn-lg btn-block login-button">Register</button>
 												</div>
 											</div>
 										</div>

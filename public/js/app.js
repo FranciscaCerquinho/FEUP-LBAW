@@ -33,7 +33,7 @@ function sendAjaxRequest(method, url, data, handler) {
   request.addEventListener('load', handler);
   request.send(encodeForAjax(data));
 }
-
+/*
 var myVar = setInterval(myTimer, 1000);
 
 function myTimer() {
@@ -46,38 +46,38 @@ function myTimer() {
 }
 
 function auctionTimeHandler(){
-  
+
     if (this.status != 200) window.location = '/';
 
     var auction = JSON.parse(this.responseText);
     var date = SplitDateReturn(auction.dateend,1);
 
-    let id = document.querySelector('section#item[data-id="' + auction.auction_id + '"]');  
+    let id = document.querySelector('section#item[data-id="' + auction.auction_id + '"]');
 
     let timer = id.querySelector(".time_left");
 
     timer.innerHTML = date + " left";
 }
-/*
+
 var myVar = setInterval(myTimerHomePage, 1000);
 
 function myTimerHomePage() {
     let timers = document.querySelectorAll(".new_auctions .time_left");
     let i = 0;
     for(i = 0; i < timers.length; i++) {
-        let id = timers[i].closest("div#auctions-list").getAttribute("data-id");
+        let id = timers[i].closest("div.auctions-list").getAttribute("data-id");
         sendAjaxRequest('post', '/auctionTime/' + id, null, auctionsHomePageHandler);
     }
 }
 
 function auctionsHomePageHandler(){
-  
+
     if (this.status != 200) window.location = '/';
-    
+
     var auction = JSON.parse(this.responseText);
     var date = SplitDateReturn(auction.dateend,1);
 
-    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
+    let id = document.querySelector('div.auctions-list[data-id="' + auction.auction_id + '"]');
 
     let timer = id.querySelector(".time_left");
 
@@ -101,10 +101,10 @@ function inactiveAuctionHandler(){
 
     let auction = JSON.parse(this.responseText);
 
-    let id = document.querySelector('div#auctions-list[data-id="' + auction.auction_id + '"]');  
-    
+    let id = document.querySelector('div.auctions-list[data-id="' + auction.auction_id + '"]');
+
     id.remove();
-    
+
     clearInterval(myVar);
     myVar = setInterval(myTimerHomePage, 1000);
 }
@@ -126,13 +126,13 @@ function addEventListeners() {
       addUnlike.addEventListener('click', sendAuctionUnlikeRequest);
   }
 
-  let addCommentLike = document.querySelectorAll(".comment #commentLike");
+  let addCommentLike = document.querySelectorAll(".comment .commentLike");
   if (addCommentLike) {
       for (var i = 0; i < addCommentLike.length; i++)
           addCommentLike[i].addEventListener('click', sendCommentLikeRequest);
   }
 
-  let addCommentUnlike = document.querySelectorAll(".comment #commentUnlike");
+  let addCommentUnlike = document.querySelectorAll(".comment .commentUnlike");
   if (addCommentUnlike) {
       for (var i = 0; i < addCommentUnlike.length; i++)
           addCommentUnlike[i].addEventListener('click', sendCommentUnlikeRequest);
@@ -148,12 +148,12 @@ function addEventListeners() {
       buyNow.addEventListener('click', sendBuyNowRequest);
   }
 
-  let reportAuction = document.querySelector("#reportButton #btn");
+  let reportAuction = document.querySelector("#reportButton .btn");
   if (reportAuction) {
       reportAuction.addEventListener('click', reportAuctionRequest);
   }
 
-  let reportUser = document.querySelectorAll(".comment .popup-reportUser #reportUserButton");
+  let reportUser = document.querySelectorAll(".comment .popup-reportUser .reportUserButton");
   if (reportUser) {
       for (var i = 0; i < reportUser.length; i++)
           reportUser[i].addEventListener('click', reportUserRequest);
@@ -171,7 +171,7 @@ function addEventListeners() {
           banAuction[i].addEventListener('click', banAuctionRequest);
   }
 
-  let addFormAddAuction = document.querySelector("#add_auction_buttons .addAuction");
+  let addFormAddAuction = document.querySelector(".add_auction_buttons .addAuction");
   if (addFormAddAuction) {
       addFormAddAuction.addEventListener('click', addFormAddAuctionRequest);
   }
@@ -194,11 +194,95 @@ function addEventListeners() {
     for (var i = 0; i < searchCategory.length; i++)
         searchCategory[i].addEventListener('click', searchCategoryRequest);
   }
+  let removeFromWishList = document.querySelectorAll(".remove_from_wishlist");
+  if (removeFromWishList) {
+    for(var n = 0; n < removeFromWishList.length;n++){
+      removeFromWishList[n].addEventListener('click', removeFromWishListAction);
+    }
+  }
 
-  let reportOwner = document.querySelector(".user_infomation .popup-reportUser #reportUserButton");
-
+  let reportOwner = document.querySelector(".user_infomation .popup-reportUser .reportUserButton");
   if(reportOwner)
     reportOwner.addEventListener('click', reportOwnerRequest);
+
+  let addToWishList = document.querySelector("#addToWishList");
+  if(addToWishList)
+      addToWishList.addEventListener('click',addToWishListAction);
+      
+  let endAuction = document.querySelectorAll(".endAuctions .endAuction");
+  if(endAuction){
+    for (var i = 0; i < endAuction.length; i++)
+        endAuction[i].addEventListener('click', endAuctionRequest);
+  }
+
+  let deleteComment = document.querySelectorAll(".deleteComment");
+  if(deleteComment){
+    for (var i = 0; i < deleteComment.length; i++)
+        deleteComment[i].addEventListener('click', deleteCommentRequest);
+  }
+
+};
+
+function addToWishListAction(){
+  let id_auction = this.closest('section#item').getAttribute('data-id');
+  sendAjaxRequest('post','/addToWishList/' + id_auction,null,addToWishListHandler);
+
+}
+
+function addToWishListHandler(){
+
+  if (this.status != 200) {
+    let modal = document.getElementById('messageModal');
+    modal.click();
+
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Failed to add the item to wishlist! Try again!`;
+  } else {
+      let addToWishList = JSON.parse(this.responseText);
+
+      if(addToWishList.message=='You have to login! &nbsp'){
+        let modal = document.getElementById('messageModal');
+        modal.click();
+    
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i>  Sucess`;
+     document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${addToWishList.message}`;
+    
+       }
+       else{
+        let modal = document.getElementById('messageModal');
+        modal.click();
+    
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+     document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `The Item has been had to the wishlist!`;
+      
+        document.querySelector('#addToWishList').style = 'border: 2px solid #86939E; outline: none;';
+       }
+
+  }
+
+
+}
+
+function removeFromWishListAction(){
+    let id = this.closest('.itemWishList').getAttribute('data-id');
+    sendAjaxRequest('delete', '/deleteFromWishList/' + id ,null,deleteFromWishListHandler);
+};
+
+function deleteFromWishListHandler(){
+
+    if (this.status != 200) window.location = '/';
+    let parent = document.querySelector('.itemWishList');
+    let hr = document.querySelector(".wishListHr");
+    parent.remove();
+    hr.remove();
+
+    let total= document.querySelector('#totalWishList');
+    let value = total.textContent;
+    total.innerHTML = value-1;
+
 };
 
 function sendCommentRequest() {
@@ -221,36 +305,33 @@ function addCommentHandler() {
   comment.setAttribute('data-id', newComment.id);
   let date = SplitDateReturn(newComment.date,0);
 
-  comment.innerHTML = `
-  <div class="panel panel-white post panel-shadow">
-  <div class="post-heading">
-      <div class="pull-left image">
-          <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
-      </div>
-      <div class="pull-left meta">
-          <div class="title h5">
-              <a href="#">
-                  <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
-              </a>
-          </div>
-          <h6 class="text-muted time"> ${date} ago</h6>
-      </div>
-  </div>
-  <div class="post-description">
-      <p>${newComment.comment}</p>
-      <div class="stats">
-            <a id="commentLike" class="btn stat-item">
-                <span  id ="likeCommentHand" class="fa fa-thumbs-up icon"></span>
-                <span  id ="likeComment">${newComment.like}</span>
-            </a>
-            <a id="commentUnlike" class="btn stat-item">
-                <span  id ="unlikeCommentHand" class="fa fa-thumbs-down icon"></span>
-                <span  id ="unlikeComment">${newComment.dislike}</span>
-            </a>
-            <a  data-popup-reportUser-open="popup-1" type="button" id="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</a>
+  comment.innerHTML = `<div class="panel panel-white post panel-shadow">
+    <div class="post-heading">
+        <div class="pull-left image">
+                <img src="${newComment.url}" class="img-circle avatar" alt="user profile image">
+        </div>
+        <div class="pull-left meta">
+            <div class="title h5">
+                <b>${newComment.user.firstname} ${newComment.user.lastname}</b>
+            </div>
+            <h6 class="text-muted time"> ${date} ago</h6>
+        </div>
+    </div> 
+    <div class="post-description"> 
+        <p>${newComment.comment}</p>
+        <div class="stats">
+                <a class="btn stat-item commentLike">
+                    <span  class="fa fa-thumbs-up icon likeCommentHand"></span>
+                    <span  class ="likeComment">${newComment.like}</span>
+                </a>
+                <a class="btn stat-item commentUnlike">
+                    <span class="fa fa-thumbs-down icon unlikeCommentHand"></span>
+                    <span  class ="unlikeComment">${newComment.dislike}</span>
+                </a>
+            <button  data-popup-reportUser-open="popup-1" type="button" class="reportA"><span class="reportUserButton fas fa-bullhorn"></span> Report</button>
             <div class="popup-reportUser" data-popup-reportUser="popup-1" data-id="{{$comment->user_id}}">
                 <div class="popup-inner-reportUser" data-id="{{$comment->id}}">
-                    <div class="form-group" id="userForm">
+                    <div class="form-group userForm" >
                         <div class="input-group-prepend">
                             <span class="input-group-text">
                                 <i class="fas fa-comment-alt" aria-hidden="true"></i>
@@ -258,30 +339,38 @@ function addCommentHandler() {
                             <input type="text" class="form-control reportUserText" name="reason" placeholder="Reason" />
                         </div>
                     </div>
-                    <div class="row" id="reportUserButton">
-                            <div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8" id="buttonReport">
+                    <div class="row reportUserButton" >
+                            <div class="col-6 col-xl-5 col-lg-6 col-sm-6 col-md-8 buttonReport" >
                                 <div class="text-center">
-                                    <a role="button" target="_blank" id="btn" class="btn btn-primary btn-lg btn-block">Report</a>
+                                    <a role="button" target="_blank"  class="btn btn-primary btn-lg btn-block">Report</a>
                                 </div>
                             </div>
                         </div>
                     <a class="popup-close-reportUser" data-popup-close-reportUser="popup-1">X</a>
                 </div>
             </div>
-      </div>
-  </div>
-</div>`;
+        </div>
+    </div>
+    </div>`;
 
   let comments = document.querySelector(".comments .row");
 
   let commentBox = document.querySelector("#addComment");
 
   comments.insertBefore(comment, commentBox);
+
+  let text = document.querySelector(".leave_comment .status-upload textarea");
+
+  text.value= "";
+
+  comment.querySelector(".commentLike").addEventListener('click',sendCommentLikeRequest);
+  comment.querySelector(".commentUnlike").addEventListener('click',sendCommentUnlikeRequest);
+  //comment.querySelector(".popup-reportUser .reportUserButton").addEventListener('click',reportUserRequest);
 }
 
 
 function sendAuctionLikeRequest() {
-  let like = document.querySelector("#buttons #likeAuction").textContent;
+  let like = document.querySelector(".cable-choose #likeAuction").textContent;
   like = parseInt(like) + 1;
 
   let id = this.closest('section#item').getAttribute('data-id');
@@ -297,6 +386,8 @@ function addAuctionLikeHandler() {
   if (this.status != 200) window.location = '/';
   let newLike = JSON.parse(this.responseText);
 
+  if(newLike.message!='You have to login! &nbsp'){
+
   let like = document.querySelector("#item #likeAuction");
 
   like.innerHTML = newLike.auction_like;
@@ -305,18 +396,17 @@ function addAuctionLikeHandler() {
 
   unlike.innerHTML = newLike.auction_dislike;
 
-  document.getElementById('like_hand').style = 'color: #437ab2;';
-  like.style = 'color: #437ab2;';
+  document.getElementById('likeButton').style = 'border: 2px solid #86939E; outline: none;';
 
 
-  document.getElementById('unlike_hand').style = 'color: black;';
-  unlike.style = 'color: black;';
-
+  document.getElementById('unlikeButton').style = 'border:none';
+ 
+}
 }
 
 
 function sendAuctionUnlikeRequest() {
-  let unlike = document.querySelector("#buttons #unlikeAuction").textContent;
+  let unlike = document.querySelector(".cable-choose #unlikeAuction").textContent;
   unlike = parseInt(unlike) + 1;
 
   let id = this.closest('section#item').getAttribute('data-id');
@@ -332,6 +422,8 @@ function addAuctionUnlikeHandler() {
   if (this.status != 200) window.location = '/';
   let newUnlike = JSON.parse(this.responseText);
 
+  if(newUnlike.message!='You have to login! &nbsp'){
+
   let unlike = document.querySelector("#item #unlikeAuction");
 
   unlike.innerHTML = newUnlike.auction_dislike;
@@ -341,17 +433,13 @@ function addAuctionUnlikeHandler() {
 
   like.innerHTML = newUnlike.auction_like;
 
-
-  document.getElementById('unlike_hand').style = 'color: #437ab2;';
-  unlike.style = 'color: #437ab2;';
-
-
-  document.getElementById('like_hand').style = 'color: black;';
-  like.style = 'color: black;';
+  document.getElementById('unlikeButton').style = 'border: 2px solid #86939E; outline: none;';
+  document.getElementById('likeButton').style = 'border:none';
+  }
 }
 
 function sendCommentLikeRequest() {
-  let like = document.querySelector("#commentLike").textContent;
+  let like = this.closest(".commentLike").textContent;
   like = parseInt(like) + 1;
 
   let id = this.closest('div.comment').getAttribute('data-id');
@@ -368,19 +456,19 @@ function addCommentLikeHandler() {
   let newLike = JSON.parse(this.responseText);
 
   let stats = document.querySelector('div.comment[data-id="' + newLike.id + '"]');
-  let like = stats.querySelector("#likeComment");
+  let like = stats.querySelector(".likeComment");
 
   like.innerHTML = newLike.like;
 
-  let unlike = stats.querySelector("#unlikeComment");
+  let unlike = stats.querySelector(".unlikeComment");
 
   unlike.innerHTML = newLike.dislike;
 
-  stats.querySelector('#likeCommentHand').style = 'color: #437ab2;';
+  stats.querySelector('.likeCommentHand').style = 'color: #437ab2;';
   like.style = 'color: #437ab2;';
 
 
-  stats.querySelector('#unlikeCommentHand').style = 'color: black;';
+  stats.querySelector('.unlikeCommentHand').style = 'color: #5E6977;';
   unlike.style = 'color: black;';
 
 }
@@ -388,7 +476,8 @@ function addCommentLikeHandler() {
 
 
 function sendCommentUnlikeRequest() {
-  let unlike = document.querySelector("#commentUnlike").textContent;
+ 
+  let unlike = this.closest(".commentUnlike").textContent;
   unlike = parseInt(unlike) + 1;
 
   let id = this.closest('div.comment').getAttribute('data-id');
@@ -400,24 +489,25 @@ function sendCommentUnlikeRequest() {
 }
 
 function addCommentUnlikeHandler() {
+   
   if (this.status != 200) window.location = '/';
   let newUnlike = JSON.parse(this.responseText);
 
   let stats = document.querySelector('div.comment[data-id="' + newUnlike.id + '"]');
-  let unlike = stats.querySelector("#unlikeComment");
+  let unlike = stats.querySelector(".unlikeComment");
 
   unlike.innerHTML = newUnlike.dislike;
 
 
-  let like = stats.querySelector("#likeComment");
+  let like = stats.querySelector(".likeComment");
 
   like.innerHTML = newUnlike.like;
 
-  stats.querySelector('#unlikeCommentHand').style = 'color: #437ab2;';
+  stats.querySelector('.unlikeCommentHand').style = 'color: #437ab2;';
   unlike.style = 'color: #437ab2;';
 
 
-  stats.querySelector('#likeCommentHand').style = 'color: black;';
+  stats.querySelector('.likeCommentHand').style = 'color: #5E6977;';
   like.style = 'color: black;';
 }
 
@@ -435,22 +525,9 @@ function sendBidRequest() {
 
 function makeBidHandler() {
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+  if (this.status != 200) window.location = '/';
+    
 
-  if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Bid lower than the actual price! &nbsp;
-</div>`;
-
-      let item_info = document.querySelector("#item_information");
-
-      let info = document.querySelector("#info");
-
-      item_info.insertBefore(message, info);
-  }
   let newBid = JSON.parse(this.responseText);
 
   if (newBid.message != 'You have to login! &nbsp') {
@@ -459,42 +536,30 @@ function makeBidHandler() {
           let bid = document.querySelector("#item_price");
           bid.innerHTML = 'EUR ' + newBid.price;
 
-          message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="far fa-check-circle"></i>
-Bet made! The auction has been added to your bids, you will receive a warning if you are the winner
-</div>`;
+        let modal = document.getElementById('messageModal');
+        modal.click();
 
-          let item_info = document.querySelector("#item_information");
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+     document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML = "Bet made! The auction has been added to your bids, you will receive a warning if you are the winner";
 
-          let info = document.querySelector("#info");
-
-          item_info.insertBefore(message, info);
       } else {
-          message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  ${newBid.message}
-</div>`;
 
-          let item_info = document.querySelector("#item_information");
+        let modal = document.getElementById('messageModal');
+        modal.click();
 
-          let info = document.querySelector("#info");
-
-          item_info.insertBefore(message, info);
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= ` <i class="fas fa-bell"></i> Unsucess`;
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${newBid.message}`;
+        document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
       }
   } else {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  ${newBid.message}
-</div>`;
+      
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
-      let item_info = document.querySelector("#item_information");
-
-      let info = document.querySelector("#info");
-
-      item_info.insertBefore(message, info);
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${newBid.message}`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
   }
 }
 
@@ -507,24 +572,30 @@ function sendBuyNowRequest() {
 
 function buyNowHandler() {
 
-  if (this.status != 200) window.location = '/';
-  let buyNow = JSON.parse(this.responseText);
+    if (this.status != 200)  window.location = '/';
+
+    else if(JSON.parse(this.responseText).message=='You have to login! &nbsp'){
+    
+        let modal = document.getElementById('messageModal');
+        modal.click();
 
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+        let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "You have to login!";
+        let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+        document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    }
+    else{
 
-  message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-<a class="panel-close close" data-dismiss="alert">x</a>
-<i class="far fa-check-circle"></i>
-The auction is yours! Congratulations! The owner will contact you.
-</div>`;
+    let buyNow = JSON.parse(this.responseText);
 
-  let item_info = document.querySelector("#item_information");
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
-  let info = document.querySelector("#info");
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "The auction is yours! Congratulations! The owner will contact you.";
 
-  item_info.insertBefore(message, info);
+    }
 }
 
 function reportAuctionRequest() {
@@ -539,7 +610,7 @@ function reportAuctionRequest() {
 }
 
 function reportAuctionHandler() {
- 
+
   let message = document.createElement('div');
   message.setAttribute('class', 'row');
 
@@ -547,8 +618,10 @@ function reportAuctionHandler() {
       message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
   <a class="panel-close close" data-dismiss="alert">x</a>
   <i class="fas fa-bell"></i>
-  Did not report! Try again! 
+  Did not report! Try again!
   </div>`;
+  
+    
   } else {
       let reportAuction = JSON.parse(this.responseText);
 
@@ -558,10 +631,10 @@ function reportAuctionHandler() {
   The Auction has been sucessfully reported!
   </div>`;
 
-      document.querySelector('.buttonReport').style = 'color: rgb(204,68,74);';
-      document.querySelector('.reportAuctionButton').style = 'color: rgb(204,68,74);';
+      document.querySelector('.buttonReport').style = 'border: 2px solid #86939E; outline: none;';
 
   }
+ 
   let item_info = document.querySelector(".popup-inner-reportAuction");
 
   let info = document.querySelector("#auctionForm");
@@ -586,27 +659,22 @@ function reportUserHandler() {
     let message = document.createElement('div');
     message.setAttribute('class', 'row');
 
-    if (this.status != 200) {
-        message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-        <a class="panel-close close" data-dismiss="alert">x</a>
-        <i class="fas fa-bell"></i>
-        Did not report! Try again! 
-        </div>`;
-    }
+    if (this.status != 200)  window.location = '/';
     else{
-        let reportAuction = JSON.parse(this.responseText);
+        let reportUser = JSON.parse(this.responseText);
 
         message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
         <a class="panel-close close" data-dismiss="alert">x</a>
         <i class="far fa-check-circle"></i>
         The User has been sucessfully reported!
         </div>`;
+    
+        let item_info = document.querySelector('.popup-inner-reportUser[data-id="' + reportUser.commentID + '"]');
+
+        let info = item_info.querySelector(".userForm");
+
+        item_info.insertBefore(message, info);
     }
-    let item_info = document.querySelector('.popup-inner-reportUser[data-id="' + reportAuction.commentID + '"]');
-
-    let info = item_info.querySelector("#userForm");
-
-    item_info.insertBefore(message, info);
 }
 
 function reportOwnerRequest(){
@@ -627,12 +695,12 @@ function reportOwnerHandler(){
         message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
         <a class="panel-close close" data-dismiss="alert">x</a>
         <i class="fas fa-bell"></i>
-        Did not report! Try again! 
+        Did not report! Try again!
         </div>`;
     }
     else{
         let reportAuction = JSON.parse(this.responseText);
-    
+
         message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
         <a class="panel-close close" data-dismiss="alert">x</a>
         <i class="far fa-check-circle"></i>
@@ -640,9 +708,9 @@ function reportOwnerHandler(){
         </div>`;
     }
     let item_info = document.querySelector('.popup-inner-reportUser');
-  
-    let info = item_info.querySelector("#userForm");
-  
+
+    let info = item_info.querySelector(".userForm");
+
     item_info.insertBefore(message, info);
 }
 function banUserRequest() {
@@ -660,54 +728,41 @@ function banUserRequest() {
 
 function banUserHandler() {
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
-
+    let modal = document.getElementById('messageModal');
+    modal.click();
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not ban! Try again! 
-  </div>`;
+  
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not ban. Try again!`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The User has been sucessfully banned!
-    </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The User has been sucessfully banned!`;
+    
   }
-
-  let item_info = document.querySelector(".user_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
 
 }
 
 function unbanUserHandler() {
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not unban! Try again! 
-  </div>`;
+    
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not unban. Try again!`;
   } else {
-      let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The User has been sucessfully unbanned!
-    </div>`;
+    let reportAuction = JSON.parse(this.responseText);
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The User has been sucessfully unbanned!`;
   }
-
-  let item_info = document.querySelector(".user_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
 }
 
 function banAuctionRequest() {
@@ -726,51 +781,41 @@ function banAuctionRequest() {
 
 function banAuctionHandler() {
 
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not ban! Try again! 
-  </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not ban. Try again!`;
   } else {
       let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The Auction has been sucessfully banned!
-    </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The Auction has been sucessfully banned!`;
   }
-  let item_info = document.querySelector(".auctions_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
+
 }
 
 function unbanAuctionHandler() {
-  let message = document.createElement('div');
-  message.setAttribute('class', 'row');
+
+    let modal = document.getElementById('messageModal');
+    modal.click();
 
   if (this.status != 200) {
-      message.innerHTML = `<div class="alert alert-danger alert-dismissable" role="alert">
-  <a class="panel-close close" data-dismiss="alert">x</a>
-  <i class="fas fa-bell"></i>
-  Did not unban! Try again! 
-  </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
+    document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  Did not unban. Try again!`;
   } else {
-      let reportAuction = JSON.parse(this.responseText);
+    let reportAuction = JSON.parse(this.responseText);
 
-      message.innerHTML = `<div class="alert alert-success alert-dismissable" role="alert">
-    <a class="panel-close close" data-dismiss="alert">x</a>
-    <i class="far fa-check-circle"></i>
-    The Auction has been sucessfully unbanned!
-    </div>`;
+    let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
+    let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The Auction has been sucessfully unbanned!`;
   }
-  let item_info = document.querySelector(".auctions_report");
-  let info = item_info.querySelector(".style17");
-  item_info.insertBefore(message, info);
+
 }
 
 function addFormAddAuctionRequest() {
@@ -819,7 +864,7 @@ function addFormAddAuctionRequest() {
               });
           </script>
       </div>
-      
+
   </div>
   <div class="form-group row">
       <div class="col-lg-4">
@@ -897,7 +942,7 @@ function updateImagePathRequest() {
 function searchCategoryRequest(){
 
     let categoryChecked=[];
-    
+
     let inputs= document.querySelectorAll("#category_filter .form-check label input");
     let categories= document.querySelectorAll("#category_filter .form-check label span");
 
@@ -912,13 +957,12 @@ function searchCategoryRequest(){
 }
 
 function showCategoryHandler(){
-    console.log(this.responseText);
 
     if (this.status != 200) window.location = '/';
 
     var auctions = document.querySelector(".searchResults");
     auctions.remove();
-    
+
     var auctionsArray =JSON.parse(this.responseText);
 
     let div = document.createElement("div");
@@ -932,10 +976,10 @@ function showCategoryHandler(){
         newDiv.setAttribute('class','row');
 
         	for(var j = 0; j < elems_per_row && num_elems > 0; j++, num_elems--){
-       
-                actual_elem = i*elems_per_row + j; 
-         
-        
+
+                actual_elem = i*elems_per_row + j;
+
+
                 let date = SplitDateReturn(auctionsArray[actual_elem].dateend,1);
 
                 let auctionDiv = document.createElement("div");
@@ -966,4 +1010,55 @@ function showCategoryHandler(){
     append.appendChild(div);
 }
 
+function endAuctionRequest(){
+
+    let id = this.closest('.endAuctionAlert').getAttribute('data-id');
+
+    sendAjaxRequest('post', '/endAuction/' + id ,null, endAuctionHandler);
+}
+
+function endAuctionHandler(){
+   
+    if (this.status != 200) window.location = '/';
+    
+    let endAuction = JSON.parse(this.responseText);
+    let alert = document.querySelector('div.endAuctionAlert[data-id="' + endAuction.endauction_id + '"]');
+
+    alert.remove();
+}
+
+function deleteCommentRequest(){
+
+    let id = this.closest('div.comment').getAttribute('data-id');
+
+    sendAjaxRequest('delete', '/deleteComment/' + id ,null, deleteCommentHandler);
+}
+
+function deleteCommentHandler(){
+    if (this.status != 200) window.location = '/';
+
+    let parent = document.querySelector('.comment');
+    parent.remove();
+}
 addEventListeners();
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    
+    var id_token = googleUser.getAuthResponse().id_token;
+    sendAjaxRequest('post', '/googleLogin' ,{id: id_token,name: profile.getName(), photo: profile.getImageUrl(), email: profile.getEmail()}, googleRegisterHandler);
+}
+
+function googleRegisterHandler(){
+
+    if (this.status != 200) window.location = '/';
+    
+    gapi.load('auth2',function(){
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function(){
+            console.log('User signed out .');
+            document.getElementById("topnavLogo").click();
+        });
+    });
+    
+}

@@ -33,7 +33,10 @@ class CommentController extends Controller
       $comment->date= date('Y-m-d H:i:s');
       $comment->save();
       $comment->load('user');
-      $comment->url= '/images/'.($comment->user->photo=='perfil_blue.png'?'commentImage.jpg' : $comment->user->photo);
+      if(preg_match('/https:\//',Auth::user()->photo, $matches, PREG_OFFSET_CAPTURE))
+        $comment->url= $comment->user->photo;
+      else
+        $comment->url= '/images/'.($comment->user->photo=='perfil_blue.png'?'commentImage.jpg' : $comment->user->photo);
       return $comment;
     }
 
@@ -83,7 +86,7 @@ class CommentController extends Controller
       $user_like= DB::table('usercommentlike')->where([['id_comment','=', $comment_id],['id_user','=',Auth::user()->user_id]])->first();
 
       if($user_like==null){
-        DB::table('usercommentlike')->insert(['id_user'=> Auth::user()->user_id, 'id_comment'=> $comment_id, 'islike'=>true]);
+        DB::table('usercommentlike')->insert(['id_user'=> Auth::user()->user_id, 'id_comment'=> $comment_id, 'islike'=>false]);
         $comment->dislike = $request->input('unlike');
         $comment->save();
 
@@ -98,6 +101,15 @@ class CommentController extends Controller
 
       }
     }
+      return $comment;
+    }
+
+    public function deleteComment(Request $request, $comment_id){
+      $comment = Comment::find($comment_id);
+
+      if($comment != null)
+        $comment->delete();
+
       return $comment;
     }
     

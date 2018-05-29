@@ -24,8 +24,10 @@ Route::get('owner/{id}', 'OwnerController@show')->name('ownerProfile');
 
 // WishList
 
-Route::get('wishList ','WishListController@list')->name("wishList");
-Route::get('listAuction ','WishListController@show')->name("listAuction");
+Route::get('wishList','WishListController@list')->name("wishList");
+Route::get('listAuction','WishListController@show')->name("listAuction");
+Route::delete('deleteFromWishList/{id}','WishListController@deleteFromWishList')->name("deleteFromWishList");
+Route::post('addToWishList/{id_auction}','WishListController@addToWishList')->name("addToWishList");
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -33,6 +35,18 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+Route::post('googleLogin', 'Auth\RegisterController@googleRegister')->name('googleLogin');
+
+// Password Reset Routes...
+Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.token');
+Route::post('password/reset', 'ResetPasswordController@reset')->name('resetPassword');
+
+// Send emails
+
+Route::post('emailUser{email}', 'EmailController@emailUser')->name('emailUser');
+Route::post('emailUs', 'EmailController@emailUs')->name('emailUs');
 
 //Auctions
 Route::get('auctions', 'AuctionController@list')->name('auction');
@@ -46,10 +60,13 @@ Route::post('addAuction', 'AuctionController@create');
 Route::post('auctionTime/{id}', 'AuctionController@auctionTime')->name('auctionTime');
 Route::post('inactiveAuction/{id}', 'AuctionController@inactiveAuction')->name('inactiveAuction');
 
+Route::post('endAuction/{id}', 'EndAuctionController@endAuction')->name('endAuction');
+
 //Auctions comments
 Route::post('comment/{id}', 'CommentController@create');
 Route::post('likeComment/{id}', 'CommentController@updateLike');
 Route::post('unlikeComment/{id}', 'CommentController@updateUnlike');
+Route::delete('deleteComment/{id}', 'CommentController@deleteComment');
 
 //User bids
 Route::get('myBids', 'BidController@show')->name('myBids');
@@ -60,7 +77,8 @@ Route::post('buyNow/{id}', 'BuyNowController@buyNow')->name('buyNow');
 
 //Search
 Route::get('category/{id}', 'SearchController@searchByCategory')->name('searchByCategory');
-Route::get('search/{name?}','SearchController@search')->name('search');
+Route::get('search',['uses' => 'SearchController@search','as' => 'search']);
+Route::post('search','SearchController@searchResults')->name('searchResults');
 Route::post('showCategory','SearchController@showCategory')->name('showCategory');
 
 //Report Auction

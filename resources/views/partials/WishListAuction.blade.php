@@ -1,4 +1,4 @@
-<div class="row product align-items-center">
+<div class="row product align-items-center itemWishList" data-id="{{$wishList->wishlist_id}}">
   <div class="col-sm-2">
     <a href="{{route('item', ['id'=>$wishList->auction_id])}}">
         <img src="/images/{{$wishList->auctionphoto}}" alt="" class="img-fluid z-depth-0">
@@ -17,9 +17,9 @@
   </div>
   <div class="col-sm-2" > <script>SplitDate("{{$wishList->dateend}}",1);</script> left</div>
   <div class="col-sm-1">
-      <button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Remove item">
+      <button type="button" class="btn btn-sm btn-danger remove_from_wishlist" data-toggle="tooltip" data-placement="top" title="Remove item">
         <i class="fas fa-trash-alt"></i>
       </button>
   </div>
 </div>
-<hr class="style17" style="color:grey;">
+<hr class="style17 wishListHr" style="color:grey;">
