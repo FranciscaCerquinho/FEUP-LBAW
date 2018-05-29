@@ -108,8 +108,7 @@
 					</label>
 				</div>
 				<label class="title" >Owner</label>
-				<input class="col-12" type="text" placeholder="User name">
-			
+				<input class="col-12" id="owner-input" type="text" placeholder="User name">
 			</div>
 		</div>
 		<?php
@@ -118,16 +117,16 @@
 			$num_rows = ceil($num_elems / $elems_per_row);
 		?>
 		<div class="col-lg-9 col-md-8 searchResults">
+			<div class="row">
 			<?php for($i = 0; $i < $num_rows; $i++) {?>
-        	<div class="row">
         	<?php for($j = 0; $j < $elems_per_row && $num_elems > 0; $j++, $num_elems--) {
               $actual_elem = $i*$elems_per_row + $j; 
               ?>
         	@include('partials.auctionSearch',['auction'=>$auctions[$actual_elem]])
         	<?php } ?>
           <!-- auction -->
-        	</div>
     	<?php } ?>
+			</div>
 		</div>
 </div>
 @endsection

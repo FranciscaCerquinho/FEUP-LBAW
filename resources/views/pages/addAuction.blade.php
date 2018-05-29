@@ -152,9 +152,12 @@
                                         <i class="fas fa-folder-open"></i>
                                     </span>
                                     <span class="image-preview-input-title">Add an image</span>
-                                    <input type="file" name="photo" id="photo" class="addAuctionPhoto" accept="image/*" />
-                              
-                                    <!-- <input type="file" name="photo" accept="image/png, image/jpeg, image/gif"/> -->
+                                    <input type="file" name="photo" id="photo" class="item-photo" accept="image/*" />
+                                    <script type="text/javascript">
+                                        $("#photo").on('change', function(){
+                                            document.getElementById("imageName").value=document.getElementById("photo").value;
+                                        })
+                                    </script>
                                     <!-- rename it -->
                                 </div>
                             </div>
@@ -166,8 +169,8 @@
 					<input type="number" step="0.01" class="form-control" name="buyNow" placeHolder="Buy-Now price (in EUR)" />
 				</div>
             </div>
-            <div class="form-group add_auction_buttons">
-                <button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
+            <div class="form-group" id="add_auction_buttons">
+                <button class="btn submitAuction" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
             </div>
     </div>
 </div>
