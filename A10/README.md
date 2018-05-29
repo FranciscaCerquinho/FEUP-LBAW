@@ -57,7 +57,9 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 ## 7. Revisions to the Project
  
 > Describe the revisions made to the project since the requirements specification stage.
- 
+
+* Add user stories about user
+* Add
  
 ## 8. Implementation Details
  
@@ -71,7 +73,18 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
  
 > Detail the status of the implementation of each user story.
 > Also include the new user stories that were created during the project.
+#### 8.2.0 User
 
+| US Identifier | Name    | Priority                       | Team members               | State  |
+| ------------- | ------- | ------------------------------ | -------------------------- | ------ |
+| US11         | Search | high | Diogo Silva |  100%  |
+| US12         | Search By Category| high | Francisca Cerquinho |  100%  |
+| US13         | Search By Owner name| high | Diogo Silva |  0%  |
+| US14         | Auction page| high | Francisca Cerquinho |  100%  |
+| US15         | Home Page| high | Francisca Cerquinho |  100%  |
+| US15         | About Us Page| high | Francisca Cerquinho, José Azevedo |  100%  |
+| US15         | Contact Us Page| high | Francisca Cerquinho, José Azevedo |  100%  |
+| US15         |    FAQ Page| high | Francisca Cerquinho|  100%  |
 #### 8.2.1 Visitor
  
 | US Identifier | Name    | Priority                       | Team members               | State  |
@@ -89,10 +102,12 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | US23         | Comment | high |  Francisca Cerquinho             |   100%  | 
 | US24         | Rate | high |  Francisca Cerquinho             |   100%  |
 | US25         | Profile | high |  Francisca Cerquinho             |   100%  | 
-| US26         | Report | high |  Francisca Cerquinho             |   100%  | 
+| US26         | Report Users and Auctions | high |  Francisca Cerquinho             |   100%  | 
 | US27         |  Make a bid  | high |  Francisca Cerquinho           |   100%  | 
 | US28         | Buy Now  | high |    Francisca Cerquinho           |   100%  |
 | US29         | Private Message | high |              |   100%  |
+| US30         | Like and Unlike Auctions | high |  Francisca Cerquinho            |   100%  |
+| US30         | Like and Unlike Comments | high |  Francisca Cerquinho            |   100%  |
 
 #### 8.2.3 Owner
 | US Identifier | Name    | Priority                       | Team members               | State  |
