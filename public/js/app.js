@@ -199,11 +199,12 @@ function addEventListeners() {
   if (searchCategory) {
     for (var i = 0; i < searchCategory.length; i++)
         searchCategory[i].addEventListener('click', searchCategoryRequest);
-    let ownerInput = document.querySelector('#owner-input');
-    ownerInput.addEventListener('input',searchCategoryOwnerFilter);
   }
 
-  
+  let ownerInput = document.querySelector('#owner-input');
+  if (ownerInput) {
+    ownerInput.addEventListener('input',searchCategoryOwnerFilter);
+  }
 
 
   let removeFromWishList = document.querySelectorAll(".remove_from_wishlist");
