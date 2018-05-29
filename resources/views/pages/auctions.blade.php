@@ -61,17 +61,19 @@ $num_endAuctions = count($endAuctions);
   </div>
 </div>
 <div class="container-fluid" id="newAuctions">
-<div class="new_auctions">
+<div class="new_auctions" style="padding: 10px;">
+<div class="row">
 <?php for($i = 0; $i < $num_rows; $i++) {?>
-        <div class="row  align-items-center">
+        
         <?php for($j = 0; $j < $elems_per_row && $num_elems > 0; $j++, $num_elems--) {
               $actual_elem = $i*$elems_per_row + $j; 
               ?>
         @include('partials.auction',['auction'=>$auctions[$actual_elem]])
         <?php } ?>
           <!-- auction -->
-        </div>
+        
     <?php } ?>
+    </div>
 </div>
 </div>
 

@@ -201,6 +201,11 @@ body {
 }
 
 @media only screen and (min-width: 1025px) {
+
+.new-auctions {
+  width: 75%;
+}
+  
 .auctionCardImage {
     width: 100%;
 
@@ -252,6 +257,7 @@ body {
       width: 100%;
 
   }
+
   .auctionCard {
       padding: 0px;
   }
@@ -2206,6 +2212,11 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   height: 83px;
   width: 113px;
 }
+
+.card-title , .auctionPrice , .auctionTimeLeft , .owner-name{
+  font-size: 85%;
+}
+
 }
 .shop_by_category  .dropdown-content {
   z-index: 1;
