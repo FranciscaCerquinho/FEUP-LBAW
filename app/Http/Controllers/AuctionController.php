@@ -90,8 +90,8 @@ class AuctionController extends Controller
         if($wishList!=null)
           $wishList=1;
         }
-      else
-        $type=0;
+        else
+          $type=0;
 
       $auction = Auction::where('auction_id',$id)
       ->join('owner', 'owner.id_auction', '=', 'auction_id')

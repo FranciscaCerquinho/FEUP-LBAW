@@ -12,8 +12,7 @@ $(function() {
 
     //----- CLOSE
     $('[data-popup-close-reportAuction]').on('click', function(e)  {
-        console.log("ola");
-
+        
         var targeted_popup_class = jQuery(this).attr('data-popup-close-reportAuction');
         $('[data-popup-reportAuction="' + targeted_popup_class + '"]').fadeOut(1000);
 
