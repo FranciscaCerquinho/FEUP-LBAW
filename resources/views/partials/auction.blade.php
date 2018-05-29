@@ -20,7 +20,7 @@
 </div>
 </div>-->
 
-<div class="col-lg-4 col-md-6 mb-3  auctions-list" data-id="{{$auction->auction_id}}">
+<div class="col-lg-3 col-md-6 mb-3  auctions-list" data-id="{{$auction->auction_id}}">
     <div class="card h-100 auctionCard searchCard">
         <a href="{{route('item', ['id'=>$auction->auction_id])}}">
             <img class="card-img-top searchResultImage" src="/images/{{$auction->auctionphoto}}" alt="">

@@ -220,7 +220,6 @@ margin: 5px;
 
 .auctionCard{
 padding: 0px;
-height: 400px;
 background-color: white;
 }
 
@@ -276,7 +275,6 @@ height: 20px;
 
 .auctionCard{
   padding: 0px;
-  height: 280px;
   background-color: white;
 }
 
@@ -411,7 +409,6 @@ h4.card-title.auctionCardTitle {
 @media only screen and (max-width: 760px) {
 .auctionCard{
   padding: 0px;
-  height: 310px;
   background-color: white;
   align-content: center;
 }
@@ -434,11 +431,7 @@ h4.card-title.auctionCardTitle {
   margin-left: 10px;
 }
 }
-@media only screen and (max-width: 650px) {
-.auctionCard{
-  height: 270px;
-}
-}
+
 @media only screen and (max-width: 575px) {
   .sale-box span.on_sale {
     top:-20px;
@@ -460,9 +453,7 @@ h4.card-title.auctionCardTitle {
     width: 126px;
   }
 
-.auctionCard{
-  height: 430px;
-}
+
 .auctionCardTitle a{
   font-size: 16px;
 }
@@ -488,9 +479,7 @@ h4.card-title.auctionCardTitle {
     width: 126px;
   }
 
-.auctionCard{
-  height: 360px;
-}
+
 }
 @media only screen and (max-width: 362px) {
 
