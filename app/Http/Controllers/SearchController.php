@@ -81,7 +81,8 @@ class SearchController extends Controller
       ->join('owner','owner.id_auction', '=', 'auction_id')
       ->join('users','users.user_id', '=', 'owner.id_user')
       ->whereRaw('to_tsvector(\'english\',auction.description) @@ plainto_tsquery(\'english\',?)',[$name])
-      ->orWhereRaw('to_tsvector(\'english\',auction.name) @@ plainto_tsquery(\'english\',?)',[$name])->get()->toArray();
+      ->orWhereRaw('to_tsvector(\'english\',auction.name) @@ plainto_tsquery(\'english\',?)',[$name])
+      ->orWhereRaw('auction.name ~* ?',[$name])->get()->toArray();
 
       return $resultsArray;
     }
