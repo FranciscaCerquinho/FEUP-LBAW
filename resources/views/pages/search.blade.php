@@ -108,14 +108,9 @@
 						<span>Others</span>
 					</label>
 				</div>
-<<<<<<< HEAD
-				<label class="title"  for="searchCategoryCheck">Owner</label>
-				<input class="col-12" type="text" placeholder="User name">
-			
-=======
-				<label class="title" >Owner</label>
+				<label class="title" for="searchCategoryCheck">Owner</label>
 				<input class="col-12" id="owner-input" type="text" placeholder="User name">
->>>>>>> 53dda403b51da6845b33f7485c3a2c50e470182f
+
 			</div>
 		</div>
 		<?php
