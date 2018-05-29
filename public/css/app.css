@@ -429,7 +429,7 @@ body {
 }
 /*Shop by category -dropdown*/
 #myTopNav .shop_by_category {
-    z-index: 1;
+    z-index: 10;
     float: left; }
 
 .shop_by_category .navbar-collapse ul {
@@ -566,6 +566,21 @@ li a, .dropbtn {
 
   #item div.user_information  a{
     font-size: 12px;
+  }
+
+  #item div.product-style {
+    flex-direction: column;
+    flex: 1;
+  }
+
+  #item div.product-style .col-sm-4 {
+    flex: 2;
+    width: auto;
+  }
+
+  #item div.product-style .col-sm-8 {
+    flex: 5;
+    width: auto;
   }
   
   }
@@ -2428,7 +2443,7 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   display: none;
 }
 #exampleModal .modal-title{
-  color: #358ED7;
+  color: rgb(67,122,168);
 }
 #exampleModal .modal-body{
   color: #444444;

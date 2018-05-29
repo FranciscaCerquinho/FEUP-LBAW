@@ -7,10 +7,13 @@
 				<div class="col-lg-3" id="profile_pic">
                 @if($owner->photo=='perfil_blue.png')
                     <img src="http://placehold.it/300x290" alt="" class="img-rounded img-responsive img-fluid" />
-                @endif
-                @if($owner->photo!='perfil_blue.png')
-                    <img src="/images/{{$owner->photo}}" alt="" class="img-rounded img-responsive img-fluid" />
-                @endif
+                @else  
+					@if(preg_match('/https:\//',$owner->photo, $matches, PREG_OFFSET_CAPTURE))
+						<img src="{{$owner->photo}}" class="img-rounded img-responsive img-fluid" alt="avatar">
+					@else
+						<img src="images/{{$owner->photo}}" class="img-rounded img-responsive img-fluid" alt="avatar">
+					@endif
+				@endif
 				</div>
 				<div class="col-lg-5">
 					<div class="user_infomation">
@@ -52,7 +55,8 @@
 					</div>
 				</div>
 				<div class="col-xl-4 col-xs-10">
-					<form class="contact1-form validate-form">
+					<form class="contact1-form validate-form" action="{{route('emailUser',['email'=>$owner->email])}}" method="post">
+						{{csrf_field()}}
 						<span class="contact1-form-title">
 							Text {{$owner->firstname}} {{$owner->lastname}}
 						</span>
@@ -78,7 +82,7 @@
 
 						<div class="container-contact1-form-btn">
 							<button class="contact1-form-btn">
-								<span href="{{route('emailUser',['email'=>$owner->email])}}">Send Email
+								<span >Send Email
 									<i class="fas fa-arrow-right"></i>
 								</span>
 							</button>

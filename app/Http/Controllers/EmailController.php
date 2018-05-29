@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 
 use App\User;
+use App\ContactUs;
+use App\ContactOwner;
 
 class EmailController extends Controller
 {
@@ -15,7 +17,7 @@ class EmailController extends Controller
     $user = User::where('email', $request->input('email'))->first();
 
     if($user){
-        Mail::to($emailUser)->send($request->input('email'),$request->input('name'),$request->input('subject'),$request->input('message'));
+        Mail::to($emailUser)->send(new ContactOwner($request->input('email'),$request->input('name'),$request->input('subject'),$request->input('message')));
 
         return redirect('/auctions');
     }
@@ -26,17 +28,11 @@ class EmailController extends Controller
   }
 
   public function emailUs(Request $request){
-    $user = User::where('email', $request->input('email'))->first();
 
-    if($user){
-        Mail::to("pedro21fcp@gmail.com")->send($request->input('email'),$request->input('name'),$request->input('subject'),$request->input('message'));
+    Mail::to("franciscacerquinho@gmail.com")->send(new ContactUs($request->input('email'),$request->input('name'),$request->input('subject'),$request->input('message')));
 
-        return redirect('/auctions');
-    }
-    else{
-        return view('auth.email')->withErrors(['email'=> 'We dont have this email in our DB!']);
-    }
-
+    return redirect('/contact_us');
+ 
   }
 
 
