@@ -2197,6 +2197,16 @@ transform: rotate(40deg);
 box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 }
 
+@media only screen and (max-width: 576px) {
+.sale-box span.on_sale {
+  top:-40px;
+  font-size: 10px;
+}
+.sale-box{
+  height: 83px;
+  width: 113px;
+}
+}
 .shop_by_category  .dropdown-content {
   z-index: 1;
 }
