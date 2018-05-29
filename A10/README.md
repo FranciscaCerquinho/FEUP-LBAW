@@ -106,6 +106,7 @@ Result
 * Remove user storie [US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner) 
 * Remove user storie [US33](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner)
 * Added the functionality of like and unlike auctions and comments [US30, US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#822-customer)
+* Added the functionality of reset the user password [US05](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#821-visitor)
 
 To do that we change the follow db tables:
 * comment
@@ -136,9 +137,10 @@ We used the library sendGrid to reset the user password
 | US13         | Search By Owner name| high | Diogo Silva |  0%  |
 | US14         | Auction page| high | Francisca Cerquinho |  100%  |
 | US15         | Home Page| high | Francisca Cerquinho |  100%  |
-| US15         | About Us Page| high | Francisca Cerquinho, José Azevedo |  100%  |
-| US15         | Contact Us Page| high | Francisca Cerquinho, José Azevedo |  100%  |
-| US15         |    FAQ Page| high | Francisca Cerquinho|  100%  |
+| US16         | About Us Page| high | Francisca Cerquinho, José Azevedo |  100%  |
+| US17         | Contact Us Page| high | Francisca Cerquinho, José Azevedo |  100%  |
+| US18         |    FAQ Page| high | Francisca Cerquinho|  100%  |
+| US19         |    Online help | high | Francisca Cerquinho|  100%  |
 #### 8.2.1 Visitor
  
 | US Identifier | Name    | Priority                       | Team members               | State  |
@@ -147,6 +149,7 @@ We used the library sendGrid to reset the user password
 | US02          | Sign-up | high | Francisca Cerquinho              |   100%  | 
 | US03          | 	Sign-up using external API | high |    Francisca Cerquinho              |100%     | 
 | US04          | 	Sign-in using external API| high |     Francisca Cerquinho             |  100%   | 
+| US05          | Reset password | high |     Francisca Cerquinho             |  100%   | 
 
 #### 8.2.2 Customer
 | US Identifier | Name    | Priority                       | Team members               | State  |
