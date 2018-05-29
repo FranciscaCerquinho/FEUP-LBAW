@@ -99,11 +99,6 @@
                 {{ $errors->first('buyNow') }}
             </div>
         @endif
-        <div class="form-group add_auction_buttons">
-            <button type="button" style="font-size:16px;background-color:#437ab2; color:white" class="btn addAuction">Add another auction &nbsp; &nbsp;
-                <i class="fa fa-plus"></i>
-            </button>
-        </div>
         <form id="taskForm" action="{{ route('addAuction') }}" enctype="multipart/form-data" method="post" class="form-horizontal">
             {{ csrf_field() }}
             <div class="form-group row">
@@ -133,13 +128,6 @@
 							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
 					</div>
-					<script>
-						$(function () {
-							$('#datetimepicker1').datetimepicker({
-								format: "DD/MM/YYYY HH:mm"
-							})
-						});
-					</script>
 				</div>
                 
             </div>
@@ -150,7 +138,7 @@
                 <div class="col-lg-4">
                     <!-- image-preview-filename input [CUT FROM HERE]-->
                     <div class="input-group image-preview">
-                        <input type="text" class="form-control image-preview-filename" id="imageName1" disabled="disabled">
+                        <input type="text" class="form-control image-preview-filename" id="imageName" disabled="disabled">
                         <!-- don't give a name === doesn't send on POST/GET -->
                         <div class="input-group-btn">
                             <!-- image-preview-clear button -->
@@ -164,12 +152,12 @@
                                         <i class="fas fa-folder-open"></i>
                                     </span>
                                     <span class="image-preview-input-title">Add an image</span>
-                                    <input type="file" name="photo" id="photo1" class="item-photo" accept="image/*" />
-                                    <!--<script type="text/javascript">
+                                    <input type="file" name="photo" id="photo" class="item-photo" accept="image/*" />
+                                    <script type="text/javascript">
                                         $("#photo").on('change', function(){
                                             document.getElementById("imageName").value=document.getElementById("photo").value;
                                         })
-                                    </script>-->
+                                    </script>
                                     <!-- rename it -->
                                 </div>
                             </div>

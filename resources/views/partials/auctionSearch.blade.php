@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-6 mb-4">
+<div class="col-lg-4 col-md-12  mb-4">
     <div class="card h-100 auctionCard searchCard">
         <a href="{{route('item', ['id'=>$auction->auction_id])}}">
             <img class="card-img-top searchResultImage" src="/images/{{$auction->auctionphoto}}" alt="">

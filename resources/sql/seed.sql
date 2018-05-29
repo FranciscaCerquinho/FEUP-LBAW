@@ -28,6 +28,8 @@ DROP TRIGGER IF EXISTS "ReportedUserNotAdmin" ON reportuser CASCADE;
 DROP FUNCTION IF EXISTS "CheckReportingNotAuctionOwner"() CASCADE;
 DROP TRIGGER IF EXISTS "ReportingNotOwner" ON reportAuction CASCADE;
 
+
+
 CREATE TABLE users(
   user_id SERIAL NOT NULL,
   email text NOT NULL UNIQUE,
@@ -453,7 +455,7 @@ INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-10 00:00:00','2018-06-22 00:00:00','Books English collection','Really good',65.46,'book.jpg',80.53,'1',0,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-20 00:00:00','2018-06-01 00:00:00','Ipad Pro 12.9-inch','The new one in good conditions',600.61,'ipad.jpg',1000.23,'1',7,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-05 00:00:00','2018-06-03 00:00:00','Huawei 69GB','In good condition with one year warranty',260.53,'huawei.jpg',380.14,'1',15,1);
-INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-24 00:00:00','2018-06-01 00:00:00','Mackbook Pro - grey','It was only used 2 months, like new',1200.07,'mackbook2.jpg',2000.97,'1',6,1);
+INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-24 00:00:00','2018-06-01 00:00:00','Macbook Pro - grey','It was only used 2 months, like new',1200.07,'mackbook2.jpg',2000.97,'1',6,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-03 00:00:00','2018-06-02 00:00:00','Bathroom furniture','In good condition, we ride in your house',1800.14,'bathroom.jpg',2300.42,'1',3,1);
 INSERT INTO auction (dateBegin,dateEnd,name,description,actualPrice,auctionPhoto,buyNow,active,auction_like,auction_dislike) VALUES ('2018-03-31 00:00:00','2018-06-01 00:00:00','Office','New office! Relaxed and clean environment',2100.10,'office.jpg',3100.67,'1',8,1);
 
