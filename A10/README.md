@@ -35,12 +35,16 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | Username             | Password |
 | -------------------- | -------- |
 | fcassola@fe.up.pt    | 123456   |
+| up201505791@fe.up.pt   | 123456   |
+| up201405742@fe.up.pt   | 123456   |
+| up201506448@fe.up.pt   | 123456   |
 
 ### 2.2. User Credentials
  
 | Type          | Username              | Password |
 | ------------- | ----------------------| -------- |
 | user           | pedro21fcp@gmail.com  | 123456   |
+
 
  
 ## 3. Application Help
@@ -84,9 +88,14 @@ URL result : https://github.com/FranciscaCerquinho/LBAW-56/blob/artefacts/A10/us
 > HTML: https://validator.w3.org/nu/
 
 The pages have only 2 erros, one of them is because of google login and the other is because of bootstrap's modal.
+
+Result
 [Html Validator](https://github.com/FranciscaCerquinho/LBAW-56/blob/artefacts/A10/homePageValidator.pdf)
-> https://jigsaw.w3.org/css-validator/
+
+> CSS: https://jigsaw.w3.org/css-validator/
  
+ Result
+  [Css Validator](https://github.com/FranciscaCerquinho/LBAW-56/blob/artefacts/A10/cssValidator.pdf)
  
 ## 7. Revisions to the Project
  
@@ -97,14 +106,22 @@ The pages have only 2 erros, one of them is because of google login and the othe
 * Remove user storie [US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner) 
 * Remove user storie [US33](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner)
 * Added the functionality of like and unlike auctions and comments [US30, US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#822-customer)
+
+To do that we change the follow db tables:
+* comment
+
+We added the follow db tables:
+* userAuctionLike
+* userCommentLike
+* endAuction - This table is used to know the owner that buy the auction and then the owner will contact the customer
  
 ## 8. Implementation Details
  
 ### 8.1. Libraries Used
  
-> Include reference to all the libraries and frameworks used in the product.
-> Include library name and reference, description of the use, and link to example where it's used in the product.
- 
+We used the library google-api-php-client to register a customer with the information that is associated with is Google account
+
+We used the library sendGrid to reset the user password
  
 ### 8.2 User Stories
  
