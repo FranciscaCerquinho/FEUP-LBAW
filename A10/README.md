@@ -6,9 +6,23 @@ We developed an online auctions platform, where the visitors can see the auction
 As a user you can add auctions to the wish list, edit your profile, see the auctions created by you and the bids you've made.  
 
 ## 1. Installation
- 
-> Link to the Github release with the final version of the code.
-> Full Docker command to test the group's Docker Hub image using the DBM database.
+
+### 1.1 Link to the Github release
+> Link to the Github release with the final version of the code
+
+### 1.2 Full Docker command to test
+
+#### Installation:
+[Installing the Software Dependencies](https://github.com/lbaw-admin/lbaw-laravel/blob/master/README.md#installing-the-software-dependencies)
+
+[Installing local PHP dependencies](https://github.com/lbaw-admin/lbaw-laravel/blob/master/README.md#installing-local-php-dependencies)
+
+#### How to Run:
+[Working with PostgreSQL](https://github.com/lbaw-admin/lbaw-laravel/blob/master/README.md#working-with-postgresql)
+
+[Developing the project](https://github.com/lbaw-admin/lbaw-laravel/blob/master/README.md#developing-the-project)
+
+
 
 ## 2. Usage
  
@@ -29,11 +43,26 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | user           | pedro21fcp@gmail.com  | 123456   |
 
  
-
 ## 3. Application Help
- 
 > Describe where help has been implemented, pointing to working examples.
- 
+
+The online help has been implemented on some pages to assist the user. This functionality is added next to the breadcrumb in this pages:
+
+[Homepage](http://lbaw1756.lbaw-prod.fe.up.pt/auctions)
+
+[Auction Page](http://lbaw1756.lbaw-prod.fe.up.pt/auction/14)
+
+[Profile](http://lbaw1756.lbaw-prod.fe.up.pt/editProfile)
+
+[Add Auction](http://lbaw1756.lbaw-prod.fe.up.pt/addAuction)
+
+[Wish List](http://lbaw1756.lbaw-prod.fe.up.pt/wishList)
+
+[Search by Category](http://lbaw1756.lbaw-prod.fe.up.pt/category/Electronics)
+
+[My Auctions Page](http://lbaw1756.lbaw-prod.fe.up.pt/myAuctions)
+
+[My Bids Page](http://lbaw1756.lbaw-prod.fe.up.pt/myBids)
  
 ## 4. Input Validation
  
@@ -41,16 +70,21 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
  
  
 ## 5. Check Accessibility and Usability
+
+### 5.1 Accessibility
+URL result : 
+
+### 5.2 Usability
+URL result : https://github.com/xfontes42/lbaw1723/blob/artefacts/A10/usability.pdf
  
-> Provide the results of accessibility and usability tests (link to the PDFs on the group's Github account), using respectively the following checklists:
-> https://ux.sapo.pt/checklists/acessibilidade/
-> https://ux.sapo.pt/checklists/usabilidade/
  
- 
+
 ## 6. HTML & CSS Validation
- 
-> Provide the results (link to the PDFs on the group's Github account) of the validation of the HTML and CSS code using the following tools:
+
 > HTML: https://validator.w3.org/nu/
+
+The pages have only 2 erros, one of them is because of google login and the other is because of bootstrap's modal.
+[Html Validator]()
 > https://jigsaw.w3.org/css-validator/
  
  
@@ -58,8 +92,11 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
  
 > Describe the revisions made to the project since the requirements specification stage.
 
-* Add user stories about user
-* Add
+
+* Add user stories about [User](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#820-user)
+* Remove user storie [US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner) 
+* Remove user storie [US33](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner)
+* Added the functionality of like and unlike auctions and comments [US30, US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#822-customer)
  
 ## 8. Implementation Details
  
@@ -107,7 +144,7 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 | US28         | Buy Now  | high |    Francisca Cerquinho           |   100%  |
 | US29         | Private Message | high |  Pedro Miranda            |   100%  |
 | US30         | Like and Unlike Auctions | high |  Francisca Cerquinho            |   100%  |
-| US30         | Like and Unlike Comments | high |  Francisca Cerquinho            |   100%  |
+| US31         | Like and Unlike Comments | high |  Francisca Cerquinho            |   100%  |
 
 #### 8.2.3 Owner
 | US Identifier | Name    | Priority                       | Team members               | State  |
