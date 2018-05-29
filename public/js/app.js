@@ -187,14 +187,6 @@ function addEventListeners() {
           banAuction[i].addEventListener('click', banAuctionRequest);
   }
 
-
-  /*let updateImagePath = document.querySelectorAll('.item-photo');
-  if (updateImagePath) {
-      for (var i=0 ; i < updateImagePath.length ; i++){
-        updateImagePath[i].addEventListener('change' , updateImagePathRequest);
-      }
-  }*/
-
   let searchCategory = document.querySelectorAll("#searchPage .form-check");
   if (searchCategory) {
     for (var i = 0; i < searchCategory.length; i++)
@@ -948,7 +940,7 @@ function deleteCommentRequest(){
 
     let id = this.closest('div.comment').getAttribute('data-id');
 
-    sendAjaxRequest('delete', '/deleteComment/' + id ,null, deleteCommentHandler);
+    sendAjaxRequest('post', '/deleteComment/' + id ,null, deleteCommentHandler);
 }
 
 function deleteCommentHandler(){

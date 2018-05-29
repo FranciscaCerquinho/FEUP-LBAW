@@ -8,19 +8,20 @@ $num_elems = count($auctions);
 $num_rows = ceil($num_elems / $elems_per_row);
 $num_endAuctions = count($endAuctions);
 ?>
+
 @if($num_endAuctions>0)
-<div class="row endAuctions container-fluid align-items-center" id="newAuctions">
-<?php for($i = 0; $i < $num_endAuctions; $i++) {?>
-  <div class="endAuctionAlert" data-id='{{$endAuctions[$i]->endauction_id}}'>
-    <div class="alert alert-info alert-dismissable" role="alert">
-      <a class="panel-close close" data-dismiss="alert">x</a>
-      The Auction {{$endAuctions[$i]->name}} has been sell! Contact the user    &nbsp   &nbsp
-      <input class="btn btn-primary endAuction" type="submit"value="Done">
-      &nbsp   &nbsp
+  <div class="row endAuctions container-fluid align-items-center" id="newAuctions">
+  <?php for($i = 0; $i < $num_endAuctions; $i++) {?>
+    <div class="endAuctionAlert" data-id='{{$endAuctions[$i]->endauction_id}}'>
+      <div class="alert alert-info alert-dismissable" role="alert">
+        <a class="panel-close close" data-dismiss="alert">x</a>
+        The Auction {{$endAuctions[$i]->name}} has been sell! Contact the user {{$buyers[$i]->contact}}    &nbsp   &nbsp
+        <input class="btn btn-primary endAuction" type="submit"value="Done">
+        &nbsp   &nbsp
+      </div>
     </div>
+  <?php } ?>
   </div>
-<?php } ?>
-</div>
 @endif
 <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">

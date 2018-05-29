@@ -107,8 +107,11 @@ class CommentController extends Controller
     public function deleteComment(Request $request, $comment_id){
       $comment = Comment::find($comment_id);
 
-      if($comment != null)
-        $comment->delete();
+      if($comment != null){
+        $comment->available='0';
+        $comment->save();
+      }
+
 
       return $comment;
     }

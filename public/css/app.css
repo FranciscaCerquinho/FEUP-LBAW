@@ -2331,6 +2331,11 @@ color: black;
 .owner_name{
   text-decoration: underline !important;
 }
+
+.user_infomation a:hover{
+  color:#437ab2;
+}
+
 @media only screen and (max-width: 576px) {
 #wishListHeader{
   display: none;

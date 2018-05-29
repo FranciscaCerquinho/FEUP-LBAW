@@ -25,7 +25,7 @@ class AuctionController extends Controller
 
     public function list()
     {
-  
+      $buyers = array();
       $endAuctions = array();
 
       if(Auth::check()){
@@ -39,6 +39,13 @@ class AuctionController extends Controller
         ->join('owner','owner.id_auction','=', 'endauction.id_auction')
         ->join('users','users.user_id','=','owner.id_user')->where('users.user_id','=', Auth::user()->user_id)
         ->join('auction','auction.auction_id','=','owner.id_auction')->get();
+
+
+        foreach ($endAuctions as $endAuction){
+          $buyer = EndAuction::where('endauction_id',$endAuction->endauction_id)
+            ->join('users','users.user_id','=','endauction.id_user')->first();
+          array_push($buyers,$buyer);
+        }
      
       }
       else
@@ -53,7 +60,7 @@ class AuctionController extends Controller
                 ->from('banauction');
         })->get();
         
-        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type, 'endAuctions' => $endAuctions]);
+        return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type, 'endAuctions' => $endAuctions,'buyers'=> $buyers]);
     }
 
     public function show($id){
@@ -80,6 +87,7 @@ class AuctionController extends Controller
 
         $comment_likes = DB::table('usercommentlike')
         ->join('comment', 'comment.id', '=', 'usercommentlike.id_comment')->where('usercommentlike.id_user','=',Auth::user()->user_id)
+        ->where('comment.available','=',1)
         ->join('auction','auction.auction_id','=','comment.id_auction')->where('auction_id', '=', $id)
         ->orderBy('comment.date','asc')
         ->get();
@@ -112,6 +120,7 @@ class AuctionController extends Controller
         return view('errors.404');
         
       $comments = Comment::where('id_auction',$id)
+      ->where('comment.available',1)
       ->join('users', 'users.user_id', '=', 'comment.id_user')
       ->orderBy('date','asc')
       ->get();
