@@ -176,7 +176,7 @@ body {
     #myTopNav:last-child {
         padding-right: 1rem;
     }
-  
+
 }
 
 
@@ -201,6 +201,14 @@ body {
 }
 
 @media only screen and (min-width: 1025px) {
+  .sale-box span.on_sale {
+    top:-35px;
+    font-size: 12px;
+  }
+  .sale-box{
+    height: 100px;
+    width: 120px;
+  }
 .auctionCardImage {
     width: 100%;
 
@@ -248,6 +256,14 @@ body {
 
 }
 @media only screen and (max-width: 1024px) {
+  .sale-box span.on_sale {
+    top:-35px;
+    font-size: 12px;
+  }
+  .sale-box{
+    height: 100px;
+    width: 120px;
+  }
   .auctionCardImage {
       width: 100%;
 
@@ -306,7 +322,27 @@ body {
   position: absolute;
   bottom:0;
 }
+
+@media only screen and (max-width: 950px) {
+  .sale-box span.on_sale {
+    top:-45px;
+    font-size: 11px;
+  }
+  .sale-box{
+    height: 100px;
+    width: 120px;
+  }
+}
 @media only screen and (max-width: 800px) {
+  .sale-box span.on_sale {
+    top:-45px;
+    font-size: 11px;
+  }
+  .sale-box{
+    height: 100px;
+    width: 120px;
+  }
+
   #newAuctions{
     padding: 30px 60px 10px 60px;
   }
@@ -363,9 +399,20 @@ body {
   }
 
 }
+@media only screen and (max-width: 766px) {
+  .sale-box span.on_sale {
+    top:-30px;
+    font-size: 13px;
+  }
+  .sale-box{
+    height: 100px;
+    width: 125px;
+  }
+}
 
 
 @media only screen and (max-width: 760px) {
+
   .auctionCard{
     padding: 0px;
     height: 310px;
@@ -396,7 +443,29 @@ body {
     height: 270px;
   }
 }
+@media only screen and (max-width: 575px) {
+  .sale-box span.on_sale {
+    top:-20px;
+    font-size: 15px;
+  }
+  .sale-box{
+    height: 110px;
+    width: 130px;
+  }
+  .auctionCard{
+    height: 270px;
+  }
+}
 @media only screen and (max-width: 570px) {
+  .sale-box span.on_sale {
+    top:-40px;
+    font-size: 14px;
+  }
+  .sale-box{
+    height: 93px;
+    width: 126px;
+  }
+
   .auctionCard{
     height: 430px;
   }
@@ -415,11 +484,30 @@ body {
   }
 }
 @media only screen and (max-width: 450px) {
+  .sale-box span.on_sale {
+    top:-30px;
+    font-size: 11px;
+  }
+  .sale-box{
+    height: 93px;
+    width: 126px;
+  }
+
   .auctionCard{
     height: 360px;
   }
 }
 @media only screen and (max-width: 362px) {
+
+  .sale-box span.on_sale {
+    top:-40px;
+    font-size: 11px;
+  }
+  .sale-box{
+    height: 73px;
+    width: 116px;
+  }
+
   .auctionCard {
       padding: 0px;
       height: 270px;
@@ -583,7 +671,7 @@ li a, .dropbtn {
     flex: 5;
     width: auto;
   }
-  
+
   }
 
 
@@ -2053,7 +2141,7 @@ iframe {
   #category_filter{
     margin-bottom: 30px;
     padding-left:20px;
-    padding-right:0;  
+    padding-right:0;
   }
 
   #searchPage div.row {
@@ -2064,7 +2152,7 @@ iframe {
   #searchPage .searchResults {
     padding-left: 0;
     padding-right: 0;
-      
+
   }
 
   #searchPage img{
@@ -2165,8 +2253,8 @@ iframe {
 	position: absolute;
 	top: 0;
 	overflow: hidden;
-	height: 130px;
-	width: 143px;
+	/* height: 130px;
+	width: 143px; */
 	text-align: center;
 	z-index: 1;
 	right:0;
@@ -2176,7 +2264,7 @@ iframe {
 	-webkit-border-top-right-radius: 0.7em;
 }
 .sale-box span.on_sale{
-font-size: 15px;
+/* font-size: 15px; */
 color:white;
 font-weight: bold;
 background: rgb(130,178,110);
@@ -2187,7 +2275,7 @@ text-align: center;
 display: block;
 position: absolute;
 left: -30px;
-top: -30px;
+/* top: -30px; */
 -moz-transition: all 0.5s ease;
 -webkit-transition: all 0.5s ease;
 transition: all 0.5s ease;
@@ -2198,15 +2286,6 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
 }
 
 @media only screen and (max-width: 576px) {
-.sale-box span.on_sale {
-  top:-40px;
-  font-size: 10px;
-}
-.sale-box{
-  height: 83px;
-  width: 113px;
-}
-}
 .shop_by_category  .dropdown-content {
   z-index: 1;
 }
@@ -2271,7 +2350,7 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   .reportUserButton .buttonReport a.btn{
     width: 150px;
   }
-  
+
   #reportButton .buttonReport a.btn{
     width: 150px;
   }
@@ -2384,12 +2463,12 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   line-height: 24px;
 }
 
- 
+
 /* Cable Configuration */
 .cable-choose {
   margin-bottom: 20px;
 }
- 
+
 .cable-choose button {
   border: 2px solid #E1E8EE;
   border-radius: 6px;
@@ -2400,33 +2479,33 @@ box-shadow: 3px -4px 13px 3px rgba(0,0,0,0.75);
   cursor: pointer;
   transition: all .5s;
 }
- 
+
 .cable-choose button:hover,
 .cable-choose button:active,
 .cable-choose button:focus {
   border: 2px solid #86939E;
   outline: none;
 }
- 
+
 .cable-config {
   border-bottom: 1px solid #E1E8EE;
   margin-bottom: 20px;
   margin-top: 16px;
 }
- 
+
 /* Product Price */
 .product-price {
   display: flex;
   align-items: center;
 }
- 
+
 .product-price span {
   font-size: 26px;
   font-weight: 300;
   color: #43474D;
   margin-right: 20px;
 }
- 
+
 .cart-btn {
   display: inline-block;
   background-color: #7DC855;
