@@ -28,6 +28,8 @@ DROP TRIGGER IF EXISTS "ReportedUserNotAdmin" ON reportuser CASCADE;
 DROP FUNCTION IF EXISTS "CheckReportingNotAuctionOwner"() CASCADE;
 DROP TRIGGER IF EXISTS "ReportingNotOwner" ON reportAuction CASCADE;
 
+CREATE EXTENSION pg_trgm;
+
 CREATE TABLE users(
   user_id SERIAL NOT NULL,
   email text NOT NULL UNIQUE,
