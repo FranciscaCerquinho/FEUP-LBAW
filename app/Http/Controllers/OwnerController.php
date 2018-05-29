@@ -25,11 +25,11 @@ class OwnerController extends Controller
           else
             $type=0;
 
-        $owner = Auction::where('auction_id',$id)
-        ->join('owner', 'owner.id_auction', '=', 'auction_id')
+        $owner = Owner::where('user_id',$id)
         ->join('users', 'users.user_id', '=', 'id_user')
         ->first();
 
+     
        
         if($owner == null)
             return view('errors.404');

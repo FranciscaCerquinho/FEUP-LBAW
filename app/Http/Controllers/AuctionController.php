@@ -47,7 +47,11 @@ class AuctionController extends Controller
         $auctions = Auction::where('active', 1)
         ->orderBy('dateend','asc')
         ->join('owner', 'owner.id_auction', '=', 'auction_id')
-        ->join('users', 'users.user_id', '=', 'owner.id_user')->get();
+        ->join('users', 'users.user_id', '=', 'owner.id_user')
+        ->whereNotIn('auction_id',function($query) {
+          $query->select('id_auction')
+                ->from('banauction');
+        })->get();
         
         return view('pages.auctions', [ 'auctions' => $auctions, 'type' => $type, 'endAuctions' => $endAuctions]);
     }

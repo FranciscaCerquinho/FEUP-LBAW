@@ -24,7 +24,8 @@
 				</div>
 
 				<div class="col-xl-2 col-xs-10">
-					<form class="contact1-form validate-form">
+					<form class="contact1-form validate-form" action="{{route('emailUs')}}" method="post">
+						{{csrf_field()}}
 						<span class="contact1-form-title">
 							Get in touch
 						</span>
@@ -50,7 +51,7 @@
 
 						<div class="container-contact1-form-btn">
 							<button class="contact1-form-btn">
-								<span href="{{route('emailUs')}}">Send Email
+								<span>Send Email
 									<i class="fas fa-arrow-right"></i>
 								</span>
 							</button>
