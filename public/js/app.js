@@ -860,9 +860,9 @@ function searchCategoryRequest(){
 }
 
 function searchCategoryOwnerFilter() {
-    let auctions = document.querySelectorAll("#auction-search-card");
+    let auctions = document.querySelectorAll(".auction-search-card");
     let owner = document.querySelector("#owner-input").value.toLowerCase();
-    let owners = document.querySelectorAll("#owner-name");
+    let owners = document.querySelectorAll(".owner-name");
     for (var i=0; i < owners.length;i++){
         if(!owners[i].innerHTML.toLowerCase().includes(owner) && owner != ""){
             auctions[i].style.display = "none";
