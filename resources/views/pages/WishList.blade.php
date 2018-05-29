@@ -18,7 +18,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="title">Wish List</p>
+        <p class="title">What is the Wish List?</p>
         <p>This page was created to list all the auctions the user want to follow. </p>
         <p> You can remove an auction from your wish list by clicking on <i class="fas fa-trash-alt"></i>.</p>
       </div>

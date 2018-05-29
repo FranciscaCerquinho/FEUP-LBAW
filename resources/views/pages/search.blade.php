@@ -19,14 +19,14 @@
       </div>
       <div class="modal-body">
         <p>Search Page</p>
-        <p class="title">Search for auctions?</p>
+        <p class="title">How to Search for auctions?</p>
         <p>You can search for auctions using the navbar.</p>
         <hr>
-        <p class="title">Want to search by category?</p>
+        <p class="title">How to search by category?</p>
         <p>If you want to search for another auction category you can select them using the checklist on the left.</p>
-        <p class="title">Want to search for an auction by the owner ?</p>
+        <p class="title">How to search for an auction by the owner ?</p>
 		<p>On the left, you can write the owner name under the title <b>"Owner"</b>. </p>
-		<p class="title">Want to go to the home page?</p>
+		<p class="title">How to go to the home page?</p>
 		<p>You have to click on <b>Home</b>.</p>  
       </div>
     </div>
@@ -53,62 +53,62 @@
 		</div>
 		<div class="col-lg-3 col-md-4">
 			<div  id="category_filter">
-				<label class="title" for="searchCategoryTitle">Category</label>
+				<div class="title">Category</div>
 				<div class="form-check">
-					<label class="form-check-label" for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Electronics')checked @endif>
+					<label class="form-check-label" for="ElectronicsCheck">
+						<input id="ElectronicsCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Electronics')checked @endif>
 						<span>Electronics</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label"  for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Fashion')checked @endif>
+					<label class="form-check-label"  for="FashionCheck">
+						<input id="FashionCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Fashion')checked @endif>
 						<span>Fashion</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label"  for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Home & Garden')checked @endif>
+					<label class="form-check-label"  for="HGCheck">
+						<input id="HGCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Home & Garden')checked @endif>
 						<span>Home & Garden</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label"  for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Motors')checked @endif>
+					<label class="form-check-label"  for="MotorsCheck">
+						<input id="MotorsCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Motors')checked @endif>
 						<span>Motors</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label" for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Music')checked @endif>
+					<label class="form-check-label" for="MusicCheck">
+						<input id="MusicCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Music')checked @endif>
 						<span>Music</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label" for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Toys')checked @endif>
+					<label class="form-check-label" for="ToysCheck">
+						<input id="ToysCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Toys')checked @endif>
 						<span>Toys</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label" for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Daily Deals')checked @endif>
+					<label class="form-check-label" for="DailyDealsCheck">
+						<input id="DailyDealsCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Daily Deals')checked @endif>
 						<span>Daily Deals</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label" for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Sporting')checked @endif>
+					<label class="form-check-label" for="SportingCheck">
+						<input id="SportingCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Sporting')checked @endif>
 						<span>Sporting</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label" for="searchCategoryCheck">
-						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Others')checked @endif>
+					<label class="form-check-label" for="OthersCheck">
+						<input id="OthersCheck" class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Others')checked @endif>
 						<span>Others</span>
 					</label>
 				</div>
-				<label class="title" for="searchCategoryCheck">Owner</label>
+				<div class="title" >Owner</div>
 				<input class="col-12" id="owner-input" type="text" placeholder="User name">
 
 			</div>

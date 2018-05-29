@@ -51,6 +51,50 @@
 					<div class="panel-body">Click on the auction and then on the email icon that is in front of the owner's name.</div>
 				</div>
 			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+							How can I search for auctions?</a>
+					</h4>
+				</div>
+				<div id="collapse5" class="panel-collapse collapse">
+					<div class="panel-body">You can search for auctions using the navbar. If you want to search for auctions by category, you can use the dropdown button <strong>"Category"</strong></div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+						How to Edit your profile?</a>
+					</h4>
+				</div>
+				<div id="collapse6" class="panel-collapse collapse">
+					<div class="panel-body">You can edit your profile by using the navbar button with your username, and then click on <strong>"Edit your Profile"</strong>.</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
+						How to see your Auctions?</a>
+					</h4>
+				</div>
+				<div id="collapse7" class="panel-collapse collapse">
+					<div class="panel-body">You can see the auctions that you want to sell by using the navbar button with your username, and then click on <strong>"My Auctions"</strong>.</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
+						How to see your Bids?</a>
+					</h4>
+				</div>
+				<div id="collapse8" class="panel-collapse collapse">
+					<div class="panel-body">If you want to see the bids that you made, you have to use the navbar button with your username, and then click on <strong>"My Bids"</strong>.</div>
+				</div>
+			</div>
 		</div>
     </div>
 @endsection

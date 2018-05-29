@@ -18,10 +18,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="title">Want to edit your profile?</p>
+        <p class="title">How to edit your profile?</p>
         <p>You just have to change the field that you want to change and then click on <b>"Save Changes"</b> </p>
+		<p class="title">How to change the password?</p>	
 		<p>If you want to change the password, don't forget that the field <b>"Password"</b> and <b>"Confirm Password"</b> have to match.</p>
-        <p class="title">Want to change your picture?</p>
+        <p class="title">How to change your picture?</p>
         <p>Click on <b>"Change photo" </b> and then select the picture and click on <b>"Save Changes"</b> </p>
       </div>
     </div>

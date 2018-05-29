@@ -315,8 +315,7 @@ h4.card-title.auctionCardTitle{
 }
 
 .auctionCardImage:hover {
-  opacity: 0.5;
-  filter: alpha(opacity=100); /* For IE8 and earlier */
+  opacity: 0.5; 
 }
 
 .auctionCardBody{
@@ -856,7 +855,6 @@ padding: 0;
 font-size: 20px;
 cursor: pointer;
 opacity: 0;
-filter: alpha(opacity=0);
 }
 .image-preview-input-title {
   margin-left:2px;
@@ -1865,6 +1863,11 @@ textarea.input1 + .shadow-input1 {
   .contact1 .container{
     top:0;
     padding: 0;
+    font-size: 12px;
+  }
+
+  .contact h2{
+    font-size:20px;
   }
 
 }
@@ -2329,12 +2332,9 @@ color: black;
 }
 
 .owner_name{
-  text-decoration: underline !important;
+  color:#0c59cf !important;
 }
 
-.user_infomation a:hover{
-  color:#437ab2;
-}
 
 @media only screen and (max-width: 576px) {
 #wishListHeader{

@@ -40,25 +40,25 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="title">Bid the auction?</p>
-		<p>You can bid the auction by writting the price and cliking on <b>"Make Bid"</b>.</p>
+        <p class="title">How to bid on an auction?</p>
+		<p>You can bid on an auction by writting the price and cliking on <b>"Make Bid"</b>.</p>
 		<p>If you want to see the bids that you made, you have to use the navbar button with your username, and then click on <b>"My Bids"</b>.</p>
 		<hr>
-		<p class="title">Want to buy the item?</p>
-        <p>If you want to buy an auction, you have to click on <b> "Buy Now"</b> and then the auction is yours and the user will contact you.</p>
+		<p class="title">How to buy now the item?</p>
+        <p>If you want to buy now an item in auction, you have to click on <b> "Buy Now"</b> and then the auction is yours and the user will contact you.</p>
 		<hr>
-		<p class="title">Want to see the owner information?</p>
-        <p>You have to click on owner name. </p>
-		<p class="title">Report an auction?</p>
+		<p class="title">How to see the owner’s information?</p>
+        <p>You have to click on the owner's name. </p>
+		<p class="title">How to report an auction?</p>
         <p>If you want to report an auction you have to click on <b>"Report"</b> button (that is under the auction image), then write the reason and finally submit by clicking on <b>"Report"</b>. </p>
 		<hr>
-		<p class="title">Report an user?</p>
-        <p>If you want to report an user you have to click on <b>"Report"</b> button on user comments, then write the reason and finally submit by clicking on <b>"Report"</b>. </p>
+		<p class="title">How to report a user?</p>
+        <p>If you want to report a user you have to click on <b>"Report"</b> button on user comments, then write the reason and finally submit by clicking on <b>"Report"</b>. </p>
 		<hr>
-		<p class="title">Add auction to your wish list?</p>
-        <p>You can add the auction to you wish list by clicking on <b>"Wish List"</b>. </p>
+		<p class="title">How to add an auction to your wish list?</p>
+        <p>You can add the auction to your wish list by clicking on <b>"Wish List"</b>. </p>
 		<hr>
-		<p class="title">Add a Comment to the auction?</p>
+		<p class="title">How to add a Comment to the auction?</p>
         <p>If you want to add a comment to the auction, you have to write on <b> "Add a comment..."</b>, that is in the end of comments, and then click on <b>"Send"</b> to submit. </p>
       </div>
     </div>

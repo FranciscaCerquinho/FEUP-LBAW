@@ -36,7 +36,7 @@
             </h5>
             <h4 class="auctionPrice">EUR {{$auction->actualprice}}</h5>
             <h6 class="auctionTimeLeft"> <script>SplitDate("{{$auction->dateend}}",1);</script> left</h1>
-            <p class="card-text searchResultText" id="owner-name">
+            <p class="card-text searchResultText" class="owner-name">
             {{$auction->firstname}} {{$auction->lastname}}
             </p>
         </div>

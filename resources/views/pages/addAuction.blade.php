@@ -18,8 +18,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="title">Want to add an auction?</p>
-        <p>You just have to change the field and click on <b>"Start Auction"</b>. </p>
+        <p class="title">How to add an auction?</p>
+        <p>You just have to fill the form and click on <b>"Start Auction"</b>. </p>
         <p class="title">What is the initial price?</p>
         <p>Is the price that you want to start the auction.</p>
         <p class="title">What is the Buy Now price?</p>

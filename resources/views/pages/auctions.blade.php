@@ -44,19 +44,19 @@ $num_endAuctions = count($endAuctions);
         <p class="title">Search for auctions?</p>
         <p>You can search for auctions using the navbar. If you want to search for auctions by category, you can use the dropdown button <b>"Category"</b>.</p>
         <hr >
-        <p>If you want to have premissions to do the follow things you have to <b>Sign In </b>or <b>Register</b>.</p>
+        <p>In order to  be able to do the things described below you need to <b>Sign In </b>or <b>Register</b>.</p>
         <p>You can do that by clicking on <b>"Sign In"</b>.</p>
-        <p class="title">Want to add an auction?</p>
+        <p class="title">How to add an auction?</p>
         <p>If you want to add an auction, you have to click on <b> "Add Auction"</b> that is on navbar. </p>
-        <p class="title">Edit your profile?</p>
+        <p class="title">How to Edit your profile?</p>
         <p>You can edit your profile by using the navbar button with your username, and then click on <b>"Edit your Profile"</b>. </p>
-        <p class="title">Your Auctions?</p>
+        <p class="title">How to see your Auctions??</p>
         <p>You can see the auctions that you want to sell by using the navbar button with your username, and then click on <b>"My Auctions"</b>. </p>
-        <p class="title">Your Bids?</p>
+        <p class="title">How to see your Bids?</p>
         <p>If you want to see the bids that you made, you have to use the navbar button with your username, and then click on <b>"My Bids"</b>. </p>
-        <p class="title">Want to Logout?</p>
+        <p class="title">How to Logout?</p>
         <p>If you want to logout, you have to use the navbar button with your username and then ckick on <b> "Logout"</b>. </p>
-        <p class="title">Want to see your shopping cart?</p>
+        <p class="title">How to see your shopping cart?</p>
         <p>If you want to see your shooping cart you have to click on <b> <i class="fa fa-shopping-cart" aria-hidden="true"></i></b>. </p>
       </div>
     </div>
