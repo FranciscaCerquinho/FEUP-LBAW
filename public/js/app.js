@@ -176,6 +176,18 @@ function addEventListeners() {
       addFormAddAuction.addEventListener('click', addFormAddAuctionRequest);
   }
 
+  let updateImagePath = document.querySelectorAll('.item-photo');
+  if (updateImagePath) {
+      for (var i=0 ; i < updateImagePath.length ; i++){
+        updateImagePath[i].addEventListener('change' , updateImagePathRequest);
+      }
+  }
+
+  /*let submitAuctions = document.querySelector("#add_auction_buttons .submitAuction");
+  if (submitAuctions) {
+      submitAuctions.addEventListener('click', submitAuctionsRequest);
+  }*/
+
   let searchCategory = document.querySelectorAll("#searchPage .form-check");
 
   if (searchCategory) {
@@ -764,6 +776,8 @@ function unbanAuctionHandler() {
 function addFormAddAuctionRequest() {
 
   let addAuctionForm = document.querySelector(".add_auction");
+  let numberOfAuctions = document.getElementsByClassName("form-horizontal").length + 1;
+  
 
   let newForm = document.createElement("form");
   newForm.setAttribute('id', 'taskForm');
@@ -791,15 +805,15 @@ function addFormAddAuctionRequest() {
           <input for="example-text-input" type="number" step="0.01" class="form-control" name="actualPrice" placeholder="Initial price (in Eur)" />
       </div>
       <div class="col-lg-2">
-          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-              <input type="text" class="form-control datetimepicker-input" name="dateEnd" data-target="#datetimepicker1" placeholder="End Date"/>
-              <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+          <div class="input-group date" id="datetimepicker` + numberOfAuctions + `" data-target-input="nearest">
+              <input type="text" class="form-control datetimepicker-input" name="dateEnd" data-target="#datetimepicker` + numberOfAuctions + `" placeholder="End Date"/>
+              <div class="input-group-append" data-target="#datetimepicker` + numberOfAuctions + `" data-toggle="datetimepicker">
                   <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
           </div>
           <script type="text/javascript">
               $(function () {
-                  $('#datetimepicker1').datetimepicker({
+                  $('#datetimepicker` + numberOfAuctions + `').datetimepicker({
                       format: "DD/MM/YYYY HH:mm"
                   })
               });
@@ -814,7 +828,7 @@ function addFormAddAuctionRequest() {
       <div class="col-lg-4">
           <!-- image-preview-filename input [CUT FROM HERE]-->
           <div class="input-group image-preview">
-              <input type="text" class="form-control image-preview-filename" id="imageName" disabled="disabled">
+              <input type="text" class="form-control image-preview-filename" id="imageName` + numberOfAuctions + `" disabled="disabled">
               <!-- don't give a name === doesn't send on POST/GET -->
               <span class="input-group-btn">
                   <!-- image-preview-clear button -->
@@ -828,15 +842,12 @@ function addFormAddAuctionRequest() {
                               <i class="fas fa-folder-open"></i>
                           </span>
                           <span class="image-preview-input-title">Add an image</span>
-                          <input type="file" name="photo" id="photo" accept="image/*" />
-                          <script type="text/javascript">
-                              /*$("#photo").on('change',function(){
-                                  $("#photo").next('.form-control image-preview-filename').addClass("selected").html(($this).val());
-                              })*/
+                          <input type="file" name="photo" id="photo` + numberOfAuctions + `" class="item-photo" accept="image/*" />
+                          <!--<script type="text/javascript">
                               $("#photo").on('change', function(){
                                   document.getElementById("imageName").value=document.getElementById("photo").value;
                               })
-                          </script>
+                          </script>-->
                           <!-- <input type="file" name="photo" accept="image/png, image/jpeg, image/gif"/> -->
                           <!-- rename it -->
                       </div>
@@ -850,7 +861,7 @@ function addFormAddAuctionRequest() {
       </div>
   </div>
   <div class="form-group" id="add_auction_buttons">
-    <button class="btn" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
+    <button class="btn submitAuction" style="font-size:16px;background-color:#437ab2; color:white" type="submit">Start auction</button>
     <button class="btn minus" style="font-size:16px;background-color:#437ab2; color:white">
     <i class="fas fa-minus"></i>
     </button>
@@ -869,6 +880,19 @@ function deleteForm() {
 
   parent.remove();
 }
+
+function updateImagePathRequest() {
+    
+    let aux = this.id;
+    let aux2 = "#imageName" + aux.slice(-1);
+    let aux3 = "#" + aux;
+    
+    document.querySelector(aux2).value = document.querySelector(aux3).value;
+}
+
+/*function submitAuctionsRequest(){
+    
+}*/
 
 function searchCategoryRequest(){
 
