@@ -196,11 +196,16 @@ function addEventListeners() {
   }*/
 
   let searchCategory = document.querySelectorAll("#searchPage .form-check");
-
   if (searchCategory) {
     for (var i = 0; i < searchCategory.length; i++)
         searchCategory[i].addEventListener('click', searchCategoryRequest);
+    let ownerInput = document.querySelector('#owner-input');
+    ownerInput.addEventListener('input',searchCategoryOwnerFilter);
   }
+
+  
+
+
   let removeFromWishList = document.querySelectorAll(".remove_from_wishlist");
   if (removeFromWishList) {
     for(var n = 0; n < removeFromWishList.length;n++){
@@ -851,6 +856,20 @@ function searchCategoryRequest(){
 
     sendAjaxRequest('post', '/showCategory', {categoryChecked: categoryChecked}, showCategoryHandler);
 
+}
+
+function searchCategoryOwnerFilter() {
+    let auctions = document.querySelectorAll("#auction-search-card");
+    let owner = document.querySelector("#owner-input").value.toLowerCase();
+    let owners = document.querySelectorAll("#owner-name");
+    for (var i=0; i < owners.length;i++){
+        if(!owners[i].innerHTML.toLowerCase().includes(owner) && owner != ""){
+            auctions[i].style.display = "none";
+        }
+        else {
+            auctions[i].style.display = "block";
+        }
+    }
 }
 
 function showCategoryHandler(){
