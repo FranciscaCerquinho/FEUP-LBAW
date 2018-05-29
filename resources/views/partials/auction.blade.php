@@ -25,6 +25,11 @@
         <a href="{{route('item', ['id'=>$auction->auction_id])}}">
             <img class="card-img-top searchResultImage" src="/images/{{$auction->auctionphoto}}" alt="">
         </a>
+        @if(isset($auction->price))
+              <div class="sale-box">
+                  <span class="on_sale title_shop">{{$auction->price}} €</span>
+              </div>
+          @endif
         <div class="card-body searchResultBody">
             <h5 class="card-title searchResultTitle">
                 <a href="{{route('item', ['id'=>$auction->auction_id])}}">{{$auction->name}}</a>
