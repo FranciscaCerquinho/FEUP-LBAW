@@ -1,5 +1,6 @@
 @extends('layouts.app',['type'=>$type])
 
+@section('title', 'Home Page')
 @section('content')
 <?php
 $elems_per_row = 4;

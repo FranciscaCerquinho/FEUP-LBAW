@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Edit Profile')
 @section('content')
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">
@@ -60,7 +61,7 @@
 						@endif
 					@endif
 					<br>
-					<label class="btn btn-file" style="background-color:#437ab2; color:white; margin-top:20px">
+					<label class="btn btn-file" style="background-color:#437ab2; color:white; margin-top:20px" for="changeUserNamePhoto">
 						Change Photo
 						<input class="form-control" type="file" name="photo" accept="image/*">
 					</label>
@@ -124,56 +125,56 @@
 				@endif
 			</div>
 					<div class="form-group row">
-						<label class="col-lg-2 col-control-label">First name:</label>
+						<label class="col-lg-2 col-control-label" for="changeFirstName">First name:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="text" name="firstName" value="{{Auth::user()->firstname}}" >
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-2 control-label">Last name:</label>
+						<label class="col-lg-2 control-label"  for="changeLastName">Last name:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="text" name="lastName" value="{{Auth::user()->lastname}}" >
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-2 control-label">Email:</label>
+						<label class="col-lg-2 control-label"  for="changeEmail">Email:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="text" name="email" value="{{Auth::user()->email}}"  disabled>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-lg-2 control-label">Contact:</label>
+						<label class="col-lg-2 control-label"  for="changeContact">Contact:</label>
 						<div class="col-lg-8">
 							<input class="form-control" type="number" name="contact" value="{{Auth::user()->contact}}" >
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-md-2 control-label">Address:</label>
+						<label class="col-md-2 control-label"  for="changeAddress">Address:</label>
 						<div class="col-md-8">
 							<input class="form-control" type="text" name="address" value="{{Auth::user()->address}}" >
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-md-2 control-label">City,Country:</label>
+						<label class="col-md-2 control-label"  for="changeCountry">City,Country:</label>
 						<div class="col-md-8">
 							<input class="form-control" type="text" name="country" value="{{Auth::user()->country}}" >
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-md-2 control-label">Password:</label>
+						<label class="col-md-2 control-label"  for="changePassword">Password:</label>
 						<div class="col-md-8">
 							<input class="form-control" type="password" name="password" value="11111122333" >
 						</div>
 					</div>
 				
 					<div class="form-group row">
-						<label class="col-md-2 control-label">Confirm password:</label>
+						<label class="col-md-2 control-label"  for="confirmPassword">Confirm password:</label>
 						<div class="col-md-8">
 							<input class="form-control" type="password" name="confirmPassword" value="11111122333" >
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-md-2 control-label"></label>
+						<label class="col-md-2 control-label" for="submitChanges"></label>
 						<div class="col-md-8">
 							<input type="submit" class="btn" value="Save Changes" style="background-color:#437ab2; color:white">
 							<span></span>

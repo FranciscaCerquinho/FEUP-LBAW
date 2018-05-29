@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Add Auction')
 @section('content')
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">

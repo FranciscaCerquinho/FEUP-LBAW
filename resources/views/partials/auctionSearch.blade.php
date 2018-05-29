@@ -1,7 +1,7 @@
 <div class="col-lg-4 col-md-6 mb-4" id="auction-search-card">
     <div class="card h-100 auctionCard searchCard">
         <a href="{{route('item', ['id'=>$auction->auction_id])}}">
-            <img class="card-img-top searchResultImage" src="/images/{{$auction->auctionphoto}}" alt="">
+            <img class="card-img-top searchResultImage" src="/images/{{$auction->auctionphoto}}" alt="auctionPhoto">
         </a>
         <div class="card-body searchResultBody">
             <h5 class="card-title searchResultTitle">

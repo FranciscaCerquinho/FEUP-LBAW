@@ -1,17 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Owner Page')
 @section('content')
 <div class="contact1">
 		<div class="container-contact1">
 			<div class="row col-12">
 				<div class="col-lg-3" id="profile_pic">
                 @if($owner->photo=='perfil_blue.png')
-                    <img src="http://placehold.it/300x290" alt="" class="img-rounded img-responsive img-fluid" />
+                    <img src="http://placehold.it/300x290" alt="ownerPhoto" class="img-rounded img-responsive img-fluid" />
                 @else  
 					@if(preg_match('/https:\//',$owner->photo, $matches, PREG_OFFSET_CAPTURE))
-						<img src="{{$owner->photo}}" class="img-rounded img-responsive img-fluid" alt="avatar">
+						<img src="{{$owner->photo}}" class="img-rounded img-responsive img-fluid" alt="ownerPhoto">
 					@else
-						<img src="images/{{$owner->photo}}" class="img-rounded img-responsive img-fluid" alt="avatar">
+						<img src="images/{{$owner->photo}}" class="img-rounded img-responsive img-fluid" alt="ownerPhoto">
 					@endif
 				@endif
 				</div>

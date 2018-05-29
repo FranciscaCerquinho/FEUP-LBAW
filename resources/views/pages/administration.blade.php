@@ -1,5 +1,6 @@
 @extends('layouts.app',['type'=>$type])
 
+@section('title', 'Administration')
 @section('content')
 <!-- Button trigger modal -->
 <button id="messageModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >

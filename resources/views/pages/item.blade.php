@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Auction')
 @section('content')
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">
@@ -83,7 +84,7 @@
 		</div>
 	<!-- Left Column / Headphones Image -->
 	<div class="col-lg-6">
-		<img  class="active product_image" src="/images/{{$auction->auctionphoto}}" alt="Play" >
+		<img  class="active product_image" src="/images/{{$auction->auctionphoto}}" alt="auction" >
 		 <!-- Cable Configuration -->
 		 
 		 <div class="cable-config">

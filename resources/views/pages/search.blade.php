@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Search')
 @section('content')
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-circle helpButton" data-toggle="modal" data-target="#exampleModalCenter">
@@ -52,63 +53,64 @@
 		</div>
 		<div class="col-lg-3 col-md-4">
 			<div  id="category_filter">
-				<label class="title">Category</label>
+				<label class="title" for="searchCategoryTitle">Category</label>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label" for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Electronics')checked @endif>
 						<span>Electronics</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label"  for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Fashion')checked @endif>
 						<span>Fashion</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label"  for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Home & Garden')checked @endif>
 						<span>Home & Garden</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label"  for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Motors')checked @endif>
 						<span>Motors</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label" for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Music')checked @endif>
 						<span>Music</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label" for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Toys')checked @endif>
 						<span>Toys</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label" for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Daily Deals')checked @endif>
 						<span>Daily Deals</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label" for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Sporting')checked @endif>
 						<span>Sporting</span>
 					</label>
 				</div>
 				<div class="form-check">
-					<label class="form-check-label">
+					<label class="form-check-label" for="searchCategoryCheck">
 						<input class="form-check-input checkCategory" type="checkbox" value=""  @if($auctions[0]->category=='Others')checked @endif>
 						<span>Others</span>
 					</label>
 				</div>
-				<label class="title" >Owner</label>
+				<label class="title" for="searchCategoryCheck">Owner</label>
 				<input class="col-12" id="owner-input" type="text" placeholder="User name">
+
 			</div>
 		</div>
 		<?php

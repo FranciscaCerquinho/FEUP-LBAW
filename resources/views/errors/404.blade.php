@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Error')
 @section('content')
 <div id="error">
     <div id="error_msg">

@@ -199,11 +199,12 @@ function addEventListeners() {
   if (searchCategory) {
     for (var i = 0; i < searchCategory.length; i++)
         searchCategory[i].addEventListener('click', searchCategoryRequest);
-    let ownerInput = document.querySelector('#owner-input');
-    ownerInput.addEventListener('input',searchCategoryOwnerFilter);
   }
 
-  
+  let ownerInput = document.querySelector('#owner-input');
+  if (ownerInput) {
+    ownerInput.addEventListener('input',searchCategoryOwnerFilter);
+  }
 
 
   let removeFromWishList = document.querySelectorAll(".remove_from_wishlist");
@@ -903,7 +904,7 @@ function showCategoryHandler(){
 
                 auctionDiv.innerHTML=`<div class="card h-100 auctionCard searchCard">
                     <a href="/auction/${auctionsArray[actual_elem].auction_id}">
-                        <img class="card-img-top searchResultImage" src="/images/${auctionsArray[actual_elem].auctionphoto}" alt="">
+                        <img class="card-img-top searchResultImage" src="/images/${auctionsArray[actual_elem].auctionphoto}" alt="auctionPhoto">
                     </a>
                     <div class="card-body searchResultBody">
                         <h5 class="card-title searchResultTitle">

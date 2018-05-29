@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Reset Password')
 @section('content')
 <div id="loginPage">
 		<div class="row">

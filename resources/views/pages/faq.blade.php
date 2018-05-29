@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'FAQ')
 @section('content')
 <div class="faq">
 		<div class="panel-group container-fluid bg-1" id="accordion" style="margin-top:50px;">
