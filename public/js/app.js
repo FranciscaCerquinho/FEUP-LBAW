@@ -234,7 +234,7 @@ function addToWishListHandler(){
         modal.click();
     
         let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i>  Sucess`;
-        document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+     document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
         let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `${addToWishList.message}`;
     
        }
@@ -243,7 +243,7 @@ function addToWishListHandler(){
         modal.click();
     
         let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
-        document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+     document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
         let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `The Item has been had to the wishlist!`;
       
         document.querySelector('#addToWishList').style = 'border: 2px solid #86939E; outline: none;';
@@ -528,7 +528,7 @@ function makeBidHandler() {
         modal.click();
 
         let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
-        document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+     document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
         let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML = "Bet made! The auction has been added to your bids, you will receive a warning if you are the winner";
 
       } else {
@@ -580,7 +580,7 @@ function buyNowHandler() {
     modal.click();
 
     let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
-    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+    document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= "The auction is yours! Congratulations! The owner will contact you.";
 
     }
@@ -619,9 +619,10 @@ function reportAuctionHandler() {
   The Auction has been sucessfully reported!
   </div>`;
 
-      document.querySelector('.buttonReport').style = 'background-color: white';
+      document.querySelector('.buttonReport').style = 'border: 2px solid #86939E; outline: none;';
 
   }
+ 
   let item_info = document.querySelector(".popup-inner-reportAuction");
 
   let info = document.querySelector("#auctionForm");
@@ -726,7 +727,7 @@ function banUserHandler() {
       let reportAuction = JSON.parse(this.responseText);
 
     let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
-    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The User has been sucessfully banned!`;
     
   }
@@ -747,7 +748,7 @@ function unbanUserHandler() {
 
     let reportAuction = JSON.parse(this.responseText);
     let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
-    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The User has been sucessfully unbanned!`;
   }
 }
@@ -780,7 +781,7 @@ function banAuctionHandler() {
       let reportAuction = JSON.parse(this.responseText);
 
     let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
-    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The Auction has been sucessfully banned!`;
   }
 
@@ -790,7 +791,7 @@ function unbanAuctionHandler() {
 
     let modal = document.getElementById('messageModal');
     modal.click();
-    
+
   if (this.status != 200) {
     let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-bell"></i> Unsucess`;
     document.querySelector('#exampleModal .modal-title').style= "color:rgb(203,91,84)";
@@ -799,7 +800,7 @@ function unbanAuctionHandler() {
     let reportAuction = JSON.parse(this.responseText);
 
     let modalTitle = document.querySelector('#exampleModal .modal-title').innerHTML= `<i class="fas fa-check-circle"></i> Sucess`;
-    document.querySelector('#exampleModal .modal-title').style= "color:rgb(67,122,168);";
+ document.querySelector('#exampleModal .modal-title').style= "color: rgb(115,181,102);";
     let modalMessage = document.querySelector('#exampleModal .modal-body').innerHTML= `  The Auction has been sucessfully unbanned!`;
   }
 
