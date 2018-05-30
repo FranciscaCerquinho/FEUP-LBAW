@@ -105,7 +105,7 @@ Result
 
 * Add user stories about [User](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#820-user)
 * Remove user storie [US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner) 
-* Remove user storie [US33](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner)
+* Remove user storie [US33](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A2#owner)
 * Added the functionality of like and unlike auctions and comments [US30, US31](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#822-customer)
 * Added the functionality of reset the user password [US05](https://github.com/FranciscaCerquinho/LBAW-56/tree/artefacts/A10#821-visitor)
 
