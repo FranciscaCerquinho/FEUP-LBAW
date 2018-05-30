@@ -27,16 +27,19 @@
 			$num_rows = ceil($num_elems / $elems_per_row);
 		?>
 		<div class="col-12 searchResults">
-			<?php for($i = 0; $i < $num_rows; $i++) {?>
-        	<div class="row">
-        	<?php for($j = 0; $j < $elems_per_row && $num_elems > 0; $j++, $num_elems--) {
-              $actual_elem = $i*$elems_per_row + $j; 
-              ?>
-        	@include('partials.auctionsFullSearch',['auction'=>$auctions[$actual_elem]])
-        	<?php } ?>
-          <!-- auction -->
-        	</div>
-    	<?php } ?>
+		<?php if($num_elems ==1) {?>
+  @include('partials.auctionsFullSearch',['auction'=>$auctions[0]])
+<?php } else{ ?>
+<?php for($i = 0; $i < $num_rows; $i++) {?>
+      <div class="row">
+      <?php for($j = 0; $j < $elems_per_row && $num_elems > 0; $j++, $num_elems--) {
+            $actual_elem = $i*$elems_per_row + $j; 
+            ?>
+      @include('partials.auction',['auction'=>$auctions[$actual_elem]])
+      <?php } ?>
+        <!-- auction -->
+      </div>
+  <?php }} ?>
 		</div>
 </div>
 @endsection
