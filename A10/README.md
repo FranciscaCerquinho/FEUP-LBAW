@@ -144,7 +144,7 @@ We used the library sendGrid to reset the user password
 | ------------- | ------- | ------------------------------ | -------------------------- | ------ |
 | US11         | Search | high | Diogo Silva |  100%  |
 | US12         | Search By Category| high | Francisca Cerquinho |  100%  |
-| US13         | Search By Owner name| high | Diogo Silva |  0%  |
+| US13         | Search By Owner name| high | Diogo Silva |  100%  |
 | US14         | Auction page| high | Francisca Cerquinho |  100%  |
 | US15         | Home Page| high | Francisca Cerquinho |  100%  |
 | US16         | About Us Page| high | Francisca Cerquinho, José Azevedo |  100%  |
