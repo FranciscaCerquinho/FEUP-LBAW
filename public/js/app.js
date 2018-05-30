@@ -78,7 +78,7 @@ function auctionTimeHandler(){
 var myVar = setInterval(myTimerHomePage, 30000);
 
 function myTimerHomePage() {
-    let timers = document.querySelectorAll(".new_auctions .time_left");
+    let timers = document.querySelectorAll(".new_auctions .auctionTimeLeft");
     let i = 0;
     for(i = 0; i < timers.length; i++) {
         let id = timers[i].closest("div.auctions-list").getAttribute("data-id");
@@ -95,23 +95,46 @@ function auctionsHomePageHandler(){
 
     let id = document.querySelector('div.auctions-list[data-id="' + auction.auction_id + '"]');
 
-    let timer = id.querySelector(".time_left");
+    let timer = id.querySelector(".auctionTimeLeft");
 
-    let timer_split = timer.textContent.split(";");
-
-
-    if(!timer_split[1]){
-        let split = timer_split[0].split(" ");
+    let timer_split = timer.innerHTML.split("</script>");
+        
+    if(timer_split[1] != null){
+        let split = timer_split[1].split(" ");
         var int = parseInt(split[0]);
-
-        if(int<=0){
-            console.log("aquo");
-            sendAjaxRequest('post', '/inactiveAuction/' + auction.auction_id, null, inactiveAuctionHandler);
-        }
-
+            if(int<=0){
+                sendAjaxRequest('post', '/inactiveAuction/' + id, null, inactiveAuctionHandler);
+            }
+        
+        
     }
     timer.innerHTML = date + " left";
 }
+function inactiveAuctionRequest(){
+    let timers = document.querySelectorAll(".new_auctions .auctionTimeLeft");
+    let i = 0;
+    for(i = 0; i < timers.length; i++) {
+        let id = timers[i].closest("div.auctions-list").getAttribute("data-id");
+
+        let idAux = document.querySelector('div.auctions-list[data-id="' + id + '"]');
+   
+        let timer = idAux.querySelector(".auctionTimeLeft");
+       
+        let timer_split = timer.innerHTML.split("</script>");
+
+        if(timer_split[1] != null){
+            let split = timer_split[1].split(" ");
+            var int = parseInt(split[0]);     
+                if(int<=0){
+                    sendAjaxRequest('post', '/inactiveAuction/' + id, null, inactiveAuctionHandler);
+                }
+            
+            
+        }
+    }   
+}
+
+inactiveAuctionRequest();
 
 function inactiveAuctionHandler(){
 

@@ -19,6 +19,8 @@ use App\Category;
 use App\EndAuction;
 use App\WishList;
 use App\BanAuction;
+use App\BuyNow;
+use App\Bid;
 
 class AuctionController extends Controller
 {
@@ -324,9 +326,21 @@ class AuctionController extends Controller
 
     public function inactiveAuction(Request $request, $auction_id)
     {
+      $buyNow = new BuyNow();
       $auction = Auction::find($auction_id);
+      $customerAuction = Bid::where('bid_id_auction',$auction_id)->orderBy('price','desc')->first();
+      
+      if($customerAuction!=null){
+        $buyNow->id_user = $customerAuction->bid_id_user;
+        $buyNow->id_auction = $auction_id;
+        $buyNow->save();
 
-      $auction->active=0;
+        $endAuction->id_user = $customerAuction->bid_id_user;
+        $endAuction->id_auction = $auction_id;
+        $endAuction->status='1';
+        $endAuction->save();
+      }
+      $auction->active = 0;
       $auction->save();
 
       return $auction;
