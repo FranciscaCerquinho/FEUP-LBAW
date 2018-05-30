@@ -150,20 +150,6 @@ function SplitDateReturn(dateTime, value) {
     let currentMonth = currentDate.getMonth() + 1;
     let currentHour = currentDate.getHours() -1;
 
-    console.log("Hour"+hour);
-    console.log("minute"+minute);
-    console.log("second"+second);
-    console.log("Day"+day);
-    console.log("Month"+month);
-    console.log("Year"+year);
-  
-    console.log("CurrentHour"+currentHour);
-    console.log("CurrentMinute"+currentDate.getMinutes() );
-    console.log("CurrentSecond"+currentDate.getSeconds() );
-    console.log("CurrentDay"+currentDate.getDate() );
-    console.log("CurrentMonth"+currentMonth);
-    console.log("CurrentYear"+currentDate.getFullYear());
-    
 
     if (currentDate.getFullYear() == year) {
         if (currentMonth == month) {
