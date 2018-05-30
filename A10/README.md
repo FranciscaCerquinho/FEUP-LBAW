@@ -13,6 +13,7 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 
 ### 1.2 Full Docker command to test
 
+
 #### Installation:
 [Installing the Software Dependencies](https://github.com/lbaw-admin/lbaw-laravel/blob/master/README.md#installing-the-software-dependencies)
 
@@ -24,6 +25,14 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 [Developing the project](https://github.com/lbaw-admin/lbaw-laravel/blob/master/README.md#developing-the-project)
 
 
+#### Full Docker Command:
+```
+docker run -it -p 8000:80
+DB_DATABASE=<your db username>
+DB_USERNAME=<your db username>
+DB_PASSWORD=<your db password> 
+<DOCKER_USERNAME>/<IMAGE NAME>
+```
 
 ## 2. Usage
  
