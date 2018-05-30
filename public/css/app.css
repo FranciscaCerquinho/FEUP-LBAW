@@ -200,6 +200,12 @@ padding: 6px;
 margin: 5px;
 }
 
+.searchResultBody{
+  margin-top: auto;
+  -ms-flex: initial;
+  flex: initial;
+}
+
 @media only screen and (min-width: 1025px) {
   .sale-box span.on_sale {
     top:-35px;
