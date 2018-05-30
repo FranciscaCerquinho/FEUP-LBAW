@@ -28,10 +28,10 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 #### Full Docker Command:
 ```
 docker run -it -p 8000:80
-DB_DATABASE=<your db username>
-DB_USERNAME=<your db username>
-DB_PASSWORD=<your db password> 
-<DOCKER_USERNAME>/<IMAGE NAME>
+DB_DATABASE=lbaw1756
+DB_USERNAME=lbaw1756
+DB_PASSWORD=jl92oz82
+lbaw1756/lbaw1756
 ```
 
 ## 2. Usage
