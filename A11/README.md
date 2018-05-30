@@ -6,7 +6,7 @@
 
 ### Briefing of the Product
 
-#### URL to the product: http://lbaw1756.lbaw-prod.fe.up.pt
+### URL to the product: http://lbaw1756.lbaw-prod.fe.up.pt
 
 ## 2. Video presentation
 
