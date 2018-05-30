@@ -8,7 +8,8 @@ As a user you can add auctions to the wish list, edit your profile, see the auct
 ## 1. Installation
 
 ### 1.1 Link to the Github release
-> Link to the Github release with the final version of the code
+
+[Final Version of Code](https://github.com/FranciscaCerquinho/LBAW-56/tree/A10)
 
 ### 1.2 Full Docker command to test
 
