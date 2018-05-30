@@ -325,6 +325,7 @@ function sendCommentRequest() {
 
 function addCommentHandler() {
 
+    console.log(this.responseText);
   if (this.status != 200) window.location = '/';
   let newComment = JSON.parse(this.responseText);
 
@@ -393,7 +394,7 @@ function addCommentHandler() {
 
   comment.querySelector(".commentLike").addEventListener('click',sendCommentLikeRequest);
   comment.querySelector(".commentUnlike").addEventListener('click',sendCommentUnlikeRequest);
-  //comment.querySelector(".popup-reportUser .reportUserButton").addEventListener('click',reportUserRequest);
+  comment.querySelector(".popup-reportUser .reportA").addEventListener('click',reportUserRequest);
 }
 
 

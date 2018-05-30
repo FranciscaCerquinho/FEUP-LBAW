@@ -29,8 +29,8 @@ function SplitDate(dateTime, value) {
   var second = parseInt(splitSecond[0])
   var hour = hour + parseInt(splitSecond[1]);
   let currentMonth = currentDate.getMonth() + 1;
-  let currentHour = currentDate.getHours();
-  
+  let currentHour = currentDate.getHours() - 1;
+
   if (currentDate.getFullYear() == year) {
       if (currentMonth == month) {
           if (currentDate.getDate() == day) {

@@ -31,6 +31,7 @@ class CommentController extends Controller
       $comment->dislike = 0;
       $comment->id_user = Auth::user()->user_id;
       $comment->date= date('Y-m-d H:i:s');
+      $comment->available='1';
       $comment->save();
       $comment->load('user');
       if(preg_match('/https:\//',Auth::user()->photo, $matches, PREG_OFFSET_CAPTURE))
