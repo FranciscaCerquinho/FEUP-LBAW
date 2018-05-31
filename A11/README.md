@@ -13,8 +13,9 @@ Users may login using the google login and recover the password.
 ### URL to the product: http://lbaw1756.lbaw-prod.fe.up.pt
 
 ## 2. Video presentation
+<img width="939" alt="captura de ecra 2018-05-31 as 13 13 40" src="https://user-images.githubusercontent.com/22794956/40781649-962db568-64d4-11e8-831f-0426326e2b7e.png">
 
-[Video URL](https://www.youtube.com/watch?v=b3la3CgXaIs&feature=youtu.be)
+[Video URL](https://www.youtube.com/watch?v=jStGm9JXKyM&feature=youtu.be)
 
 
 ## 3. Members
