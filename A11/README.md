@@ -14,6 +14,9 @@ Users may login using the google login and recover the password.
 
 ## 2. Video presentation
 
+[Video URL](https://www.youtube.com/watch?v=b3la3CgXaIs&feature=youtu.be)
+
+
 ## 3. Members
 
 - Diogo Silva, up201405742@fe.up.pt
