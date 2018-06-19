@@ -40,6 +40,15 @@
 * Sign In / Sign up
 ![screencapture-lbaw1756-lbaw-prod-fe-up-pt-login-2018-06-19-09_35_33](https://user-images.githubusercontent.com/22794956/41586433-a8e6bfa4-73a4-11e8-854a-2265c14c9e43.png)
 
+* Auction Page
+![screencapture-lbaw1756-lbaw-prod-fe-up-pt-auction-33-2018-06-19-09_42_58](https://user-images.githubusercontent.com/22794956/41586682-47a7f716-73a5-11e8-9fbb-975e094a326e.png)
+
+* Owner Page
+![screencapture-lbaw1756-lbaw-prod-fe-up-pt-owner-1-2018-06-19-09_43_12](https://user-images.githubusercontent.com/22794956/41586663-3e435314-73a5-11e8-9e0f-023d48aba711.png)
+
+* Contact Us
+![screencapture-lbaw1756-lbaw-prod-fe-up-pt-contact_us-2018-06-19-09_42_44](https://user-images.githubusercontent.com/22794956/41586675-4381bec4-73a5-11e8-9dbe-40e520cd0080.png)
+
 * About Us
 ![screencapture-lbaw1756-lbaw-prod-fe-up-pt-about-2018-06-19-09_35_38](https://user-images.githubusercontent.com/22794956/41586428-a8275cd6-73a4-11e8-8c44-ca0ca6f2e791.png)
 
